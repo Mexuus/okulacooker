@@ -54,17 +54,13 @@ a chain the app doesn't know.
 
 ## Install on ZimaOS
 
-1. One-time: make the image public at
-   [package settings](https://github.com/users/Mexuus/packages/container/tapcook/settings)
-   → *Danger Zone* → **Change visibility** → Public. (GitHub keeps new packages
-   private even when the repo is public.) Otherwise run
-   `docker login ghcr.io -u Mexuus` on the server first, with a token that has
-   `read:packages`.
-2. ZimaOS → **App Store** → **+** → *Install a customized app* → **Import**.
-3. Paste [`zimaos-compose.yml`](zimaos-compose.yml) (or its
+The image is public, so ZimaOS can pull it without a GitHub login.
+
+1. ZimaOS → **App Store** → **+** → *Install a customized app* → **Import**.
+2. Paste [`zimaos-compose.yml`](zimaos-compose.yml) (or its
    [raw URL](https://raw.githubusercontent.com/Mexuus/tapcook/main/zimaos-compose.yml)).
    Change the published port first if 8080 is already in use.
-4. Install, then open TapCook from the ZimaOS dashboard.
+3. Install, then open TapCook from the ZimaOS dashboard.
 
 No volumes are needed: plans, favourites and history are stored in each
 visitor's browser, so every device keeps its own plan. For the **Locate**
