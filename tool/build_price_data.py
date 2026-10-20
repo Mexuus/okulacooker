@@ -29,7 +29,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "assets", "data", "prices.json")
 RECIPE_DB = os.path.join(ROOT, "assets", "data", "recipe_db.json")
 CACHE = os.path.join(ROOT, "build", "price_sources")
-BLS_CACHE = os.path.join(CACHE, "bls_series.json")
+# Committed so a fresh clone can rebuild prices without spending BLS queries
+# (the free API allows 25 per day); --refresh rewrites it.
+BLS_CACHE = os.path.join(ROOT, "tool", "sources", "bls_series.json")
 FMAP_URL = "https://www.ers.usda.gov/media/5400/food-at-home-monthly-area-prices-2012-to-2018.zip?v=40678"
 UA = "TapCook-build/1.0 (grocery price data refresh)"
 
@@ -164,7 +166,7 @@ def bls_fetch(series_ids, refresh):
                 for d in s.get("data", []) if d["period"].startswith("M") and d["value"] not in ("-", "")
             ]
         print(f"  BLS: fetched {len(batch)} series", file=sys.stderr)
-    os.makedirs(CACHE, exist_ok=True)
+    os.makedirs(os.path.dirname(BLS_CACHE), exist_ok=True)
     json.dump(cache, open(BLS_CACHE, "w"))
     return cache
 

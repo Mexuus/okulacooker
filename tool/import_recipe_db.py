@@ -8,6 +8,7 @@ mealplan.json), keeps every recipe verbatim, and augments each ingredient with:
 
 Usage:
   python tool/import_recipe_db.py [path/to/app.ipa | path/to/mealplan.json]
+Defaults to the copy committed at tool/sources/mealplan.json.
 Writes assets/data/recipe_db.json.
 """
 import json
@@ -18,8 +19,9 @@ import zipfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "assets", "data", "recipe_db.json")
-DEFAULT_IPA = os.path.expanduser(
-    r"~\OneDrive\Documents\com.testmaxx.reelchef_6769601354_2.1.6.ipa")
+# The original database is committed under tool/sources so the bundled data can
+# be rebuilt from this repo alone; the .ipa is only needed to refresh that copy.
+DEFAULT_SOURCE = os.path.join(ROOT, "tool", "sources", "mealplan.json")
 
 G_PER_LB = 453.592
 G_PER_OZ = 28.3495
@@ -91,7 +93,7 @@ def aisle(ing):
 
 
 def main():
-    src = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_IPA
+    src = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_SOURCE
     db = load_source(src)
     for ing in db["ingredients"]:
         ing["aisle"] = aisle(ing)
@@ -119,7 +121,10 @@ def main():
     if unconvertible:
         sys.exit(f"no gram conversion for: {unconvertible}")
 
-    db["source"] = os.path.basename(src)
+    # Provenance: repo-relative path for the committed copy, otherwise the
+    # file name of whatever .ipa or export it was built from.
+    rel = os.path.relpath(os.path.abspath(src), ROOT).replace("\\", "/")
+    db["source"] = rel if not rel.startswith("..") else os.path.basename(src)
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8", newline="\n") as f:
         json.dump(db, f, ensure_ascii=False, separators=(",", ":"))
