@@ -74,6 +74,28 @@ git clone https://github.com/Mexuus/tapcook.git && cd tapcook
 docker build -t tapcook:latest .      # ~10 min, needs ~3 GB free disk
 ```
 
+### Enabling the Locate button on ZimaOS
+
+Browsers only grant GPS to HTTPS origins, so over `http://<server-ip>:<port>`
+the button stays disabled. If the box is on a Tailscale tailnet, `tailscale
+serve` provides HTTPS with no domain, certificate or port forwarding:
+
+```sh
+tailscale serve --bg 8181     # the port TapCook is published on
+tailscale serve status        # -> https://<machine>.<tailnet>.ts.net/
+```
+
+ZimaOS runs Tailscale as a container with `network_mode: host`, so run those
+inside it — `docker exec tailscale tailscale serve --bg 8181`, or over
+Tailscale SSH if that is enabled. `127.0.0.1:<port>` resolves to the host's
+published port because of host networking. The config is written to the
+tailscale state directory (bind-mounted to `/DATA/AppData/tailscale`), so it
+survives container restarts and reboots.
+
+The result is reachable only from your tailnet; exposing it to the public
+internet would need `tailscale funnel` instead. Undo with
+`tailscale serve --https=443 off`.
+
 ## Host with Docker (Linux)
 
 The image is a static web build served by unprivileged nginx on port 8080
