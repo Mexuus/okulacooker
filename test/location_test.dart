@@ -12,10 +12,12 @@ import 'package:tapcook/data/recipes_seed.dart';
 import 'package:tapcook/data/stores.dart';
 import 'package:tapcook/data/zip_states.dart';
 import 'package:tapcook/models/settings.dart';
+import 'package:tapcook/models/store_location.dart';
 import 'package:tapcook/services/diet.dart';
 import 'package:tapcook/services/location_service.dart';
 import 'package:tapcook/services/persistence.dart';
 import 'package:tapcook/services/plan_generator.dart';
+import 'package:tapcook/services/price_book.dart';
 import 'package:tapcook/services/pricing.dart';
 import 'package:tapcook/services/store_directory.dart';
 import 'package:tapcook/services/store_locator.dart';
@@ -46,6 +48,10 @@ http.Response _jsonResponse(String body, [int status = 200]) => http.Response.by
 Future<StoreDirectory> _emptyDir() async => StoreDirectory.fromCsv('');
 
 void main() {
+  setUpAll(() {
+    PriceBook.instance =
+        PriceBook.fromJsonString(File('assets/data/prices.json').readAsStringSync());
+  });
   final realZips = ZipLocator.fromCsv(File('assets/data/zcta.csv').readAsStringSync());
   final directory =
       StoreDirectory.fromCsv(File('assets/data/stores.csv').readAsStringSync());
@@ -101,7 +107,7 @@ void main() {
           await svc(FakeGeo(fix: const GeoFix(41.8827, -87.6233))).detect();
       expect(place.state, 'IL');
       expect(place.zip.startsWith('606'), isTrue);
-      expect(place.region.name, 'Central');
+      expect(place.region.name, 'Midwest');
     });
 
     test('rejects locations outside the US', () async {
@@ -341,6 +347,7 @@ void main() {
 
     var zip = '';
     var storeId = 'kroger';
+    StoreLocationRef? storeLoc;
     await tester.pumpWidget(ChangeNotifierProvider.value(
       value: state,
       child: MaterialApp(
@@ -350,9 +357,13 @@ void main() {
               child: LocationStorePicker(
                 zip: zip,
                 storeId: storeId,
+                storeLocation: storeLoc,
                 autoSelectNearest: true,
                 onZipChanged: (v) => setState(() => zip = v),
-                onStoreChanged: (v) => setState(() => storeId = v),
+                onStoreChanged: (id, loc) => setState(() {
+                  storeId = id;
+                  storeLoc = loc;
+                }),
               ),
             ),
           ),
@@ -364,16 +375,22 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(zip, '90210');
-    expect(find.text('California · West Coast pricing'), findsOneWidget);
+    expect(find.text('California · Los Angeles metro prices'), findsOneWidget);
     expect(find.text('Stores near 90210'), findsOneWidget);
     expect(find.text('Ralphs'), findsWidgets);
     expect(find.textContaining('priced as Raley'), findsOneWidget);
-    // Nearest store (Nob Hill Foods, priced as Raley's) is pre-selected.
+    // Without a plan, each store shows its local price level vs. the US average.
+    expect(find.text('Local price level vs. the national average.'), findsOneWidget);
+    expect(find.textContaining(RegExp(r'^[+−]\d+%$|^avg$')), findsNWidgets(2));
+    // Nearest store (Nob Hill Foods, priced as Raley's) is pre-selected, with its location.
     expect(storeId, 'raleys');
+    expect(storeLoc?.label, 'Nob Hill Foods');
 
     await tester.tap(find.widgetWithText(ListTile, 'Ralphs'));
     await tester.pumpAndSettle();
     expect(storeId, 'ralphs');
+    expect(storeLoc?.lat, 34.07);
+    expect(storeLoc?.address, '9040 W Sunset Blvd, West Hollywood');
 
     // Searching again must not override the user's explicit choice.
     await tester.tap(find.byTooltip('Search again'));

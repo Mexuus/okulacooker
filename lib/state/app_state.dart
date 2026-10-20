@@ -1,10 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:uuid/uuid.dart';
 
+import '../data/catalog.dart';
+import '../data/recipes_seed.dart';
+import '../data/zip_states.dart';
 import '../models/settings.dart';
 import '../models/plan.dart';
 import '../models/pantry.dart';
 import '../models/grocery.dart';
+import '../models/store.dart';
+import '../models/store_location.dart';
 import '../services/persistence.dart';
 import '../services/pricing.dart';
 import '../services/grocery_builder.dart';
@@ -52,17 +57,87 @@ class AppState extends ChangeNotifier {
   List<FreezerItem> get freezer => List.unmodifiable(_freezer);
   bool get onboarded => _settings.onboarded;
 
-  PricingEngine get pricing =>
-      PricingEngine.from(storeId: _settings.storeId, zip: _settings.zip);
+  PricingEngine get pricing => PricingEngine.forSettings(_settings);
 
   GroceryList? get groceryList {
     final p = _plan;
     if (p == null) return null;
-    return GroceryBuilder(
-      pricing: pricing,
-      ownedStaples: _pantry.ownedStapleIds,
-    ).build(p);
+    return groceryListFor(pricing);
   }
+
+  /// This week's grocery list priced by [engine] (e.g. at another store).
+  GroceryList? groceryListFor(PricingEngine engine) {
+    final p = _plan;
+    if (p == null) return null;
+    return GroceryBuilder(pricing: engine, ownedStaples: _pantry.ownedStapleIds)
+        .build(p);
+  }
+
+  /// Pricing for a specific nearby store location.
+  PricingEngine pricingAt(NearbyStore n) => PricingEngine(
+        store: n.store,
+        location: PriceLocation(
+          lat: n.lat,
+          lng: n.lng,
+          state: n.state ?? stateForZip(_settings.zip),
+          label: n.address ?? n.displayName,
+        ),
+      );
+
+  /// This week's total at [engine]'s store (both weeks when shopping two weeks).
+  double? planTotalAt(PricingEngine engine) {
+    final list = groceryListFor(engine);
+    return list == null ? null : list.total + list.laterTotal;
+  }
+
+  /// Local price level vs. the national average for a typical basket (every
+  /// ingredient in the recipe library), e.g. 1.06 = 6% above average.
+  double priceLevelAt(PricingEngine engine) {
+    final national = PricingEngine(
+      store: const Store(id: '_avg', name: 'Average', priceMultiplier: 1.0),
+      location: const PriceLocation(label: 'National average'),
+    );
+    var local = 0.0, avg = 0.0;
+    for (final r in kRecipes) {
+      for (final ri in r.ingredients) {
+        final ing = kIngredients[ri.ingredientId];
+        if (ing == null) continue;
+        local += engine.quote(ing, ri.qty).unitPrice * ri.qty;
+        avg += national.quote(ing, ri.qty).unitPrice * ri.qty;
+      }
+    }
+    return avg == 0 ? 1.0 : local / avg;
+  }
+
+  /// Nearby stores (closest location per chain) with this week's total at
+  /// each, cheapest first.
+  Future<List<(NearbyStore, double)>> compareNearbyStores(
+      {double radiusMiles = 10}) async {
+    final loc = PriceLocation.forSettings(_settings);
+    double? lat = loc.lat, lng = loc.lng;
+    if (lat == null || lng == null) {
+      final place = await currentPlace();
+      if (place == null) return const [];
+      lat = place.lat;
+      lng = place.lng;
+    }
+    final stores = StoreLocator.closestPerChain(
+        await storeLocator.nearby(lat, lng, radiusMiles: radiusMiles));
+    final out = <(NearbyStore, double)>[
+      for (final n in stores)
+        if (planTotalAt(pricingAt(n)) case final total?) (n, total),
+    ]..sort((a, b) => a.$2.compareTo(b.$2));
+    return out;
+  }
+
+  /// Switches the store, optionally to an exact location (prices then follow
+  /// that location's region and metro area).
+  Future<void> selectStore(String storeId, {StoreLocationRef? location}) =>
+      updateSettings(_settings.copyWith(
+        storeId: storeId,
+        storeLocation: location,
+        clearStoreLocation: location == null,
+      ));
 
   PlanGenerator _generator() => PlanGenerator(
         pricing: pricing,
@@ -89,7 +164,8 @@ class AppState extends ChangeNotifier {
   Future<void> completeOnboarding(UserSettings s) async {
     _settings = s.copyWith(onboarded: true);
     await _store.saveSettings(_settings);
-    generatePlan();
+    await generatePlan();
+    await _ensureZipCoordinates();
   }
 
   Future<void> updateSettings(UserSettings s) async {
@@ -101,11 +177,28 @@ class AppState extends ChangeNotifier {
     _settings = s;
     await _store.saveSettings(_settings);
     if (planAffecting && _plan != null) {
-      generatePlan(archive: false);
+      await generatePlan(archive: false);
     } else {
       notifyListeners();
     }
+    await _ensureZipCoordinates();
   }
+
+  /// Fills in the ZIP centroid (offline) so metro-area pricing works even
+  /// before a specific store location is picked.
+  Future<void> _ensureZipCoordinates() async {
+    final zip = _settings.zip;
+    if (zip.isEmpty || _settings.zipLat != null) return;
+    final place = await location.resolveZip(zip);
+    if (place == null || _settings.zip != zip) return;
+    _settings = _settings.copyWith(zipLat: place.lat, zipLng: place.lng);
+    await _store.saveSettings(_settings);
+    notifyListeners();
+  }
+
+  /// Call once after construction to backfill ZIP coordinates for users who
+  /// onboarded before coordinates were stored.
+  Future<void> init() => _ensureZipCoordinates();
 
   Future<void> setTheme(AppTheme theme) async {
     _settings.theme = theme;

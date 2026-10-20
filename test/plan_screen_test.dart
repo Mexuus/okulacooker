@@ -3,7 +3,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:tapcook/services/location_service.dart';
 import 'package:tapcook/services/persistence.dart';
+import 'package:tapcook/services/zip_locator.dart';
 import 'package:tapcook/state/app_state.dart';
 import 'package:tapcook/models/settings.dart';
 import 'package:tapcook/screens/plan_screen.dart';
@@ -13,7 +15,11 @@ void main() {
       (tester) async {
     SharedPreferences.setMockInitialValues({});
     final persistence = await Persistence.create();
-    final state = AppState(persistence);
+    final state = AppState(
+      persistence,
+      location: LocationService(
+          zipLoader: () async => ZipLocator.fromCsv('90210,34.1030,-118.4105\n')),
+    );
     await state.completeOnboarding(UserSettings(
       zip: '90210',
       storeId: 'kroger',

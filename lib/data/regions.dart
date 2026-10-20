@@ -1,36 +1,37 @@
 import '../models/store.dart';
+import 'zip_states.dart';
 
-/// Maps a US ZIP code to a coarse pricing region using the first digit of the
-/// ZIP (the USPS national area). Cost multipliers are rough cost-of-living
-/// estimates and are combined with the store multiplier.
-const List<Region> _regions = [
-  Region(id: 'ne', name: 'Northeast', costMultiplier: 1.12), // 0
-  Region(id: 'ny', name: 'NY / Mid-Atlantic', costMultiplier: 1.10), // 1
-  Region(id: 'matl', name: 'Mid-Atlantic', costMultiplier: 1.04), // 2
-  Region(id: 'se', name: 'Southeast', costMultiplier: 0.95), // 3
-  Region(id: 'mw', name: 'Midwest', costMultiplier: 0.94), // 4
-  Region(id: 'umw', name: 'Upper Midwest', costMultiplier: 0.96), // 5
-  Region(id: 'cen', name: 'Central', costMultiplier: 0.93), // 6
-  Region(id: 'sc', name: 'South Central', costMultiplier: 0.92), // 7
-  Region(id: 'mtn', name: 'Mountain West', costMultiplier: 1.02), // 8
-  Region(id: 'west', name: 'West Coast', costMultiplier: 1.14), // 9
-];
+/// U.S. Census regions — the geography BLS publishes average prices for.
+const Region kNationalRegion = Region(id: 'US', name: 'National average');
+const Map<String, Region> kCensusRegions = {
+  'NE': Region(id: 'NE', name: 'Northeast'),
+  'MW': Region(id: 'MW', name: 'Midwest'),
+  'S': Region(id: 'S', name: 'South'),
+  'W': Region(id: 'W', name: 'West'),
+};
 
-const Region _unknownRegion =
-    Region(id: 'us', name: 'National average', costMultiplier: 1.0);
+const Map<String, String> _stateRegion = {
+  // Northeast
+  'CT': 'NE', 'ME': 'NE', 'MA': 'NE', 'NH': 'NE', 'RI': 'NE', 'VT': 'NE',
+  'NJ': 'NE', 'NY': 'NE', 'PA': 'NE',
+  // Midwest
+  'IL': 'MW', 'IN': 'MW', 'MI': 'MW', 'OH': 'MW', 'WI': 'MW', 'IA': 'MW',
+  'KS': 'MW', 'MN': 'MW', 'MO': 'MW', 'NE': 'MW', 'ND': 'MW', 'SD': 'MW',
+  // South
+  'DE': 'S', 'DC': 'S', 'FL': 'S', 'GA': 'S', 'MD': 'S', 'NC': 'S', 'SC': 'S',
+  'VA': 'S', 'WV': 'S', 'AL': 'S', 'KY': 'S', 'MS': 'S', 'TN': 'S', 'AR': 'S',
+  'LA': 'S', 'OK': 'S', 'TX': 'S',
+  // West
+  'AZ': 'W', 'CO': 'W', 'ID': 'W', 'MT': 'W', 'NV': 'W', 'NM': 'W', 'UT': 'W',
+  'WY': 'W', 'AK': 'W', 'CA': 'W', 'HI': 'W', 'OR': 'W', 'WA': 'W',
+};
 
-/// Returns the pricing region for a ZIP code, or the national average if the ZIP
-/// is missing or malformed.
-Region regionForZip(String zip) {
-  final trimmed = zip.trim();
-  if (trimmed.isEmpty) return _unknownRegion;
-  final first = int.tryParse(trimmed.substring(0, 1));
-  if (first == null) return _unknownRegion;
-  return _regions[first];
-}
+/// Census region for a two-letter state code; national average if unknown.
+Region regionForState(String? state) =>
+    kCensusRegions[_stateRegion[state]] ?? kNationalRegion;
+
+/// Census region for a ZIP code (via its state).
+Region regionForZip(String zip) => regionForState(stateForZip(zip));
 
 /// Basic validity check for a US 5-digit ZIP.
-bool isValidZip(String zip) {
-  final t = zip.trim();
-  return RegExp(r'^\d{5}$').hasMatch(t);
-}
+bool isValidZip(String zip) => RegExp(r'^\d{5}$').hasMatch(zip.trim());

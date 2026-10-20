@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'services/persistence.dart';
+import 'services/price_book.dart';
 import 'state/app_state.dart';
 import 'theme/app_theme.dart';
 import 'screens/home_shell.dart';
@@ -10,9 +11,10 @@ import 'screens/onboarding_screen.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final persistence = await Persistence.create();
+  await PriceBook.load();
   runApp(
     ChangeNotifierProvider(
-      create: (_) => AppState(persistence),
+      create: (_) => AppState(persistence)..init(),
       child: const TapCookApp(),
     ),
   );

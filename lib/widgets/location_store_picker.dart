@@ -3,17 +3,26 @@ import 'package:provider/provider.dart';
 
 import '../data/regions.dart';
 import '../data/stores.dart';
+import '../models/store_location.dart';
 import '../services/location_service.dart';
+import '../services/price_book.dart';
 import '../services/store_locator.dart';
 import '../state/app_state.dart';
+import 'money_text.dart';
+
+/// Called when a store is chosen; [location] is set when a specific nearby
+/// store was picked (prices then follow that store's area).
+typedef StoreChanged = void Function(String storeId, StoreLocationRef? location);
 
 /// ZIP entry with "Use my location", offline ZIP validation, nearby-store
-/// discovery, and a full store list sorted by what operates in the user's state.
+/// discovery with local prices, and a full store list sorted by what operates
+/// in the user's state.
 class LocationStorePicker extends StatefulWidget {
   final String zip;
   final String storeId;
+  final StoreLocationRef? storeLocation;
   final ValueChanged<String> onZipChanged;
-  final ValueChanged<String> onStoreChanged;
+  final StoreChanged onStoreChanged;
   final bool showZipError;
 
   /// Pre-selects the nearest store until the user picks one themselves
@@ -26,6 +35,7 @@ class LocationStorePicker extends StatefulWidget {
     required this.storeId,
     required this.onZipChanged,
     required this.onStoreChanged,
+    this.storeLocation,
     this.showZipError = false,
     this.autoSelectNearest = false,
   });
@@ -49,9 +59,15 @@ class _LocationStorePickerState extends State<LocationStorePicker> {
   int _req = 0;
   bool _userPickedStore = false;
 
-  void _pickStore(String id) {
+  void _pickStore(String id, [NearbyStore? at]) {
     _userPickedStore = true;
-    widget.onStoreChanged(id);
+    widget.onStoreChanged(id, at?.toRef());
+  }
+
+  bool _isSelected(NearbyStore n) {
+    if (n.store.id != widget.storeId) return false;
+    final loc = widget.storeLocation;
+    return loc == null || (loc.lat == n.lat && loc.lng == n.lng);
   }
 
   @override
@@ -106,7 +122,7 @@ class _LocationStorePickerState extends State<LocationStorePicker> {
       final perChain = StoreLocator.closestPerChain(all);
       setState(() => _nearby = perChain);
       if (widget.autoSelectNearest && !_userPickedStore && perChain.isNotEmpty) {
-        widget.onStoreChanged(perChain.first.store.id);
+        widget.onStoreChanged(perChain.first.store.id, perChain.first.toRef());
       }
     } on StoreLookupException catch (e) {
       if (!mounted || req != _req) return;
@@ -205,7 +221,7 @@ class _LocationStorePickerState extends State<LocationStorePicker> {
                 const SizedBox(width: 4),
                 Expanded(
                   child: Text(
-                    '${place.stateName} · ${place.region.name} pricing',
+                    '${place.stateName} · ${_areaName(place)} prices',
                     style: theme.textTheme.bodySmall,
                   ),
                 ),
@@ -312,7 +328,10 @@ class _LocationStorePickerState extends State<LocationStorePicker> {
                   for (final n in nearby.take(6))
                     ListTile(
                       dense: true,
-                      leading: const Icon(Icons.storefront_outlined),
+                      leading: Icon(
+                        _isSelected(n) ? Icons.check_circle : Icons.storefront_outlined,
+                        color: _isSelected(n) ? theme.colorScheme.primary : null,
+                      ),
                       title: Text(n.displayName),
                       subtitle: Text([
                         '${n.distanceMi.toStringAsFixed(1)} mi',
@@ -321,17 +340,60 @@ class _LocationStorePickerState extends State<LocationStorePicker> {
                       ].join(' · '),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis),
-                      trailing: n.store.id == widget.storeId
-                          ? Icon(Icons.check_circle,
-                              color: theme.colorScheme.primary)
-                          : null,
-                      onTap: () => _pickStore(n.store.id),
+                      trailing: _LocalPrice(store: n),
+                      onTap: () => _pickStore(n.store.id, n),
                     ),
                 ],
               ),
             ),
+          if (nearby != null && nearby.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.only(top: 6),
+              child: Text(
+                context.read<AppState>().plan != null
+                    ? 'Estimated total for this week’s list at each store.'
+                    : 'Local price level vs. the national average.',
+                style: theme.textTheme.bodySmall,
+              ),
+            ),
         ],
       ),
+    );
+  }
+
+  String _areaName(PlaceInfo place) {
+    final metro = PriceBook.instance.metroFor(place.lat, place.lng,
+        region: regionForState(place.state));
+    return metro != null ? '${metro.name} metro' : '${regionForState(place.state).name} region';
+  }
+}
+
+/// Local price for a nearby store: this week's total when a plan exists,
+/// otherwise its price level vs. the national average.
+class _LocalPrice extends StatelessWidget {
+  final NearbyStore store;
+  const _LocalPrice({required this.store});
+
+  @override
+  Widget build(BuildContext context) {
+    final app = context.read<AppState>();
+    final theme = Theme.of(context);
+    final engine = app.pricingAt(store);
+    final total = app.planTotalAt(engine);
+    if (total != null) {
+      return MoneyText(total,
+          style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w800));
+    }
+    final level = app.priceLevelAt(engine);
+    final pct = ((level - 1) * 100).round();
+    final color = pct <= -3
+        ? Colors.green.shade700
+        : pct >= 3
+            ? Colors.deepOrange.shade700
+            : theme.colorScheme.onSurfaceVariant;
+    return Text(
+      pct == 0 ? 'avg' : '${pct > 0 ? '+' : '−'}${pct.abs()}%',
+      style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w800, color: color),
     );
   }
 }

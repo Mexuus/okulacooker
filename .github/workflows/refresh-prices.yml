@@ -1,0 +1,42 @@
+name: Refresh prices
+
+# BLS publishes average prices around mid-month; refresh on the 20th.
+on:
+  schedule:
+    - cron: '0 14 20 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - name: Rebuild assets/data/prices.json
+        # Optional repo secret BLS_API_KEY raises the BLS limit (free signup).
+        env:
+          BLS_API_KEY: ${{ secrets.BLS_API_KEY }}
+        run: python tool/build_price_data.py --refresh
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.47.7
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - run: flutter test
+      - name: Commit updated prices
+        run: |
+          if git diff --quiet -- assets/data/prices.json; then
+            echo "Prices unchanged."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/data/prices.json
+          git commit -m "data: refresh BLS prices ($(python -c "import json;print(json.load(open('assets/data/prices.json'))['asOf'])"))"
+          git push

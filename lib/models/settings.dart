@@ -1,4 +1,5 @@
 import '../services/diet.dart';
+import 'store_location.dart';
 
 /// App visual theme. Fall is the seasonal theme requested; others are provided
 /// for variety. No subscription is required to use any of them.
@@ -40,6 +41,13 @@ class UserSettings {
   /// Ingredient ids the household won't eat; recipes using them are skipped.
   Set<String> excludedIngredients;
 
+  /// The specific store location picked (null = chain only, priced at the ZIP).
+  StoreLocationRef? storeLocation;
+
+  /// Centroid of [zip], used for metro pricing when no store location is set.
+  double? zipLat;
+  double? zipLng;
+
   UserSettings({
     this.zip = '',
     this.storeId = 'kroger',
@@ -52,6 +60,9 @@ class UserSettings {
     this.onboarded = false,
     Set<Diet>? diets,
     Set<String>? excludedIngredients,
+    this.storeLocation,
+    this.zipLat,
+    this.zipLng,
   })  : diets = diets ?? <Diet>{},
         excludedIngredients = excludedIngredients ?? <String>{},
         cookNights = cookNights ??
@@ -65,6 +76,9 @@ class UserSettings {
 
   int get cookNightCount => cookNights.length;
 
+  /// Copies with changes. Changing [zip] drops the old ZIP centroid unless new
+  /// coordinates are given; changing [storeId] drops the store location unless
+  /// a new one is given or it belongs to the new chain.
   UserSettings copyWith({
     String? zip,
     String? storeId,
@@ -77,7 +91,17 @@ class UserSettings {
     bool? onboarded,
     Set<Diet>? diets,
     Set<String>? excludedIngredients,
+    StoreLocationRef? storeLocation,
+    bool clearStoreLocation = false,
+    double? zipLat,
+    double? zipLng,
   }) {
+    final zipChanged = zip != null && zip != this.zip;
+    final newStoreId = storeId ?? this.storeId;
+    var loc = storeLocation ?? this.storeLocation;
+    if (clearStoreLocation || (loc != null && loc.storeId != newStoreId)) {
+      loc = storeLocation?.storeId == newStoreId ? storeLocation : null;
+    }
     return UserSettings(
       zip: zip ?? this.zip,
       storeId: storeId ?? this.storeId,
@@ -91,6 +115,9 @@ class UserSettings {
       diets: diets ?? Set<Diet>.from(this.diets),
       excludedIngredients:
           excludedIngredients ?? Set<String>.from(this.excludedIngredients),
+      storeLocation: loc,
+      zipLat: zipLat ?? (zipChanged ? null : this.zipLat),
+      zipLng: zipLng ?? (zipChanged ? null : this.zipLng),
     );
   }
 
@@ -106,6 +133,9 @@ class UserSettings {
         'onboarded': onboarded,
         'diets': diets.map((d) => d.name).toList(),
         'excludedIngredients': excludedIngredients.toList(),
+        'storeLocation': storeLocation?.toJson(),
+        'zipLat': zipLat,
+        'zipLng': zipLng,
       };
 
   factory UserSettings.fromJson(Map<String, dynamic> j) => UserSettings(
@@ -129,5 +159,10 @@ class UserSettings {
         excludedIngredients: ((j['excludedIngredients'] as List?) ?? [])
             .map((e) => e as String)
             .toSet(),
+        storeLocation: j['storeLocation'] == null
+            ? null
+            : StoreLocationRef.fromJson(j['storeLocation'] as Map<String, dynamic>),
+        zipLat: (j['zipLat'] as num?)?.toDouble(),
+        zipLng: (j['zipLng'] as num?)?.toDouble(),
       );
 }

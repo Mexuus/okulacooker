@@ -29,15 +29,10 @@ class Store {
       state == null || states == null || states!.contains(state);
 }
 
-/// A US pricing region derived from a ZIP code, with a cost-of-living factor.
+/// A U.S. Census region (the geography BLS publishes average prices for).
 class Region {
   final String id;
   final String name;
-  final double costMultiplier;
 
-  const Region({
-    required this.id,
-    required this.name,
-    required this.costMultiplier,
-  });
+  const Region({required this.id, required this.name});
 }

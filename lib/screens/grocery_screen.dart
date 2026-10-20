@@ -4,9 +4,12 @@ import 'package:provider/provider.dart';
 import '../models/grocery.dart';
 import '../models/ingredient.dart';
 import '../services/format.dart';
+import '../services/price_book.dart';
 import '../state/app_state.dart';
 import '../widgets/budget_bar.dart';
 import '../widgets/money_text.dart';
+import '../widgets/price_breakdown.dart';
+import '../widgets/store_compare_sheet.dart';
 
 class GroceryScreen extends StatelessWidget {
   const GroceryScreen({super.key});
@@ -17,7 +20,10 @@ class GroceryScreen extends StatelessWidget {
       builder: (context, state, _) {
         final grocery = state.groceryList;
         final theme = Theme.of(context);
-        final store = state.pricing.store;
+        final pricing = state.pricing;
+        final store = pricing.store;
+        final loc = state.settings.storeLocation;
+        final storeName = loc != null && loc.storeId == store.id ? loc.label : store.name;
 
         return Scaffold(
           appBar: AppBar(title: const Text('Grocery list')),
@@ -35,7 +41,23 @@ class GroceryScreen extends StatelessWidget {
                             BudgetBar(
                               total: grocery.total,
                               budget: state.settings.weeklyBudget,
-                              label: 'Total at ${store.name}',
+                              label: 'Total at $storeName',
+                            ),
+                            const SizedBox(height: 10),
+                            Row(
+                              children: [
+                                Icon(Icons.place_outlined,
+                                    size: 18, color: theme.colorScheme.primary),
+                                const SizedBox(width: 6),
+                                Expanded(
+                                  child: Text(
+                                    '${pricing.location.label} · ${pricing.areaName} prices',
+                                    style: theme.textTheme.bodySmall,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ],
                             ),
                             if (grocery.savedByPantry > 0) ...[
                               const SizedBox(height: 10),
@@ -52,6 +74,15 @@ class GroceryScreen extends StatelessWidget {
                                 ],
                               ),
                             ],
+                            const SizedBox(height: 12),
+                            SizedBox(
+                              width: double.infinity,
+                              child: OutlinedButton.icon(
+                                onPressed: () => showStoreComparison(context, state),
+                                icon: const Icon(Icons.compare_arrows),
+                                label: const Text('Compare nearby stores'),
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -60,7 +91,11 @@ class GroceryScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 4),
                       child: Text(
-                        'Estimates, not live prices. Checkout totals will differ.',
+                        PriceBook.instance.hasLiveData
+                            ? 'Local estimates from BLS average prices (${PriceBook.instance.asOfLabel}), '
+                                'adjusted for your store’s area and chain. Tap an item to see how. '
+                                'Checkout totals will differ.'
+                            : 'Estimates, not live prices. Checkout totals will differ.',
                         style: theme.textTheme.bodySmall,
                       ),
                     ),
@@ -153,6 +188,7 @@ class _GroceryTile extends StatelessWidget {
           : const SizedBox(width: 24),
       title: Text(ing.name, style: struck),
       subtitle: Text(formatAmount(ing, line.qty), style: struck),
+      onTap: () => showPriceBreakdown(context, state.pricing.quote(ing, line.qty)),
       trailing: owned
           ? Text('have it',
               style: theme.textTheme.bodySmall

@@ -20,7 +20,7 @@ iOS builds need macOS: use the CI workflows below, or a Mac with Xcode
 
 | Area | Where | Notes |
 |---|---|---|
-| Price estimates | `lib/services/pricing.dart` | National reference price × chain multiplier × ZIP-region multiplier. Estimates, not live prices. |
+| Price estimates | `lib/services/pricing.dart`, `price_book.dart` | Per item: BLS regional average price (or a TapCook estimate regionalised with USDA ratios) × USDA metro-area adjustment (10 large metros) × chain price level. Priced at the **specific store location** you pick. Estimates, not live shelf prices; tap any grocery item to see the breakdown. |
 | Meal planning | `lib/services/plan_generator.dart` | Budget-aware; respects diet and won't-eat settings (`lib/services/diet.dart`). |
 | Grocery list | `lib/services/grocery_builder.dart` | Consolidates meals, removes owned pantry staples, splits two-week fresh items. |
 | Location | `lib/services/location_service.dart` | Device GPS via `geolocator`, reverse-geocoded **offline** to a ZIP using bundled U.S. Census ZCTA data (`assets/data/zcta.csv`). |
@@ -35,6 +35,12 @@ online store lookup sends only the ZIP's center point.
 |---|---|---|---|
 | `assets/data/zcta.csv` | U.S. Census Bureau ZCTA Gazetteer | Public domain | Yearly; download `*_Gaz_zcta_national.zip` and keep `GEOID,INTPTLAT,INTPTLONG` |
 | `assets/data/stores.csv` | [All The Places](https://alltheplaces.xyz) + OpenStreetMap | CC0 / ODbL (attribution shown in-app) | `python tool/build_store_directory.py` |
+| `assets/data/prices.json` | BLS CPI Average Price Data + USDA ERS F-MAP | Public domain | Monthly via the **Refresh prices** workflow, or `python tool/build_price_data.py --refresh` |
+
+The price script maps each catalog ingredient to a BLS item in its `ITEMS`
+table (with unit conversions). Ingredients BLS no longer prices keep the
+estimate in `lib/data/catalog.dart`. Adding an ingredient to the catalog
+requires adding it to `ITEMS` too (the script refuses to run otherwise).
 
 When adding a chain, add it to `lib/data/stores.dart` **and** to the `BRANDS`
 map in `tool/build_store_directory.py`. A test fails if the directory contains
@@ -53,4 +59,5 @@ a chain the app doesn't know.
 ## Attribution
 
 Store locations: All The Places (CC0) and © OpenStreetMap contributors (ODbL).
+Prices: U.S. Bureau of Labor Statistics and USDA Economic Research Service.
 ZIP centroids: U.S. Census Bureau. Typeface: Schibsted Grotesk (SIL OFL).

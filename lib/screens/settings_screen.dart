@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../data/regions.dart';
 import '../models/settings.dart';
+import '../services/price_book.dart';
 import '../services/store_locator.dart';
 import '../state/app_state.dart';
 import '../widgets/diet_editor.dart';
@@ -40,13 +41,13 @@ class SettingsScreen extends StatelessWidget {
                   child: LocationStorePicker(
                     zip: s.zip,
                     storeId: s.storeId,
+                    storeLocation: s.storeLocation,
                     onZipChanged: (v) {
                       if (isValidZip(v)) {
                         state.updateSettings(state.settings.copyWith(zip: v));
                       }
                     },
-                    onStoreChanged: (v) => state
-                        .updateSettings(state.settings.copyWith(storeId: v)),
+                    onStoreChanged: (id, loc) => state.selectStore(id, location: loc),
                   ),
                 ),
               ),
@@ -239,6 +240,12 @@ class SettingsScreen extends StatelessWidget {
                     '(~24,000 US locations), so it works offline. Only if none are '
                     'found does it ask OpenStreetMap (free, no account), sending just '
                     'your ZIP’s center point — never your exact location.\n'
+                    '• Prices: BLS Average Price Data (${PriceBook.instance.asOfLabel}) for '
+                    '${PriceBook.instance.blsItemCount} staple items by region, USDA ERS '
+                    'metro-area food prices for 10 large metros, and TapCook estimates for '
+                    'everything else and for each chain’s price level. Picking a specific '
+                    'store prices your list for that store’s area. Estimates, not live '
+                    'shelf prices.\n'
                     '• Your plan, pantry, and settings stay on this device. No account '
                     'or subscription.\n\n'
                     'Store locations: All The Places (CC0) and '

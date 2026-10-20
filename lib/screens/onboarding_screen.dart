@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../data/regions.dart';
 import '../models/settings.dart';
+import '../models/store_location.dart';
 import '../services/diet.dart';
 import '../state/app_state.dart';
 import '../widgets/diet_editor.dart';
@@ -30,6 +31,7 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen> {
   String _zip = '';
   String _storeId = 'kroger';
+  StoreLocationRef? _storeLocation;
   int _household = 4;
   final Set<int> _nights = {
     DateTime.monday,
@@ -50,6 +52,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     final settings = UserSettings(
       zip: _zip.trim(),
       storeId: _storeId,
+      storeLocation: _storeLocation?.storeId == _storeId ? _storeLocation : null,
       householdSize: _household,
       cookNights: _nights.toList()..sort(),
       weeklyBudget: _budget,
@@ -85,10 +88,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               child: LocationStorePicker(
                 zip: _zip,
                 storeId: _storeId,
+                storeLocation: _storeLocation,
                 showZipError: _zipTouched,
                 autoSelectNearest: true,
                 onZipChanged: (v) => setState(() => _zip = v),
-                onStoreChanged: (v) => setState(() => _storeId = v),
+                onStoreChanged: (id, loc) => setState(() {
+                  _storeId = id;
+                  _storeLocation = loc;
+                }),
               ),
             ),
 

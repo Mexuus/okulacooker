@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 
 import '../data/stores.dart';
 import '../models/store.dart';
+import '../models/store_location.dart';
 import 'store_directory.dart';
 import 'zip_locator.dart';
 
@@ -17,6 +18,9 @@ class NearbyStore {
   final double distanceMi;
   final String? address;
   final StoreSource source;
+  final double? lat;
+  final double? lng;
+  final String? state;
 
   const NearbyStore({
     required this.store,
@@ -24,7 +28,22 @@ class NearbyStore {
     required this.distanceMi,
     this.address,
     this.source = StoreSource.openStreetMap,
+    this.lat,
+    this.lng,
+    this.state,
   });
+
+  /// A saveable reference to this exact location (null without coordinates).
+  StoreLocationRef? toRef() => lat == null || lng == null
+      ? null
+      : StoreLocationRef(
+          storeId: store.id,
+          label: displayName,
+          address: address,
+          lat: lat!,
+          lng: lng!,
+          state: state,
+        );
 
   static String _norm(String s) => s.toLowerCase().replaceAll(RegExp(r'[^a-z0-9]'), '');
 
@@ -94,6 +113,9 @@ out center tags 300;
             distanceMi: mi,
             address: _joinAddress(e),
             source: StoreSource.directory,
+            lat: e.lat,
+            lng: e.lng,
+            state: e.state.isEmpty ? null : e.state,
           ),
       ];
 
@@ -190,6 +212,9 @@ out center tags 300;
         label: name ?? store.name,
         distanceMi: haversineKm(lat, lng, eLat, eLng) * 0.621371,
         address: address.isEmpty ? null : address,
+        lat: eLat,
+        lng: eLng,
+        state: tags['addr:state'] as String?,
       ));
     }
     out.sort((a, b) => a.distanceMi.compareTo(b.distanceMi));
