@@ -4,6 +4,10 @@ Plan the week's dinners and know what the groceries will cost before you leave
 the house. Flutter app for **iOS and web**. No account, no server, no
 subscription: everything runs on the device.
 
+**Try it:** <https://mexuus.github.io/tapcook/> ·
+**Self-host:** `docker run -d -p 8080:8080 ghcr.io/mexuus/tapcook:latest`
+(see [Install on ZimaOS](#install-on-zimaos) / [Host with Docker](#host-with-docker-linux))
+
 ## Run
 
 ```powershell
@@ -48,30 +52,50 @@ When adding a chain, add it to `lib/data/stores.dart` **and** to the `BRANDS`
 map in `tool/build_store_directory.py`. A test fails if the directory contains
 a chain the app doesn't know.
 
+## Install on ZimaOS
+
+1. One-time: make the image public at
+   [package settings](https://github.com/users/Mexuus/packages/container/tapcook/settings)
+   → *Danger Zone* → **Change visibility** → Public. (GitHub keeps new packages
+   private even when the repo is public.) Otherwise run
+   `docker login ghcr.io -u Mexuus` on the server first, with a token that has
+   `read:packages`.
+2. ZimaOS → **App Store** → **+** → *Install a customized app* → **Import**.
+3. Paste [`zimaos-compose.yml`](zimaos-compose.yml) (or its
+   [raw URL](https://raw.githubusercontent.com/Mexuus/tapcook/main/zimaos-compose.yml)).
+   Change the published port first if 8080 is already in use.
+4. Install, then open TapCook from the ZimaOS dashboard.
+
+No volumes are needed: plans, favourites and history are stored in each
+visitor's browser, so every device keeps its own plan. For the **Locate**
+(GPS) button see the HTTPS note below — ZIP entry works either way.
+
 ## Host with Docker (Linux)
 
 The image is a static web build served by unprivileged nginx on port 8080
 (~60 MB, amd64 + arm64). Everything runs in the browser — no database or API
 server; each visitor's plans live in their own browser storage.
 
-**Option A — build on the server** (needs ~3 GB free disk for the build):
+**Option A — pull the prebuilt image** CI publishes on every push to `main`:
 
 ```sh
-git clone https://github.com/Mexuus/tapcook.git && cd tapcook
-docker compose up -d --build          # → http://SERVER_IP:8080
+docker run -d --name tapcook --restart unless-stopped -p 8080:8080 \
+  ghcr.io/mexuus/tapcook:latest                    # → http://SERVER_IP:8080
 ```
 
-**Option B — pull the prebuilt image** CI publishes on every push to `main`.
-The repo is private, so log in once with a personal access token that has
-`read:packages`:
+With compose (gets the hardened settings: read-only rootfs, no capabilities):
 
 ```sh
-echo "$GHCR_TOKEN" | docker login ghcr.io -u Mexuus --password-stdin
-TAPCOOK_IMAGE=ghcr.io/mexuus/tapcook:latest docker compose pull
+curl -O https://raw.githubusercontent.com/Mexuus/tapcook/main/docker-compose.yml
 TAPCOOK_IMAGE=ghcr.io/mexuus/tapcook:latest docker compose up -d
 ```
 
-(Or without compose: `docker run -d --name tapcook --restart unless-stopped -p 8080:8080 ghcr.io/mexuus/tapcook:latest`.)
+**Option B — build on the server** (needs ~3 GB free disk for the build):
+
+```sh
+git clone https://github.com/Mexuus/tapcook.git && cd tapcook
+docker compose up -d --build
+```
 
 **HTTPS (required for the Locate/GPS button).** Browsers only allow location
 access on HTTPS or `localhost`; over plain `http://SERVER_IP:8080` ZIP entry
@@ -83,12 +107,13 @@ DOMAIN=tapcook.example.com docker compose --profile https up -d
 ```
 
 LAN-only alternatives: Tailscale (`tailscale serve 8080`) or your existing
-reverse proxy (Nginx Proxy Manager, Traefik) in front of port 8080.
+reverse proxy (Nginx Proxy Manager, Traefik, the ZimaOS remote-access link) in
+front of port 8080.
 
 **Other settings:** `TAPCOOK_PORT=9000` changes the host port. To serve under
 a sub-path, build with `docker compose build --build-arg BASE_HREF=/tapcook/`
-(the trailing slash matters). **Update:** `git pull && docker compose up -d --build`
-(Option A) or `docker compose pull && docker compose up -d` (Option B).
+(the trailing slash matters). **Update:** `docker compose pull && docker compose up -d`
+(Option A) or `git pull && docker compose up -d --build` (Option B).
 
 ## CI / releases
 

@@ -1,0 +1,61 @@
+# TapCook for ZimaOS (and CasaOS).
+#
+# ZimaOS → App Store → "+" → Install a customized app → Import,
+# then paste this file (or its raw URL):
+#   https://raw.githubusercontent.com/Mexuus/tapcook/main/zimaos-compose.yml
+#
+# Change the "published" port below if 8080 is already taken on your server.
+name: tapcook
+services:
+  tapcook:
+    image: ghcr.io/mexuus/tapcook:latest
+    container_name: tapcook
+    restart: unless-stopped
+    ports:
+      - target: 8080
+        published: "8080"
+        protocol: tcp
+    x-casaos:
+      ports:
+        - container: "8080"
+          description:
+            en_US: TapCook web interface
+
+x-casaos:
+  id: com.mexuus.tapcook
+  main: tapcook
+  index: /
+  port_map: "8080"
+  scheme: http
+  icon: https://raw.githubusercontent.com/Mexuus/tapcook/main/assets/icon/icon.png
+  title:
+    en_US: TapCook
+  tagline:
+    en_US: Weekly dinner plans with a priced grocery list
+  description:
+    en_US: >-
+      TapCook builds a week of dinners around your household size, the nights
+      you cook, your budget and the grocery store you shop at, then turns the
+      plan into a grocery list priced at that store. Meals never repeat unless
+      you pick them again. Everything runs in the browser and is stored on each
+      visitor's own device - no accounts, no database, no subscriptions.
+  author: Mexuus
+  developer: Mexuus
+  category: Home
+  architectures:
+    - amd64
+    - arm64
+  version: "1.0.0"
+  website: https://github.com/Mexuus/tapcook
+  repo: https://github.com/Mexuus/tapcook
+  support: https://github.com/Mexuus/tapcook/issues
+  tips:
+    before_install:
+      en_US: |
+        * No setup needed - open the app and enter your ZIP code.
+        * Plans, favourites and history live in each browser's local storage,
+          so every device keeps its own plan.
+        * The **Locate** button (GPS) only works over HTTPS or on localhost.
+          Over `http://<server-ip>:8080` you can still type a ZIP code.
+          Put the app behind the ZimaOS HTTPS/Zima Cloud link or any reverse
+          proxy with a certificate to enable it.
