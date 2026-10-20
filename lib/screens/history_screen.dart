@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../data/recipes_seed.dart';
+import '../data/recipe_db.dart';
 import '../models/plan.dart';
 import '../state/app_state.dart';
 import '../widgets/recipe_image.dart';

@@ -8,7 +8,8 @@ import 'package:http/testing.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:tapcook/data/recipes_seed.dart';
+import 'package:tapcook/data/recipe_db.dart';
+import 'package:tapcook/models/recipe.dart';
 import 'package:tapcook/data/stores.dart';
 import 'package:tapcook/data/zip_states.dart';
 import 'package:tapcook/models/settings.dart';
@@ -17,13 +18,14 @@ import 'package:tapcook/services/diet.dart';
 import 'package:tapcook/services/location_service.dart';
 import 'package:tapcook/services/persistence.dart';
 import 'package:tapcook/services/plan_generator.dart';
-import 'package:tapcook/services/price_book.dart';
 import 'package:tapcook/services/pricing.dart';
 import 'package:tapcook/services/store_directory.dart';
 import 'package:tapcook/services/store_locator.dart';
 import 'package:tapcook/services/zip_locator.dart';
 import 'package:tapcook/state/app_state.dart';
 import 'package:tapcook/widgets/location_store_picker.dart';
+
+import 'test_helpers.dart';
 
 class FakeGeo implements GeoProvider {
   final GeoFix? fix;
@@ -48,10 +50,7 @@ http.Response _jsonResponse(String body, [int status = 200]) => http.Response.by
 Future<StoreDirectory> _emptyDir() async => StoreDirectory.fromCsv('');
 
 void main() {
-  setUpAll(() {
-    PriceBook.instance =
-        PriceBook.fromJsonString(File('assets/data/prices.json').readAsStringSync());
-  });
+  setUpAll(loadTestData);
   final realZips = ZipLocator.fromCsv(File('assets/data/zcta.csv').readAsStringSync());
   final directory =
       StoreDirectory.fromCsv(File('assets/data/stores.csv').readAsStringSync());
@@ -277,21 +276,31 @@ void main() {
   });
 
   group('diet filtering', () {
-    test('vegetarian, dairy-free, and won’t-eat rules', () {
-      bool ok(String id, {Set<Diet> d = const {}, Set<String> x = const {}}) =>
-          recipeAllowed(recipeById(id), diets: d, excluded: x);
-      expect(ok('beef_tacos', d: {Diet.vegetarian}), isFalse);
-      expect(ok('veggie_stir_fry', d: {Diet.vegetarian}), isTrue);
-      expect(ok('tuna_pasta_bake', d: {Diet.noSeafood}), isFalse);
-      expect(ok('shrimp_alfredo', d: {Diet.dairyFree}), isFalse);
-      expect(ok('egg_fried_rice', d: {Diet.dairyFree, Diet.vegetarian}), isTrue);
-      expect(ok('sausage_peppers', d: {Diet.noPork}), isFalse);
-      expect(ok('beef_tacos', x: {'tortilla'}), isFalse);
+    bool uses(Recipe r, String id) => r.ingredients.any((i) => i.ingredientId == id);
+    Recipe firstUsing(String id) => kRecipes.firstWhere((r) => uses(r, id));
+
+    test('vegetarian, dairy-free, pork and won’t-eat rules', () {
+      bool ok(Recipe r, {Set<Diet> d = const {}, Set<String> x = const {}}) =>
+          recipeAllowed(r, diets: d, excluded: x);
+      expect(ok(firstUsing('ground_beef'), d: {Diet.vegetarian}), isFalse);
+      expect(ok(firstUsing('ground_beef'), d: {Diet.noBeef}), isFalse);
+      expect(ok(firstUsing('shrimp_frozen'), d: {Diet.noSeafood}), isFalse);
+      expect(ok(firstUsing('cheddar'), d: {Diet.dairyFree}), isFalse);
+      expect(ok(firstUsing('bacon'), d: {Diet.noPork}), isFalse);
+      expect(ok(firstUsing('chicken_breast'), d: {Diet.noPoultry}), isFalse);
+      expect(ok(firstUsing('mushroom_cremini'), x: {'mushroom_cremini'}), isFalse);
+      final veg = kRecipes.where((r) => ok(r, d: {Diet.vegetarian})).toList();
+      expect(veg.length, greaterThan(40));
+      for (final r in veg) {
+        for (final meat in ['chicken_breast', 'ground_beef', 'bacon', 'salmon_fillet', 'fish_sauce']) {
+          expect(uses(r, meat), isFalse, reason: '${r.title} uses $meat');
+        }
+      }
     });
 
     test('generator only uses allowed recipes and fills every night', () {
       final s = UserSettings(
-          zip: '10001', diets: {Diet.vegetarian}, cookNights: [1, 2, 3, 4, 5, 6, 7]);
+          zip: '10001', diets: {Diet.vegetarian}, cookNights: [1, 2, 3, 4, 5, 6, 7], weeklyBudget: 0);
       final pool = allowedRecipes(s);
       expect(pool.length, greaterThanOrEqualTo(7));
       final plan = PlanGenerator(
@@ -302,29 +311,30 @@ void main() {
       ).generate(s);
       expect(plan.meals.length, 7);
       for (final m in plan.meals) {
-        expect(recipeById(m.recipeId).isVegetarian, isTrue, reason: m.recipeId);
+        expect(isVegetarian(recipeById(m.recipeId)), isTrue, reason: m.recipeId);
       }
     });
 
     test('tiny pools repeat recipes; empty pools give an empty plan', () {
-      final s = UserSettings(zip: '10001', cookNights: [1, 2, 3]);
+      final s = UserSettings(zip: '10001', cookNights: [1, 2, 3], weeklyBudget: 0);
       final pricing = PricingEngine.from(storeId: 'kroger', zip: '10001');
-      final one = PlanGenerator(
-              pricing: pricing, ownedStaples: {}, pool: [recipeById('beef_tacos')])
-          .generate(s);
-      expect(one.meals.map((m) => m.recipeId).toSet(), {'beef_tacos'});
+      final only = kRecipes.first;
+      final one = PlanGenerator(pricing: pricing, ownedStaples: {}, pool: [only]).generate(s);
+      expect(one.meals.map((m) => m.recipeId).toSet(), {only.id});
       expect(one.meals.length, 3);
-      final none =
-          PlanGenerator(pricing: pricing, ownedStaples: {}, pool: []).generate(s);
+      final none = PlanGenerator(pricing: pricing, ownedStaples: {}, pool: []).generate(s);
       expect(none.meals, isEmpty);
     });
 
     test('diet settings survive a save/load round trip', () {
       final s = UserSettings(
-          diets: {Diet.dairyFree, Diet.noPork}, excludedIngredients: {'mushroom'});
+          diets: {Diet.dairyFree, Diet.noPork},
+          excludedIngredients: {'mushroom_cremini'},
+          equipment: {'air_fryer'});
       final back = UserSettings.fromJson(jsonDecode(jsonEncode(s.toJson())));
       expect(back.diets, {Diet.dairyFree, Diet.noPork});
-      expect(back.excludedIngredients, {'mushroom'});
+      expect(back.excludedIngredients, {'mushroom_cremini'});
+      expect(back.equipment, {'air_fryer'});
     });
   });
 

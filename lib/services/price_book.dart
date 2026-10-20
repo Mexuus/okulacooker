@@ -2,16 +2,14 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart' show rootBundle;
 
-import '../data/catalog.dart';
 import '../models/store.dart';
 import 'zip_locator.dart';
 
-/// Local price data for one ingredient, per the ingredient's recipe unit.
+/// How one ingredient's price varies by region.
 class ItemPrice {
-  /// `bls` = BLS Average Price Data; `est` = TapCook national estimate.
+  /// `bls` = BLS regional average prices; `fmap` = USDA food-group ratios.
   final String source;
   final String? blsCode;
-  final String? note;
 
   /// Month of the latest BLS observation used (yyyy-MM).
   final String? asOf;
@@ -19,21 +17,21 @@ class ItemPrice {
   /// USDA ERS food-group code used for metro adjustments.
   final String foodGroup;
 
-  /// Price per recipe unit keyed by region id (US, NE, MW, S, W).
-  final Map<String, double> byRegion;
+  /// Regional price ÷ national price, keyed by region id (NE, MW, S, W).
+  final Map<String, double> regionRatio;
 
   const ItemPrice({
     required this.source,
     required this.foodGroup,
-    required this.byRegion,
+    required this.regionRatio,
     this.blsCode,
-    this.note,
     this.asOf,
   });
 
+  static const neutral = ItemPrice(source: 'none', foodGroup: '', regionRatio: {});
+
   bool get isBls => source == 'bls';
-  double get national => byRegion['US']!;
-  double inRegion(String regionId) => byRegion[regionId] ?? national;
+  double ratioFor(String regionId) => regionRatio[regionId] ?? 1.0;
 }
 
 /// A metro area with food-group price adjustments relative to its region.
@@ -64,7 +62,7 @@ class Metro {
 class PriceBook {
   static const assetPath = 'assets/data/prices.json';
 
-  /// Month the BLS prices describe (yyyy-MM).
+  /// Month the BLS data describes (yyyy-MM).
   final String asOf;
   final Map<String, ItemPrice> items;
   final List<Metro> metros;
@@ -78,11 +76,10 @@ class PriceBook {
       items[id] = ItemPrice(
         source: m['src'] as String,
         blsCode: m['code'] as String?,
-        note: (m['note'] as String?)?.isEmpty ?? true ? null : m['note'] as String,
         asOf: m['asOf'] as String?,
         foodGroup: m['efpg'] as String,
-        byRegion: {
-          for (final r in const ['US', 'NE', 'MW', 'S', 'W'])
+        regionRatio: {
+          for (final r in const ['NE', 'MW', 'S', 'W'])
             if (m[r] != null) r: (m[r] as num).toDouble(),
         },
       );
@@ -106,36 +103,26 @@ class PriceBook {
   factory PriceBook.fromJsonString(String s) =>
       PriceBook.fromJson(jsonDecode(s) as Map<String, dynamic>);
 
-  /// Fallback when the bundled data can't be loaded: hand estimates only,
-  /// no regional or metro adjustment.
-  factory PriceBook.estimatesOnly() => PriceBook(
-        asOf: 'estimates',
-        metros: const [],
-        items: {
-          for (final ing in kIngredients.values)
-            ing.id: ItemPrice(
-              source: 'est',
-              foodGroup: '',
-              byRegion: {'US': ing.refPricePerUnit},
-            ),
-        },
-      );
+  /// No local data: national reference prices everywhere.
+  static const empty = PriceBook(asOf: 'none', items: {}, metros: []);
 
   /// The price book in use. Set once at startup by [load].
-  static PriceBook instance = PriceBook.estimatesOnly();
+  static PriceBook instance = empty;
 
   static Future<PriceBook> load() async {
     try {
       instance = PriceBook.fromJsonString(await rootBundle.loadString(assetPath));
     } catch (_) {
-      instance = PriceBook.estimatesOnly();
+      instance = empty;
     }
     return instance;
   }
 
-  bool get hasLiveData => asOf != 'estimates';
+  bool get hasLiveData => items.isNotEmpty;
 
   int get blsItemCount => items.values.where((i) => i.isBls).length;
+
+  ItemPrice itemFor(String ingredientId) => items[ingredientId] ?? ItemPrice.neutral;
 
   /// The metro area containing the point (nearest centre within its radius),
   /// restricted to [region] when given.

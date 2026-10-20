@@ -1,22 +1,32 @@
 import 'ingredient.dart';
 
-/// One consolidated line on the grocery list: a single ingredient with the
-/// total quantity needed across all planned meals, plus its estimated cost.
+/// A number of one pack size to buy.
+class PackCount {
+  final PackOption pack;
+  final int count;
+  const PackCount(this.pack, this.count);
+}
+
+/// One consolidated line on the grocery list: an ingredient, how much the
+/// week's recipes need, which packs to buy, and their estimated local cost.
 class GroceryLine {
   final Ingredient ingredient;
-  final double qty;
+  final double grams;
+  final List<PackCount> buy;
   final double estCost;
 
-  /// True when this item was removed from the bill because the user already has
-  /// it in the pantry (kept for display, shown struck-through / $0).
+  /// Already in the pantry: shown ticked and left off the bill.
   final bool ownedStaple;
 
   GroceryLine({
     required this.ingredient,
-    required this.qty,
+    required this.grams,
+    required this.buy,
     required this.estCost,
     this.ownedStaple = false,
   });
+
+  int get packCount => buy.fold(0, (s, p) => s + p.count);
 }
 
 /// A full estimated grocery list grouped by aisle, with totals. When planning

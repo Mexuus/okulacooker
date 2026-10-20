@@ -14,6 +14,8 @@ class Persistence {
   static const _kHistory = 'history';
   static const _kPantry = 'pantry';
   static const _kFreezer = 'freezer';
+  static const _kRecipeLog = 'recipeLog';
+  static const _kFavorites = 'favorites';
 
   final SharedPreferences prefs;
   Persistence(this.prefs);
@@ -80,4 +82,21 @@ class Persistence {
 
   Future<void> saveFreezer(List<FreezerItem> items) =>
       prefs.setString(_kFreezer, jsonEncode(items.map((f) => f.toJson()).toList()));
+
+  // ---- Recipe log: every recipe ever planned -> date last planned ----
+  Map<String, String> loadRecipeLog() {
+    final raw = prefs.getString(_kRecipeLog);
+    if (raw == null) return {};
+    return (jsonDecode(raw) as Map<String, dynamic>).map((k, v) => MapEntry(k, v as String));
+  }
+
+  Future<void> saveRecipeLog(Map<String, String> log) =>
+      prefs.setString(_kRecipeLog, jsonEncode(log));
+
+  // ---- Favorites ----
+  Set<String> loadFavorites() =>
+      (prefs.getStringList(_kFavorites) ?? const []).toSet();
+
+  Future<void> saveFavorites(Set<String> ids) =>
+      prefs.setStringList(_kFavorites, ids.toList());
 }

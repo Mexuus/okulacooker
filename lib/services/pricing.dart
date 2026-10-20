@@ -40,40 +40,43 @@ class PriceLocation {
 /// How one ingredient's local price was built — shown in the price breakdown.
 class PriceQuote {
   final Ingredient ingredient;
-  final double qty;
+  final double grams;
   final ItemPrice item;
   final Region region;
   final Metro? metro;
   final Store store;
-
-  /// Price per recipe unit nationally, in the region, and the multipliers.
-  final double nationalUnit;
-  final double regionalUnit;
+  final double regionRatio;
   final double metroFactor;
   final double chainFactor;
 
   const PriceQuote({
     required this.ingredient,
-    required this.qty,
+    required this.grams,
     required this.item,
     required this.region,
     required this.metro,
     required this.store,
-    required this.nationalUnit,
-    required this.regionalUnit,
+    required this.regionRatio,
     required this.metroFactor,
     required this.chainFactor,
   });
 
-  double get unitPrice => regionalUnit * metroFactor * chainFactor;
+  /// Combined local multiplier on the national reference price.
+  double get factor => regionRatio * metroFactor * chainFactor;
 
-  double get total => (unitPrice * qty * 100).round() / 100;
+  /// Local price of the ingredient's default pack.
+  double get localPackPrice => ingredient.packPrice * factor;
+
+  double localPrice(PackOption p) => p.price * factor;
+
+  /// Cost of exactly [grams] (the share of packs a recipe uses).
+  double get proportionalCost => grams * ingredient.pricePerGram * factor;
 }
 
 /// Estimates local grocery prices for a store location.
 ///
-/// price = regional average price (BLS Average Price Data, or a TapCook
-///         estimate regionalised with USDA food-group ratios)
+/// price = national reference price (recipe database, per pack)
+///       × regional ratio (BLS Average Price Data, or USDA food-group ratios)
 ///       × metro-area adjustment (USDA ERS F-MAP, 10 large metros)
 ///       × chain price positioning (TapCook estimate)
 ///
@@ -95,11 +98,7 @@ class PricingEngine {
             .metroFor(location.lat, location.lng, region: regionForState(location.state));
 
   factory PricingEngine.forSettings(UserSettings s, {PriceBook? book}) =>
-      PricingEngine(
-        store: storeById(s.storeId),
-        location: PriceLocation.forSettings(s),
-        book: book,
-      );
+      PricingEngine(store: storeById(s.storeId), location: PriceLocation.forSettings(s), book: book);
 
   /// Convenience for a chain + ZIP (optionally with coordinates for metro pricing).
   factory PricingEngine.from({
@@ -111,31 +110,31 @@ class PricingEngine {
   }) =>
       PricingEngine(
         store: storeById(storeId),
-        location: PriceLocation(
-            lat: lat, lng: lng, state: stateForZip(zip), label: 'ZIP $zip'),
+        location: PriceLocation(lat: lat, lng: lng, state: stateForZip(zip), label: 'ZIP $zip'),
         book: book,
       );
 
   /// Human description of the price area, e.g. "Los Angeles metro".
   String get areaName => metro != null ? '${metro!.name} metro' : '${region.name} region';
 
-  PriceQuote quote(Ingredient ing, double qty) {
-    final item = book.items[ing.id] ??
-        ItemPrice(source: 'est', foodGroup: '', byRegion: {'US': ing.refPricePerUnit});
+  PriceQuote quote(Ingredient ing, [double grams = 0]) {
+    final item = book.itemFor(ing.id);
     return PriceQuote(
       ingredient: ing,
-      qty: qty,
+      grams: grams,
       item: item,
       region: region,
       metro: metro,
       store: store,
-      nationalUnit: item.national,
-      regionalUnit: item.inRegion(region.id),
+      regionRatio: item.ratioFor(region.id),
       metroFactor: metro?.factorFor(item.foodGroup) ?? 1.0,
       chainFactor: store.priceMultiplier,
     );
   }
 
-  /// Estimated cost for [qty] units of [ing] at this store location.
-  double estimate(Ingredient ing, double qty) => quote(ing, qty).total;
+  /// Local multiplier for [ing] at this store.
+  double factorFor(Ingredient ing) => quote(ing).factor;
+
+  /// Estimated cost of [grams] of [ing] (proportional share of a pack).
+  double costOf(Ingredient ing, double grams) => quote(ing, grams).proportionalCost;
 }

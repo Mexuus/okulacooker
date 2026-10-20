@@ -1,123 +1,281 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:tapcook/data/catalog.dart';
-import 'package:tapcook/data/recipes_seed.dart';
+import 'package:tapcook/data/recipe_db.dart';
+import 'package:tapcook/models/ingredient.dart';
 import 'package:tapcook/models/plan.dart';
+import 'package:tapcook/models/recipe.dart';
+import 'package:tapcook/models/settings.dart';
 import 'package:tapcook/services/format.dart';
 import 'package:tapcook/services/grocery_builder.dart';
+import 'package:tapcook/services/location_service.dart';
+import 'package:tapcook/services/persistence.dart';
+import 'package:tapcook/services/plan_generator.dart';
+import 'package:tapcook/services/price_book.dart';
 import 'package:tapcook/services/pricing.dart';
+import 'package:tapcook/services/zip_locator.dart';
+import 'package:tapcook/state/app_state.dart';
+
+import 'test_helpers.dart';
+
+PricingEngine national() => PricingEngine.from(storeId: 'trader_joes', zip: '', book: PriceBook.empty);
+
+Recipe byTitle(String t) => kRecipes.firstWhere((r) => r.title == t);
 
 void main() {
-  group('catalog integrity', () {
-    test('every recipe ingredient id exists in the catalog', () {
+  setUpAll(loadTestData);
+
+  group('recipe database', () {
+    test('contains the original library', () {
+      expect(kRecipes.length, 494);
+      expect(kIngredients.length, 202);
+      expect(kRecipes.map((r) => r.id).toSet().length, kRecipes.length);
+    });
+
+    test('every recipe ingredient exists and converts to grams', () {
       for (final r in kRecipes) {
         for (final ri in r.ingredients) {
-          expect(kIngredients.containsKey(ri.ingredientId), isTrue,
-              reason: '${r.id} references missing ingredient ${ri.ingredientId}');
+          final ing = kIngredients[ri.ingredientId];
+          expect(ing, isNotNull, reason: '${r.title}: ${ri.ingredientId}');
+          expect(ing!.gramsFor(ri.amount, ri.unit), greaterThan(0),
+              reason: '${r.title}: ${ri.amount} ${ri.unit} ${ri.ingredientId}');
         }
       }
     });
 
-    test('every step token maps to one of the recipe ingredients', () {
-      final tokenRe = RegExp(r'\{([^}]+)\}');
+    test('every step placeholder has an amount and renders at any size', () {
       for (final r in kRecipes) {
-        final tokens = r.ingredients
-            .where((i) => i.token != null)
-            .map((i) => i.token)
-            .toSet();
-        for (final step in r.steps) {
-          for (final m in tokenRe.allMatches(step)) {
-            expect(tokens.contains(m.group(1)), isTrue,
-                reason: '${r.id} step references unknown token {${m.group(1)}}');
+        expect(r.phases, isNotEmpty, reason: r.title);
+        for (final p in r.phases) {
+          for (final a in p.actions) {
+            for (final scale in [0.5, 1.0, 1.5, 2.0]) {
+              final text = renderActionBody(a, scale);
+              expect(text.contains(RegExp(r'\{\d+\}')), isFalse,
+                  reason: '${r.title} @x$scale: $text');
+            }
           }
         }
       }
     });
-  });
 
-  group('pricing engine', () {
-    test('store and region multipliers compound', () {
-      final cheap = PricingEngine.from(storeId: 'aldi', zip: '75001'); // S. Central
-      final pricey = PricingEngine.from(storeId: 'whole_foods', zip: '94105'); // West
-      final ing = kIngredients['chicken_breast']!;
-      expect(cheap.estimate(ing, 1), lessThan(pricey.estimate(ing, 1)));
-    });
-
-    test('estimate scales linearly with quantity', () {
-      final p = PricingEngine.from(storeId: 'kroger', zip: '10001');
-      final ing = kIngredients['rice_white']!;
-      final one = p.estimate(ing, 1);
-      final four = p.estimate(ing, 4);
-      expect((four - one * 4).abs(), lessThan(0.05));
+    test('pack-price cost model reproduces the original cost per serving', () {
+      final engine = national();
+      final ratios = [
+        for (final r in kRecipes)
+          estimateMealCost(PlannedMeal(slot: 0, recipeId: r.id, servings: r.baseServings), engine) /
+              r.baseServings /
+              r.costPerServing,
+      ]..sort();
+      final median = ratios[ratios.length ~/ 2];
+      expect(median, inInclusiveRange(0.95, 1.05));
     });
   });
 
-  group('grocery builder', () {
-    PlannedMeal meal(String id, {int servings = 4, bool skipped = false}) =>
-        PlannedMeal(slot: 0, recipeId: id, servings: servings, skipped: skipped);
-
-    test('skipped meals contribute nothing', () {
-      final pricing = PricingEngine.from(storeId: 'kroger', zip: '10001');
-      final builder = GroceryBuilder(pricing: pricing, ownedStaples: {});
-      final withMeal = builder.build(WeekPlan(
-        weekStart: 'w',
-        meals: [meal('beef_tacos')],
-      ));
-      final skipped = builder.build(WeekPlan(
-        weekStart: 'w',
-        meals: [meal('beef_tacos', skipped: true)],
-      ));
-      expect(withMeal.total, greaterThan(0));
-      expect(skipped.total, 0);
+  group('formatting and scaling', () {
+    test('recipe amounts read naturally', () {
+      final tacos = byTitle('Crispy Chicken Thigh Tacos');
+      final lines = tacos.ingredients.map((ri) => formatRecipeAmount(ri, 1)).toList();
+      expect(lines, contains('1½ lb boneless chicken thighs'));
+      expect(lines, contains('12 corn tortillas'));
+      final crushed = kRecipes.expand((r) => r.ingredients).firstWhere(
+          (i) => i.ingredientId == 'tomato_canned_crushed' && i.unit == 'count' && i.amount == 1);
+      expect(formatRecipeAmount(crushed, 1), startsWith('1 can '));
+      expect(formatRecipeAmount(crushed, 2), startsWith('2 cans '));
+      expect(lines.where((l) => l.contains('cloves garlic')).length,
+          tacos.ingredients.where((i) => i.unit == 'clove').length);
     });
 
-    test('owned staples are removed from the bill', () {
-      final pricing = PricingEngine.from(storeId: 'kroger', zip: '10001');
-      final plan = WeekPlan(weekStart: 'w', meals: [meal('beef_tacos')]);
-      final none = GroceryBuilder(pricing: pricing, ownedStaples: {}).build(plan);
-      final withSalt =
-          GroceryBuilder(pricing: pricing, ownedStaples: {'salt'}).build(plan);
-      // Tacos use taco_seasoning (not staple) but no salt; use a recipe with salt.
-      final chiliPlan = WeekPlan(weekStart: 'w', meals: [meal('chili_con_carne')]);
-      final chiliNone =
-          GroceryBuilder(pricing: pricing, ownedStaples: {}).build(chiliPlan);
-      final chiliSalt = GroceryBuilder(
-              pricing: pricing, ownedStaples: {'salt', 'cumin', 'chili_powder'})
-          .build(chiliPlan);
-      expect(chiliSalt.total, lessThan(chiliNone.total));
-      expect(chiliSalt.savedByPantry, greaterThan(0));
-      // sanity: taco salt case unaffected since recipe has no salt
-      expect(withSalt.total, none.total);
+    test('original wording at base servings, scaled amounts otherwise', () {
+      final tacos = byTitle('Crispy Chicken Thigh Tacos');
+      final toss = tacos.phases.first.actions.firstWhere((a) => a.verb == 'Toss');
+      expect(renderActionBody(toss, 1), contains('1 tsp of the kosher salt'));
+      expect(renderActionBody(toss, 2), contains('2 tsp of the kosher salt'));
+      final slice = tacos.phases.first.actions.firstWhere((a) => a.verb == 'Slice');
+      // A plain reference ("the red onion") doesn't change with servings.
+      expect(renderActionBody(slice, 2), renderActionBody(slice, 1));
     });
 
-    test('two-week plan separates fresh items to buy later', () {
-      final pricing = PricingEngine.from(storeId: 'kroger', zip: '10001');
+    test('formatQty renders common fractions', () {
+      expect(formatQty(0.5), '½');
+      expect(formatQty(1.5), '1½');
+      expect(formatQty(2), '2');
+      expect(formatQty(0.3333), '⅓');
+    });
+
+    test('dish emoji match whole words', () {
+      Recipe? find(String t) => kRecipes.where((r) => r.title.startsWith(t)).firstOrNull;
+      expect(find('Bacon-Wrapped Pork')?.emoji, isNot('🌯'));
+      expect(find('Baingan Bharta')?.emoji, '🍆');
+      expect(find('Baja Fish Lettuce Wraps')?.emoji, '🌯');
+      expect(find('Crispy Chicken Thigh Tacos')?.emoji, '🌮');
+    });
+  });
+
+  group('pack buying', () {
+    Ingredient thighs() => kIngredients['chicken_thigh_boneless']!;
+    double lb(double x) => x * 453.592;
+
+    test('picks the cheapest combination of pack sizes', () {
+      // small 1.75 lb $5.01, family 3.75 lb $7.46
+      final small = planPurchase(thighs().packs, lb(1.6));
+      expect(small.single.pack.label, 'small');
+      final three = planPurchase(thighs().packs, lb(3));
+      expect(three.single.pack.label, 'family');
+      final five = planPurchase(thighs().packs, lb(5));
+      expect(five.map((p) => p.pack.label).toSet(), {'family', 'small'});
+    });
+
+    test('grocery list buys whole packs and leaves owned staples off the bill', () {
+      final tacos = byTitle('Crispy Chicken Thigh Tacos');
+      final plan = WeekPlan(weekStart: 'w', meals: [PlannedMeal(slot: 0, recipeId: tacos.id, servings: 4)]);
+      final none = GroceryBuilder(pricing: national(), ownedStaples: {}).build(plan);
+      final salted = GroceryBuilder(pricing: national(), ownedStaples: {'salt_kosher'}).build(plan);
+      final tortillas = none.lines.firstWhere((l) => l.ingredient.id == 'tortilla_corn');
+      expect(tortillas.packCount, 1); // 12 of a 30-count pack
+      expect(tortillas.estCost, closeTo(2.99, 0.01));
+      expect(salted.total, lessThan(none.total));
+      expect(salted.lines.firstWhere((l) => l.ingredient.id == 'salt_kosher').ownedStaple, isTrue);
+    });
+
+    test('two-week plans buy week-two fresh items later', () {
+      final salmon = kRecipes.firstWhere((r) => r.anchor == 'salmon_fillet');
+      final tacos = byTitle('Crispy Chicken Thigh Tacos');
       final plan = WeekPlan(
         weekStart: 'w',
-        meals: [meal('beef_tacos')],
-        weekTwoMeals: [meal('baked_salmon_rice')],
+        meals: [PlannedMeal(slot: 0, recipeId: tacos.id, servings: 4)],
+        weekTwoMeals: [PlannedMeal(slot: 0, recipeId: salmon.id, servings: 4)],
       );
-      final list =
-          GroceryBuilder(pricing: pricing, ownedStaples: {}).build(plan);
-      // Salmon (perishable) should be in laterLines, not the main list.
-      expect(list.laterLines.any((l) => l.ingredient.id == 'salmon'), isTrue);
-      expect(list.lines.any((l) => l.ingredient.id == 'salmon'), isFalse);
+      final list = GroceryBuilder(pricing: national(), ownedStaples: {}).build(plan);
+      expect(list.laterLines.any((l) => l.ingredient.id == 'salmon_fillet'), isTrue);
+      expect(list.lines.any((l) => l.ingredient.id == 'salmon_fillet'), isFalse);
+    });
+
+    test('skipped meals add nothing', () {
+      final r = kRecipes.first;
+      final list = GroceryBuilder(pricing: national(), ownedStaples: {}).build(WeekPlan(
+          weekStart: 'w', meals: [PlannedMeal(slot: 0, recipeId: r.id, servings: 4, skipped: true)]));
+      expect(list.lines, isEmpty);
     });
   });
 
-  group('serving scaling', () {
-    test('step tokens render scaled amounts', () {
-      final r = recipeById('spaghetti_meatballs');
-      final single = applyStepTokens(r.steps[2], r, 1.0); // "Cook {spaghetti}..."
-      final doubleBatch = applyStepTokens(r.steps[2], r, 2.0);
-      expect(single.contains('{'), isFalse);
-      expect(single, isNot(equals(doubleBatch)));
+  group('never-repeat planner', () {
+    final settings = UserSettings(zip: '10001', weeklyBudget: 0, cookNights: [1, 2, 3, 4, 5]);
+
+    test('a year of weekly plans never repeats a recipe', () {
+      final history = <String, String>{};
+      final seen = <String>{};
+      for (var week = 0; week < 52; week++) {
+        final plan = PlanGenerator(
+          pricing: national(),
+          ownedStaples: {},
+          pool: allowedRecipes(settings),
+          history: history,
+          seed: week,
+        ).generate(settings, forDate: DateTime(2026, 1, 5).add(Duration(days: 7 * week)));
+        for (final m in plan.meals) {
+          expect(seen.add(m.recipeId), isTrue, reason: 'week $week repeated ${m.recipeId}');
+          history[m.recipeId] = plan.weekStart;
+        }
+      }
+      expect(seen.length, 52 * 5);
+    });
+
+    test('each week varies the main ingredient and cuisine', () {
+      for (var seed = 0; seed < 20; seed++) {
+        final plan = PlanGenerator(
+                pricing: national(), ownedStaples: {}, pool: allowedRecipes(settings), seed: seed)
+            .generate(settings);
+        final recipes = plan.meals.map((m) => recipeById(m.recipeId)).toList();
+        expect(recipes.map((r) => r.anchor).toSet().length, recipes.length);
+        for (final c in recipes.map((r) => r.cuisine).toSet()) {
+          expect(recipes.where((r) => r.cuisine == c).length, lessThanOrEqualTo(2));
+        }
+      }
+    });
+
+    test('slow-cooker and air-fryer recipes need the equipment', () {
+      final none = allowedRecipes(settings);
+      expect(none.any((r) => r.equipment == 'slow_cooker' || r.equipment == 'air_fryer'), isFalse);
+      final withGear = allowedRecipes(settings.copyWith(equipment: {'slow_cooker', 'air_fryer'}));
+      expect(withGear.length, kRecipes.length);
+    });
+
+    test('once everything has been had, the longest-ago recipes come back first', () {
+      final pool = kRecipes.take(10).toList();
+      final history = {
+        for (final (i, r) in pool.indexed) r.id: '2026-01-${(10 + i).toString().padLeft(2, '0')}',
+      };
+      final order = PlanGenerator(
+              pricing: national(), ownedStaples: {}, pool: pool, history: history, seed: 1)
+          .freshOrder();
+      expect(order.first.id, pool.first.id);
+      expect(order.last.id, pool.last.id);
+    });
+
+    test('budget fitting swaps in cheaper new recipes', () {
+      final tight = settings.copyWith(weeklyBudget: 40);
+      final loose = PlanGenerator(pricing: national(), ownedStaples: {}, pool: allowedRecipes(settings), seed: 3)
+          .generate(settings);
+      final fitted = PlanGenerator(pricing: national(), ownedStaples: {}, pool: allowedRecipes(tight), seed: 3)
+          .generate(tight);
+      double total(WeekPlan p) =>
+          GroceryBuilder(pricing: national(), ownedStaples: {}).build(p).total;
+      expect(total(fitted), lessThan(total(loose)));
     });
   });
 
-  test('formatQty renders common fractions', () {
-    expect(formatQty(0.5), '½');
-    expect(formatQty(1.5), '1½');
-    expect(formatQty(2), '2');
+  group('AppState meals', () {
+    Future<AppState> makeState([Map<String, Object> prefs = const {}]) async {
+      SharedPreferences.setMockInitialValues(prefs);
+      final state = AppState(
+        await Persistence.create(),
+        location: LocationService(
+            zipLoader: () async => ZipLocator.fromCsv('10001,40.7506,-73.9972\n')),
+      );
+      return state;
+    }
+
+    test('swaps always bring a recipe never planned before', () async {
+      final state = await makeState();
+      await state.completeOnboarding(UserSettings(zip: '10001', weeklyBudget: 0));
+      for (var i = 0; i < 10; i++) {
+        final before = state.plan!.meals.first.recipeId;
+        final seenBefore = {for (final r in kRecipes) if (state.lastPlanned(r.id) != null) r.id};
+        await state.swapMeal(0);
+        final after = state.plan!.meals.first.recipeId;
+        expect(after, isNot(before));
+        expect(seenBefore.contains(after), isFalse);
+      }
+    });
+
+    test('a meal you choose can repeat one you had before', () async {
+      final state = await makeState();
+      await state.completeOnboarding(UserSettings(zip: '10001', weeklyBudget: 0));
+      final hadBefore = state.plan!.meals.first.recipeId;
+      await state.generatePlan();
+      expect(state.plan!.meals.map((m) => m.recipeId), isNot(contains(hadBefore)));
+      await state.chooseMeal(2, hadBefore);
+      expect(state.plan!.meals[2].recipeId, hadBefore);
+    });
+
+    test('favorites persist', () async {
+      final state = await makeState();
+      await state.toggleFavorite(kRecipes[7].id);
+      expect(state.isFavorite(kRecipes[7].id), isTrue);
+      await state.toggleFavorite(kRecipes[7].id);
+      expect(state.favorites, isEmpty);
+    });
+
+    test('plans saved by older versions are replaced', () async {
+      final state = await makeState({
+        'settings': '{"zip":"10001","onboarded":true,"weeklyBudget":0}',
+        'currentPlan':
+            '{"weekStart":"2026-10-12","meals":[{"slot":0,"recipeId":"beef_tacos","servings":4}]}',
+      });
+      expect(state.plan, isNull);
+      await state.init();
+      expect(state.plan, isNotNull);
+      expect(state.plan!.meals.every((m) => isKnownRecipe(m.recipeId)), isTrue);
+    });
   });
 }

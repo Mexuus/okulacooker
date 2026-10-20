@@ -5,6 +5,7 @@ import '../data/regions.dart';
 import '../models/settings.dart';
 import '../models/store_location.dart';
 import '../services/diet.dart';
+import '../services/plan_generator.dart';
 import '../state/app_state.dart';
 import '../widgets/diet_editor.dart';
 import '../widgets/location_store_picker.dart';
@@ -42,6 +43,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   };
   double _budget = 100;
   Set<Diet> _diets = {};
+  final Set<String> _equipment = {};
+  bool _stockBasics = true;
   bool _zipTouched = false;
 
   bool get _zipOk => isValidZip(_zip);
@@ -57,8 +60,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       cookNights: _nights.toList()..sort(),
       weeklyBudget: _budget,
       diets: _diets,
+      equipment: _equipment,
     );
-    context.read<AppState>().completeOnboarding(settings);
+    context.read<AppState>().completeOnboarding(settings, stockBasics: _stockBasics);
   }
 
   @override
@@ -152,6 +156,30 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   DietChips(
                     selected: _diets,
                     onChanged: (d) => setState(() => _diets = d),
+                  ),
+                  const SizedBox(height: 16),
+                  Text('Kitchen gear', style: theme.textTheme.titleMedium),
+                  const SizedBox(height: 8),
+                  Wrap(
+                    spacing: 8,
+                    children: [
+                      for (final e in kOptionalEquipment.entries)
+                        FilterChip(
+                          label: Text(e.value),
+                          selected: _equipment.contains(e.key),
+                          onSelected: (on) => setState(() =>
+                              on ? _equipment.add(e.key) : _equipment.remove(e.key)),
+                        ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  SwitchListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: const Text('I have the basics'),
+                    subtitle: const Text(
+                        'Salt, pepper, oils, sugar, flour, common spices — left off your bill.'),
+                    value: _stockBasics,
+                    onChanged: (v) => setState(() => _stockBasics = v),
                   ),
                 ],
               ),

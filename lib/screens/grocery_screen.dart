@@ -65,11 +65,13 @@ class GroceryScreen extends StatelessWidget {
                                 children: [
                                   const Icon(Icons.savings_outlined, size: 18),
                                   const SizedBox(width: 6),
-                                  Text(
-                                    'Pantry savings: ${formatMoney(grocery.savedByPantry)}',
-                                    style: theme.textTheme.bodyMedium?.copyWith(
-                                        color: theme.colorScheme.primary,
-                                        fontWeight: FontWeight.w600),
+                                  Flexible(
+                                    child: Text(
+                                      'Pantry savings: ${formatMoney(grocery.savedByPantry)}',
+                                      style: theme.textTheme.bodyMedium?.copyWith(
+                                          color: theme.colorScheme.primary,
+                                          fontWeight: FontWeight.w600),
+                                    ),
                                   ),
                                 ],
                               ),
@@ -100,6 +102,20 @@ class GroceryScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 8),
+                    if (state.pantry.ownedStapleIds.isEmpty)
+                      Card(
+                        color: theme.colorScheme.primaryContainer,
+                        child: ListTile(
+                          leading: const Icon(Icons.kitchen_outlined),
+                          title: const Text('Already have the basics?'),
+                          subtitle: const Text(
+                              'Salt, pepper, oils, sugar, flour and common spices are on this bill.'),
+                          trailing: FilledButton(
+                            onPressed: state.stockBasics,
+                            child: const Text('I have them'),
+                          ),
+                        ),
+                      ),
                     ..._buildAisleSections(context, state, grocery.lines),
                     if (grocery.laterLines.isNotEmpty) ...[
                       const SizedBox(height: 16),
@@ -164,6 +180,14 @@ class GroceryScreen extends StatelessWidget {
   }
 }
 
+/// "1 × 3.75 lb (family)", "2 × 12-count", "3 each".
+String buyText(GroceryLine line) => line.buy.map((p) {
+      final label = p.pack.label.isEmpty ? '' : ' (${p.pack.label})';
+      return p.pack.unit == 'count' && p.pack.size == 1
+          ? '${p.count}'
+          : '${p.count} × ${describePack(p.pack)}$label';
+    }).join(' + ');
+
 class _GroceryTile extends StatelessWidget {
   final GroceryLine line;
   final AppState state;
@@ -187,8 +211,13 @@ class _GroceryTile extends StatelessWidget {
             )
           : const SizedBox(width: 24),
       title: Text(ing.name, style: struck),
-      subtitle: Text(formatAmount(ing, line.qty), style: struck),
-      onTap: () => showPriceBreakdown(context, state.pricing.quote(ing, line.qty)),
+      subtitle: Text(
+        owned
+            ? 'Need ${describeGrams(ing, line.grams)}'
+            : 'Need ${describeGrams(ing, line.grams)} · buy ${buyText(line)}',
+        style: struck,
+      ),
+      onTap: () => showPriceBreakdown(context, state.pricing.quote(ing, line.grams), line: line),
       trailing: owned
           ? Text('have it',
               style: theme.textTheme.bodySmall

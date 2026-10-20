@@ -1,9 +1,9 @@
 import 'dart:math';
 
+import '../data/recipe_db.dart';
 import '../models/plan.dart';
 import '../models/recipe.dart';
 import '../models/settings.dart';
-import '../data/recipes_seed.dart';
 import 'diet.dart';
 import 'grocery_builder.dart';
 import 'pricing.dart';
@@ -16,84 +16,139 @@ String mondayOfWeek(DateTime d) {
   return '${monday.year}-$m-$day';
 }
 
-/// Recipes that satisfy the user's diet and "won't eat" settings.
+/// Equipment every kitchen is assumed to have.
+const kBasicEquipment = {'stove', 'oven'};
+
+/// Optional equipment the user can say they own.
+const kOptionalEquipment = {'slow_cooker': 'Slow cooker', 'air_fryer': 'Air fryer'};
+
+/// Recipes that fit the user's diet, won't-eat list, and kitchen equipment.
 List<Recipe> allowedRecipes(UserSettings s) => kRecipes
-    .where((r) => recipeAllowed(r,
-        diets: s.diets, excluded: s.excludedIngredients))
+    .where((r) =>
+        (kBasicEquipment.contains(r.equipment) || s.equipment.contains(r.equipment)) &&
+        recipeAllowed(r, diets: s.diets, excluded: s.excludedIngredients))
     .toList();
 
-/// Generates a budget-aware week of dinners from the allowed recipe pool.
+/// Builds weekly plans from the recipe database without repeating meals.
+///
+/// Recipes never shown before come first (in random order); only when those
+/// run out are previously shown recipes reused, oldest first. Each week avoids
+/// repeating a main ingredient, keeps any one cuisine to two nights, and has at
+/// most one slow-cooker / air-fryer meal. Meals the user picks themselves can
+/// repeat — that happens outside the generator.
 class PlanGenerator {
   final PricingEngine pricing;
   final Set<String> ownedStaples;
   final List<Recipe> pool;
+
+  /// recipe id -> date (yyyy-MM-dd) it was last put in a plan.
+  final Map<String, String> history;
   final Random _rng;
 
   PlanGenerator({
     required this.pricing,
     required this.ownedStaples,
     List<Recipe>? pool,
+    Map<String, String>? history,
     int? seed,
   })  : pool = pool ?? kRecipes,
-        _rng = Random(seed ?? DateTime.now().millisecondsSinceEpoch);
+        history = history ?? const {},
+        _rng = Random(seed ?? DateTime.now().microsecondsSinceEpoch);
 
-  double _planTotal(List<PlannedMeal> meals) {
-    final list = GroceryBuilder(pricing: pricing, ownedStaples: ownedStaples)
-        .build(WeekPlan(weekStart: 'tmp', meals: meals));
-    return list.total;
+  /// Never-shown recipes (shuffled), then shown ones from oldest to newest.
+  List<Recipe> freshOrder({Set<String> exclude = const {}}) {
+    final unseen = <Recipe>[], seen = <Recipe>[];
+    for (final r in pool) {
+      if (exclude.contains(r.id)) continue;
+      (history.containsKey(r.id) ? seen : unseen).add(r);
+    }
+    unseen.shuffle(_rng);
+    seen.shuffle(_rng);
+    seen.sort((a, b) => history[a.id]!.compareTo(history[b.id]!));
+    return [...unseen, ...seen];
   }
 
-  /// Picks [count] meals, avoiding [exclude] where possible. If the pool is
-  /// smaller than [count], recipes repeat rather than leaving nights empty.
-  List<PlannedMeal> _pick(int count, int servings, Set<String> exclude) {
-    if (pool.isEmpty) return [];
-    var candidates = pool.where((r) => !exclude.contains(r.id)).toList();
-    if (candidates.isEmpty) candidates = [...pool];
-    candidates.shuffle(_rng);
-    return [
-      for (var i = 0; i < count; i++)
-        PlannedMeal(
-          slot: i,
-          recipeId: candidates[i % candidates.length].id,
-          servings: servings,
-        ),
-    ];
+  /// Number of allowed recipes that have never been planned.
+  int get unseenCount => pool.where((r) => !history.containsKey(r.id)).length;
+
+  static bool _special(Recipe r) => r.equipment == 'slow_cooker' || r.equipment == 'air_fryer';
+
+  bool _fits(Recipe r, List<Recipe> chosen, {required bool strictCuisine, required bool strictAnchor}) {
+    if (strictAnchor && chosen.any((c) => c.anchor == r.anchor)) return false;
+    if (strictCuisine && chosen.where((c) => c.cuisine == r.cuisine).length >= 2) return false;
+    if (_special(r) && chosen.any(_special)) return false;
+    return true;
   }
 
-  /// Greedily swaps the most expensive meals for cheaper unused recipes until
-  /// the plan fits the weekly budget or no improvement is possible.
-  void _fitBudget(List<PlannedMeal> meals, double budget, int servings) {
+  List<Recipe> _pickRecipes(int count, Set<String> exclude) {
+    final ordered = freshOrder(exclude: exclude);
+    final chosen = <Recipe>[];
+    for (final (cuisine, anchor) in const [(true, true), (false, true), (false, false)]) {
+      for (final r in ordered) {
+        if (chosen.length >= count) break;
+        if (chosen.contains(r)) continue;
+        if (_fits(r, chosen, strictCuisine: cuisine, strictAnchor: anchor)) chosen.add(r);
+      }
+    }
+    // A tiny pool (strict diets) may still be short: allow repeats within the week.
+    var i = 0;
+    while (chosen.length < count && pool.isNotEmpty) {
+      chosen.add(ordered.isEmpty ? pool[i % pool.length] : ordered[i % ordered.length]);
+      i++;
+    }
+    return chosen;
+  }
+
+  double _planTotal(List<PlannedMeal> meals) =>
+      GroceryBuilder(pricing: pricing, ownedStaples: ownedStaples)
+          .build(WeekPlan(weekStart: 'tmp', meals: meals))
+          .total;
+
+  /// Swaps the priciest meals for cheaper fresh recipes until under budget.
+  void _fitBudget(List<PlannedMeal> meals, double budget, Set<String> exclude) {
     if (budget <= 0 || meals.isEmpty) return;
-    for (var pass = 0; pass < 20; pass++) {
+    final candidates = freshOrder(exclude: exclude).take(200).toList();
+    for (var pass = 0; pass < 15; pass++) {
       if (_planTotal(meals) <= budget) return;
-      final byCost = [...meals]..sort((a, b) =>
-          estimateMealCost(b, pricing).compareTo(estimateMealCost(a, pricing)));
-      final used = meals.map((m) => m.recipeId).toSet();
+      final byCost = [...meals]
+        ..sort((a, b) => estimateMealCost(b, pricing).compareTo(estimateMealCost(a, pricing)));
       final target = byCost.first;
       final targetCost = estimateMealCost(target, pricing);
-      final cheaper = pool.where((r) => !used.contains(r.id)).map((r) {
-        final pm = PlannedMeal(slot: 0, recipeId: r.id, servings: servings);
-        return MapEntry(r.id, estimateMealCost(pm, pricing));
-      }).toList()
-        ..sort((a, b) => a.value.compareTo(b.value));
-      if (cheaper.isEmpty || cheaper.first.value >= targetCost) return;
-      target.recipeId = cheaper.first.key;
+      final inPlan = meals.map((m) => m.recipeId).toSet();
+      final others = meals.where((m) => m != target).map((m) => recipeById(m.recipeId)).toList();
+      Recipe? best;
+      var bestCost = targetCost;
+      for (final r in candidates) {
+        if (inPlan.contains(r.id)) continue;
+        if (!_fits(r, others, strictCuisine: false, strictAnchor: true)) continue;
+        final c = estimateMealCost(
+            PlannedMeal(slot: 0, recipeId: r.id, servings: target.servings), pricing);
+        if (c < bestCost) {
+          best = r;
+          bestCost = c;
+        }
+      }
+      if (best == null) return;
+      target.recipeId = best.id;
     }
+  }
+
+  List<PlannedMeal> _week(int nights, int servings, Set<String> exclude, double budget) {
+    final meals = [
+      for (final (i, r) in _pickRecipes(nights, exclude).indexed)
+        PlannedMeal(slot: i, recipeId: r.id, servings: servings),
+    ];
+    _fitBudget(meals, budget, exclude);
+    return meals;
   }
 
   WeekPlan generate(UserSettings s, {DateTime? forDate}) {
-    final servings = s.householdSize;
     final nights = max(1, s.cookNightCount);
-
-    final week1 = _pick(nights, servings, {});
-    _fitBudget(week1, s.weeklyBudget, servings);
-
+    final week1 = _week(nights, s.householdSize, const {}, s.weeklyBudget);
     var week2 = <PlannedMeal>[];
     if (s.twoWeekMode) {
-      week2 = _pick(nights, servings, week1.map((m) => m.recipeId).toSet());
-      _fitBudget(week2, s.weeklyBudget, servings);
+      week2 = _week(nights, s.householdSize, week1.map((m) => m.recipeId).toSet(), s.weeklyBudget);
     }
-
     return WeekPlan(
       weekStart: mondayOfWeek(forDate ?? DateTime.now()),
       meals: week1,
@@ -101,16 +156,13 @@ class PlanGenerator {
     );
   }
 
-  /// Returns an allowed recipe id to replace [currentId], avoiding [used].
-  String swapRecipe(String currentId, Set<String> used) {
-    var options = pool
-        .where((r) => r.id != currentId && !used.contains(r.id))
-        .toList();
-    if (options.isEmpty) {
-      options = pool.where((r) => r.id != currentId).toList();
+  /// A fresh replacement for [currentId] that isn't already in the plan and,
+  /// where possible, doesn't share a main ingredient with the other meals.
+  String swapRecipe(String currentId, Set<String> used, {List<Recipe> others = const []}) {
+    final ordered = freshOrder(exclude: {...used, currentId});
+    for (final r in ordered) {
+      if (_fits(r, others, strictCuisine: false, strictAnchor: true)) return r.id;
     }
-    if (options.isEmpty) return currentId;
-    options.shuffle(_rng);
-    return options.first.id;
+    return ordered.isNotEmpty ? ordered.first.id : currentId;
   }
 }

@@ -6,11 +6,23 @@ import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 
 import '../models/recipe.dart';
-import '../data/catalog.dart';
 import '../widgets/recipe_image.dart';
 import 'format.dart';
 
 PdfColor _pdf(Color c) => PdfColor.fromInt(c.toARGB32());
+
+const _fractions = {
+  '⅛': '1/8', '¼': '1/4', '⅓': '1/3', '⅜': '3/8', '½': '1/2',
+  '⅝': '5/8', '⅔': '2/3', '¾': '3/4', '⅞': '7/8',
+};
+
+/// The PDF's built-in font lacks some glyphs; write fractions and dashes out.
+String _pdfText(String s) => s
+    .replaceAllMapped(RegExp('(\\d?)([${_fractions.keys.join()}])'),
+        (m) => '${m[1]!.isEmpty ? '' : '${m[1]} '}${_fractions[m[2]]}')
+    .replaceAll('–', '-')
+    .replaceAll('—', ' - ')
+    .replaceAll('×', 'x');
 
 /// Builds a printable / shareable recipe PDF, including a generated "photo"
 /// header, serving-scaled ingredients, and steps.
@@ -38,7 +50,7 @@ Future<Uint8List> buildRecipePdf(Recipe recipe, int servings) async {
           ),
           alignment: pw.Alignment.center,
           child: pw.Text(
-            recipe.title,
+            _pdfText(recipe.title),
             style: pw.TextStyle(
               color: PdfColors.white,
               fontSize: 28,
@@ -56,29 +68,30 @@ Future<Uint8List> buildRecipePdf(Recipe recipe, int servings) async {
         pw.Text('Ingredients',
             style: pw.TextStyle(fontSize: 18, fontWeight: pw.FontWeight.bold)),
         pw.SizedBox(height: 6),
-        ...recipe.ingredients.map((ri) {
-          final ing = kIngredients[ri.ingredientId];
-          if (ing == null) return pw.SizedBox();
-          return pw.Bullet(text: formatAmount(ing, ri.qty * scale));
-        }),
+        for (final ri in recipe.ingredients)
+          pw.Bullet(text: _pdfText(formatRecipeAmount(ri, scale))),
         pw.SizedBox(height: 16),
-        pw.Text('Steps',
+        pw.Text('Directions',
             style: pw.TextStyle(fontSize: 18, fontWeight: pw.FontWeight.bold)),
-        pw.SizedBox(height: 6),
-        ...recipe.steps.asMap().entries.map((e) {
-          final text = applyStepTokens(e.value, recipe, scale);
-          return pw.Padding(
-            padding: const pw.EdgeInsets.only(bottom: 8),
-            child: pw.Row(
-              crossAxisAlignment: pw.CrossAxisAlignment.start,
-              children: [
-                pw.Text('${e.key + 1}.  ',
-                    style: pw.TextStyle(fontWeight: pw.FontWeight.bold)),
-                pw.Expanded(child: pw.Text(text)),
-              ],
+        for (final (i, phase) in recipe.phases.indexed) ...[
+          pw.SizedBox(height: 10),
+          pw.Text(
+            '${i + 1}. ${phase.name}${phase.minutes > 0 ? '  (${phase.minutes} min)' : ''}',
+            style: pw.TextStyle(fontSize: 13, fontWeight: pw.FontWeight.bold),
+          ),
+          pw.SizedBox(height: 4),
+          for (final a in phase.actions)
+            pw.Padding(
+              padding: const pw.EdgeInsets.only(left: 12, bottom: 5),
+              child: pw.RichText(
+                text: pw.TextSpan(children: [
+                  pw.TextSpan(
+                      text: '${a.verb} ', style: pw.TextStyle(fontWeight: pw.FontWeight.bold)),
+                  pw.TextSpan(text: _pdfText(renderActionBody(a, scale))),
+                ]),
+              ),
             ),
-          );
-        }),
+        ],
         pw.SizedBox(height: 24),
         pw.Text(
           'Made with TapCook. Prices are estimates; always review ingredients, '

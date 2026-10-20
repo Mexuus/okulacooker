@@ -1,21 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../data/catalog.dart';
+import '../models/plan.dart';
 import '../models/recipe.dart';
 import '../services/format.dart';
+import '../services/grocery_builder.dart';
 import '../services/recipe_export.dart';
 import '../state/app_state.dart';
+import '../widgets/money_text.dart';
 import '../widgets/recipe_image.dart';
+import '../widgets/slot_picker.dart';
 
-/// Full recipe view with live serving-size scaling and print/share.
+/// "Week of Oct 6" style label for a yyyy-MM-dd date.
+String weekLabel(String isoDate) {
+  final d = DateTime.tryParse(isoDate);
+  if (d == null) return isoDate;
+  const m = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  return '${m[d.month - 1]} ${d.day}';
+}
+
+/// Full recipe view: phase-by-phase directions that scale with servings,
+/// local cost, nutrition, favorites, and adding the recipe to a night.
 class RecipeDetailScreen extends StatefulWidget {
   final Recipe recipe;
   final int initialServings;
+
+  /// When set (e.g. opened from "Choose a meal"), the main button calls this
+  /// instead of asking which night.
+  final VoidCallback? onChoose;
+  final String? chooseLabel;
+
   const RecipeDetailScreen({
     super.key,
     required this.recipe,
     required this.initialServings,
+    this.onChoose,
+    this.chooseLabel,
   });
 
   @override
@@ -27,14 +47,53 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
 
   double get _scale => _servings / widget.recipe.baseServings;
 
+  Future<void> _addToWeek(AppState state) async {
+    if (widget.onChoose != null) {
+      widget.onChoose!();
+      return;
+    }
+    final pick = await showSlotPicker(context, state, title: 'Cook ${widget.recipe.title} on…');
+    if (pick == null || !mounted) return;
+    await state.chooseMeal(pick.$1, widget.recipe.id, weekTwo: pick.$2);
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text('Added to ${slotLabel(state, pick.$1)}${pick.$2 ? ' next week' : ''}'),
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     final r = widget.recipe;
     final theme = Theme.of(context);
+    final state = context.watch<AppState>();
+    final fav = state.isFavorite(r.id);
+    final last = state.lastPlanned(r.id);
+    final plan = state.plan;
+    final onPlan = plan != null &&
+        [...plan.meals, ...plan.weekTwoMeals].any((m) => m.recipeId == r.id);
+    final cost = estimateMealCost(
+        PlannedMeal(slot: 0, recipeId: r.id, servings: _servings), state.pricing);
+    final nutrition = nutritionPerServing(r);
+
+    Widget meta(IconData icon, String text) => Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(icon, size: 16, color: theme.colorScheme.onSurfaceVariant),
+            const SizedBox(width: 4),
+            Text(text, style: theme.textTheme.bodyMedium),
+          ],
+        );
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(r.title),
+        title: Text(r.title, overflow: TextOverflow.ellipsis),
         actions: [
+          IconButton(
+            tooltip: fav ? 'Remove from favorites' : 'Add to favorites',
+            icon: Icon(fav ? Icons.favorite : Icons.favorite_border,
+                color: fav ? Colors.red.shade400 : null),
+            onPressed: () => state.toggleFavorite(r.id),
+          ),
           IconButton(
             tooltip: 'Print',
             icon: const Icon(Icons.print_outlined),
@@ -47,6 +106,18 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
           ),
         ],
       ),
+      bottomNavigationBar: state.plan == null
+          ? null
+          : SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
+                child: FilledButton.icon(
+                  onPressed: () => _addToWeek(state),
+                  icon: const Icon(Icons.event_available),
+                  label: Text(widget.chooseLabel ?? 'Add to this week'),
+                ),
+              ),
+            ),
       body: ListView(
         children: [
           RecipeImage(recipe: r, height: 200, emojiSize: 90),
@@ -56,62 +127,59 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(r.title,
-                    style: theme.textTheme.headlineSmall
-                        ?.copyWith(fontWeight: FontWeight.w800)),
-                const SizedBox(height: 6),
-                Row(
-                  children: [
-                    const Icon(Icons.schedule, size: 16),
-                    const SizedBox(width: 4),
-                    Text('${r.totalMinutes} min'),
-                    const SizedBox(width: 16),
-                    const Icon(Icons.local_fire_department_outlined, size: 16),
-                    const SizedBox(width: 4),
-                    Text('${r.prepMinutes} prep / ${r.cookMinutes} cook'),
-                  ],
+                    style: theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w800)),
+                const SizedBox(height: 4),
+                Text(
+                  onPlan
+                      ? 'On this week’s plan'
+                      : last == null
+                          ? '✨ New to you'
+                          : 'You last had this the week of ${weekLabel(last)}',
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                      color: last == null ? theme.colorScheme.primary : theme.colorScheme.onSurfaceVariant,
+                      fontWeight: last == null ? FontWeight.w700 : null),
                 ),
                 const SizedBox(height: 10),
                 Wrap(
-                  spacing: 6,
+                  spacing: 16,
                   runSpacing: 6,
-                  children: r.tags
-                      .map((t) => Chip(
-                            label: Text(t),
-                            visualDensity: VisualDensity.compact,
-                          ))
-                      .toList(),
+                  children: [
+                    meta(Icons.schedule, '${r.totalMinutes} min'),
+                    meta(Icons.public, r.cuisine),
+                    meta(Icons.signal_cellular_alt, r.difficulty),
+                    meta(Icons.soup_kitchen_outlined, r.formatLabel),
+                    meta(Icons.cleaning_services_outlined, 'Cleanup ${r.cleanupScore}/8'),
+                  ],
                 ),
                 const SizedBox(height: 16),
-
-                // Serving scaler
                 Card(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                     child: Row(
                       children: [
                         const Icon(Icons.people_alt_outlined),
                         const SizedBox(width: 10),
-                        Text('Servings',
-                            style: theme.textTheme.titleMedium),
-                        const Spacer(),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Servings', style: theme.textTheme.titleMedium),
+                              Text('${formatMoney(cost / _servings)} / serving · ${formatMoney(cost)} total',
+                                  style: theme.textTheme.bodySmall),
+                            ],
+                          ),
+                        ),
                         IconButton.filledTonal(
-                          onPressed: _servings > 1
-                              ? () => setState(() => _servings--)
-                              : null,
+                          onPressed: _servings > 1 ? () => setState(() => _servings--) : null,
                           icon: const Icon(Icons.remove),
                         ),
                         Padding(
-                          padding:
-                              const EdgeInsets.symmetric(horizontal: 12),
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
                           child: Text('$_servings',
-                              style: theme.textTheme.titleLarge
-                                  ?.copyWith(fontWeight: FontWeight.w800)),
+                              style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w800)),
                         ),
                         IconButton.filledTonal(
-                          onPressed: _servings < 20
-                              ? () => setState(() => _servings++)
-                              : null,
+                          onPressed: _servings < 20 ? () => setState(() => _servings++) : null,
                           icon: const Icon(Icons.add),
                         ),
                       ],
@@ -119,70 +187,129 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                   ),
                 ),
                 const SizedBox(height: 20),
-
                 Text('Ingredients',
-                    style: theme.textTheme.titleLarge
-                        ?.copyWith(fontWeight: FontWeight.w700)),
+                    style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700)),
                 const SizedBox(height: 8),
-                ...r.ingredients.map((ri) {
-                  final ing = kIngredients[ri.ingredientId];
-                  if (ing == null) return const SizedBox.shrink();
-                  return Padding(
+                for (final ri in r.ingredients)
+                  Padding(
                     padding: const EdgeInsets.symmetric(vertical: 4),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Text('•  '),
                         Expanded(
-                          child: Text(formatAmount(ing, ri.qty * _scale),
+                          child: Text(formatRecipeAmount(ri, _scale),
                               style: theme.textTheme.bodyLarge),
                         ),
                       ],
                     ),
-                  );
-                }),
+                  ),
                 const SizedBox(height: 20),
-
-                Text('Steps',
-                    style: theme.textTheme.titleLarge
-                        ?.copyWith(fontWeight: FontWeight.w700)),
-                const SizedBox(height: 8),
-                ...r.steps.asMap().entries.map((e) {
-                  final text = applyStepTokens(e.value, r, _scale);
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 6),
+                Text('Directions',
+                    style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700)),
+                for (final (i, phase) in r.phases.indexed) ...[
+                  Padding(
+                    padding: const EdgeInsets.only(top: 14, bottom: 6),
                     child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         CircleAvatar(
-                          radius: 12,
-                          backgroundColor: theme.colorScheme.primaryContainer,
-                          child: Text('${e.key + 1}',
+                          radius: 13,
+                          backgroundColor: theme.colorScheme.primary,
+                          child: Text('${i + 1}',
                               style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w800,
-                                color: theme.colorScheme.onPrimaryContainer,
+                                color: theme.colorScheme.onPrimary,
                               )),
                         ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: Text(text, style: theme.textTheme.bodyLarge),
+                        const SizedBox(width: 10),
+                        Flexible(
+                          child: Text(phase.name,
+                              style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w800)),
                         ),
+                        if (phase.minutes > 0) ...[
+                          const SizedBox(width: 8),
+                          Text('${phase.minutes} min', style: theme.textTheme.bodySmall),
+                        ],
                       ],
                     ),
-                  );
-                }),
-                const SizedBox(height: 20),
-
+                  ),
+                  for (final a in phase.actions)
+                    Padding(
+                      padding: const EdgeInsets.only(left: 36, bottom: 8),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text.rich(
+                            TextSpan(children: [
+                              TextSpan(
+                                  text: '${a.verb} ',
+                                  style: const TextStyle(fontWeight: FontWeight.w800)),
+                              TextSpan(text: renderActionBody(a, _scale)),
+                            ]),
+                            style: theme.textTheme.bodyLarge,
+                          ),
+                          if (a.duration != null)
+                            Padding(
+                              padding: const EdgeInsets.only(top: 2),
+                              child: Row(
+                                children: [
+                                  Icon(Icons.timer_outlined,
+                                      size: 14, color: theme.colorScheme.primary),
+                                  const SizedBox(width: 4),
+                                  Text(a.duration!,
+                                      style: theme.textTheme.bodySmall
+                                          ?.copyWith(color: theme.colorScheme.primary)),
+                                ],
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+                ],
+                const SizedBox(height: 16),
+                Card(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Row(
+                      children: [
+                        for (final (label, value) in [
+                          ('Calories', nutrition.kcal.round().toString()),
+                          ('Protein', '${nutrition.protein.round()} g'),
+                          ('Carbs', '${nutrition.carbs.round()} g'),
+                          ('Fat', '${nutrition.fat.round()} g'),
+                        ])
+                          Expanded(
+                            child: Column(
+                              children: [
+                                Text(value,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: theme.textTheme.titleMedium
+                                        ?.copyWith(fontWeight: FontWeight.w800)),
+                                Text(label,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: theme.textTheme.bodySmall),
+                              ],
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 4, left: 4),
+                  child: Text('Per serving, estimated from ingredients.',
+                      style: theme.textTheme.bodySmall),
+                ),
+                const SizedBox(height: 16),
                 OutlinedButton.icon(
                   onPressed: () {
-                    context.read<AppState>().freezeExtra(r.id, _servings);
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                            'Froze $_servings servings of ${r.title} for a later week'),
-                      ),
-                    );
+                    state.freezeExtra(r.id, _servings);
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text('Froze $_servings servings of ${r.title} for a later week'),
+                    ));
                   },
                   icon: const Icon(Icons.ac_unit),
                   label: const Text('Freeze extra servings'),

@@ -20,9 +20,10 @@ iOS builds need macOS: use the CI workflows below, or a Mac with Xcode
 
 | Area | Where | Notes |
 |---|---|---|
-| Price estimates | `lib/services/pricing.dart`, `price_book.dart` | Per item: BLS regional average price (or a TapCook estimate regionalised with USDA ratios) × USDA metro-area adjustment (10 large metros) × chain price level. Priced at the **specific store location** you pick. Estimates, not live shelf prices; tap any grocery item to see the breakdown. |
-| Meal planning | `lib/services/plan_generator.dart` | Budget-aware; respects diet and won't-eat settings (`lib/services/diet.dart`). |
-| Grocery list | `lib/services/grocery_builder.dart` | Consolidates meals, removes owned pantry staples, splits two-week fresh items. |
+| Recipes | `assets/data/recipe_db.json`, `lib/data/recipe_db.dart` | The original app's database: 494 dinners and 202 ingredients with pack sizes, prices, shelf life, nutrition, and phase-by-phase directions whose amounts scale with servings. |
+| Meal planning | `lib/services/plan_generator.dart` | Suggested meals **never repeat**: every planned recipe is logged, and only after the whole library has been used do the longest-ago recipes return. Each week varies the main ingredient and cuisine and respects diet, won't-eat, and kitchen-gear settings (`lib/services/diet.dart`). Users can still pick any recipe (Browse, favorites, history) — chosen meals may repeat. |
+| Grocery list | `lib/services/grocery_builder.dart` | Totals grams across the week, buys the cheapest combination of whole packs, leaves owned pantry staples off the bill, and separates fresh items when shopping two weeks at once. |
+| Price estimates | `lib/services/pricing.dart`, `price_book.dart` | Per item: the database's national pack price × regional ratio (BLS average prices, or USDA food-group ratios) × USDA metro-area adjustment (10 large metros) × chain price level. Priced at the **specific store location** you pick. Estimates, not live shelf prices; tap any grocery item to see the breakdown. |
 | Location | `lib/services/location_service.dart` | Device GPS via `geolocator`, reverse-geocoded **offline** to a ZIP using bundled U.S. Census ZCTA data (`assets/data/zcta.csv`). |
 | Nearby stores | `lib/services/store_locator.dart`, `store_directory.dart` | Offline directory of ~24k US store locations (`assets/data/stores.csv`). Falls back to a live OpenStreetMap (Overpass) query only when nothing is found nearby. |
 
@@ -35,12 +36,13 @@ online store lookup sends only the ZIP's center point.
 |---|---|---|---|
 | `assets/data/zcta.csv` | U.S. Census Bureau ZCTA Gazetteer | Public domain | Yearly; download `*_Gaz_zcta_national.zip` and keep `GEOID,INTPTLAT,INTPTLONG` |
 | `assets/data/stores.csv` | [All The Places](https://alltheplaces.xyz) + OpenStreetMap | CC0 / ODbL (attribution shown in-app) | `python tool/build_store_directory.py` |
+| `assets/data/recipe_db.json` | Original app's `mealplan.json` | Your own data | `python tool/import_recipe_db.py <path to .ipa or mealplan.json>` |
 | `assets/data/prices.json` | BLS CPI Average Price Data + USDA ERS F-MAP | Public domain | Monthly via the **Refresh prices** workflow, or `python tool/build_price_data.py --refresh` |
 
-The price script maps each catalog ingredient to a BLS item in its `ITEMS`
-table (with unit conversions). Ingredients BLS no longer prices keep the
-estimate in `lib/data/catalog.dart`. Adding an ingredient to the catalog
-requires adding it to `ITEMS` too (the script refuses to run otherwise).
+The price script classifies each database ingredient with the regex `RULES`
+table (BLS item code + USDA food group); anything unmatched falls back to its
+category's food group. The importer validates that every recipe ingredient
+converts to grams and packs.
 
 When adding a chain, add it to `lib/data/stores.dart` **and** to the `BRANDS`
 map in `tool/build_store_directory.py`. A test fails if the directory contains

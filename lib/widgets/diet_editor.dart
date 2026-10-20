@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../data/catalog.dart';
+import '../data/recipe_db.dart';
 import '../models/ingredient.dart';
 import '../services/diet.dart';
 
@@ -64,7 +64,7 @@ class WontEatEditor extends StatelessWidget {
 
   Future<void> _pick(BuildContext context) async {
     final selection = Set<String>.from(excluded);
-    final all = kIngredients.values.where((i) => !i.staple).toList()
+    final all = kIngredients.values.toList()
       ..sort((a, b) => a.name.compareTo(b.name));
     var query = '';
 

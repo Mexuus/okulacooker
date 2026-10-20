@@ -4,8 +4,10 @@ import 'package:provider/provider.dart';
 import '../data/regions.dart';
 import '../models/settings.dart';
 import '../services/price_book.dart';
+import '../services/plan_generator.dart';
 import '../services/store_locator.dart';
 import '../state/app_state.dart';
+import 'browse_screen.dart';
 import '../widgets/diet_editor.dart';
 import '../widgets/location_store_picker.dart';
 import '../widgets/money_text.dart';
@@ -196,6 +198,51 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              _section(context, 'Kitchen gear'),
+              Card(
+                child: Column(
+                  children: [
+                    for (final e in kOptionalEquipment.entries)
+                      SwitchListTile(
+                        title: Text(e.value),
+                        subtitle: Text('Include ${e.value.toLowerCase()} recipes'),
+                        value: s.equipment.contains(e.key),
+                        onChanged: (on) {
+                          final eq = Set<String>.from(s.equipment);
+                          on ? eq.add(e.key) : eq.remove(e.key);
+                          state.updateSettings(s.copyWith(equipment: eq));
+                        },
+                      ),
+                  ],
+                ),
+              ),
+              _section(context, 'Recipe library'),
+              Card(
+                child: Column(
+                  children: [
+                    ListTile(
+                      leading: const Icon(Icons.auto_awesome_outlined),
+                      title: Text('${state.newRecipeCount} of ${state.allowedRecipeList.length} '
+                          'recipes are new to you'),
+                      subtitle: const Text(
+                          'Suggested meals never repeat. Pick any recipe yourself to have it again.'),
+                    ),
+                    ListTile(
+                      leading: const Icon(Icons.menu_book_outlined),
+                      title: const Text('Browse all recipes'),
+                      trailing: const Icon(Icons.chevron_right),
+                      onTap: () => Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (_) => const BrowseScreen())),
+                    ),
+                    ListTile(
+                      leading: const Icon(Icons.history_toggle_off),
+                      title: const Text('Reset meal history'),
+                      subtitle: const Text('Make every recipe “new” again'),
+                      onTap: () => _confirmResetHistory(context, state),
+                    ),
+                  ],
+                ),
+              ),
               _section(context, 'Appearance'),
               Card(
                 child: Column(
@@ -277,6 +324,27 @@ class SettingsScreen extends StatelessWidget {
                 .titleMedium
                 ?.copyWith(fontWeight: FontWeight.w800)),
       );
+
+  void _confirmResetHistory(BuildContext context, AppState state) {
+    showDialog<void>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Reset meal history?'),
+        content: const Text(
+            'TapCook will forget which recipes you’ve had, so any of them can be suggested again.'),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
+          FilledButton(
+            onPressed: () {
+              state.resetRecipeHistory();
+              Navigator.pop(ctx);
+            },
+            child: const Text('Reset'),
+          ),
+        ],
+      ),
+    );
+  }
 
   void _confirmReset(BuildContext context, AppState state) {
     showDialog<void>(

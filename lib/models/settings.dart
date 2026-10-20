@@ -48,6 +48,10 @@ class UserSettings {
   double? zipLat;
   double? zipLng;
 
+  /// Optional kitchen equipment owned ('slow_cooker', 'air_fryer'); recipes
+  /// needing equipment the user lacks are never planned.
+  Set<String> equipment;
+
   UserSettings({
     this.zip = '',
     this.storeId = 'kroger',
@@ -63,7 +67,9 @@ class UserSettings {
     this.storeLocation,
     this.zipLat,
     this.zipLng,
-  })  : diets = diets ?? <Diet>{},
+    Set<String>? equipment,
+  })  : equipment = equipment ?? <String>{},
+        diets = diets ?? <Diet>{},
         excludedIngredients = excludedIngredients ?? <String>{},
         cookNights = cookNights ??
             [
@@ -95,6 +101,7 @@ class UserSettings {
     bool clearStoreLocation = false,
     double? zipLat,
     double? zipLng,
+    Set<String>? equipment,
   }) {
     final zipChanged = zip != null && zip != this.zip;
     final newStoreId = storeId ?? this.storeId;
@@ -118,6 +125,7 @@ class UserSettings {
       storeLocation: loc,
       zipLat: zipLat ?? (zipChanged ? null : this.zipLat),
       zipLng: zipLng ?? (zipChanged ? null : this.zipLng),
+      equipment: equipment ?? Set<String>.from(this.equipment),
     );
   }
 
@@ -136,6 +144,7 @@ class UserSettings {
         'storeLocation': storeLocation?.toJson(),
         'zipLat': zipLat,
         'zipLng': zipLng,
+        'equipment': equipment.toList(),
       };
 
   factory UserSettings.fromJson(Map<String, dynamic> j) => UserSettings(
@@ -164,5 +173,6 @@ class UserSettings {
             : StoreLocationRef.fromJson(j['storeLocation'] as Map<String, dynamic>),
         zipLat: (j['zipLat'] as num?)?.toDouble(),
         zipLng: (j['zipLng'] as num?)?.toDouble(),
+        equipment: ((j['equipment'] as List?) ?? []).map((e) => e as String).toSet(),
       );
 }

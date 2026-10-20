@@ -1,17 +1,14 @@
 """Builds TapCook's local price book: assets/data/prices.json
 
-Sources (public domain, no account needed):
-  * BLS CPI Average Price Data (series APU<area><item>) - current average
-    retail prices nationally and for the 4 Census regions.
+National prices come from the recipe database's per-pack reference prices
+(the original app's model). This script adds how those prices vary by place:
+  * BLS CPI Average Price Data (series APU<area><item>) - regional ratio
+    (region price ÷ national price) for items BLS still prices.
     https://www.bls.gov/cpi/factsheets/average-prices.htm
-  * USDA ERS Food-at-Home Monthly Area Prices (F-MAP) - spatial price indexes
-    for 90 food groups in 4 regions and 10 metro areas. Used for metro-level
-    adjustments and to regionalise items BLS doesn't price.
+  * USDA ERS Food-at-Home Monthly Area Prices (F-MAP) - food-group spatial
+    indexes for 4 regions and 10 metro areas: regional ratios for everything
+    else, and metro-vs-region adjustments.
     https://www.ers.usda.gov/data-products/food-at-home-monthly-area-prices
-
-Items without a BLS series keep the hand-entered national estimate from
-lib/data/catalog.dart (marked "est" in the output) and are regionalised with
-F-MAP food-group ratios.
 
 Usage:
   python tool/build_price_data.py            # uses cached BLS responses if present
@@ -30,7 +27,7 @@ import zipfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "assets", "data", "prices.json")
-CATALOG = os.path.join(ROOT, "lib", "data", "catalog.dart")
+RECIPE_DB = os.path.join(ROOT, "assets", "data", "recipe_db.json")
 CACHE = os.path.join(ROOT, "build", "price_sources")
 BLS_CACHE = os.path.join(CACHE, "bls_series.json")
 FMAP_URL = "https://www.ers.usda.gov/media/5400/food-at-home-monthly-area-prices-2012-to-2018.zip?v=40678"
@@ -39,112 +36,79 @@ UA = "TapCook-build/1.0 (grocery price data refresh)"
 REGIONS = {"US": "0000", "NE": "0100", "MW": "0200", "S": "0300", "W": "0400"}
 FMAP_REGION = {"NE": "1", "MW": "2", "S": "3", "W": "4"}
 
-# ingredient id -> (BLS item code or None, BLS units per recipe unit, F-MAP EFPG code, note)
-# "BLS units per recipe unit" converts e.g. $/lb into $/cup using typical weights.
-ITEMS = {
+# First matching rule wins: (regex on ingredient id, BLS item code or None, F-MAP food group).
+RULES = [
+    # Protein
+    (r"^chicken_breast", "FF1101", "51500"),
+    (r"^chicken_whole", "706111", "51500"),
+    (r"^chicken_", "706212", "51500"),
+    (r"^ground_turkey", None, "51500"),
+    (r"^ground_beef", "703112", "50000"),
+    (r"^beef_steak", "FC3101", "50000"),
+    (r"^beef_chuck", "703211", "50000"),
+    (r"^pork_chop", "FD3101", "50000"),
+    (r"^(ground_pork|pork_shoulder|lamb_ground)", None, "50000"),
+    (r"^bacon", "704111", "56000"),
+    (r"^(sausage_|pancetta|prosciutto|pepperoni)", "704421", "56000"),
+    (r"^(salmon|tilapia)", None, "53000"),
+    (r"^shrimp", None, "53050"),
+    (r"^tuna_canned", "707111", "53075"),
+    (r"^egg_large", "708111", "57500"),
+    (r"^(tofu|tempeh)", None, "59000"),
+    # Dairy
+    (r"^milk_whole", "709112", "40000"),
+    (r"^plant_milk", None, "43000"),
+    (r"^butter", "FS1101", "70000"),
+    (r"^cheddar", "710212", "46000"),
+    (r"^(cream_heavy|sour_cream)", None, "40030"),
+    (r"^yogurt", "FJ4101", "40060"),
+    (r"^(ricotta|goat_cheese|parmesan|mozzarella|cream_cheese|feta)", None, "46000"),
     # Produce
-    "onion": ("712404", 0.50, "29000", "medium onion ≈ 0.5 lb"),
-    "garlic": (None, 0, "29000", ""),
-    "bell_pepper": ("712406", 0.37, "24500", "pepper ≈ 6 oz"),
-    "tomato": ("712311", 0.33, "23000", "tomato ≈ 5 oz"),
-    "roma_tomato": ("712311", 0.15, "23000", "roma ≈ 2.4 oz"),
-    "romaine": ("FL2101", 1.2, "26000", "head ≈ 1.2 lb"),
-    "lemon": ("711412", 0.22, "30000", "lemon ≈ 3.5 oz"),
-    "lime": (None, 0, "30000", ""),
-    "potato": ("712112", 1.0, "20000", ""),
-    "sweet_potato": (None, 0, "24500", ""),
-    "broccoli": ("712412", 1.0, "26000", ""),
-    "carrot": ("712403", 1.0, "24500", ""),
-    "zucchini": (None, 0, "29000", ""),
-    "mushroom": ("712411", 1 / 16, "29000", "per oz"),
-    "spinach": (None, 0, "26000", ""),
-    "cilantro": (None, 0, "29000", ""),
-    "green_onion": ("712405", 0.22, "29000", "bunch ≈ 3.5 oz"),
-    "avocado": (None, 0, "30000", ""),
-    "ginger": (None, 0, "29000", ""),
-    "jalapeno": (None, 0, "29000", ""),
-    "snap_peas": (None, 0, "29000", ""),
-    "cucumber": ("712409", 0.66, "29000", "cucumber ≈ 10.5 oz"),
-    "celery": ("712402", 0.09, "29000", "stalk ≈ 1.4 oz"),
-    "coleslaw_mix": (None, 0, "29025", ""),
-    "tofu": (None, 0, "59000", ""),
-    # Meat & seafood
-    "ground_beef": ("703112", 1.0, "50000", ""),
-    "ground_turkey": (None, 0, "51500", ""),
-    "chicken_breast": ("FF1101", 1.0, "51500", "boneless"),
-    "chicken_thigh": ("706212", 1.0, "51500", "priced as bone-in chicken legs"),
-    "pork_chop": ("FD3101", 1.0, "50000", "all pork chops"),
-    "pork_shoulder": ("704411", 1.0, "50000", "blade Boston roast"),
-    "bacon": ("704111", 1 / 16, "56000", "per oz"),
-    "italian_sausage": ("704421", 1.0, "56000", "fresh sausage"),
-    "flank_steak": ("FC3101", 1.0, "50000", "priced as all uncooked beef steaks"),
-    "salmon": (None, 0, "53000", ""),
-    "shrimp": (None, 0, "53050", ""),
-    "tilapia": (None, 0, "53050", ""),
-    "tuna_can": ("707111", 5 / 16, "53075", "5 oz can"),
-    # Dairy & eggs
-    "milk": ("709112", 1 / 16, "40000", "cup of a gallon"),
-    "butter": ("FS1101", 1 / 32, "70000", "tbsp"),
-    "egg": ("708111", 1 / 12, "57500", "one egg of a dozen"),
-    "cheddar": ("710212", 1 / 16, "46000", "per oz"),
-    "mozzarella": (None, 0, "46000", ""),
-    "parmesan": (None, 0, "46000", ""),
-    "sour_cream": (None, 0, "40030", ""),
-    "greek_yogurt": ("FJ4101", 1 / 8, "40060", "priced as yogurt, per oz"),
-    "heavy_cream": (None, 0, "40030", ""),
-    "feta": (None, 0, "46000", ""),
-    # Bakery / frozen
-    "tortilla": (None, 0, "15000", ""),
-    "burger_bun": (None, 0, "15000", ""),
-    "sandwich_roll": (None, 0, "15000", ""),
-    "flatbread": (None, 0, "15000", ""),
-    "wrap_large": (None, 0, "15000", ""),
-    "pita": (None, 0, "15000", ""),
-    "frozen_peas": (None, 0, "21550", ""),
-    # Grains
-    "spaghetti": ("701322", 1 / 16, "15025", "per oz"),
-    "penne": ("701322", 1 / 16, "15025", "per oz"),
-    "fettuccine": ("701322", 1 / 16, "15025", "per oz"),
-    "egg_noodles": ("701322", 1 / 16, "15025", "priced as pasta, per oz"),
-    "rice_white": ("701312", 0.41, "15025", "cup dry ≈ 0.41 lb"),
-    "rice_jasmine": ("701312", 0.41, "15025", "priced as long-grain rice"),
-    "breadcrumbs": (None, 0, "15075", ""),
-    "lentils": ("714233", 0.42, "27500", "priced as dried beans, cup ≈ 0.42 lb"),
-    "flour": ("701111", 0.276, "15075", "cup ≈ 0.28 lb"),
+    (r"^potato_", "712112", "20000"),
+    (r"^tomato_(fresh|cherry)", "712311", "23000"),
+    (r"^lettuce_romaine", "FL2101", "26000"),
+    (r"^(broccoli|spinach|kale|arugula|bok_choy)", None, "26000"),
+    (r"^(bell_pepper|carrot|sweet_potato|butternut)", None, "24500"),
+    (r"^lemon", "711412", "30000"),
+    (r"^orange$", "711311", "30000"),
+    (r"^(lime|avocado)", None, "30000"),
+    (r"^cabbage", "712401", "29000"),
+    (r"^celery", "712402", "29000"),
+    (r"^onion_(yellow|red)", "712404", "29000"),
+    (r"^cucumber", "712409", "29000"),
+    (r"^mushroom", "712411", "29000"),
+    # Grains & bakery
+    (r"^(pasta_|noodle_egg|tortellini|gnocchi)", "701322", "15025"),
+    (r"^rice_(long_grain|basmati)|^arborio_rice", "701312", "15025"),
+    (r"^(rice_noodle|quinoa|couscous|polenta)", None, "15025"),
+    (r"^flour_ap", "701111", "15075"),
+    (r"^(breadcrumb|cornstarch|baking_)", None, "15075"),
+    (r"^bread_sandwich", "702111", "15000"),
+    (r"^(bread_|bun_|pita|tortilla_|pie_crust)", None, "15000"),
     # Canned
-    "black_beans": (None, 0, "27575", ""),
-    "kidney_beans": (None, 0, "27575", ""),
-    "chickpeas": (None, 0, "27575", ""),
-    "diced_tomatoes": (None, 0, "23075", ""),
-    "tomato_sauce": (None, 0, "23075", ""),
-    "pasta_sauce": (None, 0, "71000", ""),
-    "coconut_milk": (None, 0, "71000", ""),
-    "corn_can": ("714221", 0.94, "21575", "15 oz can"),
-    "chicken_broth": (None, 0, "65000", ""),
-    "veg_broth": (None, 0, "65000", ""),
-    # Condiments, spices, pantry
-    "pesto": (None, 0, "71000", ""),
-    "olive_oil": (None, 0, "70000", ""),
-    "veg_oil": (None, 0, "70000", ""),
-    "soy_sauce": (None, 0, "71000", ""),
-    "teriyaki": (None, 0, "71000", ""),
-    "bbq_sauce": (None, 0, "71000", ""),
-    "honey": (None, 0, "73000", ""),
-    "ketchup": (None, 0, "71000", ""),
-    "mayo": (None, 0, "70050", ""),
-    "caesar_dressing": (None, 0, "70050", ""),
-    "cornstarch": (None, 0, "15075", ""),
-    "sesame_oil": (None, 0, "70000", ""),
-    "salt": (None, 0, "71050", ""),
-    "pepper": (None, 0, "71050", ""),
-    "cumin": (None, 0, "71050", ""),
-    "chili_powder": (None, 0, "71050", ""),
-    "paprika": (None, 0, "71050", ""),
-    "garlic_powder": (None, 0, "71050", ""),
-    "italian_seasoning": (None, 0, "71050", ""),
-    "curry_powder": (None, 0, "71050", ""),
-    "taco_seasoning": (None, 0, "71050", ""),
-    "sugar": ("715211", 0.00926, "73000", "tsp ≈ 4.2 g"),
+    (r"^bean_.*_canned", None, "27575"),
+    (r"^(bean_dried|lentil_dried)", "714233", "27500"),
+    (r"^tomato_(canned|paste|sauce)|^marinara", None, "23075"),
+    (r"^corn_canned", "714221", "21575"),
+    (r"^(broth_|cream_of_|coconut_milk)", None, "65000"),
+    # Frozen
+    (r"^(peas|corn)_frozen", None, "21550"),
+    (r"^edamame", None, "27550"),
+    # Pantry
+    (r"^(olive_oil|oil_|sesame_oil)", None, "70000"),
+    (r"^(mayo)", None, "70050"),
+    (r"^(honey|maple_syrup)", None, "73000"),
+    (r"^sugar_white", "715211", "73000"),
+    (r"^sugar_", None, "73000"),
+    (r"^peanut_butter", "716141", "54550"),
+    (r"^(tahini)", None, "54550"),
+    (r"^(peanut_raw|cashew|pepita|sesame_seed)", None, "54500"),
+    (r"^wine_", None, "72050"),
+]
+CATEGORY_GROUP = {
+    "produce": "29000", "herb": "29000", "canned": "71000", "pantry": "71000",
+    "spice": "71050", "grain": "15025", "dairy": "46000", "bakery": "15000",
+    "frozen": "21550", "protein": "50000",
 }
 
 # F-MAP metro areas: code -> (name, Census region, lat, lng, radius in miles)
@@ -165,14 +129,16 @@ MAX_STALE_MONTHS = 12
 CLAMP = (0.8, 1.25)
 
 
-def catalog_estimates():
-    src = open(CATALOG, encoding="utf-8").read()
-    est = {m.group(1): float(m.group(2)) for m in re.finditer(
-        r"'(\w+)':\s*Ingredient\(.*?refPricePerUnit:\s*([\d.]+)", src)}
-    missing = set(est) ^ set(ITEMS)
-    if missing:
-        sys.exit(f"ITEMS and catalog.dart disagree on: {sorted(missing)}")
-    return est
+def ingredients():
+    db = json.load(open(RECIPE_DB, encoding="utf-8"))
+    return [(i["canonical_id"], i["category"]) for i in db["ingredients"]]
+
+
+def classify(iid, category):
+    for pattern, code, group in RULES:
+        if re.search(pattern, iid):
+            return code, group
+    return None, CATEGORY_GROUP[category]
 
 
 def bls_fetch(series_ids, refresh):
@@ -181,8 +147,9 @@ def bls_fetch(series_ids, refresh):
     key = os.environ.get("BLS_API_KEY")
     url = f"https://api.bls.gov/publicAPI/{'v2' if key else 'v1'}/timeseries/data/"
     year = dt.date.today().year
-    for i in range(0, len(todo), 50 if key else 25):
-        batch = todo[i:i + (50 if key else 25)]
+    step = 50 if key else 25
+    for i in range(0, len(todo), step):
+        batch = todo[i:i + step]
         body = {"seriesid": batch, "startyear": str(year - 2), "endyear": str(year)}
         if key:
             body["registrationkey"] = key
@@ -217,7 +184,7 @@ def recent_value(obs, newest):
 
 
 def fmap_indexes():
-    """2018 mean GEKS index per (EFPG, area)."""
+    """2018 mean GEKS index per (food group, area)."""
     path = os.path.join(CACHE, "fmap", "FMAP-Data.csv")
     if not os.path.exists(path):
         print("  downloading USDA F-MAP…", file=sys.stderr)
@@ -239,56 +206,50 @@ def clamp(x):
 
 def main():
     refresh = "--refresh" in sys.argv
-    est = catalog_estimates()
-    codes = sorted({c for c, *_ in ITEMS.values() if c})
-    series = [f"APU{area}{code}" for code in codes for area in REGIONS.values()]
-    bls = bls_fetch(series, refresh)
+    ings = [(iid, *classify(iid, cat)) for iid, cat in ingredients()]
+    codes = sorted({code for _, code, _ in ings if code})
+    bls = bls_fetch([f"APU{a}{c}" for c in codes for a in REGIONS.values()], refresh)
     newest = max((d for obs in bls.values() for d, _ in obs), default="2000-01")
     fmap = fmap_indexes()
 
-    def fmap_ratio(efpg, area, base):
-        a, b = fmap.get((efpg, area)), fmap.get((efpg, base))
+    def fmap_ratio(group, area, base):
+        a, b = fmap.get((group, area)), fmap.get((group, base))
         return clamp(a / b) if a and b else 1.0
 
-    items, stale = {}, []
-    for iid, (code, per_unit, efpg, note) in ITEMS.items():
-        entry = {"efpg": efpg}
+    items, stale = {}, set()
+    for iid, code, group in ings:
+        entry = {"efpg": group, "src": "fmap"}
         us = None
         if code:
-            us_val, latest = recent_value(bls.get(f"APU0000{code}"), newest)
-            if us_val is None:
-                stale.append(f"{iid} ({code}, last {latest})")
+            us, latest = recent_value(bls.get(f"APU0000{code}"), newest)
+            if us is None:
+                stale.add(f"{code} (last {latest})")
             else:
-                us = us_val * per_unit
-                entry.update(src="bls", code=code, asOf=latest, note=note)
-        if us is None:
-            us = est[iid]
-            entry["src"] = "est"
-        entry["US"] = round(us, 4)
+                entry.update(src="bls", code=code, asOf=latest)
         for reg, area in REGIONS.items():
             if reg == "US":
                 continue
-            val = None
-            if entry["src"] == "bls":
+            ratio = None
+            if us:
                 v, _ = recent_value(bls.get(f"APU{area}{code}"), newest)
                 if v is not None:
-                    val = v * per_unit
-            if val is None:
-                val = us * fmap_ratio(efpg, FMAP_REGION[reg], "0")
-            entry[reg] = round(val, 4)
+                    ratio = clamp(v / us)
+            if ratio is None:
+                ratio = fmap_ratio(group, FMAP_REGION[reg], "0")
+            entry[reg] = round(ratio, 4)
         items[iid] = entry
 
-    efpgs = sorted({e for *_, e, _ in ITEMS.values()})
-    metros = []
-    for mcode, (name, reg, lat, lng, radius) in METROS.items():
-        f = {e: round(fmap_ratio(e, mcode, FMAP_REGION[reg]), 3) for e in efpgs}
-        metros.append({"code": mcode, "name": name, "region": reg, "lat": lat, "lng": lng,
-                       "radiusMi": radius, "factors": f})
+    groups = sorted({g for _, _, g in ings})
+    metros = [
+        {"code": m, "name": name, "region": reg, "lat": lat, "lng": lng, "radiusMi": radius,
+         "factors": {g: round(fmap_ratio(g, m, FMAP_REGION[reg]), 3) for g in groups}}
+        for m, (name, reg, lat, lng, radius) in METROS.items()
+    ]
 
     out = {
         "asOf": newest,
         "sources": {
-            "bls": "U.S. Bureau of Labor Statistics, CPI Average Price Data",
+            "bls": "U.S. Bureau of Labor Statistics, CPI Average Price Data (regional ratios)",
             "fmap": "USDA ERS Food-at-Home Monthly Area Prices (2018 spatial indexes)",
         },
         "items": items,
@@ -299,10 +260,10 @@ def main():
         json.dump(out, fh, indent=1, ensure_ascii=False)
         fh.write("\n")
     n_bls = sum(1 for v in items.values() if v["src"] == "bls")
-    print(f"Wrote {OUT}: {len(items)} items ({n_bls} from BLS, {len(items) - n_bls} estimates), "
-          f"{len(metros)} metros, prices as of {newest}")
+    print(f"Wrote {OUT}: {len(items)} ingredients ({n_bls} with BLS regional prices, "
+          f"{len(items) - n_bls} with USDA food-group ratios), {len(metros)} metros, as of {newest}")
     if stale:
-        print("BLS series skipped as stale/missing:", ", ".join(stale))
+        print("BLS series without current data (USDA ratios used):", ", ".join(sorted(stale)))
 
 
 if __name__ == "__main__":

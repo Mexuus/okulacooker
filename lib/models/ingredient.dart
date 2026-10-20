@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Grocery aisle / department used to group the shopping list and to decide
-/// which items are perishable ("fresh") for two-week shopping.
+/// Grocery aisle / department used to group the shopping list.
 enum Aisle {
   produce,
   meat,
@@ -27,7 +26,7 @@ extension AisleInfo on Aisle {
       case Aisle.seafood:
         return 'Seafood';
       case Aisle.dairy:
-        return 'Dairy';
+        return 'Dairy & Eggs';
       case Aisle.bakery:
         return 'Bakery';
       case Aisle.frozen:
@@ -41,7 +40,7 @@ extension AisleInfo on Aisle {
       case Aisle.grains:
         return 'Grains & Pasta';
       case Aisle.canned:
-        return 'Canned';
+        return 'Canned & Jarred';
       case Aisle.other:
         return 'Other';
     }
@@ -75,42 +74,121 @@ extension AisleInfo on Aisle {
         return Icons.shopping_basket_outlined;
     }
   }
-
-  /// Perishable aisles are separated as "buy later" in two-week planning.
-  bool get isPerishable =>
-      this == Aisle.produce ||
-      this == Aisle.meat ||
-      this == Aisle.seafood ||
-      this == Aisle.dairy ||
-      this == Aisle.bakery;
 }
 
-/// A purchasable ingredient with a *national reference price* per unit.
-///
-/// The reference price is a flat national estimate; the pricing engine adjusts
-/// it for the chosen store chain and ZIP-based region. These are estimates, not
-/// live retail prices.
+/// One purchasable pack size of an ingredient (national reference price).
+class PackOption {
+  final String label; // e.g. "small", "family", or ""
+  final double size;
+  final String unit; // lb, oz, count, bunch, gal, ml
+  final double price;
+  final double grams;
+
+  const PackOption({
+    required this.label,
+    required this.size,
+    required this.unit,
+    required this.price,
+    required this.grams,
+  });
+
+  factory PackOption.fromJson(Map<String, dynamic> j) => PackOption(
+        label: j['label'] as String? ?? '',
+        size: (j['size'] as num).toDouble(),
+        unit: j['unit'] as String,
+        price: (j['price'] as num).toDouble(),
+        grams: (j['grams'] as num).toDouble(),
+      );
+}
+
+/// An ingredient from the recipe database, with pack sizes and a national
+/// reference price per pack.
 class Ingredient {
   final String id;
+
+  /// Display name as stored, e.g. "Chicken thighs, boneless".
   final String name;
+  final String category;
   final Aisle aisle;
 
-  /// The unit recipes measure this in (e.g. 'lb', 'oz', 'cup', 'clove', 'each').
-  final String unit;
-
-  /// National reference price in USD for one [unit] of this ingredient.
-  final double refPricePerUnit;
-
-  /// Whether this is a common pantry staple most people already own
-  /// (so it can be ticked off and removed from the bill, permanently).
+  /// Pantry staple most kitchens keep (can be ticked off the bill for good).
   final bool staple;
+  final int perishDays;
+
+  /// Grams per recipe unit (lb, oz, cup, tbsp, tsp, count, clove, stalk, packet).
+  final Map<String, double> unitGrams;
+
+  /// Default pack and its national reference price.
+  final double packPrice;
+  final double gramsPerPack;
+  final String packUnit;
+  final double packSize;
+
+  /// All purchasable pack sizes (small/family tiers when known).
+  final List<PackOption> packs;
+
+  final double kcalPer100g;
+  final double proteinPer100g;
+  final double carbsPer100g;
+  final double fatPer100g;
 
   const Ingredient({
     required this.id,
     required this.name,
+    required this.category,
     required this.aisle,
-    required this.unit,
-    required this.refPricePerUnit,
-    this.staple = false,
+    required this.staple,
+    required this.perishDays,
+    required this.unitGrams,
+    required this.packPrice,
+    required this.gramsPerPack,
+    required this.packUnit,
+    required this.packSize,
+    required this.packs,
+    this.kcalPer100g = 0,
+    this.proteinPer100g = 0,
+    this.carbsPer100g = 0,
+    this.fatPer100g = 0,
   });
+
+  factory Ingredient.fromJson(Map<String, dynamic> j) {
+    double n(String k) => (j[k] as num?)?.toDouble() ?? 0;
+    return Ingredient(
+      id: j['canonical_id'] as String,
+      name: j['display'] as String,
+      category: j['category'] as String,
+      aisle: Aisle.values.firstWhere((a) => a.name == j['aisle'], orElse: () => Aisle.other),
+      staple: (j['is_pantry'] as num? ?? 0) == 1,
+      perishDays: (j['perish_days'] as num?)?.toInt() ?? 7,
+      unitGrams: (j['unit_grams'] as Map<String, dynamic>)
+          .map((k, v) => MapEntry(k, (v as num).toDouble())),
+      packPrice: n('pack_price_usd'),
+      gramsPerPack: n('g_per_pack'),
+      packUnit: j['pack_unit'] as String,
+      packSize: n('pack_size'),
+      packs: (j['packs'] as List)
+          .map((p) => PackOption.fromJson(p as Map<String, dynamic>))
+          .toList(),
+      kcalPer100g: n('kcal_100g'),
+      proteinPer100g: n('protein_100g'),
+      carbsPer100g: n('carbs_100g'),
+      fatPer100g: n('fat_100g'),
+    );
+  }
+
+  /// National reference price per gram (default pack).
+  double get pricePerGram => gramsPerPack > 0 ? packPrice / gramsPerPack : 0;
+
+  /// Converts a recipe amount to grams (0 if the unit isn't known).
+  double gramsFor(double amount, String unit) => amount * (unitGrams[unit] ?? 0);
+
+  /// Spoils within two weeks — bought "later" when shopping two weeks at once.
+  bool get perishable => perishDays < 14 && aisle != Aisle.frozen;
+
+  /// Natural-language name: "Chicken thighs, boneless" -> "boneless chicken thighs".
+  String get naturalName {
+    final parts = name.split(', ');
+    final s = parts.length == 2 ? '${parts[1]} ${parts[0]}' : name;
+    return s.toLowerCase();
+  }
 }

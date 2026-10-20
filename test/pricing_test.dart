@@ -1,9 +1,7 @@
-import 'dart:io';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:tapcook/data/catalog.dart';
+import 'package:tapcook/data/recipe_db.dart';
 import 'package:tapcook/data/stores.dart';
 import 'package:tapcook/models/settings.dart';
 import 'package:tapcook/models/store_location.dart';
@@ -16,55 +14,43 @@ import 'package:tapcook/services/store_locator.dart';
 import 'package:tapcook/services/zip_locator.dart';
 import 'package:tapcook/state/app_state.dart';
 
-final book =
-    PriceBook.fromJsonString(File('assets/data/prices.json').readAsStringSync());
+import 'test_helpers.dart';
+
+PriceBook get book => PriceBook.instance;
 
 PricingEngine at(String storeId, double lat, double lng, String state) => PricingEngine(
       store: storeById(storeId),
       location: PriceLocation(lat: lat, lng: lng, state: state, label: 'test'),
-      book: book,
     );
 
 void main() {
-  setUpAll(() => PriceBook.instance = book);
+  setUpAll(loadTestData);
 
   group('price book data', () {
-    test('covers every catalog ingredient in every region', () {
+    test('covers every database ingredient in every region', () {
       for (final id in kIngredients.keys) {
         final item = book.items[id];
         expect(item, isNotNull, reason: id);
-        for (final r in ['US', 'NE', 'MW', 'S', 'W']) {
-          expect(item!.byRegion[r], greaterThan(0), reason: '$id/$r');
+        for (final r in ['NE', 'MW', 'S', 'W']) {
+          expect(item!.ratioFor(r), inInclusiveRange(0.8, 1.25), reason: '$id/$r');
         }
       }
     });
 
-    test('uses current BLS average prices for staple items', () {
+    test('uses current BLS regional prices for staple items', () {
       expect(book.asOf, matches(RegExp(r'^\d{4}-\d{2}$')));
       expect(book.blsItemCount, greaterThanOrEqualTo(20));
       final beef = book.items['ground_beef']!;
       expect(beef.isBls, isTrue);
       expect(beef.blsCode, '703112');
-      // Ground beef is several dollars a pound everywhere.
-      for (final r in ['US', 'NE', 'MW', 'S', 'W']) {
-        expect(beef.inRegion(r), inInclusiveRange(3.0, 15.0));
-      }
-      // Eggs are priced per egg (a dozen / 12).
-      expect(book.items['egg']!.national, inInclusiveRange(0.08, 0.80));
-    });
-
-    test('falls back to estimates when data is missing', () {
-      final fallback = PriceBook.estimatesOnly();
-      expect(fallback.hasLiveData, isFalse);
-      expect(fallback.items['salmon']!.national, kIngredients['salmon']!.refPricePerUnit);
     });
   });
 
   group('metro detection', () {
     test('finds the metro a store is in', () {
-      expect(book.metroFor(34.0700, -118.4000)?.name, 'Los Angeles'); // West Hollywood
-      expect(book.metroFor(40.7357, -74.1724)?.name, 'New York'); // Newark NJ
-      expect(book.metroFor(39.9259, -75.1196)?.name, 'Philadelphia'); // Camden NJ
+      expect(book.metroFor(34.0700, -118.4000)?.name, 'Los Angeles');
+      expect(book.metroFor(40.7357, -74.1724)?.name, 'New York');
+      expect(book.metroFor(39.9259, -75.1196)?.name, 'Philadelphia');
       expect(book.metroFor(29.7589, -95.3677)?.name, 'Houston');
     });
 
@@ -76,43 +62,38 @@ void main() {
   });
 
   group('location-specific pricing', () {
-    final beef = kIngredients['ground_beef']!;
-    final tomato = kIngredients['tomato']!;
-
-    test('quote = regional price × metro × chain', () {
-      final q = at('ralphs', 34.07, -118.40, 'CA').quote(beef, 2);
+    test('local price = national pack price × region × metro × chain', () {
+      final beef = kIngredients['ground_beef']!;
+      final q = at('ralphs', 34.07, -118.40, 'CA').quote(beef, 453.592);
       expect(q.region.id, 'W');
       expect(q.metro?.name, 'Los Angeles');
-      expect(q.regionalUnit, book.items['ground_beef']!.inRegion('W'));
+      expect(q.regionRatio, book.items['ground_beef']!.ratioFor('W'));
       expect(q.chainFactor, storeById('ralphs').priceMultiplier);
-      expect(q.unitPrice, closeTo(q.regionalUnit * q.metroFactor * q.chainFactor, 1e-9));
-      expect(q.total, closeTo(q.unitPrice * 2, 0.006));
+      expect(q.localPackPrice, closeTo(beef.packPrice * q.factor, 1e-9));
+      expect(q.proportionalCost, closeTo(453.592 * beef.pricePerGram * q.factor, 1e-9));
     });
 
     test('the same chain costs different amounts in different places', () {
-      final houston = at('kroger', 29.76, -95.37, 'TX').estimate(tomato, 10);
-      final detroit = at('kroger', 42.33, -83.05, 'MI').estimate(tomato, 10);
-      expect(houston, isNot(closeTo(detroit, 0.01)));
+      final tomato = kIngredients['tomato_fresh']!;
+      final houston = at('kroger', 29.76, -95.37, 'TX').quote(tomato).localPackPrice;
+      final detroit = at('kroger', 42.33, -83.05, 'MI').quote(tomato).localPackPrice;
+      expect(houston, isNot(closeTo(detroit, 0.001)));
     });
 
     test('a store inside a metro is priced differently from one outside it', () {
       final la = at('ralphs', 34.07, -118.40, 'CA');
       final fresno = at('ralphs', 36.74, -119.79, 'CA');
-      expect(la.region.id, fresno.region.id);
       expect(la.metro, isNotNull);
       expect(fresno.metro, isNull);
-      var laTotal = 0.0, fresnoTotal = 0.0;
-      for (final ing in kIngredients.values) {
-        laTotal += la.estimate(ing, 1);
-        fresnoTotal += fresno.estimate(ing, 1);
-      }
+      final laTotal = kIngredients.values.fold(0.0, (s, i) => s + la.quote(i).localPackPrice);
+      final fresnoTotal = kIngredients.values.fold(0.0, (s, i) => s + fresno.quote(i).localPackPrice);
       expect(laTotal, isNot(closeTo(fresnoTotal, 0.5)));
     });
 
     test('discount chains beat premium chains at the same location', () {
-      final aldi = at('aldi', 41.88, -87.63, 'IL').estimate(beef, 1);
-      final wholeFoods = at('whole_foods', 41.88, -87.63, 'IL').estimate(beef, 1);
-      expect(aldi, lessThan(wholeFoods));
+      final beef = kIngredients['ground_beef']!;
+      expect(at('aldi', 41.88, -87.63, 'IL').quote(beef).localPackPrice,
+          lessThan(at('whole_foods', 41.88, -87.63, 'IL').quote(beef).localPackPrice));
     });
 
     test('settings price at the picked store location, not just the ZIP', () {
@@ -122,8 +103,8 @@ void main() {
             storeId: 'ralphs', label: 'Ralphs', lat: 34.07, lng: -118.40, state: 'CA',
             address: '9040 W Sunset Blvd, West Hollywood'),
       );
-      expect(PricingEngine.forSettings(zipOnly, book: book).metro, isNull);
-      final engine = PricingEngine.forSettings(withStore, book: book);
+      expect(PricingEngine.forSettings(zipOnly).metro, isNull);
+      final engine = PricingEngine.forSettings(withStore);
       expect(engine.metro?.name, 'Los Angeles');
       expect(engine.location.label, '9040 W Sunset Blvd, West Hollywood');
       expect(engine.areaName, 'Los Angeles metro');
@@ -134,8 +115,7 @@ void main() {
     test('switching chain drops a store location from the old chain', () {
       final s = UserSettings(
         storeId: 'ralphs',
-        storeLocation: const StoreLocationRef(
-            storeId: 'ralphs', label: 'Ralphs', lat: 1, lng: 2),
+        storeLocation: const StoreLocationRef(storeId: 'ralphs', label: 'Ralphs', lat: 1, lng: 2),
       );
       expect(s.copyWith(storeId: 'vons').storeLocation, isNull);
       expect(s.copyWith(weeklyBudget: 90).storeLocation, isNotNull);
@@ -148,15 +128,12 @@ void main() {
     });
   });
 
-  group('AppState', () {
+  group('AppState store comparison', () {
     Future<AppState> makeState() async {
       SharedPreferences.setMockInitialValues({});
       final state = AppState(
         await Persistence.create(),
-        location: LocationService(
-          zipLoader: () async =>
-              ZipLocator.fromCsv('60601,41.8858,-87.6181\n'),
-        ),
+        location: LocationService(zipLoader: () async => ZipLocator.fromCsv('60601,41.8858,-87.6181\n')),
         storeLocator: StoreLocator(
           allowOnline: false,
           directoryLoader: () async => StoreDirectory.fromCsv(
@@ -167,7 +144,7 @@ void main() {
         ),
       );
       await state.completeOnboarding(UserSettings(
-          zip: '60601', storeId: 'jewel_osco', householdSize: 4, weeklyBudget: 150));
+          zip: '60601', storeId: 'jewel_osco', householdSize: 4, weeklyBudget: 0));
       return state;
     }
 
@@ -180,8 +157,7 @@ void main() {
     test('compares nearby stores cheapest first and switches store location', () async {
       final state = await makeState();
       final rows = await state.compareNearbyStores();
-      expect(rows.map((r) => r.$1.store.id),
-          containsAll(['aldi', 'whole_foods', 'jewel_osco']));
+      expect(rows.map((r) => r.$1.store.id), containsAll(['aldi', 'whole_foods', 'jewel_osco']));
       for (var i = 1; i < rows.length; i++) {
         expect(rows[i].$2, greaterThanOrEqualTo(rows[i - 1].$2));
       }

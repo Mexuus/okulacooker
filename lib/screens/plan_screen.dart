@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../data/recipes_seed.dart';
+import '../data/recipe_db.dart';
 import '../models/plan.dart';
 import '../services/grocery_builder.dart';
 import '../state/app_state.dart';
 import '../widgets/budget_bar.dart';
 import '../widgets/money_text.dart';
 import '../widgets/recipe_image.dart';
+import '../widgets/slot_picker.dart';
+import 'browse_screen.dart';
 import 'recipe_detail_screen.dart';
 
 const _weekdayShort = {
@@ -36,7 +38,13 @@ class PlanScreen extends StatelessWidget {
             title: const Text('This week'),
             actions: [
               IconButton(
-                tooltip: 'Regenerate week',
+                tooltip: 'Browse recipes',
+                onPressed: () => Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => const BrowseScreen())),
+                icon: const Icon(Icons.menu_book_outlined),
+              ),
+              IconButton(
+                tooltip: 'New week of meals',
                 onPressed: () => state.generatePlan(),
                 icon: const Icon(Icons.refresh),
               ),
@@ -60,6 +68,18 @@ class PlanScreen extends StatelessWidget {
                               ),
                             const SizedBox(height: 12),
                             _ShoppingDayRow(state: state),
+                            Row(
+                              children: [
+                                const Icon(Icons.auto_awesome_outlined, size: 20),
+                                const SizedBox(width: 8),
+                                Expanded(
+                                  child: Text(
+                                    '${state.newRecipeCount} recipes you haven’t had yet',
+                                    style: theme.textTheme.bodyMedium,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ],
                         ),
                       ),
@@ -184,6 +204,15 @@ class _MealCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          Text(
+                            '${readOnly ? 'Next ' : ''}${slotLabel(state, meal.slot)} · ${recipe.cuisine}'
+                                .toUpperCase(),
+                            style: theme.textTheme.labelSmall?.copyWith(
+                                color: theme.colorScheme.primary,
+                                fontWeight: FontWeight.w800,
+                                letterSpacing: 0.6),
+                          ),
+                          const SizedBox(height: 2),
                           Text(recipe.title,
                               style: theme.textTheme.titleMedium?.copyWith(
                                 fontWeight: FontWeight.w700,
@@ -225,33 +254,39 @@ class _MealCard extends StatelessWidget {
               ),
               ),
             ),
-            if (!readOnly)
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 4),
-                child: Row(
-                  children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: Row(
+                children: [
+                  _MealAction(
+                    icon: Icons.autorenew,
+                    label: 'Swap',
+                    onTap: () => state.swapMeal(meal.slot, weekTwo: readOnly),
+                  ),
+                  _MealAction(
+                    icon: Icons.menu_book_outlined,
+                    label: 'Choose',
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (_) => BrowseScreen(slot: meal.slot, weekTwo: readOnly),
+                    )),
+                  ),
+                  if (!readOnly) ...[
                     _MealAction(
-                      icon: Icons.swap_horiz,
-                      label: 'Swap',
-                      onTap: () => state.swapMeal(meal.slot),
-                    ),
-                    _MealAction(
-                      icon: meal.skipped
-                          ? Icons.undo
-                          : Icons.event_busy_outlined,
+                      icon: meal.skipped ? Icons.undo : Icons.event_busy_outlined,
                       label: meal.skipped ? 'Restore' : 'Skip',
                       onTap: () => state.toggleSkip(meal.slot),
                     ),
                     _MealAction(
                       icon: Icons.ac_unit,
-                      label: meal.fromFreezer ? 'Un-freezer' : 'From freezer',
+                      label: 'Freezer',
                       active: meal.fromFreezer,
                       onTap: () => state.toggleFromFreezer(meal.slot),
                     ),
                     _ServingsMenu(meal: meal, state: state),
                   ],
-                ),
+                ],
               ),
+            ),
           ],
         ),
       ),
