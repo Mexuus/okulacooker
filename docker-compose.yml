@@ -1,0 +1,46 @@
+# TapCook on Docker.
+#
+#   HTTP only (LAN / behind your own proxy):   docker compose up -d
+#   With automatic HTTPS (needs a domain):      DOMAIN=tapcook.example.com docker compose --profile https up -d
+#
+# Use the prebuilt image instead of building on the server by setting
+# TAPCOOK_IMAGE=ghcr.io/mexuus/tapcook:latest and running `docker compose pull`.
+services:
+  tapcook:
+    image: ${TAPCOOK_IMAGE:-tapcook:latest}
+    build: .
+    container_name: tapcook
+    restart: unless-stopped
+    ports:
+      - "${TAPCOOK_PORT:-8080}:8080"
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
+  # Optional HTTPS front end (Let's Encrypt). Browsers only allow the
+  # "Locate" (GPS) button on HTTPS sites or localhost.
+  caddy:
+    image: caddy:2-alpine
+    profiles: ["https"]
+    container_name: tapcook-caddy
+    restart: unless-stopped
+    depends_on:
+      - tapcook
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      DOMAIN: ${DOMAIN:-localhost}
+    volumes:
+      - ./docker/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:

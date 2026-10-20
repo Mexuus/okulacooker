@@ -1,0 +1,6 @@
+# Automatic HTTPS for TapCook. DOMAIN must point at this server and ports
+# 80/443 must be reachable from the internet for Let's Encrypt.
+{$DOMAIN} {
+	encode zstd gzip
+	reverse_proxy tapcook:8080
+}

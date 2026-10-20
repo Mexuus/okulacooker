@@ -48,12 +48,55 @@ When adding a chain, add it to `lib/data/stores.dart` **and** to the `BRANDS`
 map in `tool/build_store_directory.py`. A test fails if the directory contains
 a chain the app doesn't know.
 
+## Host with Docker (Linux)
+
+The image is a static web build served by unprivileged nginx on port 8080
+(~60 MB, amd64 + arm64). Everything runs in the browser — no database or API
+server; each visitor's plans live in their own browser storage.
+
+**Option A — build on the server** (needs ~3 GB free disk for the build):
+
+```sh
+git clone https://github.com/Mexuus/tapcook.git && cd tapcook
+docker compose up -d --build          # → http://SERVER_IP:8080
+```
+
+**Option B — pull the prebuilt image** CI publishes on every push to `main`.
+The repo is private, so log in once with a personal access token that has
+`read:packages`:
+
+```sh
+echo "$GHCR_TOKEN" | docker login ghcr.io -u Mexuus --password-stdin
+TAPCOOK_IMAGE=ghcr.io/mexuus/tapcook:latest docker compose pull
+TAPCOOK_IMAGE=ghcr.io/mexuus/tapcook:latest docker compose up -d
+```
+
+(Or without compose: `docker run -d --name tapcook --restart unless-stopped -p 8080:8080 ghcr.io/mexuus/tapcook:latest`.)
+
+**HTTPS (required for the Locate/GPS button).** Browsers only allow location
+access on HTTPS or `localhost`; over plain `http://SERVER_IP:8080` ZIP entry
+still works but Locate is blocked. Point a domain at the server, open ports
+80/443, and start the bundled Caddy proxy (automatic Let's Encrypt):
+
+```sh
+DOMAIN=tapcook.example.com docker compose --profile https up -d
+```
+
+LAN-only alternatives: Tailscale (`tailscale serve 8080`) or your existing
+reverse proxy (Nginx Proxy Manager, Traefik) in front of port 8080.
+
+**Other settings:** `TAPCOOK_PORT=9000` changes the host port. To serve under
+a sub-path, build with `docker compose build --build-arg BASE_HREF=/tapcook/`
+(the trailing slash matters). **Update:** `git pull && docker compose up -d --build`
+(Option A) or `docker compose pull && docker compose up -d` (Option B).
+
 ## CI / releases
 
 - **GitHub Actions** (`.github/workflows/ci.yml`): analyze + test + web build on
   every push, an **unsigned iOS build** on a macOS runner (downloadable `.ipa`
-  artifact), and deployment of the web app to GitHub Pages from `main`
-  (enable Pages → Source: GitHub Actions in the repo settings).
+  artifact), a **Docker image** smoke-tested and published to
+  `ghcr.io/mexuus/tapcook` (`latest` + `sha-…`) from `main`, and deployment of
+  the web app to GitHub Pages from `main` (public repos only).
 - **Codemagic** (`codemagic.yaml`): signed iOS build uploaded to TestFlight on
   tags `v*`. Requires an Apple Developer account and an App Store Connect API
   key added in Codemagic as `TapCook ASC`.
