@@ -1,0 +1,44 @@
+# Signed iOS builds on Codemagic (free tier includes macOS minutes).
+# One-time setup in the Codemagic UI:
+#   1. Teams > Integrations > App Store Connect: add an API key and name it
+#      "TapCook ASC" (or change the name below).
+#   2. Create the bundle id com.testmaxx.tapcook in your Apple Developer account
+#      (or change it below and in ios/Runner.xcodeproj).
+workflows:
+  ios-testflight:
+    name: iOS → TestFlight
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    integrations:
+      app_store_connect: TapCook ASC
+    environment:
+      flutter: 3.47.7
+      xcode: latest
+      cocoapods: default
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.testmaxx.tapcook
+    triggering:
+      events: [tag]
+      tag_patterns:
+        - pattern: 'v*'
+    scripts:
+      - name: Get packages
+        script: flutter pub get
+      - name: Analyze & test
+        script: |
+          flutter analyze
+          flutter test
+      - name: Apply signing profiles
+        script: xcode-project use-profiles
+      - name: Build IPA
+        script: |
+          flutter build ipa --release \
+            --build-number=$BUILD_NUMBER \
+            --export-options-plist=/Users/builder/export_options.plist
+    artifacts:
+      - build/ios/ipa/*.ipa
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
