@@ -70,6 +70,14 @@ No volumes are needed: plans, favourites and history are stored in each
 visitor's browser, so every device keeps its own plan. For the **Locate**
 (GPS) button see the HTTPS note below — ZIP entry works either way.
 
+**Without any GitHub login**, build the image on the ZimaOS box over SSH
+first, then import the compose file with `image: tapcook:latest`:
+
+```sh
+git clone https://github.com/Mexuus/tapcook.git && cd tapcook
+docker build -t tapcook:latest .      # ~10 min, needs ~3 GB free disk
+```
+
 ## Host with Docker (Linux)
 
 The image is a static web build served by unprivileged nginx on port 8080
