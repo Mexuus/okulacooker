@@ -13,6 +13,10 @@ services:
     restart: unless-stopped
     ports:
       - "${TAPCOOK_PORT:-8080}:8080"
+    environment:
+      # Optional https address of this app (e.g. your Tailscale or proxy URL).
+      # The app offers it when opened over plain http, where GPS is blocked.
+      TAPCOOK_SECURE_URL: ${TAPCOOK_SECURE_URL:-}
     read_only: true
     tmpfs:
       - /tmp

@@ -30,6 +30,7 @@ RUN flutter build web --release --no-wasm-dry-run --base-href "${BASE_HREF}"
 
 FROM nginxinc/nginx-unprivileged:1.28-alpine
 COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --chmod=755 docker/40-tapcook-config.sh /docker-entrypoint.d/40-tapcook-config.sh
 COPY --from=build /app/build/web /usr/share/nginx/html
 EXPOSE 8080
 HEALTHCHECK --interval=30s --timeout=3s --retries=3 \

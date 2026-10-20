@@ -4,9 +4,11 @@ import 'package:provider/provider.dart';
 import '../data/regions.dart';
 import '../data/stores.dart';
 import '../models/store_location.dart';
+import '../services/app_config.dart';
 import '../services/location_service.dart';
 import '../services/price_book.dart';
 import '../services/store_locator.dart';
+import '../services/web_env.dart' as web_env;
 import '../state/app_state.dart';
 import 'money_text.dart';
 
@@ -52,6 +54,7 @@ class _LocationStorePickerState extends State<LocationStorePicker> {
   bool _unknownZip = false;
   bool _locating = false;
   String? _locError;
+  bool _locInsecure = false;
 
   List<NearbyStore>? _nearby;
   bool _searching = false;
@@ -150,7 +153,12 @@ class _LocationStorePickerState extends State<LocationStorePicker> {
       });
       _search(place, req);
     } on LocationException catch (e) {
-      if (mounted) setState(() => _locError = e.message);
+      if (mounted) {
+        setState(() {
+          _locError = e.message;
+          _locInsecure = e.reason == LocationFailure.insecurePage;
+        });
+      }
     } catch (e) {
       if (mounted) {
         setState(() => _locError = 'Couldn’t determine your location.');
@@ -210,6 +218,25 @@ class _LocationStorePickerState extends State<LocationStorePicker> {
             padding: const EdgeInsets.only(top: 6),
             child: Text(_locError!,
                 style: TextStyle(color: theme.colorScheme.error)),
+          ),
+        if (_locError != null && _locInsecure && AppConfig.current.secureUrl != null)
+          Padding(
+            padding: const EdgeInsets.only(top: 6),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                FilledButton.icon(
+                  icon: const Icon(Icons.lock_outline),
+                  label: const Text('Open the secure link'),
+                  onPressed: () => web_env.openInPage(AppConfig.current.secureUrl!),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  'Plans are saved per address, so set up there once and bookmark it.',
+                  style: theme.textTheme.bodySmall,
+                ),
+              ],
+            ),
           ),
         if (place != null)
           Padding(

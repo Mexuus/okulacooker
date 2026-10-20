@@ -96,13 +96,22 @@ jobs:
       - name: Smoke test (read-only, no capabilities)
         run: |
           docker run -d --name tapcook -p 8080:8080 --read-only --tmpfs /tmp \
-            --cap-drop ALL --security-opt no-new-privileges:true tapcook:test
+            --cap-drop ALL --security-opt no-new-privileges:true \
+            -e TAPCOOK_SECURE_URL='https://example.com/x"},"y":"' tapcook:test
           for i in $(seq 1 20); do curl -fs http://localhost:8080/healthz && break; sleep 1; done
           curl -fs http://localhost:8080/ | grep -q '<title>TapCook</title>'
           curl -fs http://localhost:8080/some/deep/link | grep -q 'flutter_bootstrap.js'
           curl -fs http://localhost:8080/assets/assets/data/recipe_db.json | head -c 40 | grep -q '"version"'
           curl -fsI -H 'Accept-Encoding: gzip' http://localhost:8080/main.dart.js | grep -qi 'content-encoding: gzip'
           curl -fsI http://localhost:8080/ | grep -qi 'x-content-type-options: nosniff'
+          # Runtime config: injection attempt is neutralised into valid JSON.
+          curl -fs http://localhost:8080/config.json | tee /dev/stderr | python3 -c \
+            'import json,sys; d=json.load(sys.stdin); assert d=={"secureUrl":"https://example.com/x,y:"}, d'
+          curl -fsI http://localhost:8080/config.json | grep -qi 'content-type: application/json'
+          docker rm -f tapcook
+          docker run -d --name tapcook -p 8080:8080 --read-only --tmpfs /tmp tapcook:test
+          for i in $(seq 1 20); do curl -fs http://localhost:8080/healthz && break; sleep 1; done
+          test "$(curl -fs http://localhost:8080/config.json)" = '{}'
           docker logs tapcook
       - name: Log in to GitHub Container Registry
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'

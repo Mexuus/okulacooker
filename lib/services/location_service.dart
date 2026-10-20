@@ -1,10 +1,12 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
 
 import '../data/regions.dart';
 import '../data/zip_states.dart';
 import '../models/store.dart';
+import 'web_env.dart' as web_env;
 import 'zip_locator.dart';
 
 /// A raw GPS fix.
@@ -15,6 +17,9 @@ class GeoFix {
 }
 
 enum LocationFailure {
+  /// The web page was opened over plain http; browsers never share location
+  /// with insecure pages, whatever the user's settings are.
+  insecurePage,
   serviceDisabled,
   denied,
   deniedForever,
@@ -29,13 +34,30 @@ class LocationException implements Exception {
   const LocationException(this.reason, [this.detail]);
 
   String get message {
+    final apple = defaultTargetPlatform == TargetPlatform.iOS ||
+        defaultTargetPlatform == TargetPlatform.macOS;
     switch (reason) {
+      case LocationFailure.insecurePage:
+        return 'Browsers only share your location on secure (https) pages, and '
+            'this one is http. Open the secure link, or enter your ZIP.';
       case LocationFailure.serviceDisabled:
-        return 'Location services are turned off. Turn them on, or enter your ZIP.';
+        return apple && kIsWeb
+            ? 'Location is off for Safari. On iPhone: Settings › Privacy & Security › '
+                'Location Services › Safari Websites › While Using the App. Or enter your ZIP.'
+            : 'Location services are turned off. Turn them on, or enter your ZIP.';
       case LocationFailure.denied:
-        return 'Location permission was declined. You can enter your ZIP instead.';
+        return 'Location permission was declined. Tap Locate again to allow it, or enter your ZIP.';
       case LocationFailure.deniedForever:
-        return 'Location access is blocked. Allow it in your browser or device settings, or enter your ZIP.';
+        if (!kIsWeb) {
+          return 'Location is blocked for TapCook. Allow it in Settings › TapCook › Location, '
+              'or enter your ZIP.';
+        }
+        return apple
+            ? 'Location is blocked for this site. On iPhone: Settings › Privacy & Security › '
+                'Location Services › Safari Websites › While Using the App, then in Safari tap '
+                'ᴀA › Website Settings › Location › Allow and reload. Or enter your ZIP.'
+            : 'Location is blocked for this site. Click the icon left of the address bar, '
+                'set Location to Allow and reload. Or enter your ZIP.';
       case LocationFailure.timeout:
         return 'Couldn’t get a location fix in time. Try again or enter your ZIP.';
       case LocationFailure.outsideUs:
@@ -58,10 +80,22 @@ abstract class GeoProvider {
 /// Geolocation API). No third-party service or key involved.
 class DeviceGeoProvider implements GeoProvider {
   final Duration timeout;
-  const DeviceGeoProvider({this.timeout = const Duration(seconds: 15)});
+  final bool Function() _isSecureContext;
+
+  const DeviceGeoProvider({
+    this.timeout = const Duration(seconds: 15),
+    bool Function()? isSecureContext,
+  }) : _isSecureContext = isSecureContext ?? _pageIsSecure;
+
+  static bool _pageIsSecure() => web_env.isSecureContext;
 
   @override
   Future<GeoFix> currentFix() async {
+    // On http pages browsers report "denied" without ever asking, which
+    // would otherwise be misreported as a settings problem.
+    if (!_isSecureContext()) {
+      throw const LocationException(LocationFailure.insecurePage);
+    }
     if (!await Geolocator.isLocationServiceEnabled()) {
       throw const LocationException(LocationFailure.serviceDisabled);
     }

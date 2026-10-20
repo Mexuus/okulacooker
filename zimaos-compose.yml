@@ -15,6 +15,11 @@ services:
       - target: 8080
         published: "8080"
         protocol: tcp
+    environment:
+      # Optional: the https address of this app (Tailscale serve/funnel URL or a
+      # reverse proxy with a certificate). When someone opens TapCook over plain
+      # http, where browsers block GPS, the app offers to switch to it.
+      TAPCOOK_SECURE_URL: ""
     x-casaos:
       ports:
         - container: "8080"

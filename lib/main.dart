@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'data/recipe_db.dart';
+import 'services/app_config.dart';
 import 'services/persistence.dart';
 import 'services/price_book.dart';
 import 'state/app_state.dart';
@@ -12,7 +13,7 @@ import 'screens/onboarding_screen.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final persistence = await Persistence.create();
-  await Future.wait([RecipeDb.load(), PriceBook.load()]);
+  await Future.wait([RecipeDb.load(), PriceBook.load(), AppConfig.load()]);
   runApp(
     ChangeNotifierProvider(
       create: (_) => AppState(persistence)..init(),

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
@@ -14,6 +15,7 @@ import 'package:tapcook/data/stores.dart';
 import 'package:tapcook/data/zip_states.dart';
 import 'package:tapcook/models/settings.dart';
 import 'package:tapcook/models/store_location.dart';
+import 'package:tapcook/services/app_config.dart';
 import 'package:tapcook/services/diet.dart';
 import 'package:tapcook/services/location_service.dart';
 import 'package:tapcook/services/persistence.dart';
@@ -131,6 +133,33 @@ void main() {
       expect((await s.resolveZip('10001'))!.state, 'NY');
       expect(await s.resolveZip('00000'), isNull);
       expect(await s.resolveZip('12'), isNull);
+    });
+
+    test('http pages fail as insecure before asking the browser', () async {
+      final geo = DeviceGeoProvider(isSecureContext: () => false);
+      await expectLater(
+        geo.currentFix(),
+        throwsA(isA<LocationException>()
+            .having((e) => e.reason, 'reason', LocationFailure.insecurePage)
+            .having((e) => e.message, 'message', contains('https'))),
+      );
+    });
+
+    test('blocked-permission advice is platform specific', () {
+      const e = LocationException(LocationFailure.deniedForever);
+      debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
+      expect(e.message, contains('Settings › TapCook'));
+      debugDefaultTargetPlatformOverride = null;
+    });
+  });
+
+  group('AppConfig', () {
+    test('accepts only https secure URLs', () {
+      expect(AppConfig.fromJson({'secureUrl': 'https://a.ts.net/'}).secureUrl,
+          'https://a.ts.net/');
+      expect(AppConfig.fromJson({'secureUrl': 'http://a.ts.net/'}).secureUrl, isNull);
+      expect(AppConfig.fromJson({'secureUrl': 'javascript:alert(1)'}).secureUrl, isNull);
+      expect(AppConfig.fromJson({}).secureUrl, isNull);
     });
   });
 
