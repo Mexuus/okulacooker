@@ -59,7 +59,7 @@ Future<void> showPriceBreakdown(BuildContext context, PriceQuote q, {GroceryLine
             Text('at ${q.store.name}', style: theme.textTheme.bodyMedium),
             const Divider(height: 24),
             row('National price', '${formatMoney(pack.price)} / $packName',
-                hint: 'TapCook reference price'),
+                hint: 'OkulaCooker reference price'),
             row(
               '${q.region.name} region',
               _pct(q.regionRatio),
@@ -71,7 +71,7 @@ Future<void> showPriceBreakdown(BuildContext context, PriceQuote q, {GroceryLine
               row('${q.metro!.name} metro', _pct(q.metroFactor),
                   hint: 'USDA ERS metro-area food prices'),
             row('${q.store.name} pricing', _pct(q.chainFactor),
-                hint: 'TapCook estimate of the chain’s price level'),
+                hint: 'OkulaCooker estimate of the chain’s price level'),
             const Divider(height: 24),
             row('Local price', '${formatMoney(q.localPrice(pack))} / $packName', bold: true),
             if (line != null) ...[

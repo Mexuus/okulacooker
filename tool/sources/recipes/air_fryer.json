@@ -1,495 +1,1267 @@
 [
-  {
-    "key": "af-garlic-parmesan-wings-fries",
-    "title": "Air Fryer Garlic Parmesan Chicken Wings with Fries",
-    "cuisine": "American",
-    "anchor": "chicken_wings",
-    "serves": 4,
-    "minutes": 95,
-    "difficulty": "Medium",
-    "equipment": "air_fryer",
-    "format": "air",
-    "cleanup": 3,
-    "ingredients": [
-      ["chicken_wings", 2, "lb"],
-      ["baking_powder", 2, "tsp"],
-      ["salt_kosher", 2, "tsp"],
-      ["pepper_black", 1, "tsp"],
-      ["garlic_powder", 1, "tsp"],
-      ["potato_russet", 1.5, "lb"],
-      ["oil_neutral", 1.5, "tbsp"],
-      ["butter_unsalted", 4, "tbsp"],
-      ["garlic_head", 4, "clove"],
-      ["parmesan", 0.5, "cup"],
-      ["parsley_fresh", 2, "tbsp"]
-    ],
-    "steps": [
-      {"phase": "Prep", "minutes": 15, "actions": [
-        {"verb": "Cut", "body": "{amt:potato_russet} of russet potatoes into ¼-inch sticks and soak them in a bowl of cold water for 10 minutes to wash off the surface starch.", "duration": "10 min"},
-        {"verb": "Pat", "body": "{amt:chicken_wings} of chicken wings completely dry with paper towels — dry skin is what turns crackly."},
-        {"verb": "Toss", "body": "the wings with {amt:baking_powder} of aluminum-free baking powder, {amt:salt_kosher:0.5} of salt, {amt:pepper_black:0.5} of pepper and {amt:garlic_powder} of garlic powder until every piece is lightly coated."},
-        {"verb": "Drain", "body": "the potatoes, dry them well on a clean kitchen towel and toss with {amt:oil_neutral:0.67} of oil and {amt:salt_kosher:0.25} of salt."}
-      ]},
-      {"phase": "Fries", "minutes": 33, "actions": [
-        {"verb": "Preheat", "body": "the air fryer to 380°F.", "duration": "3 min"},
-        {"verb": "Air fry", "body": "half the fries in a loose, even layer for 15 minutes, shaking the basket every 5 minutes, until golden and crisp at the edges. Tip them into a bowl and cook the second half the same way.", "duration": "15 min"}
-      ]},
-      {"phase": "Wings", "minutes": 42, "actions": [
-        {"verb": "Raise", "body": "the heat to 400°F. Brush the basket with the remaining {amt:oil_neutral:0.33} of oil and lay in half the wings in a single layer with a little space around each one."},
-        {"verb": "Air fry", "body": "for 20 minutes, flipping the wings after 10 minutes, until the skin is deep golden and the thickest piece reads at least 175°F. Move them to a large bowl and cook the second batch.", "duration": "20 min"},
-        {"verb": "Melt", "body": "{amt:butter_unsalted} of butter in a small saucepan over low heat with {amt:garlic_head} of finely minced garlic for 2 minutes, just until fragrant — don't let the garlic brown.", "duration": "2 min"}
-      ]},
-      {"phase": "Finish", "minutes": 6, "actions": [
-        {"verb": "Re-crisp", "body": "all the fries together in the basket at 400°F for 3 minutes, then season with the last {amt:salt_kosher:0.25} of salt.", "duration": "3 min"},
-        {"verb": "Toss", "body": "the hot wings with the garlic butter, then with {amt:parmesan} of finely grated parmesan, {amt:parsley_fresh} of chopped parsley and the remaining {amt:pepper_black:0.5} of pepper."},
-        {"verb": "Serve", "body": "the wings straight away with the fries."}
-      ]}
+ {
+  "key": "af-garlic-parmesan-wings-fries",
+  "title": "Air Fryer Garlic Parmesan Chicken Wings with Fries",
+  "cuisine": "American",
+  "anchor": "chicken_wings",
+  "serves": 4,
+  "minutes": 95,
+  "difficulty": "Medium",
+  "equipment": "air_fryer",
+  "format": "air",
+  "cleanup": 3,
+  "ingredients": [
+   [
+    "chicken_wings",
+    2,
+    "lb"
+   ],
+   [
+    "baking_powder",
+    2,
+    "tsp"
+   ],
+   [
+    "salt_kosher",
+    2,
+    "tsp"
+   ],
+   [
+    "pepper_black",
+    1,
+    "tsp"
+   ],
+   [
+    "garlic_powder",
+    1,
+    "tsp"
+   ],
+   [
+    "potato_russet",
+    1.5,
+    "lb"
+   ],
+   [
+    "oil_neutral",
+    1.5,
+    "tbsp"
+   ],
+   [
+    "butter_unsalted",
+    4,
+    "tbsp"
+   ],
+   [
+    "garlic_head",
+    4,
+    "clove"
+   ],
+   [
+    "parmesan",
+    0.5,
+    "cup"
+   ],
+   [
+    "parsley_fresh",
+    2,
+    "tbsp"
+   ]
+  ],
+  "steps": [
+   {
+    "phase": "Prep",
+    "minutes": 15,
+    "actions": [
+     {
+      "verb": "Cut",
+      "body": "{amt:potato_russet} of russet potatoes into ¼-inch sticks and soak them in a bowl of cold water for 10 minutes to wash off the surface starch.",
+      "duration": "10 min"
+     },
+     {
+      "verb": "Pat",
+      "body": "{amt:chicken_wings} of chicken wings completely dry with paper towels — dry skin is what turns crackly."
+     },
+     {
+      "verb": "Toss",
+      "body": "the wings with {amt:baking_powder} of aluminum-free baking powder, {amt:salt_kosher:0.5} of salt, {amt:pepper_black:0.5} of pepper and {amt:garlic_powder} of garlic powder until every piece is lightly coated."
+     },
+     {
+      "verb": "Drain",
+      "body": "the potatoes, dry them well on a clean kitchen towel and toss with {amt:oil_neutral:0.67} of oil and {amt:salt_kosher:0.25} of salt."
+     }
     ]
-  },
-  {
-    "key": "af-fish-and-chips",
-    "title": "Air Fryer Fish and Chips",
-    "cuisine": "British",
-    "anchor": "cod_fillet",
-    "serves": 4,
-    "minutes": 75,
-    "difficulty": "Medium",
-    "equipment": "air_fryer",
-    "format": "air",
-    "cleanup": 4,
-    "ingredients": [
-      ["cod_fillet", 1.5, "lb"],
-      ["potato_russet", 1.75, "lb"],
-      ["oil_neutral", 2, "tbsp"],
-      ["salt_kosher", 2, "tsp"],
-      ["pepper_black", 0.5, "tsp"],
-      ["flour_ap", 0.5, "cup"],
-      ["paprika_sweet", 1, "tsp"],
-      ["garlic_powder", 1, "tsp"],
-      ["egg_large", 2, "count"],
-      ["breadcrumb_panko", 1.5, "cup"],
-      ["lemon", 1, "count"],
-      ["mayo", 0.33, "cup"],
-      ["pickle_dill", 2, "tbsp"],
-      ["peas_frozen", 2, "cup"],
-      ["butter_unsalted", 1, "tbsp"]
-    ],
-    "steps": [
-      {"phase": "Prep", "minutes": 15, "actions": [
-        {"verb": "Cut", "body": "{amt:potato_russet} of russet potatoes into ½-inch-thick chips and soak them in cold water for 10 minutes.", "duration": "10 min"},
-        {"verb": "Pat", "body": "{amt:cod_fillet} of cod dry, cut it into 4 even portions and season with {amt:salt_kosher:0.25} of salt and {amt:pepper_black} of pepper."},
-        {"verb": "Set up", "body": "three shallow dishes: {amt:flour_ap} of flour mixed with {amt:paprika_sweet} of paprika, {amt:garlic_powder} of garlic powder and {amt:salt_kosher:0.25} of salt; {amt:egg_large|egg|eggs} beaten with a splash of water; and {amt:breadcrumb_panko} of panko rubbed with {amt:oil_neutral:0.25} of oil so it browns evenly."},
-        {"verb": "Drain", "body": "the potatoes, dry them thoroughly and toss with {amt:oil_neutral:0.5} of oil and {amt:salt_kosher:0.25} of salt."}
-      ]},
-      {"phase": "Chips", "minutes": 39, "actions": [
-        {"verb": "Preheat", "body": "the air fryer to 380°F.", "duration": "3 min"},
-        {"verb": "Air fry", "body": "half the chips in a loose layer for 18 minutes, shaking the basket every 6 minutes, until golden and tender inside. Tip into a bowl and cook the second batch.", "duration": "18 min"},
-        {"verb": "Bread", "body": "the fish while the second batch cooks: coat each piece in the seasoned flour, dip it in egg and let the excess drip off, then press firmly into the panko on all sides."},
-        {"verb": "Mix", "body": "the tartar sauce: stir {amt:mayo} of mayonnaise with {amt:pickle_dill} of finely chopped dill pickles and the juice of {amt:lemon:0.5|lemon|lemons}."}
-      ]},
-      {"phase": "Fish", "minutes": 14, "actions": [
-        {"verb": "Raise", "body": "the heat to 400°F. Lay the fish in the lightly oiled basket in a single layer — cook in two batches if the pieces would touch — and mist the tops with the remaining {amt:oil_neutral:0.25} of oil."},
-        {"verb": "Air fry", "body": "for 10–12 minutes, carefully turning the pieces once halfway, until the crust is golden and the fish flakes easily and reads 145°F.", "duration": "10 min"},
-        {"verb": "Simmer", "body": "{amt:peas_frozen} of frozen peas in salted water for 4 minutes meanwhile, drain and roughly mash with {amt:butter_unsalted} of butter and the last {amt:salt_kosher:0.25} of salt.", "duration": "4 min"}
-      ]},
-      {"phase": "Finish", "minutes": 5, "actions": [
-        {"verb": "Re-crisp", "body": "all the chips together in the basket at 400°F for 3 minutes.", "duration": "3 min"},
-        {"verb": "Serve", "body": "the fish with the chips, mushy peas, tartar sauce and wedges cut from the remaining {amt:lemon:0.5|lemon|lemons}."}
-      ]}
+   },
+   {
+    "phase": "Fries",
+    "minutes": 33,
+    "actions": [
+     {
+      "verb": "Preheat",
+      "body": "the air fryer to 380°F.",
+      "duration": "3 min"
+     },
+     {
+      "verb": "Air fry",
+      "body": "half the fries in a loose, even layer for 15 minutes, shaking the basket every 5 minutes, until golden and crisp at the edges. Tip them into a bowl and cook the second half the same way.",
+      "duration": "15 min"
+     }
     ]
-  },
-  {
-    "key": "af-fried-chicken-drumsticks-corn",
-    "title": "Air Fryer \"Fried\" Chicken Drumsticks with Buttered Corn",
-    "cuisine": "American",
-    "anchor": "chicken_drumstick",
-    "serves": 4,
-    "minutes": 85,
-    "difficulty": "Medium",
-    "equipment": "air_fryer",
-    "format": "air",
-    "cleanup": 3,
-    "ingredients": [
-      ["chicken_drumstick", 2, "lb"],
-      ["milk_whole", 1, "cup"],
-      ["vinegar_apple_cider", 1, "tbsp"],
-      ["hot_sauce", 1, "tbsp"],
-      ["salt_kosher", 2.5, "tsp"],
-      ["flour_ap", 1, "cup"],
-      ["cornstarch", 2, "tbsp"],
-      ["baking_powder", 1, "tsp"],
-      ["paprika_sweet", 2, "tsp"],
-      ["garlic_powder", 1.5, "tsp"],
-      ["onion_powder", 1, "tsp"],
-      ["pepper_black", 1, "tsp"],
-      ["cayenne", 0.25, "tsp"],
-      ["oil_neutral", 2, "tbsp"],
-      ["corn_frozen", 3, "cup"],
-      ["butter_unsalted", 2, "tbsp"]
-    ],
-    "steps": [
-      {"phase": "Marinate", "minutes": 15, "actions": [
-        {"verb": "Stir", "body": "{amt:vinegar_apple_cider} of apple cider vinegar into {amt:milk_whole} of milk and let it stand for 5 minutes until slightly thickened — a quick homemade buttermilk.", "duration": "5 min"},
-        {"verb": "Whisk in", "body": "{amt:hot_sauce} of hot sauce and {amt:salt_kosher:0.4} of salt, add {amt:chicken_drumstick} of drumsticks (about 8) and turn to coat. Marinate for at least 10 minutes, or up to overnight in the fridge.", "duration": "10 min"}
-      ]},
-      {"phase": "Dredge", "minutes": 10, "actions": [
-        {"verb": "Whisk", "body": "{amt:flour_ap} of flour, {amt:cornstarch} of cornstarch, {amt:baking_powder} of baking powder, {amt:paprika_sweet} of paprika, {amt:garlic_powder} of garlic powder, {amt:onion_powder} of onion powder, {amt:pepper_black:0.5} of pepper, {amt:cayenne} of cayenne and {amt:salt_kosher:0.4} of salt in a wide bowl. Drizzle in 2 tablespoons of the buttermilk and rub it in with your fingers to make little craggy bits."},
-        {"verb": "Dredge", "body": "each drumstick: let the excess buttermilk drip off, then press it firmly into the flour until thickly coated. Set on a rack for 5 minutes so the coating hydrates and sticks.", "duration": "5 min"}
-      ]},
-      {"phase": "Air fry", "minutes": 55, "actions": [
-        {"verb": "Preheat", "body": "the air fryer to 380°F.", "duration": "3 min"},
-        {"verb": "Arrange", "body": "half the drumsticks in a lightly oiled basket in a single layer with space between them, then mist them all over with oil from {amt:oil_neutral:0.5} until no dry flour shows."},
-        {"verb": "Air fry", "body": "for 12 minutes, flip, mist any pale floury patches with the rest of that oil and cook 12–14 minutes more, until deep golden and 175°F next to the bone. Set aside on a rack and cook the second batch the same way with the remaining {amt:oil_neutral:0.5} of oil.", "duration": "25 min"},
-        {"verb": "Simmer", "body": "{amt:corn_frozen} of frozen corn with a splash of water in a saucepan for 5 minutes while the second batch cooks, then drain and stir in {amt:butter_unsalted} of butter, {amt:salt_kosher:0.2} of salt and the remaining {amt:pepper_black:0.5} of pepper.", "duration": "5 min"}
-      ]},
-      {"phase": "Finish", "minutes": 5, "actions": [
-        {"verb": "Re-crisp", "body": "the first batch alongside the second for the last 3 minutes so all the chicken is hot and crunchy.", "duration": "3 min"},
-        {"verb": "Serve", "body": "the drumsticks with the buttered corn."}
-      ]}
+   },
+   {
+    "phase": "Wings",
+    "minutes": 42,
+    "actions": [
+     {
+      "verb": "Raise",
+      "body": "the heat to 400°F. Brush the basket with the remaining {amt:oil_neutral:0.33} of oil and lay in half the wings in a single layer with a little space around each one."
+     },
+     {
+      "verb": "Air fry",
+      "body": "for 20 minutes, flipping the wings after 10 minutes, until the skin is deep golden and the thickest piece reads at least 175°F. Move them to a large bowl and cook the second batch.",
+      "duration": "20 min"
+     },
+     {
+      "verb": "Melt",
+      "body": "{amt:butter_unsalted} of butter in a small saucepan over low heat with {amt:garlic_head} of finely minced garlic for 2 minutes, just until fragrant — don't let the garlic brown.",
+      "duration": "2 min"
+     }
     ]
-  },
-  {
-    "key": "af-falafel-pitas-tahini",
-    "title": "Air Fryer Falafel Pitas with Tahini Sauce",
-    "cuisine": "Middle Eastern",
-    "anchor": "bean_chickpea_canned",
-    "serves": 4,
-    "minutes": 70,
-    "difficulty": "Medium",
-    "equipment": "air_fryer",
-    "format": "air",
-    "cleanup": 3,
-    "ingredients": [
-      ["bean_chickpea_canned", 2, "count"],
-      ["onion_yellow", 0.5, "count"],
-      ["garlic_head", 4, "clove"],
-      ["parsley_fresh", 1, "cup"],
-      ["cilantro", 0.5, "cup"],
-      ["cumin_ground", 2, "tsp"],
-      ["coriander_ground", 1, "tsp"],
-      ["salt_kosher", 1.5, "tsp"],
-      ["pepper_black", 0.5, "tsp"],
-      ["cayenne", 0.25, "tsp"],
-      ["baking_powder", 1, "tsp"],
-      ["flour_ap", 0.25, "cup"],
-      ["olive_oil_evoo", 2, "tbsp"],
-      ["tahini", 0.33, "cup"],
-      ["lemon", 1, "count"],
-      ["pita_bread", 4, "count"],
-      ["lettuce_romaine", 2, "cup"],
-      ["tomato_fresh", 2, "count"],
-      ["cucumber", 1, "count"]
-    ],
-    "steps": [
-      {"phase": "Prep", "minutes": 15, "actions": [
-        {"verb": "Drain", "body": "and rinse {amt:bean_chickpea_canned} of chickpeas, then spread them on a towel and pat very dry — wet chickpeas make mushy falafel."},
-        {"verb": "Pulse", "body": "the chickpeas in a food processor with {amt:onion_yellow|onion|onions} (roughly chopped), {amt:garlic_head:0.75} of garlic, {amt:parsley_fresh} of parsley, {amt:cilantro} of cilantro, {amt:cumin_ground} of cumin, {amt:coriander_ground} of coriander, {amt:salt_kosher:0.67} of salt, {amt:pepper_black} of pepper and {amt:cayenne} of cayenne. Scrape down the sides as you go and stop when the mixture is finely chopped and holds together when squeezed, but isn't a smooth paste."},
-        {"verb": "Pulse in", "body": "{amt:baking_powder} of baking powder and {amt:flour_ap} of flour with a few short pulses."}
-      ]},
-      {"phase": "Shape", "minutes": 20, "actions": [
-        {"verb": "Chill", "body": "the mixture for 15 minutes so it firms up and is easier to shape.", "duration": "15 min"},
-        {"verb": "Whisk", "body": "the tahini sauce meanwhile: {amt:tahini} of tahini, the juice of {amt:lemon|lemon|lemons}, the remaining garlic grated and {amt:salt_kosher:0.33} of salt. It will seize up at first — keep whisking in cold water a tablespoon at a time (about 4) until smooth and pourable."},
-        {"verb": "Prep", "body": "the fillings: shred {amt:lettuce_romaine} of romaine and dice {amt:tomato_fresh|tomato|tomatoes} and {amt:cucumber|cucumber|cucumbers}."},
-        {"verb": "Shape", "body": "the falafel mixture into about 20 balls of roughly 2 tablespoons each and flatten them into ½-inch-thick patties."}
-      ]},
-      {"phase": "Air fry", "minutes": 30, "actions": [
-        {"verb": "Preheat", "body": "the air fryer to 375°F.", "duration": "3 min"},
-        {"verb": "Air fry", "body": "half the patties in a single layer in the basket, brushing the basket and the tops with {amt:olive_oil_evoo:0.5} of olive oil, for 12 minutes. Flip them at 6 minutes and brush the second side, cooking until deep golden and crisp. Repeat with the rest of the patties and oil.", "duration": "12 min"},
-        {"verb": "Warm", "body": "{amt:pita_bread|pita|pitas} in the air fryer for 1 minute so they're soft and pliable."}
-      ]},
-      {"phase": "Serve", "minutes": 5, "actions": [
-        {"verb": "Fill", "body": "each pita with lettuce, tomato, cucumber and about 5 falafel, then drizzle generously with tahini sauce."}
-      ]}
+   },
+   {
+    "phase": "Finish",
+    "minutes": 6,
+    "actions": [
+     {
+      "verb": "Re-crisp",
+      "body": "all the fries together in the basket at 400°F for 3 minutes, then season with the last {amt:salt_kosher:0.25} of salt.",
+      "duration": "3 min"
+     },
+     {
+      "verb": "Toss",
+      "body": "the hot wings with the garlic butter, then with {amt:parmesan} of finely grated parmesan, {amt:parsley_fresh} of chopped parsley and the remaining {amt:pepper_black:0.5} of pepper."
+     },
+     {
+      "verb": "Serve",
+      "body": "the wings straight away with the fries."
+     }
     ]
-  },
-  {
-    "key": "af-chicken-taquitos",
-    "title": "Air Fryer Chicken Taquitos with Salsa and Sour Cream",
-    "cuisine": "Tex-Mex",
-    "anchor": "chicken_breast",
-    "serves": 4,
-    "minutes": 65,
-    "difficulty": "Medium",
-    "equipment": "air_fryer",
-    "format": "air",
-    "cleanup": 3,
-    "ingredients": [
-      ["chicken_breast", 1.25, "lb"],
-      ["oil_neutral", 1.5, "tbsp"],
-      ["taco_seasoning", 2, "tbsp"],
-      ["salt_kosher", 0.5, "tsp"],
-      ["cream_cheese", 4, "oz"],
-      ["cheddar", 1, "cup"],
-      ["green_chile_canned", 1, "count"],
-      ["lime", 1, "count"],
-      ["cilantro", 0.25, "cup"],
-      ["tortilla_corn", 16, "count"],
-      ["salsa", 1, "cup"],
-      ["sour_cream", 0.5, "cup"]
-    ],
-    "steps": [
-      {"phase": "Cook chicken", "minutes": 25, "actions": [
-        {"verb": "Preheat", "body": "the air fryer to 380°F and set {amt:cream_cheese} of cream cheese out to soften.", "duration": "3 min"},
-        {"verb": "Rub", "body": "{amt:chicken_breast} of chicken breasts with {amt:oil_neutral:0.33} of oil, {amt:taco_seasoning:0.5} of taco seasoning and {amt:salt_kosher} of salt."},
-        {"verb": "Air fry", "body": "the chicken in a single layer for 16–18 minutes, flipping halfway, until it reads 165°F in the thickest part.", "duration": "16 min"},
-        {"verb": "Shred", "body": "the chicken with two forks after a 5-minute rest.", "duration": "5 min"}
-      ]},
-      {"phase": "Fill and roll", "minutes": 15, "actions": [
-        {"verb": "Mix", "body": "the shredded chicken with the softened cream cheese, {amt:cheddar} of shredded cheddar, {amt:green_chile_canned} of drained green chiles, the remaining taco seasoning, the juice of {amt:lime:0.5|lime|limes} and half of {amt:cilantro} of chopped cilantro."},
-        {"verb": "Warm", "body": "{amt:tortilla_corn|corn tortilla|corn tortillas} in a stack wrapped in a damp paper towel in the microwave for about 1 minute, until soft and bendy — cold corn tortillas crack when rolled."},
-        {"verb": "Roll", "body": "about 3 tablespoons of filling tightly inside each tortilla, starting from the edge nearest you, and set them seam-side down. Keep the stack covered while you work."}
-      ]},
-      {"phase": "Air fry", "minutes": 20, "actions": [
-        {"verb": "Raise", "body": "the heat to 400°F. Arrange half the taquitos seam-side down in a single layer without touching and brush with {amt:oil_neutral:0.33} of oil."},
-        {"verb": "Air fry", "body": "for 8 minutes, turning them over after 4 minutes, until golden and crisp at the ends. Repeat with the second batch and the remaining {amt:oil_neutral:0.33} of oil.", "duration": "8 min"}
-      ]},
-      {"phase": "Serve", "minutes": 5, "actions": [
-        {"verb": "Serve", "body": "the taquitos hot with {amt:salsa} of salsa and {amt:sour_cream} of sour cream for dipping, the rest of the cilantro scattered over and wedges cut from the remaining {amt:lime:0.5|lime|limes}."}
-      ]}
+   }
+  ]
+ },
+ {
+  "key": "af-fried-chicken-drumsticks-corn",
+  "title": "Air Fryer \"Fried\" Chicken Drumsticks with Buttered Corn",
+  "cuisine": "American",
+  "anchor": "chicken_drumstick",
+  "serves": 4,
+  "minutes": 85,
+  "difficulty": "Medium",
+  "equipment": "air_fryer",
+  "format": "air",
+  "cleanup": 3,
+  "ingredients": [
+   [
+    "chicken_drumstick",
+    2,
+    "lb"
+   ],
+   [
+    "milk_whole",
+    1,
+    "cup"
+   ],
+   [
+    "vinegar_apple_cider",
+    1,
+    "tbsp"
+   ],
+   [
+    "hot_sauce",
+    1,
+    "tbsp"
+   ],
+   [
+    "salt_kosher",
+    2.5,
+    "tsp"
+   ],
+   [
+    "flour_ap",
+    1,
+    "cup"
+   ],
+   [
+    "cornstarch",
+    2,
+    "tbsp"
+   ],
+   [
+    "baking_powder",
+    1,
+    "tsp"
+   ],
+   [
+    "paprika_sweet",
+    2,
+    "tsp"
+   ],
+   [
+    "garlic_powder",
+    1.5,
+    "tsp"
+   ],
+   [
+    "onion_powder",
+    1,
+    "tsp"
+   ],
+   [
+    "pepper_black",
+    1,
+    "tsp"
+   ],
+   [
+    "cayenne",
+    0.25,
+    "tsp"
+   ],
+   [
+    "oil_neutral",
+    2,
+    "tbsp"
+   ],
+   [
+    "corn_frozen",
+    3,
+    "cup"
+   ],
+   [
+    "butter_unsalted",
+    2,
+    "tbsp"
+   ]
+  ],
+  "steps": [
+   {
+    "phase": "Marinate",
+    "minutes": 15,
+    "actions": [
+     {
+      "verb": "Stir",
+      "body": "{amt:vinegar_apple_cider} of apple cider vinegar into {amt:milk_whole} of milk and let it stand for 5 minutes until slightly thickened — a quick homemade buttermilk.",
+      "duration": "5 min"
+     },
+     {
+      "verb": "Whisk in",
+      "body": "{amt:hot_sauce} of hot sauce and {amt:salt_kosher:0.4} of salt, add {amt:chicken_drumstick} of drumsticks (about 8) and turn to coat. Marinate for at least 10 minutes, or up to overnight in the fridge.",
+      "duration": "10 min"
+     }
     ]
-  },
-  {
-    "key": "af-panko-shrimp-sweet-chili",
-    "title": "Air Fryer Crispy Panko Shrimp with Sweet Chili Sauce and Rice",
-    "cuisine": "Asian",
-    "anchor": "shrimp_frozen",
-    "serves": 4,
+   },
+   {
+    "phase": "Dredge",
+    "minutes": 10,
+    "actions": [
+     {
+      "verb": "Whisk",
+      "body": "{amt:flour_ap} of flour, {amt:cornstarch} of cornstarch, {amt:baking_powder} of baking powder, {amt:paprika_sweet} of paprika, {amt:garlic_powder} of garlic powder, {amt:onion_powder} of onion powder, {amt:pepper_black:0.5} of pepper, {amt:cayenne} of cayenne and {amt:salt_kosher:0.4} of salt in a wide bowl. Drizzle in 2 tablespoons of the buttermilk and rub it in with your fingers to make little craggy bits."
+     },
+     {
+      "verb": "Dredge",
+      "body": "each drumstick: let the excess buttermilk drip off, then press it firmly into the flour until thickly coated. Set on a rack for 5 minutes so the coating hydrates and sticks.",
+      "duration": "5 min"
+     }
+    ]
+   },
+   {
+    "phase": "Air fry",
     "minutes": 55,
-    "difficulty": "Medium",
-    "equipment": "air_fryer",
-    "format": "air",
-    "cleanup": 4,
-    "ingredients": [
-      ["shrimp_frozen", 1.5, "lb"],
-      ["rice_long_grain", 1.5, "cup"],
-      ["salt_kosher", 1.25, "tsp"],
-      ["pepper_black", 0.5, "tsp"],
-      ["flour_ap", 0.33, "cup"],
-      ["garlic_powder", 1, "tsp"],
-      ["egg_large", 2, "count"],
-      ["breadcrumb_panko", 1.5, "cup"],
-      ["oil_neutral", 1, "tbsp"],
-      ["honey", 0.33, "cup"],
-      ["vinegar_rice", 0.25, "cup"],
-      ["chili_flake", 1.5, "tsp"],
-      ["garlic_head", 2, "clove"],
-      ["cornstarch", 2, "tsp"],
-      ["scallion", 2, "count"]
-    ],
-    "steps": [
-      {"phase": "Prep", "minutes": 15, "actions": [
-        {"verb": "Cook", "body": "the rice: rinse {amt:rice_long_grain} of long-grain rice, bring it to a boil with 2¼ cups of water and {amt:salt_kosher:0.2} of salt, then cover and simmer on low for 15 minutes. Rest off the heat, covered, until serving.", "duration": "15 min"},
-        {"verb": "Thaw", "body": "{amt:shrimp_frozen} of large frozen shrimp in a colander under cold running water if needed, peel them (leave the tails on) and devein. Pat very dry and season with {amt:salt_kosher:0.4} of salt and {amt:pepper_black} of pepper."}
-      ]},
-      {"phase": "Sauce", "minutes": 6, "actions": [
-        {"verb": "Simmer", "body": "{amt:honey} of honey, {amt:vinegar_rice} of rice vinegar, ¼ cup of water, {amt:chili_flake} of chili flakes and {amt:garlic_head} of minced garlic in a small saucepan for 2 minutes.", "duration": "2 min"},
-        {"verb": "Thicken", "body": "with {amt:cornstarch} of cornstarch stirred into 1 tablespoon of cold water: whisk it in and bubble for 1 minute until glossy and syrupy. It thickens more as it cools.", "duration": "1 min"}
-      ]},
-      {"phase": "Bread", "minutes": 10, "actions": [
-        {"verb": "Set up", "body": "three shallow bowls: {amt:flour_ap} of flour mixed with {amt:garlic_powder} of garlic powder and {amt:salt_kosher:0.4} of salt; {amt:egg_large|egg|eggs}, beaten; and {amt:breadcrumb_panko} of panko."},
-        {"verb": "Coat", "body": "each shrimp in flour, then egg, then press it into the panko so it's well covered, holding it by the tail."}
-      ]},
-      {"phase": "Air fry", "minutes": 20, "actions": [
-        {"verb": "Preheat", "body": "the air fryer to 400°F.", "duration": "3 min"},
-        {"verb": "Air fry", "body": "half the shrimp in a single layer in the lightly oiled basket, misted on top with half of {amt:oil_neutral} of oil, for 8 minutes, flipping after 4, until golden and opaque all the way through. Repeat with the second batch.", "duration": "8 min"}
-      ]},
-      {"phase": "Serve", "minutes": 4, "actions": [
-        {"verb": "Fluff", "body": "the rice and serve it with the shrimp, sweet chili sauce for drizzling or dipping and {amt:scallion|scallion|scallions}, thinly sliced."}
-      ]}
+    "actions": [
+     {
+      "verb": "Preheat",
+      "body": "the air fryer to 380°F.",
+      "duration": "3 min"
+     },
+     {
+      "verb": "Arrange",
+      "body": "half the drumsticks in a lightly oiled basket in a single layer with space between them, then mist them all over with oil from {amt:oil_neutral:0.5} until no dry flour shows."
+     },
+     {
+      "verb": "Air fry",
+      "body": "for 12 minutes, flip, mist any pale floury patches with the rest of that oil and cook 12–14 minutes more, until deep golden and 175°F next to the bone. Set aside on a rack and cook the second batch the same way with the remaining {amt:oil_neutral:0.5} of oil.",
+      "duration": "25 min"
+     },
+     {
+      "verb": "Simmer",
+      "body": "{amt:corn_frozen} of frozen corn with a splash of water in a saucepan for 5 minutes while the second batch cooks, then drain and stir in {amt:butter_unsalted} of butter, {amt:salt_kosher:0.2} of salt and the remaining {amt:pepper_black:0.5} of pepper.",
+      "duration": "5 min"
+     }
     ]
-  },
-  {
-    "key": "af-bang-bang-chicken-rice",
-    "title": "Air Fryer Bang Bang Chicken with Rice",
-    "cuisine": "American",
-    "anchor": "chicken_breast",
-    "serves": 4,
-    "minutes": 55,
-    "difficulty": "Medium",
-    "equipment": "air_fryer",
-    "format": "air",
-    "cleanup": 4,
-    "ingredients": [
-      ["chicken_breast", 1.5, "lb"],
-      ["rice_long_grain", 1.5, "cup"],
-      ["salt_kosher", 1.5, "tsp"],
-      ["pepper_black", 0.5, "tsp"],
-      ["garlic_powder", 1, "tsp"],
-      ["paprika_smoked", 1, "tsp"],
-      ["cornstarch", 0.33, "cup"],
-      ["egg_large", 2, "count"],
-      ["breadcrumb_panko", 1.25, "cup"],
-      ["oil_neutral", 1, "tbsp"],
-      ["mayo", 0.33, "cup"],
-      ["honey", 3, "tbsp"],
-      ["vinegar_rice", 1, "tbsp"],
-      ["chili_flake", 0.5, "tsp"],
-      ["garlic_head", 1, "clove"],
-      ["hot_sauce", 2, "tsp"],
-      ["cucumber", 1, "count"],
-      ["scallion", 3, "count"],
-      ["sesame_seed", 1, "tsp"]
-    ],
-    "steps": [
-      {"phase": "Prep", "minutes": 15, "actions": [
-        {"verb": "Cook", "body": "the rice: rinse {amt:rice_long_grain} of long-grain rice, bring it to a boil with         2¼ cups of water and {amt:salt_kosher:0.33} of salt, then cover and simmer on low for 15 minutes. Rest off the heat, covered, until serving.", "duration": "15 min"},
-        {"verb": "Cut", "body": "{amt:chicken_breast} of chicken breasts into 1-inch pieces and season with {amt:salt_kosher:0.5} of salt, {amt:pepper_black} of pepper, {amt:garlic_powder} of garlic powder and {amt:paprika_smoked} of smoked paprika."},
-        {"verb": "Whisk", "body": "the bang bang sauce: stir {amt:honey} of honey, {amt:vinegar_rice} of rice vinegar, {amt:chili_flake} of chili flakes and {amt:garlic_head} of finely grated garlic into a quick sweet chili mix, then whisk it into {amt:mayo} of mayonnaise with {amt:hot_sauce} of hot sauce and the last {amt:salt_kosher:0.17} of salt."}
-      ]},
-      {"phase": "Bread", "minutes": 10, "actions": [
-        {"verb": "Set up", "body": "three bowls: {amt:cornstarch} of cornstarch, {amt:egg_large|egg|eggs} beaten, and {amt:breadcrumb_panko} of panko."},
-        {"verb": "Coat", "body": "the chicken pieces in cornstarch, shake off the excess, dip in egg and roll in panko, pressing so the crumbs stick."}
-      ]},
-      {"phase": "Air fry", "minutes": 25, "actions": [
-        {"verb": "Preheat", "body": "the air fryer to 400°F.", "duration": "3 min"},
-        {"verb": "Air fry", "body": "half the chicken in a single layer in the lightly oiled basket, misted on top with half of {amt:oil_neutral} of oil, for 10 minutes, shaking or flipping the pieces at 5 minutes, until golden and 165°F inside. Repeat with the second batch.", "duration": "10 min"},
-        {"verb": "Slice", "body": "{amt:cucumber|cucumber|cucumbers} and {amt:scallion|scallion|scallions} while the chicken cooks."}
-      ]},
-      {"phase": "Finish", "minutes": 5, "actions": [
-        {"verb": "Toss", "body": "the hot chicken with about two-thirds of the bang bang sauce."},
-        {"verb": "Serve", "body": "over the rice with the cucumber alongside, the rest of the sauce drizzled over and the scallions and {amt:sesame_seed} of sesame seeds scattered on top."}
-      ]}
+   },
+   {
+    "phase": "Finish",
+    "minutes": 5,
+    "actions": [
+     {
+      "verb": "Re-crisp",
+      "body": "the first batch alongside the second for the last 3 minutes so all the chicken is hot and crunchy.",
+      "duration": "3 min"
+     },
+     {
+      "verb": "Serve",
+      "body": "the drumsticks with the buttered corn."
+     }
     ]
-  },
-  {
-    "key": "af-lemon-pepper-chicken-broccoli",
-    "title": "Air Fryer Lemon-Pepper Chicken with Broccoli and Rice",
-    "cuisine": "American",
-    "anchor": "chicken_breast",
-    "serves": 4,
-    "minutes": 40,
-    "difficulty": "Easy",
-    "equipment": "air_fryer",
-    "format": "air",
-    "cleanup": 3,
-    "ingredients": [
-      ["chicken_breast", 1.5, "lb"],
-      ["lemon", 2, "count"],
-      ["pepper_black", 2, "tsp"],
-      ["garlic_powder", 1.5, "tsp"],
-      ["onion_powder", 0.5, "tsp"],
-      ["salt_kosher", 2, "tsp"],
-      ["olive_oil_evoo", 2, "tbsp"],
-      ["broccoli", 1, "lb"],
-      ["rice_long_grain", 1.5, "cup"],
-      ["butter_unsalted", 2, "tbsp"],
-      ["parsley_fresh", 2, "tbsp"]
-    ],
-    "steps": [
-      {"phase": "Prep", "minutes": 10, "actions": [
-        {"verb": "Cook", "body": "the rice: rinse {amt:rice_long_grain} of long-grain rice, bring it to a boil with         2¼ cups of water and {amt:salt_kosher:0.25} of salt, then cover and simmer on low for 15 minutes. Rest off the heat, covered, until serving.", "duration": "15 min"},
-        {"verb": "Slice", "body": "{amt:chicken_breast} of chicken breasts in half horizontally to make 4 even cutlets about ¾ inch thick."},
-        {"verb": "Mix", "body": "the finely grated zest of {amt:lemon|lemon|lemons} with {amt:pepper_black} of coarsely ground pepper, {amt:garlic_powder:0.67} of garlic powder, {amt:onion_powder} of onion powder and {amt:salt_kosher:0.5} of salt."},
-        {"verb": "Rub", "body": "the chicken with {amt:olive_oil_evoo:0.5} of olive oil, then press the lemon-pepper mix onto both sides."}
-      ]},
-      {"phase": "Air fry chicken", "minutes": 15, "actions": [
-        {"verb": "Preheat", "body": "the air fryer to 380°F.", "duration": "3 min"},
-        {"verb": "Air fry", "body": "the cutlets in a single layer for 10–12 minutes, flipping halfway, until they read 165°F in the thickest part. Rest them on a plate, loosely covered with foil.", "duration": "11 min"}
-      ]},
-      {"phase": "Broccoli", "minutes": 10, "actions": [
-        {"verb": "Toss", "body": "{amt:broccoli} of broccoli florets with the remaining {amt:olive_oil_evoo:0.5} of olive oil, the rest of the garlic powder and {amt:salt_kosher:0.25} of salt."},
-        {"verb": "Air fry", "body": "at 400°F for 8 minutes, shaking the basket halfway, until tender with charred tips.", "duration": "8 min"}
-      ]},
-      {"phase": "Finish", "minutes": 5, "actions": [
-        {"verb": "Melt", "body": "{amt:butter_unsalted} of butter and stir in the juice of one of the zested lemons — this is the lemon-pepper butter."},
-        {"verb": "Serve", "body": "the chicken sliced over the rice, spooned with the lemon butter and sprinkled with {amt:parsley_fresh} of chopped parsley, with the broccoli and wedges of the second lemon alongside."}
-      ]}
+   }
+  ]
+ },
+ {
+  "key": "af-falafel-pitas-tahini",
+  "title": "Air Fryer Falafel Pitas with Tahini Sauce",
+  "cuisine": "Middle Eastern",
+  "anchor": "bean_chickpea_canned",
+  "serves": 4,
+  "minutes": 70,
+  "difficulty": "Medium",
+  "equipment": "air_fryer",
+  "format": "air",
+  "cleanup": 3,
+  "ingredients": [
+   [
+    "bean_chickpea_canned",
+    2,
+    "count"
+   ],
+   [
+    "onion_yellow",
+    0.5,
+    "count"
+   ],
+   [
+    "garlic_head",
+    4,
+    "clove"
+   ],
+   [
+    "parsley_fresh",
+    1,
+    "cup"
+   ],
+   [
+    "cilantro",
+    0.5,
+    "cup"
+   ],
+   [
+    "cumin_ground",
+    2,
+    "tsp"
+   ],
+   [
+    "coriander_ground",
+    1,
+    "tsp"
+   ],
+   [
+    "salt_kosher",
+    1.5,
+    "tsp"
+   ],
+   [
+    "pepper_black",
+    0.5,
+    "tsp"
+   ],
+   [
+    "cayenne",
+    0.25,
+    "tsp"
+   ],
+   [
+    "baking_powder",
+    1,
+    "tsp"
+   ],
+   [
+    "flour_ap",
+    0.25,
+    "cup"
+   ],
+   [
+    "olive_oil_evoo",
+    2,
+    "tbsp"
+   ],
+   [
+    "tahini",
+    0.33,
+    "cup"
+   ],
+   [
+    "lemon",
+    1,
+    "count"
+   ],
+   [
+    "pita_bread",
+    4,
+    "count"
+   ],
+   [
+    "lettuce_romaine",
+    2,
+    "cup"
+   ],
+   [
+    "tomato_fresh",
+    2,
+    "count"
+   ],
+   [
+    "cucumber",
+    1,
+    "count"
+   ]
+  ],
+  "steps": [
+   {
+    "phase": "Prep",
+    "minutes": 15,
+    "actions": [
+     {
+      "verb": "Drain",
+      "body": "and rinse {amt:bean_chickpea_canned} of chickpeas, then spread them on a towel and pat very dry — wet chickpeas make mushy falafel."
+     },
+     {
+      "verb": "Pulse",
+      "body": "the chickpeas in a food processor with {amt:onion_yellow|onion|onions} (roughly chopped), {amt:garlic_head:0.75} of garlic, {amt:parsley_fresh} of parsley, {amt:cilantro} of cilantro, {amt:cumin_ground} of cumin, {amt:coriander_ground} of coriander, {amt:salt_kosher:0.67} of salt, {amt:pepper_black} of pepper and {amt:cayenne} of cayenne. Scrape down the sides as you go and stop when the mixture is finely chopped and holds together when squeezed, but isn't a smooth paste."
+     },
+     {
+      "verb": "Pulse in",
+      "body": "{amt:baking_powder} of baking powder and {amt:flour_ap} of flour with a few short pulses."
+     }
     ]
-  },
-  {
-    "key": "af-cheeseburgers-potato-wedges",
-    "title": "Air Fryer Cheeseburgers with Potato Wedges",
-    "cuisine": "American",
-    "anchor": "ground_beef",
-    "serves": 4,
-    "minutes": 70,
-    "difficulty": "Easy",
-    "equipment": "air_fryer",
-    "format": "air",
-    "cleanup": 3,
-    "ingredients": [
-      ["potato_russet", 1.5, "lb"],
-      ["olive_oil_evoo", 1, "tbsp"],
-      ["paprika_smoked", 1, "tsp"],
-      ["garlic_powder", 1, "tsp"],
-      ["salt_kosher", 2, "tsp"],
-      ["ground_beef", 1.25, "lb"],
-      ["worcestershire", 1, "tsp"],
-      ["pepper_black", 0.75, "tsp"],
-      ["cheddar", 4, "oz"],
-      ["bun_burger", 4, "count"],
-      ["lettuce_romaine", 1, "cup"],
-      ["tomato_fresh", 1, "count"],
-      ["onion_red", 0.5, "count"],
-      ["pickle_dill", 0.25, "cup"],
-      ["ketchup", 0.25, "cup"]
-    ],
-    "steps": [
-      {"phase": "Prep", "minutes": 12, "actions": [
-        {"verb": "Cut", "body": "{amt:potato_russet} of russet potatoes lengthwise into 8 wedges each and toss with {amt:olive_oil_evoo} of olive oil, {amt:paprika_smoked} of smoked paprika,         {amt:garlic_powder} of garlic powder and {amt:salt_kosher:0.5} of salt."},
-        {"verb": "Shape", "body": "{amt:ground_beef} of ground beef (80/20) mixed gently with {amt:worcestershire} of Worcestershire into 4 patties about ¾ inch thick and a little wider than the buns. Press a shallow dimple into the center of each so they stay flat, then season both sides with {amt:salt_kosher:0.5} of salt and {amt:pepper_black} of pepper."},
-        {"verb": "Slice", "body": "{amt:tomato_fresh|tomato|tomatoes} and {amt:onion_red|red onion|red onions}, and tear {amt:lettuce_romaine} of romaine into bun-sized pieces."}
-      ]},
-      {"phase": "Wedges", "minutes": 39, "actions": [
-        {"verb": "Preheat", "body": "the air fryer to 400°F.", "duration": "3 min"},
-        {"verb": "Air fry", "body": "half the wedges in a single layer for 18 minutes, shaking the basket halfway, until golden and fork-tender. Set aside and cook the second batch.", "duration": "18 min"}
-      ]},
-      {"phase": "Burgers", "minutes": 14, "actions": [
-        {"verb": "Lower", "body": "the heat to 370°F and lay the patties in the basket without touching (two batches if they don't fit)."},
-        {"verb": "Air fry", "body": "for 10–12 minutes, flipping after 6, until they read 160°F in the center.", "duration": "10 min"},
-        {"verb": "Melt", "body": "{amt:cheddar} of sliced cheddar over the patties for the last minute, then lift them out to rest.", "duration": "1 min"},
-        {"verb": "Toast", "body": "{amt:bun_burger|bun|buns}, cut side up, for 1–2 minutes, then return the wedges to the basket for 2 minutes to reheat.", "duration": "2 min"}
-      ]},
-      {"phase": "Assemble", "minutes": 5, "actions": [
-        {"verb": "Build", "body": "the burgers with {amt:ketchup} of ketchup, lettuce, tomato, onion and {amt:pickle_dill} of sliced pickles, and serve with the wedges."}
-      ]}
+   },
+   {
+    "phase": "Shape",
+    "minutes": 20,
+    "actions": [
+     {
+      "verb": "Chill",
+      "body": "the mixture for 15 minutes so it firms up and is easier to shape.",
+      "duration": "15 min"
+     },
+     {
+      "verb": "Whisk",
+      "body": "the tahini sauce meanwhile: {amt:tahini} of tahini, the juice of {amt:lemon|lemon|lemons}, the remaining garlic grated and {amt:salt_kosher:0.33} of salt. It will seize up at first — keep whisking in cold water a tablespoon at a time (about 4) until smooth and pourable."
+     },
+     {
+      "verb": "Prep",
+      "body": "the fillings: shred {amt:lettuce_romaine} of romaine and dice {amt:tomato_fresh|tomato|tomatoes} and {amt:cucumber|cucumber|cucumbers}."
+     },
+     {
+      "verb": "Shape",
+      "body": "the falafel mixture into about 20 balls of roughly 2 tablespoons each and flatten them into ½-inch-thick patties."
+     }
     ]
-  },
-  {
-    "key": "af-sweet-potato-black-bean-quesadillas",
-    "title": "Air Fryer Sweet Potato and Black Bean Quesadillas",
-    "cuisine": "Mexican",
-    "anchor": "sweet_potato",
-    "serves": 4,
-    "minutes": 65,
-    "difficulty": "Easy",
-    "equipment": "air_fryer",
-    "format": "air",
-    "cleanup": 2,
-    "ingredients": [
-      ["sweet_potato", 1.25, "lb"],
-      ["olive_oil_evoo", 2, "tbsp"],
-      ["cumin_ground", 1.5, "tsp"],
-      ["chili_powder", 1.5, "tsp"],
-      ["salt_kosher", 1, "tsp"],
-      ["bean_black_canned", 1, "count"],
-      ["scallion", 3, "count"],
-      ["cilantro", 0.25, "cup"],
-      ["lime", 1, "count"],
-      ["cheddar", 1.5, "cup"],
-      ["tortilla_flour", 8, "count"],
-      ["salsa", 0.5, "cup"],
-      ["sour_cream", 0.5, "cup"]
-    ],
-    "steps": [
-      {"phase": "Prep", "minutes": 10, "actions": [
-        {"verb": "Peel", "body": "{amt:sweet_potato} of sweet potatoes and cut them into ½-inch cubes. Toss with {amt:olive_oil_evoo:0.5} of olive oil, {amt:cumin_ground} of cumin, {amt:chili_powder} of chili powder and {amt:salt_kosher:0.5} of salt."}
-      ]},
-      {"phase": "Sweet potatoes", "minutes": 18, "actions": [
-        {"verb": "Preheat", "body": "the air fryer to 400°F.", "duration": "3 min"},
-        {"verb": "Air fry", "body": "the sweet potato cubes for 14 minutes, shaking the basket halfway, until tender and browned at the edges.", "duration": "14 min"},
-        {"verb": "Prep", "body": "the rest meanwhile: drain and rinse {amt:bean_black_canned} of black beans, thinly slice {amt:scallion|scallion|scallions} and chop {amt:cilantro} of cilantro."}
-      ]},
-      {"phase": "Filling", "minutes": 5, "actions": [
-        {"verb": "Mash", "body": "the hot sweet potatoes roughly with a fork, then fold in the beans, scallions, half the cilantro, the juice of {amt:lime:0.5|lime|limes} and the remaining {amt:salt_kosher:0.5} of salt."}
-      ]},
-      {"phase": "Air fry", "minutes": 28, "actions": [
-        {"verb": "Fill", "body": "{amt:tortilla_flour|flour tortilla|flour tortillas} (8-inch): spread an eighth of the filling over one half of each, scatter with {amt:cheddar} of shredded cheddar (divided evenly) and fold over. Brush the outsides lightly with the remaining {amt:olive_oil_evoo:0.5} of olive oil."},
-        {"verb": "Air fry", "body": "at 375°F, 2 quesadillas at a time, for 7 minutes, flipping after 4. Pin each closed with a toothpick so the fan doesn't blow it open. They're done when golden and the cheese has melted. Repeat with the rest.", "duration": "7 min"}
-      ]},
-      {"phase": "Serve", "minutes": 5, "actions": [
-        {"verb": "Cut", "body": "each quesadilla in half and serve with {amt:salsa} of salsa, {amt:sour_cream} of sour cream, the rest of the cilantro and wedges cut from the remaining {amt:lime:0.5|lime|limes}."}
-      ]}
+   },
+   {
+    "phase": "Air fry",
+    "minutes": 30,
+    "actions": [
+     {
+      "verb": "Preheat",
+      "body": "the air fryer to 375°F.",
+      "duration": "3 min"
+     },
+     {
+      "verb": "Air fry",
+      "body": "half the patties in a single layer in the basket, brushing the basket and the tops with {amt:olive_oil_evoo:0.5} of olive oil, for 12 minutes. Flip them at 6 minutes and brush the second side, cooking until deep golden and crisp. Repeat with the rest of the patties and oil.",
+      "duration": "12 min"
+     },
+     {
+      "verb": "Warm",
+      "body": "{amt:pita_bread|pita|pitas} in the air fryer for 1 minute so they're soft and pliable."
+     }
     ]
-  }
+   },
+   {
+    "phase": "Serve",
+    "minutes": 5,
+    "actions": [
+     {
+      "verb": "Fill",
+      "body": "each pita with lettuce, tomato, cucumber and about 5 falafel, then drizzle generously with tahini sauce."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "key": "af-chicken-taquitos",
+  "title": "Air Fryer Chicken Taquitos with Salsa and Sour Cream",
+  "cuisine": "Tex-Mex",
+  "anchor": "chicken_breast",
+  "serves": 4,
+  "minutes": 65,
+  "difficulty": "Medium",
+  "equipment": "air_fryer",
+  "format": "air",
+  "cleanup": 3,
+  "ingredients": [
+   [
+    "chicken_breast",
+    1.25,
+    "lb"
+   ],
+   [
+    "oil_neutral",
+    1.5,
+    "tbsp"
+   ],
+   [
+    "taco_seasoning",
+    2,
+    "tbsp"
+   ],
+   [
+    "salt_kosher",
+    0.5,
+    "tsp"
+   ],
+   [
+    "cream_cheese",
+    4,
+    "oz"
+   ],
+   [
+    "cheddar",
+    1,
+    "cup"
+   ],
+   [
+    "green_chile_canned",
+    1,
+    "count"
+   ],
+   [
+    "lime",
+    1,
+    "count"
+   ],
+   [
+    "cilantro",
+    0.25,
+    "cup"
+   ],
+   [
+    "tortilla_corn",
+    16,
+    "count"
+   ],
+   [
+    "salsa",
+    1,
+    "cup"
+   ],
+   [
+    "sour_cream",
+    0.5,
+    "cup"
+   ]
+  ],
+  "steps": [
+   {
+    "phase": "Cook chicken",
+    "minutes": 25,
+    "actions": [
+     {
+      "verb": "Preheat",
+      "body": "the air fryer to 380°F and set {amt:cream_cheese} of cream cheese out to soften.",
+      "duration": "3 min"
+     },
+     {
+      "verb": "Rub",
+      "body": "{amt:chicken_breast} of chicken breasts with {amt:oil_neutral:0.33} of oil, {amt:taco_seasoning:0.5} of taco seasoning and {amt:salt_kosher} of salt."
+     },
+     {
+      "verb": "Air fry",
+      "body": "the chicken in a single layer for 16–18 minutes, flipping halfway, until it reads 165°F in the thickest part.",
+      "duration": "16 min"
+     },
+     {
+      "verb": "Shred",
+      "body": "the chicken with two forks after a 5-minute rest.",
+      "duration": "5 min"
+     }
+    ]
+   },
+   {
+    "phase": "Fill and roll",
+    "minutes": 15,
+    "actions": [
+     {
+      "verb": "Mix",
+      "body": "the shredded chicken with the softened cream cheese, {amt:cheddar} of shredded cheddar, {amt:green_chile_canned} of drained green chiles, the remaining taco seasoning, the juice of {amt:lime:0.5|lime|limes} and half of {amt:cilantro} of chopped cilantro."
+     },
+     {
+      "verb": "Warm",
+      "body": "{amt:tortilla_corn|corn tortilla|corn tortillas} in a stack wrapped in a damp paper towel in the microwave for about 1 minute, until soft and bendy — cold corn tortillas crack when rolled."
+     },
+     {
+      "verb": "Roll",
+      "body": "about 3 tablespoons of filling tightly inside each tortilla, starting from the edge nearest you, and set them seam-side down. Keep the stack covered while you work."
+     }
+    ]
+   },
+   {
+    "phase": "Air fry",
+    "minutes": 20,
+    "actions": [
+     {
+      "verb": "Raise",
+      "body": "the heat to 400°F. Arrange half the taquitos seam-side down in a single layer without touching and brush with {amt:oil_neutral:0.33} of oil."
+     },
+     {
+      "verb": "Air fry",
+      "body": "for 8 minutes, turning them over after 4 minutes, until golden and crisp at the ends. Repeat with the second batch and the remaining {amt:oil_neutral:0.33} of oil.",
+      "duration": "8 min"
+     }
+    ]
+   },
+   {
+    "phase": "Serve",
+    "minutes": 5,
+    "actions": [
+     {
+      "verb": "Serve",
+      "body": "the taquitos hot with {amt:salsa} of salsa and {amt:sour_cream} of sour cream for dipping, the rest of the cilantro scattered over and wedges cut from the remaining {amt:lime:0.5|lime|limes}."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "key": "af-bang-bang-chicken-rice",
+  "title": "Air Fryer Bang Bang Chicken with Rice",
+  "cuisine": "American",
+  "anchor": "chicken_breast",
+  "serves": 4,
+  "minutes": 55,
+  "difficulty": "Medium",
+  "equipment": "air_fryer",
+  "format": "air",
+  "cleanup": 4,
+  "ingredients": [
+   [
+    "chicken_breast",
+    1.5,
+    "lb"
+   ],
+   [
+    "rice_long_grain",
+    1.5,
+    "cup"
+   ],
+   [
+    "salt_kosher",
+    1.5,
+    "tsp"
+   ],
+   [
+    "pepper_black",
+    0.5,
+    "tsp"
+   ],
+   [
+    "garlic_powder",
+    1,
+    "tsp"
+   ],
+   [
+    "paprika_smoked",
+    1,
+    "tsp"
+   ],
+   [
+    "cornstarch",
+    0.33,
+    "cup"
+   ],
+   [
+    "egg_large",
+    2,
+    "count"
+   ],
+   [
+    "breadcrumb_panko",
+    1.25,
+    "cup"
+   ],
+   [
+    "oil_neutral",
+    1,
+    "tbsp"
+   ],
+   [
+    "mayo",
+    0.33,
+    "cup"
+   ],
+   [
+    "honey",
+    3,
+    "tbsp"
+   ],
+   [
+    "vinegar_rice",
+    1,
+    "tbsp"
+   ],
+   [
+    "chili_flake",
+    0.5,
+    "tsp"
+   ],
+   [
+    "garlic_head",
+    1,
+    "clove"
+   ],
+   [
+    "hot_sauce",
+    2,
+    "tsp"
+   ],
+   [
+    "cucumber",
+    1,
+    "count"
+   ],
+   [
+    "scallion",
+    3,
+    "count"
+   ],
+   [
+    "sesame_seed",
+    1,
+    "tsp"
+   ]
+  ],
+  "steps": [
+   {
+    "phase": "Prep",
+    "minutes": 15,
+    "actions": [
+     {
+      "verb": "Cook",
+      "body": "the rice: rinse {amt:rice_long_grain} of long-grain rice, bring it to a boil with         2¼ cups of water and {amt:salt_kosher:0.33} of salt, then cover and simmer on low for 15 minutes. Rest off the heat, covered, until serving.",
+      "duration": "15 min"
+     },
+     {
+      "verb": "Cut",
+      "body": "{amt:chicken_breast} of chicken breasts into 1-inch pieces and season with {amt:salt_kosher:0.5} of salt, {amt:pepper_black} of pepper, {amt:garlic_powder} of garlic powder and {amt:paprika_smoked} of smoked paprika."
+     },
+     {
+      "verb": "Whisk",
+      "body": "the bang bang sauce: stir {amt:honey} of honey, {amt:vinegar_rice} of rice vinegar, {amt:chili_flake} of chili flakes and {amt:garlic_head} of finely grated garlic into a quick sweet chili mix, then whisk it into {amt:mayo} of mayonnaise with {amt:hot_sauce} of hot sauce and the last {amt:salt_kosher:0.17} of salt."
+     }
+    ]
+   },
+   {
+    "phase": "Bread",
+    "minutes": 10,
+    "actions": [
+     {
+      "verb": "Set up",
+      "body": "three bowls: {amt:cornstarch} of cornstarch, {amt:egg_large|egg|eggs} beaten, and {amt:breadcrumb_panko} of panko."
+     },
+     {
+      "verb": "Coat",
+      "body": "the chicken pieces in cornstarch, shake off the excess, dip in egg and roll in panko, pressing so the crumbs stick."
+     }
+    ]
+   },
+   {
+    "phase": "Air fry",
+    "minutes": 25,
+    "actions": [
+     {
+      "verb": "Preheat",
+      "body": "the air fryer to 400°F.",
+      "duration": "3 min"
+     },
+     {
+      "verb": "Air fry",
+      "body": "half the chicken in a single layer in the lightly oiled basket, misted on top with half of {amt:oil_neutral} of oil, for 10 minutes, shaking or flipping the pieces at 5 minutes, until golden and 165°F inside. Repeat with the second batch.",
+      "duration": "10 min"
+     },
+     {
+      "verb": "Slice",
+      "body": "{amt:cucumber|cucumber|cucumbers} and {amt:scallion|scallion|scallions} while the chicken cooks."
+     }
+    ]
+   },
+   {
+    "phase": "Finish",
+    "minutes": 5,
+    "actions": [
+     {
+      "verb": "Toss",
+      "body": "the hot chicken with about two-thirds of the bang bang sauce."
+     },
+     {
+      "verb": "Serve",
+      "body": "over the rice with the cucumber alongside, the rest of the sauce drizzled over and the scallions and {amt:sesame_seed} of sesame seeds scattered on top."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "key": "af-lemon-pepper-chicken-broccoli",
+  "title": "Air Fryer Lemon-Pepper Chicken with Broccoli and Rice",
+  "cuisine": "American",
+  "anchor": "chicken_breast",
+  "serves": 4,
+  "minutes": 40,
+  "difficulty": "Easy",
+  "equipment": "air_fryer",
+  "format": "air",
+  "cleanup": 3,
+  "ingredients": [
+   [
+    "chicken_breast",
+    1.5,
+    "lb"
+   ],
+   [
+    "lemon",
+    2,
+    "count"
+   ],
+   [
+    "pepper_black",
+    2,
+    "tsp"
+   ],
+   [
+    "garlic_powder",
+    1.5,
+    "tsp"
+   ],
+   [
+    "onion_powder",
+    0.5,
+    "tsp"
+   ],
+   [
+    "salt_kosher",
+    2,
+    "tsp"
+   ],
+   [
+    "olive_oil_evoo",
+    2,
+    "tbsp"
+   ],
+   [
+    "broccoli",
+    1,
+    "lb"
+   ],
+   [
+    "rice_long_grain",
+    1.5,
+    "cup"
+   ],
+   [
+    "butter_unsalted",
+    2,
+    "tbsp"
+   ],
+   [
+    "parsley_fresh",
+    2,
+    "tbsp"
+   ]
+  ],
+  "steps": [
+   {
+    "phase": "Prep",
+    "minutes": 10,
+    "actions": [
+     {
+      "verb": "Cook",
+      "body": "the rice: rinse {amt:rice_long_grain} of long-grain rice, bring it to a boil with         2¼ cups of water and {amt:salt_kosher:0.25} of salt, then cover and simmer on low for 15 minutes. Rest off the heat, covered, until serving.",
+      "duration": "15 min"
+     },
+     {
+      "verb": "Slice",
+      "body": "{amt:chicken_breast} of chicken breasts in half horizontally to make 4 even cutlets about ¾ inch thick."
+     },
+     {
+      "verb": "Mix",
+      "body": "the finely grated zest of {amt:lemon|lemon|lemons} with {amt:pepper_black} of coarsely ground pepper, {amt:garlic_powder:0.67} of garlic powder, {amt:onion_powder} of onion powder and {amt:salt_kosher:0.5} of salt."
+     },
+     {
+      "verb": "Rub",
+      "body": "the chicken with {amt:olive_oil_evoo:0.5} of olive oil, then press the lemon-pepper mix onto both sides."
+     }
+    ]
+   },
+   {
+    "phase": "Air fry chicken",
+    "minutes": 15,
+    "actions": [
+     {
+      "verb": "Preheat",
+      "body": "the air fryer to 380°F.",
+      "duration": "3 min"
+     },
+     {
+      "verb": "Air fry",
+      "body": "the cutlets in a single layer for 10–12 minutes, flipping halfway, until they read 165°F in the thickest part. Rest them on a plate, loosely covered with foil.",
+      "duration": "11 min"
+     }
+    ]
+   },
+   {
+    "phase": "Broccoli",
+    "minutes": 10,
+    "actions": [
+     {
+      "verb": "Toss",
+      "body": "{amt:broccoli} of broccoli florets with the remaining {amt:olive_oil_evoo:0.5} of olive oil, the rest of the garlic powder and {amt:salt_kosher:0.25} of salt."
+     },
+     {
+      "verb": "Air fry",
+      "body": "at 400°F for 8 minutes, shaking the basket halfway, until tender with charred tips.",
+      "duration": "8 min"
+     }
+    ]
+   },
+   {
+    "phase": "Finish",
+    "minutes": 5,
+    "actions": [
+     {
+      "verb": "Melt",
+      "body": "{amt:butter_unsalted} of butter and stir in the juice of one of the zested lemons — this is the lemon-pepper butter."
+     },
+     {
+      "verb": "Serve",
+      "body": "the chicken sliced over the rice, spooned with the lemon butter and sprinkled with {amt:parsley_fresh} of chopped parsley, with the broccoli and wedges of the second lemon alongside."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "key": "af-cheeseburgers-potato-wedges",
+  "title": "Air Fryer Cheeseburgers with Potato Wedges",
+  "cuisine": "American",
+  "anchor": "ground_beef",
+  "serves": 4,
+  "minutes": 70,
+  "difficulty": "Easy",
+  "equipment": "air_fryer",
+  "format": "air",
+  "cleanup": 3,
+  "ingredients": [
+   [
+    "potato_russet",
+    1.5,
+    "lb"
+   ],
+   [
+    "olive_oil_evoo",
+    1,
+    "tbsp"
+   ],
+   [
+    "paprika_smoked",
+    1,
+    "tsp"
+   ],
+   [
+    "garlic_powder",
+    1,
+    "tsp"
+   ],
+   [
+    "salt_kosher",
+    2,
+    "tsp"
+   ],
+   [
+    "ground_beef",
+    1.25,
+    "lb"
+   ],
+   [
+    "worcestershire_vegan",
+    1,
+    "tsp"
+   ],
+   [
+    "pepper_black",
+    0.75,
+    "tsp"
+   ],
+   [
+    "cheddar",
+    4,
+    "oz"
+   ],
+   [
+    "bun_burger",
+    4,
+    "count"
+   ],
+   [
+    "lettuce_romaine",
+    1,
+    "cup"
+   ],
+   [
+    "tomato_fresh",
+    1,
+    "count"
+   ],
+   [
+    "onion_red",
+    0.5,
+    "count"
+   ],
+   [
+    "pickle_dill",
+    0.25,
+    "cup"
+   ],
+   [
+    "ketchup",
+    0.25,
+    "cup"
+   ]
+  ],
+  "steps": [
+   {
+    "phase": "Prep",
+    "minutes": 12,
+    "actions": [
+     {
+      "verb": "Cut",
+      "body": "{amt:potato_russet} of russet potatoes lengthwise into 8 wedges each and toss with {amt:olive_oil_evoo} of olive oil, {amt:paprika_smoked} of smoked paprika,         {amt:garlic_powder} of garlic powder and {amt:salt_kosher:0.5} of salt."
+     },
+     {
+      "verb": "Shape",
+      "body": "{amt:ground_beef} of ground beef (80/20) mixed gently with {amt:worcestershire_vegan} of Worcestershire into 4 patties about ¾ inch thick and a little wider than the buns. Press a shallow dimple into the center of each so they stay flat, then season both sides with {amt:salt_kosher:0.5} of salt and {amt:pepper_black} of pepper."
+     },
+     {
+      "verb": "Slice",
+      "body": "{amt:tomato_fresh|tomato|tomatoes} and {amt:onion_red|red onion|red onions}, and tear {amt:lettuce_romaine} of romaine into bun-sized pieces."
+     }
+    ]
+   },
+   {
+    "phase": "Wedges",
+    "minutes": 39,
+    "actions": [
+     {
+      "verb": "Preheat",
+      "body": "the air fryer to 400°F.",
+      "duration": "3 min"
+     },
+     {
+      "verb": "Air fry",
+      "body": "half the wedges in a single layer for 18 minutes, shaking the basket halfway, until golden and fork-tender. Set aside and cook the second batch.",
+      "duration": "18 min"
+     }
+    ]
+   },
+   {
+    "phase": "Burgers",
+    "minutes": 14,
+    "actions": [
+     {
+      "verb": "Lower",
+      "body": "the heat to 370°F and lay the patties in the basket without touching (two batches if they don't fit)."
+     },
+     {
+      "verb": "Air fry",
+      "body": "for 10–12 minutes, flipping after 6, until they read 160°F in the center.",
+      "duration": "10 min"
+     },
+     {
+      "verb": "Melt",
+      "body": "{amt:cheddar} of sliced cheddar over the patties for the last minute, then lift them out to rest.",
+      "duration": "1 min"
+     },
+     {
+      "verb": "Toast",
+      "body": "{amt:bun_burger|bun|buns}, cut side up, for 1–2 minutes, then return the wedges to the basket for 2 minutes to reheat.",
+      "duration": "2 min"
+     }
+    ]
+   },
+   {
+    "phase": "Assemble",
+    "minutes": 5,
+    "actions": [
+     {
+      "verb": "Build",
+      "body": "the burgers with {amt:ketchup} of ketchup, lettuce, tomato, onion and {amt:pickle_dill} of sliced pickles, and serve with the wedges."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "key": "af-sweet-potato-black-bean-quesadillas",
+  "title": "Air Fryer Sweet Potato and Black Bean Quesadillas",
+  "cuisine": "Mexican",
+  "anchor": "sweet_potato",
+  "serves": 4,
+  "minutes": 65,
+  "difficulty": "Easy",
+  "equipment": "air_fryer",
+  "format": "air",
+  "cleanup": 2,
+  "ingredients": [
+   [
+    "sweet_potato",
+    1.25,
+    "lb"
+   ],
+   [
+    "olive_oil_evoo",
+    2,
+    "tbsp"
+   ],
+   [
+    "cumin_ground",
+    1.5,
+    "tsp"
+   ],
+   [
+    "chili_powder",
+    1.5,
+    "tsp"
+   ],
+   [
+    "salt_kosher",
+    1,
+    "tsp"
+   ],
+   [
+    "bean_black_canned",
+    1,
+    "count"
+   ],
+   [
+    "scallion",
+    3,
+    "count"
+   ],
+   [
+    "cilantro",
+    0.25,
+    "cup"
+   ],
+   [
+    "lime",
+    1,
+    "count"
+   ],
+   [
+    "cheddar",
+    1.5,
+    "cup"
+   ],
+   [
+    "tortilla_flour",
+    8,
+    "count"
+   ],
+   [
+    "salsa",
+    0.5,
+    "cup"
+   ],
+   [
+    "sour_cream",
+    0.5,
+    "cup"
+   ]
+  ],
+  "steps": [
+   {
+    "phase": "Prep",
+    "minutes": 10,
+    "actions": [
+     {
+      "verb": "Peel",
+      "body": "{amt:sweet_potato} of sweet potatoes and cut them into ½-inch cubes. Toss with {amt:olive_oil_evoo:0.5} of olive oil, {amt:cumin_ground} of cumin, {amt:chili_powder} of chili powder and {amt:salt_kosher:0.5} of salt."
+     }
+    ]
+   },
+   {
+    "phase": "Sweet potatoes",
+    "minutes": 18,
+    "actions": [
+     {
+      "verb": "Preheat",
+      "body": "the air fryer to 400°F.",
+      "duration": "3 min"
+     },
+     {
+      "verb": "Air fry",
+      "body": "the sweet potato cubes for 14 minutes, shaking the basket halfway, until tender and browned at the edges.",
+      "duration": "14 min"
+     },
+     {
+      "verb": "Prep",
+      "body": "the rest meanwhile: drain and rinse {amt:bean_black_canned} of black beans, thinly slice {amt:scallion|scallion|scallions} and chop {amt:cilantro} of cilantro."
+     }
+    ]
+   },
+   {
+    "phase": "Filling",
+    "minutes": 5,
+    "actions": [
+     {
+      "verb": "Mash",
+      "body": "the hot sweet potatoes roughly with a fork, then fold in the beans, scallions, half the cilantro, the juice of {amt:lime:0.5|lime|limes} and the remaining {amt:salt_kosher:0.5} of salt."
+     }
+    ]
+   },
+   {
+    "phase": "Air fry",
+    "minutes": 28,
+    "actions": [
+     {
+      "verb": "Fill",
+      "body": "{amt:tortilla_flour|flour tortilla|flour tortillas} (8-inch): spread an eighth of the filling over one half of each, scatter with {amt:cheddar} of shredded cheddar (divided evenly) and fold over. Brush the outsides lightly with the remaining {amt:olive_oil_evoo:0.5} of olive oil."
+     },
+     {
+      "verb": "Air fry",
+      "body": "at 375°F, 2 quesadillas at a time, for 7 minutes, flipping after 4. Pin each closed with a toothpick so the fan doesn't blow it open. They're done when golden and the cheese has melted. Repeat with the rest.",
+      "duration": "7 min"
+     }
+    ]
+   },
+   {
+    "phase": "Serve",
+    "minutes": 5,
+    "actions": [
+     {
+      "verb": "Cut",
+      "body": "each quesadilla in half and serve with {amt:salsa} of salsa, {amt:sour_cream} of sour cream, the rest of the cilantro and wedges cut from the remaining {amt:lime:0.5|lime|limes}."
+     }
+    ]
+   }
+  ]
+ }
 ]

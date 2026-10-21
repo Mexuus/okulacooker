@@ -52,11 +52,11 @@ jobs:
         run: |
           mkdir -p Payload
           cp -R build/ios/iphoneos/Runner.app Payload/
-          zip -qr TapCook-unsigned.ipa Payload
+          zip -qr OkulaCooker-unsigned.ipa Payload
       - uses: actions/upload-artifact@v7
         with:
-          name: TapCook-unsigned-ipa
-          path: TapCook-unsigned.ipa
+          name: OkulaCooker-unsigned-ipa
+          path: OkulaCooker-unsigned.ipa
 
   deploy-web:
     name: Deploy web to GitHub Pages
@@ -90,16 +90,16 @@ jobs:
         with:
           context: .
           load: true
-          tags: tapcook:test
+          tags: okulacooker:test
           cache-from: type=gha
           cache-to: type=gha,mode=max
       - name: Smoke test (read-only, no capabilities)
         run: |
-          docker run -d --name tapcook -p 8080:8080 --read-only --tmpfs /tmp \
+          docker run -d --name okulacooker -p 8080:8080 --read-only --tmpfs /tmp \
             --cap-drop ALL --security-opt no-new-privileges:true \
-            -e TAPCOOK_SECURE_URL='https://example.com/x"},"y":"' tapcook:test
+            -e OKULACOOKER_SECURE_URL='https://example.com/x"},"y":"' okulacooker:test
           for i in $(seq 1 20); do curl -fs http://localhost:8080/healthz && break; sleep 1; done
-          curl -fs http://localhost:8080/ | grep -q '<title>TapCook</title>'
+          curl -fs http://localhost:8080/ | grep -q '<title>OkulaCooker</title>'
           curl -fs http://localhost:8080/some/deep/link | grep -q 'flutter_bootstrap.js'
           curl -fs http://localhost:8080/assets/assets/data/recipe_db.json | head -c 40 | grep -q '"version"'
           curl -fsI -H 'Accept-Encoding: gzip' http://localhost:8080/main.dart.js | grep -qi 'content-encoding: gzip'
@@ -111,11 +111,11 @@ jobs:
           curl -fs http://localhost:8080/config.json | tee /dev/stderr | python3 -c \
             'import json,sys; d=json.load(sys.stdin); assert d=={"secureUrl":"https://example.com/x,y:"}, d'
           curl -fsI http://localhost:8080/config.json | grep -qi 'content-type: application/json'
-          docker rm -f tapcook
-          docker run -d --name tapcook -p 8080:8080 --read-only --tmpfs /tmp tapcook:test
+          docker rm -f okulacooker
+          docker run -d --name okulacooker -p 8080:8080 --read-only --tmpfs /tmp okulacooker:test
           for i in $(seq 1 20); do curl -fs http://localhost:8080/healthz && break; sleep 1; done
           test "$(curl -fs http://localhost:8080/config.json)" = '{}'
-          docker logs tapcook
+          docker logs okulacooker
       - name: Log in to GitHub Container Registry
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: docker/login-action@v4

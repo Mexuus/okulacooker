@@ -69,7 +69,7 @@
       ["garlic_head", 4, "clove"],
       ["mushroom_cremini", 16, "oz"],
       ["broth_beef", 1.5, "cup"],
-      ["worcestershire", 2, "tbsp"],
+      ["worcestershire_vegan", 2, "tbsp"],
       ["mustard_dijon", 1, "tbsp"],
       ["cornstarch", 2, "tbsp"],
       ["sour_cream", 1, "cup"],
@@ -85,7 +85,7 @@
       ]},
       {"phase": "Load", "minutes": 5, "actions": [
         {"verb": "Layer", "body": "the onion, mushrooms and garlic in a 6-quart slow cooker and put the beef on top."},
-        {"verb": "Whisk", "body": "{amt:broth_beef} of beef broth with {amt:worcestershire} of Worcestershire and {amt:mustard_dijon} of Dijon, using a splash to loosen the browned bits in the skillet, and pour it all over the beef."}
+        {"verb": "Whisk", "body": "{amt:broth_beef} of beef broth with {amt:worcestershire_vegan} of Worcestershire and {amt:mustard_dijon} of Dijon, using a splash to loosen the browned bits in the skillet, and pour it all over the beef."}
       ]},
       {"phase": "Slow cook", "minutes": 480, "actions": [
         {"verb": "Cook", "body": "covered on LOW 7–8 hours or HIGH 4–5 hours, until the beef is fork-tender. Resist lifting the lid while it cooks.", "duration": "7-8 hr"}

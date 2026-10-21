@@ -1,4 +1,4 @@
-"""Builds TapCook's offline store directory: assets/data/stores.csv
+"""Builds OkulaCooker's offline store directory: assets/data/stores.csv
 
 Sources (fetched at build time, never by the app at runtime):
   * All The Places (https://alltheplaces.xyz) - store-locator scrapes, CC0.
@@ -25,7 +25,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "assets", "data", "stores.csv")
 CACHE = os.path.join(ROOT, "build", "store_sources")
 ATP = "https://alltheplaces-data.openaddresses.io/runs/{run}/output/{spider}.geojson"
-UA = "TapCook-build/1.0 (offline store directory)"
+UA = "OkulaCooker-build/1.0 (offline store directory)"
 
 PINNED = {
     "walmart_us": "2026-01-31-13-32-31",
@@ -43,7 +43,7 @@ SPIDERS = [
 ]
 SHOP_TYPES = {"supermarket", "wholesale", "department_store", "grocery"}
 
-# Brand (as published) -> TapCook store id. Unlisted brands are dropped.
+# Brand (as published) -> OkulaCooker store id. Unlisted brands are dropped.
 BRANDS = {
     "Aldi": "aldi", "Albertsons": "albertsons", "Jewel-Osco": "jewel_osco", "Vons": "vons",
     "ACME Markets": "acme", "Acme": "acme", "Shaw's": "shaws", "Star Market": "star_market",

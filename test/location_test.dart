@@ -9,23 +9,23 @@ import 'package:http/testing.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:tapcook/data/recipe_db.dart';
-import 'package:tapcook/models/recipe.dart';
-import 'package:tapcook/data/stores.dart';
-import 'package:tapcook/data/zip_states.dart';
-import 'package:tapcook/models/settings.dart';
-import 'package:tapcook/models/store_location.dart';
-import 'package:tapcook/services/app_config.dart';
-import 'package:tapcook/services/diet.dart';
-import 'package:tapcook/services/location_service.dart';
-import 'package:tapcook/services/persistence.dart';
-import 'package:tapcook/services/plan_generator.dart';
-import 'package:tapcook/services/pricing.dart';
-import 'package:tapcook/services/store_directory.dart';
-import 'package:tapcook/services/store_locator.dart';
-import 'package:tapcook/services/zip_locator.dart';
-import 'package:tapcook/state/app_state.dart';
-import 'package:tapcook/widgets/location_store_picker.dart';
+import 'package:okulacooker/data/recipe_db.dart';
+import 'package:okulacooker/models/recipe.dart';
+import 'package:okulacooker/data/stores.dart';
+import 'package:okulacooker/data/zip_states.dart';
+import 'package:okulacooker/models/settings.dart';
+import 'package:okulacooker/models/store_location.dart';
+import 'package:okulacooker/services/app_config.dart';
+import 'package:okulacooker/services/diet.dart';
+import 'package:okulacooker/services/location_service.dart';
+import 'package:okulacooker/services/persistence.dart';
+import 'package:okulacooker/services/plan_generator.dart';
+import 'package:okulacooker/services/pricing.dart';
+import 'package:okulacooker/services/store_directory.dart';
+import 'package:okulacooker/services/store_locator.dart';
+import 'package:okulacooker/services/zip_locator.dart';
+import 'package:okulacooker/state/app_state.dart';
+import 'package:okulacooker/widgets/location_store_picker.dart';
 
 import 'test_helpers.dart';
 
@@ -148,7 +148,7 @@ void main() {
     test('blocked-permission advice is platform specific', () {
       const e = LocationException(LocationFailure.deniedForever);
       debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-      expect(e.message, contains('Settings › TapCook'));
+      expect(e.message, contains('Settings › OkulaCooker'));
       debugDefaultTargetPlatformOverride = null;
     });
   });
@@ -313,9 +313,7 @@ void main() {
           recipeAllowed(r, diets: d, excluded: x);
       expect(ok(firstUsing('ground_beef'), d: {Diet.vegetarian}), isFalse);
       expect(ok(firstUsing('ground_beef'), d: {Diet.noBeef}), isFalse);
-      expect(ok(firstUsing('shrimp_frozen'), d: {Diet.noShellfish}), isFalse);
-      expect(ok(firstUsing('salmon_fillet'), d: {Diet.noFish}), isFalse);
-      expect(ok(firstUsing('salmon_fillet'), d: {Diet.noShellfish}), isTrue);
+      expect(ok(firstUsing('ground_beef'), d: {Diet.noPoultry}), isTrue);
       expect(ok(firstUsing('cheddar'), d: {Diet.dairyFree}), isFalse);
       expect(ok(firstUsing('bacon'), d: {Diet.noPork}), isFalse);
       expect(ok(firstUsing('chicken_breast'), d: {Diet.noPoultry}), isFalse);
@@ -323,7 +321,7 @@ void main() {
       final veg = kRecipes.where((r) => ok(r, d: {Diet.vegetarian})).toList();
       expect(veg.length, greaterThan(40));
       for (final r in veg) {
-        for (final meat in ['chicken_breast', 'ground_beef', 'bacon', 'salmon_fillet', 'fish_sauce']) {
+        for (final meat in ['chicken_breast', 'ground_beef', 'bacon', 'pork_chop']) {
           expect(uses(r, meat), isFalse, reason: '${r.title} uses $meat');
         }
       }

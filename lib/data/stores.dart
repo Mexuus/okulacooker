@@ -2,7 +2,7 @@ import '../models/store.dart';
 
 /// US grocery chains with rough price-positioning multipliers vs. a national
 /// reference, approximate state footprints, and keywords for recognising them
-/// in OpenStreetMap data. Estimates only — TapCook is not affiliated with any
+/// in OpenStreetMap data. Estimates only — OkulaCooker is not affiliated with any
 /// retailer, and store names indicate only which chain a plan was priced
 /// against.
 const Set<String> _allStates = {

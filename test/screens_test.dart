@@ -3,20 +3,20 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:tapcook/data/recipe_db.dart';
-import 'package:tapcook/models/settings.dart';
-import 'package:tapcook/screens/browse_screen.dart';
-import 'package:tapcook/screens/grocery_screen.dart';
-import 'package:tapcook/screens/pantry_screen.dart';
-import 'package:tapcook/screens/plan_screen.dart';
-import 'package:tapcook/screens/recipe_detail_screen.dart';
-import 'package:tapcook/screens/settings_screen.dart';
-import 'package:tapcook/services/location_service.dart';
-import 'package:tapcook/services/persistence.dart';
-import 'package:tapcook/services/store_directory.dart';
-import 'package:tapcook/services/store_locator.dart';
-import 'package:tapcook/services/zip_locator.dart';
-import 'package:tapcook/state/app_state.dart';
+import 'package:okulacooker/data/recipe_db.dart';
+import 'package:okulacooker/models/settings.dart';
+import 'package:okulacooker/screens/browse_screen.dart';
+import 'package:okulacooker/screens/grocery_screen.dart';
+import 'package:okulacooker/screens/pantry_screen.dart';
+import 'package:okulacooker/screens/plan_screen.dart';
+import 'package:okulacooker/screens/recipe_detail_screen.dart';
+import 'package:okulacooker/screens/settings_screen.dart';
+import 'package:okulacooker/services/location_service.dart';
+import 'package:okulacooker/services/persistence.dart';
+import 'package:okulacooker/services/store_directory.dart';
+import 'package:okulacooker/services/store_locator.dart';
+import 'package:okulacooker/services/zip_locator.dart';
+import 'package:okulacooker/state/app_state.dart';
 
 import 'test_helpers.dart';
 

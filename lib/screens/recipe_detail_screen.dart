@@ -64,7 +64,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
     }
     messenger.showSnackBar(SnackBar(
       content: Text(slots.isEmpty
-          ? 'Got it — TapCook won’t suggest this again, or dishes too much like it as often.'
+          ? 'Got it — OkulaCooker won’t suggest this again, or dishes too much like it as often.'
           : 'Got it — it won’t be suggested again. Swap it out of this week?'),
       action: slots.isEmpty
           ? null

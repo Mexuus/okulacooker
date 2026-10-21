@@ -46,7 +46,7 @@ def slugify(name: str) -> str:
 
 
 def fetch(url: str) -> bytes:
-    req = urllib.request.Request(url, headers={"User-Agent": "tapcook-build-icons"})
+    req = urllib.request.Request(url, headers={"User-Agent": "okulacooker-build-icons"})
     with urllib.request.urlopen(req, timeout=60) as resp:
         return resp.read()
 

@@ -1,22 +1,22 @@
-# TapCook on Docker.
+# OkulaCooker on Docker.
 #
 #   HTTP only (LAN / behind your own proxy):   docker compose up -d
-#   With automatic HTTPS (needs a domain):      DOMAIN=tapcook.example.com docker compose --profile https up -d
+#   With automatic HTTPS (needs a domain):      DOMAIN=okulacooker.example.com docker compose --profile https up -d
 #
 # Use the prebuilt image instead of building on the server by setting
-# TAPCOOK_IMAGE=ghcr.io/mexuus/tapcook:latest and running `docker compose pull`.
+# OKULACOOKER_IMAGE=ghcr.io/mexuus/okulacooker:latest and running `docker compose pull`.
 services:
-  tapcook:
-    image: ${TAPCOOK_IMAGE:-tapcook:latest}
+  okulacooker:
+    image: ${OKULACOOKER_IMAGE:-okulacooker:latest}
     build: .
-    container_name: tapcook
+    container_name: okulacooker
     restart: unless-stopped
     ports:
-      - "${TAPCOOK_PORT:-8080}:8080"
+      - "${OKULACOOKER_PORT:-8080}:8080"
     environment:
       # Optional https address of this app (e.g. your Tailscale or proxy URL).
       # The app offers it when opened over plain http, where GPS is blocked.
-      TAPCOOK_SECURE_URL: ${TAPCOOK_SECURE_URL:-}
+      OKULACOOKER_SECURE_URL: ${OKULACOOKER_SECURE_URL:-}
     read_only: true
     tmpfs:
       - /tmp
@@ -30,10 +30,10 @@ services:
   caddy:
     image: caddy:2-alpine
     profiles: ["https"]
-    container_name: tapcook-caddy
+    container_name: okulacooker-caddy
     restart: unless-stopped
     depends_on:
-      - tapcook
+      - okulacooker
     ports:
       - "80:80"
       - "443:443"

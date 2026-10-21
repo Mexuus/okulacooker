@@ -6,7 +6,7 @@ hunting down the originals.
 
 | File | Used by | Origin |
 |---|---|---|
-| `mealplan.json` | `import_recipe_db.py` → `assets/data/recipe_db.json` | The original ReelChef/TapCook iOS app's recipe database (`Payload/*.app/mealplan.json` inside the `.ipa`) |
+| `mealplan.json` | `import_recipe_db.py` → `assets/data/recipe_db.json` | The original ReelChef/OkulaCooker iOS app's recipe database (`Payload/*.app/mealplan.json` inside the `.ipa`) |
 | `bls_series.json` | `build_price_data.py` → `assets/data/prices.json` | Cached responses from the U.S. Bureau of Labor Statistics average-price API (public domain) |
 
 `bls_series.json` is a cache, not a hand-written file: `build_price_data.py

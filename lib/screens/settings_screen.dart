@@ -326,7 +326,7 @@ class SettingsScreen extends StatelessWidget {
                     'your ZIP’s center point — never your exact location.\n'
                     '• Prices: BLS Average Price Data (${PriceBook.instance.asOfLabel}) for '
                     '${PriceBook.instance.blsItemCount} staple items by region, USDA ERS '
-                    'metro-area food prices for 10 large metros, and TapCook estimates for '
+                    'metro-area food prices for 10 large metros, and OkulaCooker estimates for '
                     'everything else and for each chain’s price level. Picking a specific '
                     'store prices your list for that store’s area. Estimates, not live '
                     'shelf prices.\n'
@@ -340,7 +340,7 @@ class SettingsScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               Text(
-                'TapCook is not affiliated with, endorsed by, or connected to any '
+                'OkulaCooker is not affiliated with, endorsed by, or connected to any '
                 'grocery store. Prices are estimates from a national reference, '
                 'adjusted for the chain and region — not live retail prices. '
                 'Dietary settings are a convenience, not allergen control.',
@@ -368,7 +368,7 @@ class SettingsScreen extends StatelessWidget {
       builder: (ctx) => AlertDialog(
         title: const Text('Reset meal history?'),
         content: const Text(
-            'TapCook will forget which recipes you’ve had, so any of them can be suggested again.'),
+            'OkulaCooker will forget which recipes you’ve had, so any of them can be suggested again.'),
         actions: [
           TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
           FilledButton(

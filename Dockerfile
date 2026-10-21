@@ -1,8 +1,8 @@
 # syntax=docker/dockerfile:1
 #
-# TapCook web app: build with Flutter, serve with unprivileged nginx.
-#   docker build -t tapcook .
-#   docker run -d -p 8080:8080 tapcook
+# OkulaCooker web app: build with Flutter, serve with unprivileged nginx.
+#   docker build -t okulacooker .
+#   docker run -d -p 8080:8080 okulacooker
 #
 # The build stage runs on the builder's native platform (the output is plain
 # static files), so multi-arch images (amd64 + arm64) build quickly.
@@ -24,13 +24,13 @@ WORKDIR /app
 COPY pubspec.yaml pubspec.lock ./
 RUN flutter pub get
 COPY . .
-# Serve from a sub-path (e.g. behind a reverse proxy) with --build-arg BASE_HREF=/tapcook/
+# Serve from a sub-path (e.g. behind a reverse proxy) with --build-arg BASE_HREF=/okulacooker/
 ARG BASE_HREF=/
 RUN flutter build web --release --no-wasm-dry-run --base-href "${BASE_HREF}"
 
 FROM nginxinc/nginx-unprivileged:1.28-alpine
 COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
-COPY --chmod=755 docker/40-tapcook-config.sh /docker-entrypoint.d/40-tapcook-config.sh
+COPY --chmod=755 docker/40-okulacooker-config.sh /docker-entrypoint.d/40-okulacooker-config.sh
 COPY --from=build /app/build/web /usr/share/nginx/html
 EXPOSE 8080
 HEALTHCHECK --interval=30s --timeout=3s --retries=3 \

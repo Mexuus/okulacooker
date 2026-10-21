@@ -1,4 +1,4 @@
-"""Builds TapCook's local price book: assets/data/prices.json
+"""Builds OkulaCooker's local price book: assets/data/prices.json
 
 National prices come from the recipe database's per-pack reference prices
 (the original app's model). This script adds how those prices vary by place:
@@ -33,7 +33,7 @@ CACHE = os.path.join(ROOT, "build", "price_sources")
 # (the free API allows 25 per day); --refresh rewrites it.
 BLS_CACHE = os.path.join(ROOT, "tool", "sources", "bls_series.json")
 FMAP_URL = "https://www.ers.usda.gov/media/5400/food-at-home-monthly-area-prices-2012-to-2018.zip?v=40678"
-UA = "TapCook-build/1.0 (grocery price data refresh)"
+UA = "OkulaCooker-build/1.0 (grocery price data refresh)"
 
 REGIONS = {"US": "0000", "NE": "0100", "MW": "0200", "S": "0300", "W": "0400"}
 FMAP_REGION = {"NE": "1", "MW": "2", "S": "3", "W": "4"}
@@ -52,9 +52,6 @@ RULES = [
     (r"^(ground_pork|pork_shoulder|lamb_ground)", None, "50000"),
     (r"^bacon", "704111", "56000"),
     (r"^(sausage_|pancetta|prosciutto|pepperoni)", "704421", "56000"),
-    (r"^(salmon|tilapia|cod)", None, "53000"),
-    (r"^shrimp", None, "53050"),
-    (r"^tuna_canned", "707111", "53075"),
     (r"^egg_large", "708111", "57500"),
     (r"^(tofu|tempeh)", None, "59000"),
     # Dairy

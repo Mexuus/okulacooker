@@ -1,18 +1,18 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:tapcook/data/recipe_db.dart';
-import 'package:tapcook/data/stores.dart';
-import 'package:tapcook/models/settings.dart';
-import 'package:tapcook/models/store_location.dart';
-import 'package:tapcook/services/location_service.dart';
-import 'package:tapcook/services/persistence.dart';
-import 'package:tapcook/services/price_book.dart';
-import 'package:tapcook/services/pricing.dart';
-import 'package:tapcook/services/store_directory.dart';
-import 'package:tapcook/services/store_locator.dart';
-import 'package:tapcook/services/zip_locator.dart';
-import 'package:tapcook/state/app_state.dart';
+import 'package:okulacooker/data/recipe_db.dart';
+import 'package:okulacooker/data/stores.dart';
+import 'package:okulacooker/models/settings.dart';
+import 'package:okulacooker/models/store_location.dart';
+import 'package:okulacooker/services/location_service.dart';
+import 'package:okulacooker/services/persistence.dart';
+import 'package:okulacooker/services/price_book.dart';
+import 'package:okulacooker/services/pricing.dart';
+import 'package:okulacooker/services/store_directory.dart';
+import 'package:okulacooker/services/store_locator.dart';
+import 'package:okulacooker/services/zip_locator.dart';
+import 'package:okulacooker/state/app_state.dart';
 
 import 'test_helpers.dart';
 

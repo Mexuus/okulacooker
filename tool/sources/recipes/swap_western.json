@@ -1,0 +1,869 @@
+[
+  {
+    "key": "sw-chicken-corn-chowder",
+    "title": "Chicken Corn Chowder with Potatoes",
+    "cuisine": "American",
+    "anchor": "chicken_breast",
+    "serves": 4,
+    "minutes": 45,
+    "difficulty": "Easy",
+    "equipment": "stove",
+    "format": "pot",
+    "cleanup": 2,
+    "ingredients": [
+      ["chicken_breast", 1.25, "lb"],
+      ["bacon", 4, "count"],
+      ["butter_unsalted", 2, "tbsp"],
+      ["onion_yellow", 1, "count"],
+      ["celery", 2, "stalk"],
+      ["carrot", 2, "count"],
+      ["garlic_head", 3, "clove"],
+      ["flour_ap", 3, "tbsp"],
+      ["broth_chicken", 4, "cup"],
+      ["potato_yukon", 1.25, "lb"],
+      ["corn_frozen", 2, "cup"],
+      ["milk_whole", 1, "cup"],
+      ["cream_heavy", 0.5, "cup"],
+      ["thyme_dried", 1, "tsp"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 0.5, "tsp"],
+      ["parsley_fresh", 2, "tbsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Dice", "body": "{amt:onion_yellow|onion|onions}, {amt:celery} of celery and {amt:carrot|carrot|carrots}, and mince {amt:garlic_head} of garlic."},
+        {"verb": "Scrub", "body": "{amt:potato_yukon} of Yukon Gold potatoes and cut them into ½-inch cubes — small enough that they cook through in about 15 minutes."},
+        {"verb": "Cut", "body": "{amt:chicken_breast} of chicken breast into ¾-inch pieces and season with {amt:salt_kosher:0.33} of the salt and {amt:pepper_black:0.5} of the pepper."}
+      ]},
+      {"phase": "Build the base", "minutes": 12, "actions": [
+        {"verb": "Crisp", "body": "{amt:bacon|slice|slices} of chopped bacon in a heavy pot over medium heat until browned, then lift it out to a paper towel and leave the fat behind.", "duration": "7 min"},
+        {"verb": "Soften", "body": "the onion, celery and carrot in the bacon fat with {amt:butter_unsalted} of butter until the onion is translucent, then stir in the garlic and {amt:thyme_dried} of dried thyme for 30 seconds.", "duration": "5 min"},
+        {"verb": "Sprinkle", "body": "{amt:flour_ap} of flour over the vegetables and stir constantly for 1 minute so the raw flour taste cooks off — this is what thickens the chowder."}
+      ]},
+      {"phase": "Simmer", "minutes": 16, "actions": [
+        {"verb": "Whisk in", "body": "{amt:broth_chicken} of chicken broth a splash at a time to keep it lump-free, add the potatoes and the rest of the salt, and bring it to a gentle simmer."},
+        {"verb": "Cook", "body": "uncovered until the potatoes are just tender when poked with a knife.", "duration": "12 min"},
+        {"verb": "Add", "body": "the chicken and {amt:corn_frozen} of frozen corn and simmer gently until the chicken is opaque through and reads 165°F.", "duration": "5 min"}
+      ]},
+      {"phase": "Finish", "minutes": 7, "actions": [
+        {"verb": "Stir in", "body": "{amt:milk_whole} of whole milk and {amt:cream_heavy} of heavy cream and warm the chowder through without letting it boil, which would curdle the dairy.", "duration": "4 min"},
+        {"verb": "Mash", "body": "a few of the potato cubes against the side of the pot with a spoon if you want a thicker chowder, then taste and add the last of the salt and pepper."},
+        {"verb": "Serve", "body": "in bowls topped with the crisp bacon and {amt:parsley_fresh} of chopped parsley."}
+      ]}
+    ]
+  },
+  {
+    "key": "sw-chicken-noodle-casserole",
+    "title": "Chicken Noodle Casserole",
+    "cuisine": "American",
+    "anchor": "chicken_breast",
+    "serves": 4,
+    "minutes": 55,
+    "difficulty": "Easy",
+    "equipment": "oven",
+    "format": "oven",
+    "cleanup": 4,
+    "ingredients": [
+      ["chicken_breast", 1.25, "lb"],
+      ["noodle_egg", 0.5, "lb"],
+      ["butter_unsalted", 2, "tbsp"],
+      ["onion_yellow", 0.5, "count"],
+      ["carrot", 2, "count"],
+      ["garlic_head", 3, "clove"],
+      ["cream_of_mushroom_canned", 1, "count"],
+      ["sour_cream", 0.5, "cup"],
+      ["milk_whole", 0.5, "cup"],
+      ["cheddar", 1.25, "cup"],
+      ["peas_frozen", 1, "cup"],
+      ["breadcrumb_panko", 0.5, "cup"],
+      ["garlic_powder", 1, "tsp"],
+      ["salt_kosher", 1.25, "tsp"],
+      ["pepper_black", 0.5, "tsp"],
+      ["parsley_fresh", 2, "tbsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 12, "actions": [
+        {"verb": "Heat", "body": "the oven to 375°F and butter a 9×13-inch baking dish with about a third of {amt:butter_unsalted} of the butter."},
+        {"verb": "Poach", "body": "{amt:chicken_breast} of chicken breast in a wide pan of simmering salted water until it reads 165°F, then shred it with two forks.", "duration": "14 min"},
+        {"verb": "Dice", "body": "{amt:onion_yellow|onion|onions} and {amt:carrot|carrot|carrots} small and mince {amt:garlic_head} of garlic."}
+      ]},
+      {"phase": "Noodles", "minutes": 10, "actions": [
+        {"verb": "Boil", "body": "{amt:noodle_egg} of egg noodles in salted water for 2 minutes less than the package says — they finish cooking in the oven — then drain them.", "duration": "5 min"},
+        {"verb": "Soften", "body": "the onion and carrot in the remaining butter in a large skillet over medium heat, then stir in the garlic and {amt:garlic_powder:0.5} of the garlic powder for 30 seconds.", "duration": "5 min"}
+      ]},
+      {"phase": "Assemble", "minutes": 8, "actions": [
+        {"verb": "Whisk", "body": "{amt:cream_of_mushroom_canned} of condensed cream of mushroom soup with {amt:sour_cream} of sour cream, {amt:milk_whole} of milk, {amt:salt_kosher} of salt and {amt:pepper_black} of pepper in a large bowl until smooth."},
+        {"verb": "Fold in", "body": "the shredded chicken, the drained noodles, the cooked vegetables, {amt:peas_frozen} of frozen peas and {amt:cheddar:0.6} of the cheddar, then spread it all in the dish."},
+        {"verb": "Scatter", "body": "the rest of the cheddar over the top, then {amt:breadcrumb_panko} of panko mixed with the rest of the garlic powder."}
+      ]},
+      {"phase": "Bake", "minutes": 25, "actions": [
+        {"verb": "Bake", "body": "uncovered until the edges bubble and the panko is deep golden.", "duration": "25 min"},
+        {"verb": "Rest", "body": "for 5 minutes so the sauce sets, then finish with {amt:parsley_fresh} of chopped parsley.", "duration": "5 min"}
+      ]}
+    ]
+  },
+  {
+    "key": "sw-creamy-sausage-spinach-pasta",
+    "title": "Creamy Sausage and Spinach Pasta",
+    "cuisine": "American",
+    "anchor": "sausage_italian",
+    "serves": 4,
+    "minutes": 35,
+    "difficulty": "Easy",
+    "equipment": "stove",
+    "format": "skillet",
+    "cleanup": 3,
+    "ingredients": [
+      ["sausage_italian", 0.75, "lb"],
+      ["pasta_short", 0.75, "lb"],
+      ["olive_oil_evoo", 1, "tbsp"],
+      ["onion_yellow", 1, "count"],
+      ["garlic_head", 4, "clove"],
+      ["tomato_paste", 2, "tbsp"],
+      ["chili_flake", 0.5, "tsp"],
+      ["italian_seasoning", 1, "tsp"],
+      ["broth_chicken", 0.5, "cup"],
+      ["cream_heavy", 0.5, "cup"],
+      ["spinach_fresh", 5, "cup"],
+      ["parmesan", 0.5, "cup"],
+      ["salt_kosher", 1.25, "tsp"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 8, "actions": [
+        {"verb": "Boil", "body": "a large pot of water with {amt:salt_kosher:0.6} of the salt for {amt:pasta_short} of short pasta."},
+        {"verb": "Dice", "body": "{amt:onion_yellow|onion|onions} and mince {amt:garlic_head} of garlic."},
+        {"verb": "Squeeze", "body": "{amt:sausage_italian} of Italian sausage out of its casings into a bowl so it browns in craggy pieces instead of neat rounds."}
+      ]},
+      {"phase": "Brown", "minutes": 10, "actions": [
+        {"verb": "Cook", "body": "the sausage in {amt:olive_oil_evoo} of olive oil in a large skillet over medium-high heat, breaking it into bite-size chunks, until deeply browned and cooked to 160°F.", "duration": "7 min"},
+        {"verb": "Add", "body": "the onion and cook until soft, then stir in the garlic, {amt:chili_flake} of red pepper flakes and {amt:italian_seasoning} of Italian seasoning for 1 minute.", "duration": "4 min"},
+        {"verb": "Stir in", "body": "{amt:tomato_paste} of tomato paste and let it darken a shade against the hot pan — that is where the depth comes from."}
+      ]},
+      {"phase": "Pasta", "minutes": 11, "actions": [
+        {"verb": "Cook", "body": "the pasta to al dente, then scoop out 1 cup of the starchy water before draining.", "duration": "9 min"},
+        {"verb": "Pour", "body": "{amt:broth_chicken} of chicken broth into the skillet and scrape up the browned bits, then stir in {amt:cream_heavy} of heavy cream and simmer until it coats a spoon.", "duration": "3 min"}
+      ]},
+      {"phase": "Finish", "minutes": 6, "actions": [
+        {"verb": "Wilt", "body": "{amt:spinach_fresh} of fresh spinach into the sauce a handful at a time — it collapses to almost nothing.", "duration": "2 min"},
+        {"verb": "Toss", "body": "the drained pasta through the sauce with {amt:parmesan:0.75} of the Parmesan, loosening it with splashes of pasta water until it is glossy rather than thick."},
+        {"verb": "Season", "body": "with the rest of the salt and {amt:pepper_black} of pepper and serve with the remaining Parmesan over the top."}
+      ]}
+    ]
+  },
+  {
+    "key": "sw-sheet-pan-sausage-peppers-potatoes",
+    "title": "Sheet-Pan Sausage, Peppers and Potatoes",
+    "cuisine": "American",
+    "anchor": "sausage_italian",
+    "serves": 4,
+    "minutes": 50,
+    "difficulty": "Easy",
+    "equipment": "oven",
+    "format": "oven",
+    "cleanup": 2,
+    "ingredients": [
+      ["sausage_italian", 1, "lb"],
+      ["potato_yukon", 1.5, "lb"],
+      ["bell_pepper", 2, "count"],
+      ["onion_red", 1, "count"],
+      ["olive_oil_evoo", 3, "tbsp"],
+      ["garlic_head", 4, "clove"],
+      ["italian_seasoning", 2, "tsp"],
+      ["paprika_smoked", 1, "tsp"],
+      ["parmesan", 0.25, "cup"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 0.5, "tsp"],
+      ["parsley_fresh", 2, "tbsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 12, "actions": [
+        {"verb": "Heat", "body": "the oven to 425°F with a rimmed sheet pan inside — a preheated pan is what gives the potatoes a crust instead of steaming them."},
+        {"verb": "Cut", "body": "{amt:potato_yukon} of Yukon Gold potatoes into 1-inch chunks, {amt:bell_pepper|bell pepper|bell peppers} into wide strips and {amt:onion_red|red onion|red onions} into thick wedges."},
+        {"verb": "Toss", "body": "the potatoes with {amt:olive_oil_evoo:0.67} of the olive oil, {amt:italian_seasoning:0.5} of the Italian seasoning, {amt:paprika_smoked} of smoked paprika, {amt:salt_kosher:0.67} of the salt and {amt:pepper_black} of pepper."}
+      ]},
+      {"phase": "Roast the potatoes", "minutes": 20, "actions": [
+        {"verb": "Spread", "body": "the potatoes cut side down on the hot pan in a single layer and roast until the undersides are golden.", "duration": "20 min"},
+        {"verb": "Toss", "body": "the peppers and onion meanwhile with the rest of the oil, the rest of the Italian seasoning, {amt:garlic_head} of sliced garlic and the remaining salt."}
+      ]},
+      {"phase": "Add the sausage", "minutes": 18, "actions": [
+        {"verb": "Push", "body": "the potatoes to one side, add the peppers and onion, and nestle in {amt:sausage_italian} of Italian sausage links, leaving space between everything."},
+        {"verb": "Roast", "body": "until the sausages are browned and read 160°F and the peppers have charred edges, turning the links once halfway.", "duration": "18 min"}
+      ]},
+      {"phase": "Serve", "minutes": 4, "actions": [
+        {"verb": "Slice", "body": "the sausages on a diagonal and toss them back through the vegetables with the pan juices."},
+        {"verb": "Shower", "body": "with {amt:parmesan} of grated Parmesan and {amt:parsley_fresh} of chopped parsley and serve straight from the pan."}
+      ]}
+    ]
+  },
+  {
+    "key": "sw-sheet-pan-chipotle-honey-chicken",
+    "title": "Sheet-Pan Chipotle-Honey Chicken with Potatoes",
+    "cuisine": "American",
+    "anchor": "chicken_thigh_boneless",
+    "serves": 4,
+    "minutes": 45,
+    "difficulty": "Easy",
+    "equipment": "oven",
+    "format": "oven",
+    "cleanup": 2,
+    "ingredients": [
+      ["chicken_thigh_boneless", 1.5, "lb"],
+      ["potato_yukon", 1.5, "lb"],
+      ["honey", 3, "tbsp"],
+      ["chipotle_adobo", 1, "count"],
+      ["olive_oil_evoo", 2, "tbsp"],
+      ["garlic_head", 3, "clove"],
+      ["cumin_ground", 1, "tsp"],
+      ["lime", 1, "count"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 0.5, "tsp"],
+      ["cilantro", 2, "tbsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 12, "actions": [
+        {"verb": "Heat", "body": "the oven to 425°F and line a rimmed sheet pan with foil — the honey glaze will scorch onto bare metal."},
+        {"verb": "Cut", "body": "{amt:potato_yukon} of Yukon Gold potatoes into ¾-inch cubes and toss them with {amt:olive_oil_evoo:0.5} of the olive oil, {amt:salt_kosher:0.5} of the salt and {amt:pepper_black:0.5} of the pepper."},
+        {"verb": "Blend", "body": "the glaze: mince 2 peppers from {amt:chipotle_adobo} of chipotles in adobo along with a tablespoon of their sauce, and stir them with {amt:honey} of honey, {amt:garlic_head} of minced garlic, {amt:cumin_ground} of cumin, the rest of the olive oil and the juice of half of {amt:lime|lime|limes}."}
+      ]},
+      {"phase": "Roast the potatoes", "minutes": 15, "actions": [
+        {"verb": "Spread", "body": "the potatoes over the pan in one layer and roast until they are starting to brown at the edges.", "duration": "15 min"},
+        {"verb": "Toss", "body": "{amt:chicken_thigh_boneless} of boneless chicken thighs with the rest of the salt and pepper and about two-thirds of the glaze, holding the rest back for the end."}
+      ]},
+      {"phase": "Roast together", "minutes": 15, "actions": [
+        {"verb": "Nestle", "body": "the glazed thighs among the potatoes, smooth side up, and return the pan to the oven."},
+        {"verb": "Roast", "body": "until the chicken reads 165°F at the thickest point and the glaze has caramelized in spots.", "duration": "15 min"}
+      ]},
+      {"phase": "Serve", "minutes": 4, "actions": [
+        {"verb": "Brush", "body": "the chicken with the reserved glaze and let it sit for 3 minutes so the juices settle.", "duration": "3 min"},
+        {"verb": "Finish", "body": "with {amt:cilantro} of chopped cilantro and the remaining lime cut into wedges for squeezing."}
+      ]}
+    ]
+  },
+  {
+    "key": "sw-crispy-chicken-cutlets-arugula",
+    "title": "Crispy Chicken Cutlets with Arugula Salad",
+    "cuisine": "American",
+    "anchor": "chicken_breast",
+    "serves": 4,
+    "minutes": 35,
+    "difficulty": "Medium",
+    "equipment": "stove",
+    "format": "skillet",
+    "cleanup": 4,
+    "ingredients": [
+      ["chicken_breast", 1.5, "lb"],
+      ["flour_ap", 0.5, "cup"],
+      ["egg_large", 2, "count"],
+      ["breadcrumb_panko", 1.5, "cup"],
+      ["parmesan", 0.5, "cup"],
+      ["garlic_powder", 1, "tsp"],
+      ["oil_neutral", 5, "tbsp"],
+      ["arugula", 5, "cup"],
+      ["tomato_cherry", 1.5, "cup"],
+      ["lemon", 1, "count"],
+      ["olive_oil_evoo", 2, "tbsp"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Pound the cutlets", "minutes": 10, "actions": [
+        {"verb": "Halve", "body": "{amt:chicken_breast} of chicken breasts horizontally into 4 thin cutlets, then pound them between two sheets of plastic to an even ¼ inch so they cook through before the crust burns."},
+        {"verb": "Season", "body": "both sides with {amt:salt_kosher:0.67} of the salt and {amt:pepper_black:0.6} of the pepper."}
+      ]},
+      {"phase": "Bread", "minutes": 8, "actions": [
+        {"verb": "Set up", "body": "three shallow dishes: {amt:flour_ap} of flour in the first; {amt:egg_large|egg|eggs}, beaten, in the second; {amt:breadcrumb_panko} of panko tossed with {amt:parmesan:0.5} of the Parmesan and {amt:garlic_powder} of garlic powder in the third."},
+        {"verb": "Coat", "body": "each cutlet in flour, then egg, then press it firmly into the panko on both sides and set it on a rack."}
+      ]},
+      {"phase": "Fry", "minutes": 12, "actions": [
+        {"verb": "Heat", "body": "{amt:oil_neutral} of neutral oil in a large skillet over medium-high until a crumb sizzles on contact."},
+        {"verb": "Fry", "body": "two cutlets at a time until deep golden, then flip and cook the second side until they read 165°F. Drain on a rack, not paper towels, so they stay crisp.", "duration": "6 min"}
+      ]},
+      {"phase": "Salad and serve", "minutes": 5, "actions": [
+        {"verb": "Whisk", "body": "the juice of {amt:lemon|lemon|lemons} with {amt:olive_oil_evoo} of olive oil, the rest of the salt and pepper in a big bowl."},
+        {"verb": "Toss", "body": "{amt:arugula} of arugula and {amt:tomato_cherry} of halved cherry tomatoes through the dressing at the last second so the leaves don't wilt."},
+        {"verb": "Pile", "body": "the salad over the hot cutlets and shave the remaining Parmesan on top."}
+      ]}
+    ]
+  },
+  {
+    "key": "sw-honey-garlic-pork-chops",
+    "title": "Honey Garlic Pork Chops with Rice and Green Beans",
+    "cuisine": "American",
+    "anchor": "pork_chop",
+    "serves": 4,
+    "minutes": 40,
+    "difficulty": "Easy",
+    "equipment": "stove",
+    "format": "skillet",
+    "cleanup": 3,
+    "ingredients": [
+      ["pork_chop", 4, "count"],
+      ["rice_long_grain", 1.25, "cup"],
+      ["green_bean", 1, "lb"],
+      ["honey", 3, "tbsp"],
+      ["soy_sauce", 3, "tbsp"],
+      ["garlic_head", 5, "clove"],
+      ["butter_unsalted", 2, "tbsp"],
+      ["oil_neutral", 1, "tbsp"],
+      ["vinegar_apple_cider", 1, "tbsp"],
+      ["cornstarch", 1, "tsp"],
+      ["salt_kosher", 1.25, "tsp"],
+      ["pepper_black", 0.5, "tsp"],
+      ["parsley_fresh", 2, "tbsp"]
+    ],
+    "steps": [
+      {"phase": "Rice", "minutes": 20, "actions": [
+        {"verb": "Rinse", "body": "{amt:rice_long_grain} of long-grain rice until the water runs clear, then simmer it covered in 2 cups of water with {amt:salt_kosher:0.4} of the salt over low heat.", "duration": "18 min"},
+        {"verb": "Pat", "body": "{amt:pork_chop|pork chop|pork chops} completely dry and season both sides with the rest of the salt and {amt:pepper_black} of pepper. Let them sit out while the rice cooks."}
+      ]},
+      {"phase": "Sauce", "minutes": 5, "actions": [
+        {"verb": "Mince", "body": "{amt:garlic_head} of garlic."},
+        {"verb": "Whisk", "body": "{amt:honey} of honey, {amt:soy_sauce} of soy sauce, {amt:vinegar_apple_cider} of cider vinegar, {amt:cornstarch} of cornstarch and 3 tablespoons of water together in a small bowl."}
+      ]},
+      {"phase": "Sear", "minutes": 10, "actions": [
+        {"verb": "Sear", "body": "the chops in {amt:oil_neutral} of oil in a heavy skillet over medium-high heat, undisturbed, until a deep crust forms, then flip and cook until they read 145°F.", "duration": "8 min"},
+        {"verb": "Rest", "body": "the chops on a plate — they will carry over a few degrees while you build the sauce.", "duration": "5 min"}
+      ]},
+      {"phase": "Glaze and steam", "minutes": 8, "actions": [
+        {"verb": "Steam", "body": "{amt:green_bean} of trimmed green beans in a covered pan with a splash of water until bright and crisp-tender, then toss them with {amt:butter_unsalted:0.5} of the butter.", "duration": "5 min"},
+        {"verb": "Cook", "body": "the garlic in the rest of the butter in the pork skillet for 30 seconds, pour in the honey mixture and simmer until it is syrupy enough to coat a spoon.", "duration": "2 min"},
+        {"verb": "Return", "body": "the chops and any resting juices to the pan, turn them in the glaze and serve over the rice with the beans and {amt:parsley_fresh} of chopped parsley."}
+      ]}
+    ]
+  },
+  {
+    "key": "sw-chicken-cobb-salad",
+    "title": "Chicken Cobb Salad with Bacon and Egg",
+    "cuisine": "American",
+    "anchor": "chicken_breast",
+    "serves": 4,
+    "minutes": 35,
+    "difficulty": "Easy",
+    "equipment": "stove",
+    "format": "skillet",
+    "cleanup": 4,
+    "ingredients": [
+      ["chicken_breast", 1.25, "lb"],
+      ["bacon", 6, "count"],
+      ["egg_large", 4, "count"],
+      ["lettuce_romaine", 8, "cup"],
+      ["tomato_cherry", 1.5, "cup"],
+      ["avocado", 1, "count"],
+      ["cheddar", 0.5, "cup"],
+      ["scallion", 2, "count"],
+      ["mayo", 3, "tbsp"],
+      ["vinegar_red_wine", 2, "tbsp"],
+      ["mustard_dijon", 1, "tbsp"],
+      ["olive_oil_evoo", 2, "tbsp"],
+      ["garlic_powder", 0.5, "tsp"],
+      ["salt_kosher", 1.25, "tsp"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Eggs and bacon", "minutes": 14, "actions": [
+        {"verb": "Boil", "body": "{amt:egg_large|egg|eggs} for 9 minutes, then move them straight into ice water — that keeps the yolks bright yellow instead of grey.", "duration": "9 min"},
+        {"verb": "Crisp", "body": "{amt:bacon|slice|slices} of bacon in a skillet over medium heat until shatteringly crisp, then drain it and pour off all but a thin film of the fat.", "duration": "9 min"}
+      ]},
+      {"phase": "Chicken", "minutes": 12, "actions": [
+        {"verb": "Season", "body": "{amt:chicken_breast} of chicken breast with {amt:salt_kosher:0.6} of the salt, {amt:pepper_black:0.6} of the pepper and {amt:garlic_powder} of garlic powder."},
+        {"verb": "Sear", "body": "the chicken in the bacon fat over medium heat until browned on both sides and it reads 165°F at the thickest point.", "duration": "10 min"},
+        {"verb": "Rest", "body": "the chicken for 5 minutes, then slice it across the grain.", "duration": "5 min"}
+      ]},
+      {"phase": "Dressing", "minutes": 4, "actions": [
+        {"verb": "Whisk", "body": "{amt:mayo} of mayonnaise, {amt:vinegar_red_wine} of red wine vinegar, {amt:mustard_dijon} of Dijon, {amt:olive_oil_evoo} of olive oil and the rest of the salt and pepper until smooth, loosening it with a splash of water."}
+      ]},
+      {"phase": "Build", "minutes": 6, "actions": [
+        {"verb": "Spread", "body": "{amt:lettuce_romaine} of chopped romaine over a wide platter."},
+        {"verb": "Arrange", "body": "the chicken, the quartered eggs, crumbled bacon, {amt:tomato_cherry} of halved cherry tomatoes, {amt:avocado|avocado|avocados} sliced, and {amt:cheddar} of crumbled cheddar in neat rows across the lettuce."},
+        {"verb": "Drizzle", "body": "with the dressing, scatter {amt:scallion|scallion|scallions} sliced thin over the top and toss at the table."}
+      ]}
+    ]
+  },
+  {
+    "key": "sw-crispy-chicken-sandwiches",
+    "title": "Crispy Chicken Sandwiches with Slaw and Pickles",
+    "cuisine": "American",
+    "anchor": "chicken_breast",
+    "serves": 4,
+    "minutes": 45,
+    "difficulty": "Medium",
+    "equipment": "stove",
+    "format": "skillet",
+    "cleanup": 4,
+    "ingredients": [
+      ["chicken_breast", 1.5, "lb"],
+      ["milk_whole", 1, "cup"],
+      ["vinegar_apple_cider", 2, "tbsp"],
+      ["flour_ap", 1, "cup"],
+      ["cornstarch", 0.25, "cup"],
+      ["paprika_smoked", 1, "tsp"],
+      ["garlic_powder", 1.5, "tsp"],
+      ["cayenne", 0.5, "tsp"],
+      ["oil_neutral", 6, "tbsp"],
+      ["bun_burger", 4, "count"],
+      ["mayo", 3, "tbsp"],
+      ["honey", 1, "tbsp"],
+      ["pickle_dill", 0.5, "cup"],
+      ["cabbage_green", 3, "cup"],
+      ["carrot", 1, "count"],
+      ["salt_kosher", 2, "tsp"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Brine", "minutes": 15, "actions": [
+        {"verb": "Halve", "body": "{amt:chicken_breast} of chicken breasts horizontally into 4 even cutlets about ½ inch thick."},
+        {"verb": "Soak", "body": "them in {amt:milk_whole} of whole milk soured with {amt:vinegar_apple_cider:0.5} of the cider vinegar, plus {amt:salt_kosher:0.5} of the salt — a quick buttermilk that seasons and tenderizes the meat.", "duration": "15 min"}
+      ]},
+      {"phase": "Slaw", "minutes": 8, "actions": [
+        {"verb": "Shred", "body": "{amt:cabbage_green} of green cabbage and {amt:carrot|carrot|carrots} as finely as you can."},
+        {"verb": "Dress", "body": "them with {amt:mayo:0.33} of the mayonnaise, the rest of the cider vinegar, {amt:honey:0.5} of the honey and a pinch of the salt, then chill the slaw so it stays crunchy."},
+        {"verb": "Stir", "body": "the remaining mayonnaise with the rest of the honey and a few finely chopped pickles from {amt:pickle_dill} of dill pickles to make the sauce; keep the rest of the pickles whole for layering."}
+      ]},
+      {"phase": "Dredge and fry", "minutes": 18, "actions": [
+        {"verb": "Mix", "body": "{amt:flour_ap} of flour, {amt:cornstarch} of cornstarch, {amt:paprika_smoked} of smoked paprika, {amt:garlic_powder} of garlic powder, {amt:cayenne} of cayenne, the rest of the salt and {amt:pepper_black} of pepper in a wide dish, then splash in 2 tablespoons of the soaking milk and rake it with a fork so the coating is shaggy."},
+        {"verb": "Press", "body": "each drained cutlet hard into the flour on both sides and let the breaded pieces sit for 5 minutes so the crust sticks.", "duration": "5 min"},
+        {"verb": "Fry", "body": "two at a time in {amt:oil_neutral} of oil in a heavy skillet over medium-high heat until deep golden and 165°F inside, then drain on a rack.", "duration": "8 min"}
+      ]},
+      {"phase": "Build", "minutes": 5, "actions": [
+        {"verb": "Toast", "body": "{amt:bun_burger|bun|buns}, cut side down, in the last of the hot oil for about a minute until the edges are crisp."},
+        {"verb": "Stack", "body": "sauce on both cut sides, then the chicken, the whole pickle slices and a generous handful of slaw, and serve the rest of the slaw alongside."}
+      ]}
+    ]
+  },
+  {
+    "key": "sw-air-fryer-garlic-herb-chicken",
+    "title": "Air Fryer Garlic-Herb Chicken with Asparagus",
+    "cuisine": "American",
+    "anchor": "chicken_breast",
+    "serves": 4,
+    "minutes": 35,
+    "difficulty": "Easy",
+    "equipment": "air_fryer",
+    "format": "air",
+    "cleanup": 2,
+    "ingredients": [
+      ["chicken_breast", 1.5, "lb"],
+      ["potato_yukon", 1, "lb"],
+      ["asparagus", 1, "lb"],
+      ["olive_oil_evoo", 3, "tbsp"],
+      ["butter_unsalted", 2, "tbsp"],
+      ["garlic_head", 4, "clove"],
+      ["thyme_fresh", 1, "tbsp"],
+      ["parsley_fresh", 2, "tbsp"],
+      ["parmesan", 0.25, "cup"],
+      ["paprika_smoked", 1, "tsp"],
+      ["lemon", 1, "count"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Heat", "body": "the air fryer to 400°F."},
+        {"verb": "Cut", "body": "{amt:potato_yukon} of Yukon Gold potatoes into ¾-inch cubes and toss them with {amt:olive_oil_evoo:0.33} of the olive oil, {amt:paprika_smoked} of smoked paprika and {amt:salt_kosher:0.33} of the salt."},
+        {"verb": "Pound", "body": "{amt:chicken_breast} of chicken breasts to an even ¾ inch, then rub them with another third of the oil, {amt:garlic_head:0.5} of the minced garlic, the leaves from {amt:thyme_fresh} of fresh thyme, the rest of the salt and {amt:pepper_black} of pepper."}
+      ]},
+      {"phase": "Potatoes", "minutes": 12, "actions": [
+        {"verb": "Air fry", "body": "the potatoes in a single layer, shaking the basket twice, until the outsides are crisp and the centers are tender.", "duration": "12 min"},
+        {"verb": "Tip", "body": "them into a bowl, toss with {amt:butter_unsalted:0.5} of the butter and cover to keep warm."}
+      ]},
+      {"phase": "Chicken", "minutes": 14, "actions": [
+        {"verb": "Air fry", "body": "the chicken, smooth side down, for 7 minutes, then flip and cook until it reads 165°F at the thickest point.", "duration": "13 min"},
+        {"verb": "Toss", "body": "{amt:asparagus} of trimmed asparagus meanwhile with the rest of the olive oil and a pinch of salt."}
+      ]},
+      {"phase": "Asparagus and serve", "minutes": 6, "actions": [
+        {"verb": "Rest", "body": "the chicken under foil while you air fry the asparagus at 400°F until it is blistered and still snappy.", "duration": "5 min"},
+        {"verb": "Melt", "body": "the rest of the butter with the remaining garlic and the juice of {amt:lemon|lemon|lemons}, then spoon it over the chicken and asparagus."},
+        {"verb": "Scatter", "body": "{amt:parmesan} of grated Parmesan and {amt:parsley_fresh} of chopped parsley over everything and serve with the potatoes."}
+      ]}
+    ]
+  },
+  {
+    "key": "sw-grilled-lemon-herb-chicken",
+    "title": "Grilled Lemon-Herb Chicken with Asparagus",
+    "cuisine": "American",
+    "anchor": "chicken_breast",
+    "serves": 4,
+    "minutes": 50,
+    "difficulty": "Easy",
+    "equipment": "grill",
+    "format": "grill",
+    "cleanup": 3,
+    "ingredients": [
+      ["chicken_breast", 1.75, "lb"],
+      ["potato_yukon", 1.25, "lb"],
+      ["asparagus", 1, "lb"],
+      ["olive_oil_evoo", 4, "tbsp"],
+      ["butter_unsalted", 2, "tbsp"],
+      ["lemon", 2, "count"],
+      ["garlic_head", 4, "clove"],
+      ["oregano_dried", 1, "tsp"],
+      ["thyme_fresh", 1, "tbsp"],
+      ["parsley_fresh", 0.25, "cup"],
+      ["salt_kosher", 2, "tsp"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Marinate", "minutes": 20, "actions": [
+        {"verb": "Pound", "body": "{amt:chicken_breast} of chicken breasts to an even ¾ inch so they grill without the thin end drying out."},
+        {"verb": "Whisk", "body": "the zest and juice of one of {amt:lemon|lemon|lemons} with {amt:olive_oil_evoo:0.5} of the olive oil, {amt:garlic_head:0.75} of the minced garlic, {amt:oregano_dried} of dried oregano, the leaves from {amt:thyme_fresh} of thyme, {amt:salt_kosher:0.5} of the salt and {amt:pepper_black:0.6} of the pepper."},
+        {"verb": "Turn", "body": "the chicken in the marinade and leave it at room temperature while the grill heats — 20 minutes is plenty, and much longer makes the lemon chalky.", "duration": "20 min"}
+      ]},
+      {"phase": "Potatoes", "minutes": 15, "actions": [
+        {"verb": "Parboil", "body": "{amt:potato_yukon} of halved baby Yukon Golds in well-salted water until a knife slides in with just a little resistance, then drain them dry.", "duration": "10 min"},
+        {"verb": "Toss", "body": "the hot potatoes with a quarter of the olive oil, the rest of the garlic and a pinch of the salt and thread them onto skewers or load them into a grill basket."}
+      ]},
+      {"phase": "Grill", "minutes": 14, "actions": [
+        {"verb": "Heat", "body": "the grill to medium-high, around 450°F, and scrape and oil the grates well."},
+        {"verb": "Grill", "body": "the chicken 5 to 6 minutes per side, lid down, until it has clear marks and reads 165°F, moving it to a cooler zone if the lemon sugars start to char.", "duration": "12 min"},
+        {"verb": "Grill", "body": "the potatoes alongside, turning them until crusty, and {amt:asparagus} of asparagus tossed with the remaining olive oil and salt for the last 4 minutes.", "duration": "10 min"}
+      ]},
+      {"phase": "Serve", "minutes": 5, "actions": [
+        {"verb": "Rest", "body": "the chicken for 5 minutes, then slice it thickly across the grain.", "duration": "5 min"},
+        {"verb": "Melt", "body": "{amt:butter_unsalted} of butter with the juice of the second lemon and pour it over the chicken, potatoes and asparagus."},
+        {"verb": "Shower", "body": "with {amt:parsley_fresh} of chopped parsley and the last of the pepper."}
+      ]}
+    ]
+  },
+  {
+    "key": "sw-chicken-fried-steak",
+    "title": "Chicken Fried Steak with Country Gravy",
+    "cuisine": "American",
+    "anchor": "beef_steak_sirloin",
+    "serves": 4,
+    "minutes": 55,
+    "difficulty": "Medium",
+    "equipment": "stove",
+    "format": "skillet",
+    "cleanup": 5,
+    "ingredients": [
+      ["beef_steak_sirloin", 1.25, "lb"],
+      ["flour_ap", 1, "cup"],
+      ["egg_large", 2, "count"],
+      ["milk_whole", 2, "cup"],
+      ["oil_neutral", 5, "tbsp"],
+      ["butter_unsalted", 3, "tbsp"],
+      ["potato_russet", 1.75, "lb"],
+      ["paprika_smoked", 1, "tsp"],
+      ["garlic_powder", 1.5, "tsp"],
+      ["onion_powder", 1, "tsp"],
+      ["cayenne", 0.25, "tsp"],
+      ["salt_kosher", 2, "tsp"],
+      ["pepper_black", 1, "tsp"],
+      ["parsley_fresh", 2, "tbsp"]
+    ],
+    "steps": [
+      {"phase": "Mashed potatoes", "minutes": 22, "actions": [
+        {"verb": "Boil", "body": "{amt:potato_russet} of peeled, quartered russets in salted water until a knife slides out cleanly.", "duration": "18 min"},
+        {"verb": "Mash", "body": "them with {amt:butter_unsalted:0.5} of the butter, {amt:milk_whole:0.25} of the milk and {amt:salt_kosher:0.25} of the salt, then cover and keep warm."}
+      ]},
+      {"phase": "Pound and dredge", "minutes": 12, "actions": [
+        {"verb": "Slice", "body": "{amt:beef_steak_sirloin} of sirloin into 4 pieces and pound each between plastic to a scant ¼ inch — this is how you get cube-steak tenderness from a regular steak."},
+        {"verb": "Season", "body": "the steaks with {amt:salt_kosher:0.25} of the salt and {amt:pepper_black:0.3} of the pepper."},
+        {"verb": "Set up", "body": "a dredge of {amt:flour_ap:0.75} of the flour mixed with {amt:paprika_smoked} of smoked paprika, {amt:garlic_powder} of garlic powder, {amt:onion_powder} of onion powder and {amt:cayenne} of cayenne, and a bowl of {amt:egg_large|egg|eggs} beaten with {amt:milk_whole:0.125} of the milk."},
+        {"verb": "Coat", "body": "each steak flour, egg, then flour again, pressing hard, and rest them on a rack for 5 minutes so the crust sets.", "duration": "5 min"}
+      ]},
+      {"phase": "Fry", "minutes": 12, "actions": [
+        {"verb": "Heat", "body": "{amt:oil_neutral} of oil in a large cast-iron skillet over medium-high until it shimmers, around 350°F."},
+        {"verb": "Fry", "body": "two steaks at a time for about 3 minutes a side until the crust is deep golden and crackly, then keep them warm on a wire rack while the rest cook.", "duration": "12 min"}
+      ]},
+      {"phase": "Country gravy", "minutes": 9, "actions": [
+        {"verb": "Pour off", "body": "all but 3 tablespoons of the fat, leaving every browned crumb in the pan, and whisk in the remaining {amt:flour_ap:0.25} of flour and the rest of the butter over medium heat for 2 minutes."},
+        {"verb": "Whisk in", "body": "the remaining {amt:milk_whole:0.625} of milk in a slow stream and simmer, scraping constantly, until the gravy coats a spoon.", "duration": "5 min"},
+        {"verb": "Season", "body": "the gravy hard with the rest of the salt and pepper — country gravy needs far more black pepper than feels right — then ladle it over the steaks and mashed potatoes and finish with {amt:parsley_fresh} of chopped parsley."}
+      ]}
+    ]
+  },
+  {
+    "key": "sw-turkey-chili",
+    "title": "Turkey Chili with Beans and Cheddar",
+    "cuisine": "American",
+    "anchor": "ground_turkey",
+    "serves": 4,
+    "minutes": 50,
+    "difficulty": "Easy",
+    "equipment": "stove",
+    "format": "pot",
+    "cleanup": 2,
+    "ingredients": [
+      ["ground_turkey", 1.25, "lb"],
+      ["olive_oil_evoo", 1, "tbsp"],
+      ["onion_yellow", 1, "count"],
+      ["bell_pepper", 1, "count"],
+      ["garlic_head", 4, "clove"],
+      ["chili_powder", 2, "tbsp"],
+      ["cumin_ground", 1, "tbsp"],
+      ["paprika_smoked", 1, "tsp"],
+      ["oregano_dried", 1, "tsp"],
+      ["tomato_paste", 2, "tbsp"],
+      ["tomato_canned_diced", 1, "count"],
+      ["tomato_sauce", 1, "count"],
+      ["bean_pinto_canned", 1, "count"],
+      ["bean_black_canned", 1, "count"],
+      ["broth_chicken", 1, "cup"],
+      ["cheddar", 1, "cup"],
+      ["sour_cream", 0.5, "cup"],
+      ["scallion", 3, "count"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 8, "actions": [
+        {"verb": "Dice", "body": "{amt:onion_yellow|onion|onions} and {amt:bell_pepper|bell pepper|bell peppers} and mince {amt:garlic_head} of garlic."},
+        {"verb": "Drain", "body": "and rinse {amt:bean_pinto_canned} of pinto beans and {amt:bean_black_canned} of black beans so the chili doesn't turn cloudy."}
+      ]},
+      {"phase": "Brown", "minutes": 12, "actions": [
+        {"verb": "Cook", "body": "{amt:ground_turkey} of ground turkey in {amt:olive_oil_evoo} of olive oil in a Dutch oven over medium-high heat, breaking it up and leaving it alone long enough to brown, until it reads 165°F.", "duration": "7 min"},
+        {"verb": "Add", "body": "the onion and bell pepper and cook until softened, then stir in the garlic for 30 seconds.", "duration": "5 min"},
+        {"verb": "Toast", "body": "{amt:chili_powder} of chili powder, {amt:cumin_ground} of cumin, {amt:paprika_smoked} of smoked paprika, {amt:oregano_dried} of oregano and {amt:tomato_paste} of tomato paste in the dry spots of the pan for 1 minute — blooming the spices in fat is what separates good chili from dusty chili."}
+      ]},
+      {"phase": "Simmer", "minutes": 26, "actions": [
+        {"verb": "Pour in", "body": "{amt:tomato_canned_diced} of diced tomatoes, {amt:tomato_sauce} of tomato sauce and {amt:broth_chicken} of chicken broth and scrape the bottom of the pot clean."},
+        {"verb": "Add", "body": "the beans and {amt:salt_kosher:0.67} of the salt, bring it to a bare simmer and cook uncovered, stirring now and then, until it thickens enough to mound on a spoon.", "duration": "25 min"},
+        {"verb": "Taste", "body": "and finish with the rest of the salt and {amt:pepper_black} of pepper."}
+      ]},
+      {"phase": "Serve", "minutes": 4, "actions": [
+        {"verb": "Ladle", "body": "into bowls and top each with {amt:cheddar} of shredded cheddar, divided, so it melts into the surface."},
+        {"verb": "Finish", "body": "with {amt:sour_cream} of sour cream and {amt:scallion|scallion|scallions} sliced thin."}
+      ]}
+    ]
+  },
+  {
+    "key": "sw-herb-crusted-chicken-potatoes",
+    "title": "Herb-Crusted Chicken with Roasted Potatoes",
+    "cuisine": "American",
+    "anchor": "chicken_breast",
+    "serves": 4,
+    "minutes": 50,
+    "difficulty": "Easy",
+    "equipment": "oven",
+    "format": "oven",
+    "cleanup": 3,
+    "ingredients": [
+      ["chicken_breast", 1.5, "lb"],
+      ["potato_yukon", 1.5, "lb"],
+      ["green_bean", 0.75, "lb"],
+      ["breadcrumb_panko", 1, "cup"],
+      ["parmesan", 0.5, "cup"],
+      ["mustard_dijon", 2, "tbsp"],
+      ["butter_unsalted", 3, "tbsp"],
+      ["olive_oil_evoo", 2, "tbsp"],
+      ["garlic_head", 4, "clove"],
+      ["thyme_fresh", 1, "tbsp"],
+      ["parsley_fresh", 0.25, "cup"],
+      ["lemon", 1, "count"],
+      ["salt_kosher", 1.75, "tsp"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 12, "actions": [
+        {"verb": "Heat", "body": "the oven to 425°F with a rack in the upper third."},
+        {"verb": "Cut", "body": "{amt:potato_yukon} of Yukon Gold potatoes into 1-inch chunks and toss them on a sheet pan with {amt:olive_oil_evoo} of olive oil, {amt:salt_kosher:0.4} of the salt and {amt:pepper_black:0.5} of the pepper."},
+        {"verb": "Melt", "body": "{amt:butter_unsalted} of butter and stir it into {amt:breadcrumb_panko} of panko with {amt:parmesan:0.75} of the Parmesan, {amt:garlic_head:0.5} of the minced garlic, the leaves from {amt:thyme_fresh} of thyme, half of {amt:parsley_fresh} of the parsley and the zest of {amt:lemon|lemon|lemons} until the crumbs look like damp sand."}
+      ]},
+      {"phase": "Potatoes", "minutes": 15, "actions": [
+        {"verb": "Roast", "body": "the potatoes, cut side down, until the undersides are golden and they release from the pan easily.", "duration": "15 min"},
+        {"verb": "Pat", "body": "{amt:chicken_breast} of chicken breasts dry, season them with the rest of the salt and pepper and spread {amt:mustard_dijon} of Dijon over the tops — the mustard is the glue for the crumbs."}
+      ]},
+      {"phase": "Roast together", "minutes": 20, "actions": [
+        {"verb": "Press", "body": "the herb crumbs firmly onto the mustard-coated side of each breast."},
+        {"verb": "Push", "body": "the potatoes aside, add the chicken crumb side up and scatter {amt:green_bean} of trimmed green beans tossed with the rest of the garlic around them."},
+        {"verb": "Roast", "body": "until the crust is golden and the chicken reads 165°F at its thickest point; tent it loosely with foil if the crumbs darken too fast.", "duration": "20 min"}
+      ]},
+      {"phase": "Serve", "minutes": 5, "actions": [
+        {"verb": "Rest", "body": "the chicken for 5 minutes, then squeeze the zested lemon over the green beans and potatoes.", "duration": "5 min"},
+        {"verb": "Finish", "body": "with the rest of the parsley and the remaining Parmesan."}
+      ]}
+    ]
+  },
+  {
+    "key": "sw-dijon-herb-chicken-asparagus",
+    "title": "Dijon Herb Chicken with Asparagus",
+    "cuisine": "French",
+    "anchor": "chicken_thigh_boneless",
+    "serves": 4,
+    "minutes": 45,
+    "difficulty": "Easy",
+    "equipment": "oven",
+    "format": "oven",
+    "cleanup": 2,
+    "ingredients": [
+      ["chicken_thigh_boneless", 1.5, "lb"],
+      ["potato_yukon", 1.25, "lb"],
+      ["asparagus", 1, "lb"],
+      ["mustard_dijon", 3, "tbsp"],
+      ["honey", 1, "tbsp"],
+      ["olive_oil_evoo", 2, "tbsp"],
+      ["butter_unsalted", 1, "tbsp"],
+      ["garlic_head", 3, "clove"],
+      ["thyme_fresh", 1, "tbsp"],
+      ["parsley_fresh", 2, "tbsp"],
+      ["lemon", 1, "count"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 12, "actions": [
+        {"verb": "Heat", "body": "the oven to 425°F."},
+        {"verb": "Whisk", "body": "{amt:mustard_dijon:0.67} of the Dijon with {amt:honey} of honey, {amt:olive_oil_evoo:0.5} of the olive oil, {amt:garlic_head} of minced garlic, the leaves from {amt:thyme_fresh:0.5} of the thyme and {amt:pepper_black:0.5} of the pepper."},
+        {"verb": "Turn", "body": "{amt:chicken_thigh_boneless} of boneless chicken thighs through the mustard mixture with {amt:salt_kosher:0.5} of the salt and leave them to sit while the potatoes start.", "duration": "10 min"}
+      ]},
+      {"phase": "Potatoes", "minutes": 15, "actions": [
+        {"verb": "Halve", "body": "{amt:potato_yukon} of small Yukon Golds and toss them with the rest of the olive oil, the rest of the thyme and a third of the remaining salt."},
+        {"verb": "Roast", "body": "them cut side down on a sheet pan until they are golden underneath.", "duration": "15 min"}
+      ]},
+      {"phase": "Roast together", "minutes": 16, "actions": [
+        {"verb": "Lay", "body": "the thighs over the potatoes, smooth side up, and roast for 10 minutes.", "duration": "10 min"},
+        {"verb": "Scatter", "body": "{amt:asparagus} of trimmed asparagus around the pan with the rest of the salt and roast until the spears are tender and the chicken reads 165°F.", "duration": "8 min"}
+      ]},
+      {"phase": "Pan sauce", "minutes": 5, "actions": [
+        {"verb": "Whisk", "body": "the remaining Dijon and {amt:butter_unsalted} of butter into the pan juices in the corner of the hot sheet pan until they emulsify into a glossy sauce."},
+        {"verb": "Spoon", "body": "the sauce over the chicken, squeeze {amt:lemon|lemon|lemons} over the asparagus and finish with {amt:parsley_fresh} of chopped parsley."}
+      ]}
+    ]
+  },
+  {
+    "key": "sw-steak-au-poivre",
+    "title": "Steak au Poivre with Crispy Potatoes",
+    "cuisine": "French",
+    "anchor": "beef_steak_sirloin",
+    "serves": 4,
+    "minutes": 45,
+    "difficulty": "Medium",
+    "equipment": "stove",
+    "format": "skillet",
+    "cleanup": 3,
+    "ingredients": [
+      ["beef_steak_sirloin", 1.5, "lb"],
+      ["pepper_black", 2, "tbsp"],
+      ["butter_unsalted", 4, "tbsp"],
+      ["shallot", 2, "count"],
+      ["wine_white_dry", 0.33, "cup"],
+      ["cream_heavy", 0.5, "cup"],
+      ["broth_beef", 0.5, "cup"],
+      ["mustard_dijon", 1, "tsp"],
+      ["potato_yukon", 1.5, "lb"],
+      ["olive_oil_evoo", 2, "tbsp"],
+      ["thyme_fresh", 1, "tbsp"],
+      ["parsley_fresh", 2, "tbsp"],
+      ["salt_kosher", 2, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Potatoes", "minutes": 22, "actions": [
+        {"verb": "Parboil", "body": "{amt:potato_yukon} of potatoes, cut into 1-inch chunks, in well-salted water for 8 minutes, then drain them and shake the colander hard to rough up the edges.", "duration": "10 min"},
+        {"verb": "Fry", "body": "them in {amt:olive_oil_evoo} of olive oil in a wide skillet over medium-high heat, turning only every few minutes, until crusted all over, then toss with the leaves from {amt:thyme_fresh} of thyme, {amt:salt_kosher:0.25} of the salt and {amt:butter_unsalted:0.25} of the butter and keep them warm.", "duration": "12 min"}
+      ]},
+      {"phase": "Crust the steaks", "minutes": 8, "actions": [
+        {"verb": "Crush", "body": "{amt:pepper_black} of black peppercorns coarsely under a heavy pan — cracked, not ground, is the whole point of au poivre."},
+        {"verb": "Pat", "body": "{amt:beef_steak_sirloin} of sirloin steaks bone dry, salt them with {amt:salt_kosher:0.5} of the salt and press the cracked pepper firmly into both sides."}
+      ]},
+      {"phase": "Sear", "minutes": 9, "actions": [
+        {"verb": "Sear", "body": "the steaks in a heavy skillet over medium-high heat with {amt:butter_unsalted:0.25} of the butter, about 3 to 4 minutes a side for medium-rare, 130°F on a thermometer.", "duration": "8 min"},
+        {"verb": "Rest", "body": "them on a board under loose foil while you build the sauce.", "duration": "7 min"}
+      ]},
+      {"phase": "Cognac-style cream sauce", "minutes": 7, "actions": [
+        {"verb": "Soften", "body": "{amt:shallot|shallot|shallots}, finely minced, in the remaining butter over medium heat until translucent.", "duration": "2 min"},
+        {"verb": "Deglaze", "body": "with {amt:wine_white_dry} of dry white wine (or a splash of brandy if you have it), scraping up the peppery fond, and reduce it by half.", "duration": "2 min"},
+        {"verb": "Simmer", "body": "{amt:broth_beef} of beef broth, {amt:cream_heavy} of heavy cream and {amt:mustard_dijon} of Dijon together until the sauce coats a spoon, then stir in the resting juices and the rest of the salt.", "duration": "3 min"},
+        {"verb": "Slice", "body": "the steaks against the grain, spoon the sauce over and serve with the potatoes and {amt:parsley_fresh} of chopped parsley."}
+      ]}
+    ]
+  },
+  {
+    "key": "sw-air-fryer-chicken-kiev",
+    "title": "Air Fryer Chicken Kiev with Chips and Peas",
+    "cuisine": "British",
+    "anchor": "chicken_breast",
+    "serves": 4,
+    "minutes": 60,
+    "difficulty": "Medium",
+    "equipment": "air_fryer",
+    "format": "air",
+    "cleanup": 4,
+    "ingredients": [
+      ["chicken_breast", 1.5, "lb"],
+      ["butter_unsalted", 6, "tbsp"],
+      ["garlic_head", 4, "clove"],
+      ["parsley_fresh", 0.25, "cup"],
+      ["lemon", 1, "count"],
+      ["flour_ap", 0.5, "cup"],
+      ["egg_large", 2, "count"],
+      ["breadcrumb_panko", 1.5, "cup"],
+      ["oil_neutral", 2, "tbsp"],
+      ["potato_russet", 1.5, "lb"],
+      ["peas_frozen", 2, "cup"],
+      ["salt_kosher", 2, "tsp"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Garlic butter", "minutes": 18, "actions": [
+        {"verb": "Mash", "body": "{amt:butter_unsalted:0.67} of softened butter with {amt:garlic_head} of finely minced garlic, half of {amt:parsley_fresh} of the parsley, the zest of {amt:lemon|lemon|lemons}, {amt:salt_kosher:0.25} of the salt and {amt:pepper_black:0.4} of the pepper."},
+        {"verb": "Roll", "body": "the butter into a log in plastic wrap and freeze it solid — soft butter will leak straight out of the chicken.", "duration": "15 min"}
+      ]},
+      {"phase": "Stuff and bread", "minutes": 18, "actions": [
+        {"verb": "Cut", "body": "a deep horizontal pocket into each of {amt:chicken_breast} of chicken breasts, keeping the far edge intact, and season the inside and outside with another quarter of the salt."},
+        {"verb": "Tuck", "body": "a thick slice of the frozen garlic butter into each pocket and press the opening closed, sealing it with a toothpick if it gapes."},
+        {"verb": "Coat", "body": "each breast in {amt:flour_ap} of seasoned flour, then {amt:egg_large|beaten egg|beaten eggs}, then {amt:breadcrumb_panko} of panko, and repeat the egg and panko for a second coat so the butter stays in."},
+        {"verb": "Chill", "body": "the breaded kievs in the freezer for 10 minutes while the chips start.", "duration": "10 min"}
+      ]},
+      {"phase": "Chips", "minutes": 16, "actions": [
+        {"verb": "Cut", "body": "{amt:potato_russet} of russets into thick chips, soak them in cold water for 5 minutes, then dry them completely and toss with {amt:oil_neutral:0.5} of the oil and a third of the remaining salt.", "duration": "5 min"},
+        {"verb": "Air fry", "body": "the chips at 400°F, shaking twice, until crisp and golden, then tip them into a bowl and cover.", "duration": "16 min"}
+      ]},
+      {"phase": "Cook and serve", "minutes": 16, "actions": [
+        {"verb": "Spray", "body": "the kievs all over with the rest of the oil and air fry at 375°F for 10 minutes, then turn them and cook until the crumb is deep golden and the chicken reads 165°F away from the butter pocket.", "duration": "16 min"},
+        {"verb": "Simmer", "body": "{amt:peas_frozen} of peas in a little salted water for 3 minutes, drain and toss them with the last of the butter and the rest of the salt.", "duration": "3 min"},
+        {"verb": "Serve", "body": "each kiev whole so the garlic butter runs out when it is cut, with the chips, peas, the rest of the parsley and the lemon in wedges."}
+      ]}
+    ]
+  },
+  {
+    "key": "sw-frikadeller-dill-potatoes",
+    "title": "Frikadeller with Creamy Dill Potatoes",
+    "cuisine": "Scandinavian",
+    "anchor": "ground_pork",
+    "serves": 4,
+    "minutes": 50,
+    "difficulty": "Easy",
+    "equipment": "stove",
+    "format": "skillet",
+    "cleanup": 4,
+    "ingredients": [
+      ["ground_pork", 1, "lb"],
+      ["ground_beef", 0.5, "lb"],
+      ["onion_yellow", 1, "count"],
+      ["egg_large", 1, "count"],
+      ["flour_ap", 3, "tbsp"],
+      ["milk_whole", 0.5, "cup"],
+      ["butter_unsalted", 2, "tbsp"],
+      ["potato_yukon", 1.75, "lb"],
+      ["cream_heavy", 0.5, "cup"],
+      ["dill_fresh", 0.25, "cup"],
+      ["mustard_dijon", 1, "tsp"],
+      ["lemon", 1, "count"],
+      ["nutmeg_ground", 0.25, "tsp"],
+      ["salt_kosher", 2, "tsp"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Potatoes", "minutes": 20, "actions": [
+        {"verb": "Boil", "body": "{amt:potato_yukon} of small Yukon Golds, halved, in well-salted water until a knife slips in easily.", "duration": "18 min"},
+        {"verb": "Drain", "body": "them and leave them in the warm pan with the lid off so the surfaces dry."}
+      ]},
+      {"phase": "Mix the frikadeller", "minutes": 12, "actions": [
+        {"verb": "Grate", "body": "{amt:onion_yellow|onion|onions} on the coarse side of a box grater — grating rather than chopping keeps the patties tender."},
+        {"verb": "Mix", "body": "{amt:ground_pork} of ground pork and {amt:ground_beef} of ground beef with the onion, {amt:egg_large|egg|eggs}, {amt:flour_ap} of flour, {amt:milk_whole} of milk, {amt:nutmeg_ground} of nutmeg, {amt:salt_kosher:0.5} of the salt and {amt:pepper_black:0.6} of the pepper until it is sticky and uniform."},
+        {"verb": "Rest", "body": "the mixture in the fridge for 10 minutes so the flour hydrates and the patties hold their shape.", "duration": "10 min"}
+      ]},
+      {"phase": "Fry", "minutes": 14, "actions": [
+        {"verb": "Shape", "body": "the meat into 12 oval patties with a wet spoon and two hands, about ¾ inch thick."},
+        {"verb": "Fry", "body": "them in {amt:butter_unsalted} of butter in a large skillet over medium heat, in two batches, until deeply browned on both sides and cooked to 160°F.", "duration": "12 min"}
+      ]},
+      {"phase": "Dill sauce", "minutes": 6, "actions": [
+        {"verb": "Pour", "body": "{amt:cream_heavy} of heavy cream into the hot skillet, scrape up the browned bits and simmer until it thickens slightly.", "duration": "3 min"},
+        {"verb": "Stir in", "body": "{amt:mustard_dijon} of Dijon, {amt:dill_fresh:0.75} of chopped dill, the juice of {amt:lemon|lemon|lemons} and the rest of the salt, off the heat so the cream doesn't split."},
+        {"verb": "Fold", "body": "the warm potatoes through the dill cream and serve them with the frikadeller, scattered with the last of the dill."}
+      ]}
+    ]
+  }
+]

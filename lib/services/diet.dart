@@ -3,16 +3,16 @@ import '../models/recipe.dart';
 
 /// Dietary preferences. These are a convenience for planning, NOT an allergen
 /// control — users must always check ingredients themselves.
+///
+/// There is no fish or shellfish option because there is no seafood anywhere
+/// in the recipe database.
 enum Diet {
   vegetarian,
   vegan,
-  pescatarian,
   noBeef,
   noPork,
   noPoultry,
   noLamb,
-  noFish,
-  noShellfish,
   dairyFree,
   glutenFree,
   eggFree,
@@ -25,13 +25,10 @@ extension DietInfo on Diet {
   String get label => const {
         Diet.vegetarian: 'Vegetarian',
         Diet.vegan: 'Vegan',
-        Diet.pescatarian: 'Pescatarian',
         Diet.noBeef: 'No beef',
         Diet.noPork: 'No pork',
         Diet.noPoultry: 'No poultry',
         Diet.noLamb: 'No lamb',
-        Diet.noFish: 'No fish',
-        Diet.noShellfish: 'No shellfish',
         Diet.dairyFree: 'Dairy-free',
         Diet.glutenFree: 'Gluten-free',
         Diet.eggFree: 'Egg-free',
@@ -40,15 +37,12 @@ extension DietInfo on Diet {
 
   /// Ingredient flags (from the database) this diet rules out.
   Set<String> get excludedFlags => switch (this) {
-        Diet.vegetarian => {..._meat, 'fish', 'shellfish'},
-        Diet.vegan => {..._meat, 'fish', 'shellfish', 'dairy', 'egg', 'honey'},
-        Diet.pescatarian => _meat,
+        Diet.vegetarian => _meat,
+        Diet.vegan => {..._meat, 'dairy', 'egg', 'honey'},
         Diet.noBeef => {'beef'},
         Diet.noPork => {'pork'},
         Diet.noPoultry => {'poultry'},
         Diet.noLamb => {'lamb'},
-        Diet.noFish => {'fish'},
-        Diet.noShellfish => {'shellfish'},
         Diet.dairyFree => {'dairy'},
         Diet.glutenFree => {'gluten'},
         Diet.eggFree => {'egg'},
@@ -58,17 +52,18 @@ extension DietInfo on Diet {
   /// Diets with allergy implications get a "check labels" reminder in the UI.
   bool get allergenLike =>
       this == Diet.glutenFree || this == Diet.nutFree || this == Diet.eggFree ||
-      this == Diet.noShellfish || this == Diet.dairyFree;
+      this == Diet.dairyFree;
 }
 
-/// Reads saved diet names, mapping retired ones (e.g. "noSeafood").
+/// Reads saved diet names, dropping retired ones. The seafood diets
+/// ("noSeafood", "noFish", "noShellfish", "pescatarian") went away when the
+/// last fish and shellfish recipes were removed from the database.
+const _retiredDiets = {'noSeafood', 'noFish', 'noShellfish', 'pescatarian'};
+
 Set<Diet> dietsFromNames(Iterable<Object?> names) {
   final out = <Diet>{};
   for (final n in names) {
-    if (n == 'noSeafood') {
-      out.addAll({Diet.noFish, Diet.noShellfish});
-      continue;
-    }
+    if (_retiredDiets.contains(n)) continue;
     for (final d in Diet.values) {
       if (d.name == n) out.add(d);
     }

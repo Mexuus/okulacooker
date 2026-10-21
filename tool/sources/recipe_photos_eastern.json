@@ -30,12 +30,6 @@
    "license": "CC BY 3.0",
    "source": "https://commons.wikimedia.org/wiki/File%3ABaked_feta_pasta.jpg"
   },
-  "e_baked_fish_tomato": {
-   "file": "e_baked_fish_tomato.webp",
-   "credit": "HaJunkiyada",
-   "license": "CC BY-SA 4.0",
-   "source": "https://commons.wikimedia.org/wiki/File%3ALiat_Portal_for_Foodie_Disorder_-_Raw_Tilapia_Prepared_for_Baking.jpg"
-  },
   "e_baked_ziti": {
    "file": "e_baked_ziti.webp",
    "credit": "SpencerWMartin",
@@ -108,12 +102,6 @@
    "license": "CC BY-SA 2.0",
    "source": "https://commons.wikimedia.org/wiki/File%3AChicken_curry_served_in_an_Indonesian_restaurant%3B_February_2010.jpg"
   },
-  "e_coconut_shrimp_curry": {
-   "file": "e_coconut_shrimp_curry.webp",
-   "credit": "Daderot",
-   "license": "CC0",
-   "source": "https://commons.wikimedia.org/wiki/File%3AThai_prawn_salad_with_white_fish%2C_prawn%2C_roasted_peanuts%2C_coconut_curry%2C_nuoc_cham%2C_and_ginger_-_Wellington%2C_New_Zealand.jpg"
-  },
   "e_crispy_tofu": {
    "file": "e_crispy_tofu.webp",
    "credit": "PattayaPatrol",
@@ -143,12 +131,6 @@
    "credit": "Israel_photo_gallery",
    "license": "CC BY-SA 2.0",
    "source": "https://commons.wikimedia.org/wiki/File%3AFalafel_in_a_pita.jpg"
-  },
-  "e_fish_curry": {
-   "file": "e_fish_curry.webp",
-   "credit": "Draupadigamy9305",
-   "license": "CC BY-SA 4.0",
-   "source": "https://commons.wikimedia.org/wiki/File%3AAkki_rotti_fish_fry_and_fish_curry_homemade_by_Sujatha_aunty_karnataka.jpg_01.jpg"
   },
   "e_fried_rice": {
    "file": "e_fried_rice.webp",
@@ -336,12 +318,6 @@
    "license": "CC BY 2.0",
    "source": "https://commons.wikimedia.org/wiki/File%3ACreamy_Lentils_%28Dal_Makhani%29_%282239000538%29.jpg"
   },
-  "e_salmon_greens": {
-   "file": "e_salmon_greens.webp",
-   "credit": "PattayaPatrol",
-   "license": "CC BY-SA 4.0",
-   "source": "https://commons.wikimedia.org/wiki/File%3ADZ6_1891_Seared_salmon_in_a_rich_brown_sauce_with_grilled_potatoes_fresh_greens_and_toasted_bread_garnished_with_dill.jpg"
-  },
   "e_satay": {
    "file": "e_satay.webp",
    "credit": "PattayaPatrol",
@@ -353,12 +329,6 @@
    "credit": "Soumendrak",
    "license": "CC BY-SA 4.0",
    "source": "https://commons.wikimedia.org/wiki/File%3ABreakfast_of_bread_and_shakshuka_at_Artjuna_cafe%2C_Goa.jpg"
-  },
-  "e_shrimp_scampi": {
-   "file": "e_shrimp_scampi.webp",
-   "credit": "Prayitno / Thank you for (12 millions +) view from Los Angeles, USA",
-   "license": "CC BY 2.0",
-   "source": "https://commons.wikimedia.org/wiki/File%3AShrimp_Scampi_Linguine_%2818893300233%29.jpg"
   },
   "e_singapore_noodles": {
    "file": "e_singapore_noodles.webp",
@@ -407,12 +377,6 @@
    "credit": "Andy Li",
    "license": "CC0",
    "source": "https://commons.wikimedia.org/wiki/File%3AChicken_Tikka_Masala_-_Mohammed_-_Spice_Of_Life.jpg"
-  },
-  "e_tuna_rice_bowl": {
-   "file": "e_tuna_rice_bowl.webp",
-   "credit": "Andy Li",
-   "license": "CC0",
-   "source": "https://commons.wikimedia.org/wiki/File%3ASalmon_%26_Tuna_Poke_Bowl_%28M%29_with_Spicy_Mayo_sauce_-_Kitokito_2025-04-25.jpg"
   }
  },
  "recipes": {
@@ -424,8 +388,6 @@
   "Bacon & Kimchi Fried Rice": "e_fried_rice",
   "Baingan Bharta with Basmati": "e_baingan_bharta",
   "Baked Feta & Tomato Pasta": "e_baked_feta_pasta",
-  "Baked Feta and Shrimp with Cherry Tomatoes": "e_baked_feta_pasta",
-  "Baked Tilapia with Olives and Tomatoes": "e_baked_fish_tomato",
   "Baked Ziti with Sausage": "e_baked_ziti",
   "Breaded Pork Cutlets with Lemon": "e_pork_cutlet",
   "Butter Chicken with Rice": "e_butter_chicken",
@@ -449,7 +411,6 @@
   "Classic Beef Lasagna": "e_lasagna",
   "Coconut Curry Chicken Thighs": "e_coconut_curry",
   "Coconut Laksa Noodles with Tofu": "e_crispy_tofu",
-  "Coconut Lime Tilapia with Bok Choy": "e_coconut_shrimp_curry",
   "Coconut Spinach Lentils with Warm Pita": "e_coconut_curry",
   "Crispy Gochujang Tofu with Broccoli": "e_crispy_tofu",
   "Crispy Sesame Tofu with Broccoli & Rice": "e_crispy_tofu",
@@ -458,11 +419,9 @@
   "Egg Curry with Tomato and Onion Masala": "e_egg_curry",
   "Egg Fried Rice with Peas & Scallions": "e_fried_rice",
   "Eggplant Parmesan with Spaghetti": "e_eggplant_parmesan",
-  "Garlic Butter Shrimp Scampi with Linguine": "e_shrimp_scampi",
   "General Tso's Chicken": "e_general_tso",
   "Gigantes — Greek Baked Beans in Tomato": "e_gigantes",
   "Ginger Scallion Noodles with Fried Eggs": "e_ginger_scallion_noodles",
-  "Ginger Scallion Salmon with Charred Greens": "e_salmon_greens",
   "Gochujang Glazed Pork with Sesame Bok Choy": "e_gochujang_pork",
   "Gochujang Tofu Bibimbap Bowls": "e_crispy_tofu",
   "Greek Salad Bowls with Warm Pita": "e_greek_salad",
@@ -474,11 +433,9 @@
   "Instant Pot Butter Chicken": "e_butter_chicken",
   "Instant Pot Korean Beef": "e_bulgogi",
   "Instant Pot Lentil Soup": "e_lentil_soup",
-  "Italian Shrimp Pasta with Zucchini & Orzo": "e_shrimp_scampi",
   "Japanese Beef Yakisoba Noodles with Bok Choy": "e_lo_mein",
   "Kofta Meatballs with Yogurt and Cucumber": "e_spaghetti_meatballs",
   "Korean Beef Rice Bowl": "e_bulgogi",
-  "Korean Tuna Mayo Rice Bowls": "e_tuna_rice_bowl",
   "Lamb Meatballs with Whipped Feta & Couscous": "e_spaghetti_meatballs",
   "Lemon Garlic Chicken with Rice": "e_lemon_chicken_potatoes",
   "Mapo-Style Tofu with Rice": "e_mapo_tofu",
@@ -504,30 +461,24 @@
   "Red Curry Lentils with Coconut & Rice": "e_thai_red_curry",
   "Red Lentil Dal with Rice & Cilantro": "e_dal",
   "Saag Tofu with Ginger and Cream": "e_crispy_tofu",
-  "Salmon Piccata with Garlic Rice & Broccoli": "e_chicken_piccata",
   "Shakshuka with Feta & Crusty Bread": "e_shakshuka",
   "Sheet-Pan Lemon Chicken & Potatoes": "e_lemon_chicken_potatoes",
-  "Shrimp Fra Diavolo with Linguine": "e_shrimp_scampi",
-  "Shrimp Fried Rice": "e_fried_rice",
   "Singapore-Style Curry Noodles": "e_singapore_noodles",
   "Slow Cooker Chicken Tikka Masala": "e_tikka_masala",
   "Slow Cooker Italian Beef Sandwiches": "e_italian_beef_sandwich",
   "Slow Cooker Korean Beef with Rice": "e_bulgogi",
   "Slow Cooker Lasagna Soup": "e_lasagna",
   "Slow Cooker Teriyaki Chicken with Rice": "e_teriyaki",
-  "South Indian Coconut Fish Curry": "e_fish_curry",
   "Soy-Glazed Pork Chops with Rice": "e_glazed_pork",
   "Spaghetti Carbonara": "e_carbonara",
   "Spaghetti and Meatballs": "e_spaghetti_meatballs",
   "Spiced Cauliflower & Chickpea Traybake with Tahini": "e_cauliflower_curry",
   "Spinach and Feta Frittata": "e_frittata",
   "Sticky Ginger Tofu with Rice & Cabbage": "e_crispy_tofu",
-  "Sweet Chili Shrimp with Coconut Rice": "e_coconut_shrimp_curry",
   "Teriyaki Chicken Rice Bowl": "e_teriyaki",
   "Teriyaki Tofu Donburi with Edamame": "e_crispy_tofu",
   "Thai Basil Chicken with Blistered Green Beans": "e_thai_basil",
   "Thai Basil Tofu with Jasmine Rice": "e_crispy_tofu",
-  "Thai Coconut Curry Shrimp with Bok Choy": "e_coconut_curry",
   "Thai Coconut Vegetable Curry with Cashews": "e_thai_red_curry",
   "Three Cheese Baked Pasta with Basil": "e_baked_ziti",
   "Tofu Adobo with Rice": "e_crispy_tofu",

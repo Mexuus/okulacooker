@@ -1,6 +1,6 @@
 {
-    "name": "TapCook",
-    "short_name": "TapCook",
+    "name": "OkulaCooker",
+    "short_name": "OkulaCooker",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#F6FAF6",

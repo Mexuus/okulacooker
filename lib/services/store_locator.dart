@@ -68,7 +68,7 @@ class StoreLookupException implements Exception {
 /// Offline-first: searches the bundled [StoreDirectory] (instant, no network).
 /// Only if nothing is found nearby does it fall back to a live OpenStreetMap
 /// query via the public Overpass API (free, no key; data © OpenStreetMap
-/// contributors, ODbL). Results are matched to TapCook's known chains.
+/// contributors, ODbL). Results are matched to OkulaCooker's known chains.
 class StoreLocator {
   static const attribution = '© OpenStreetMap contributors';
   static const endpoints = [

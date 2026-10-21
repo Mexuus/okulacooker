@@ -49,7 +49,7 @@ class LocationException implements Exception {
         return 'Location permission was declined. Tap Locate again to allow it, or enter your ZIP.';
       case LocationFailure.deniedForever:
         if (!kIsWeb) {
-          return 'Location is blocked for TapCook. Allow it in Settings › TapCook › Location, '
+          return 'Location is blocked for OkulaCooker. Allow it in Settings › OkulaCooker › Location, '
               'or enter your ZIP.';
         }
         return apple
@@ -61,7 +61,7 @@ class LocationException implements Exception {
       case LocationFailure.timeout:
         return 'Couldn’t get a location fix in time. Try again or enter your ZIP.';
       case LocationFailure.outsideUs:
-        return 'You appear to be outside the US. TapCook supports US stores only.';
+        return 'You appear to be outside the US. OkulaCooker supports US stores only.';
       case LocationFailure.unknown:
         return 'Couldn’t determine your location${detail == null ? '' : ' ($detail)'}.';
     }
@@ -129,7 +129,7 @@ class DeviceGeoProvider implements GeoProvider {
   }
 }
 
-/// Everything TapCook knows about a place, derived fully offline.
+/// Everything OkulaCooker knows about a place, derived fully offline.
 class PlaceInfo {
   final String zip;
   final double lat;

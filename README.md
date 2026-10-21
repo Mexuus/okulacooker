@@ -1,11 +1,11 @@
-# TapCook
+# OkulaCooker
 
 Plan the week's dinners and know what the groceries will cost before you leave
 the house. Flutter app for **iOS and web**. No account, no server, no
 subscription: everything runs on the device.
 
-**Try it:** <https://mexuus.github.io/tapcook/> ·
-**Self-host:** `docker run -d -p 8080:8080 ghcr.io/mexuus/tapcook:latest`
+**Try it:** <https://mexuus.github.io/okulacooker/> ·
+**Self-host:** `docker run -d -p 8080:8080 ghcr.io/mexuus/okulacooker:latest`
 (see [Install on ZimaOS](#install-on-zimaos) / [Host with Docker](#host-with-docker-linux))
 
 ## Run
@@ -63,20 +63,20 @@ The image is public, so ZimaOS can pull it without a GitHub login.
 
 1. ZimaOS → **App Store** → **+** → *Install a customized app* → **Import**.
 2. Paste [`zimaos-compose.yml`](zimaos-compose.yml) (or its
-   [raw URL](https://raw.githubusercontent.com/Mexuus/tapcook/main/zimaos-compose.yml)).
+   [raw URL](https://raw.githubusercontent.com/Mexuus/okulacooker/main/zimaos-compose.yml)).
    Change the published port first if 8080 is already in use.
-3. Install, then open TapCook from the ZimaOS dashboard.
+3. Install, then open OkulaCooker from the ZimaOS dashboard.
 
 No volumes are needed: plans, favourites and history are stored in each
 visitor's browser, so every device keeps its own plan. For the **Locate**
 (GPS) button see the HTTPS note below — ZIP entry works either way.
 
 **Without any GitHub login**, build the image on the ZimaOS box over SSH
-first, then import the compose file with `image: tapcook:latest`:
+first, then import the compose file with `image: okulacooker:latest`:
 
 ```sh
-git clone https://github.com/Mexuus/tapcook.git && cd tapcook
-docker build -t tapcook:latest .      # ~10 min, needs ~3 GB free disk
+git clone https://github.com/Mexuus/okulacooker.git && cd okulacooker
+docker build -t okulacooker:latest .      # ~10 min, needs ~3 GB free disk
 ```
 
 ### Enabling the Locate button on ZimaOS
@@ -86,7 +86,7 @@ the button stays disabled. If the box is on a Tailscale tailnet, `tailscale
 serve` provides HTTPS with no domain, certificate or port forwarding:
 
 ```sh
-tailscale serve --bg 8181     # the port TapCook is published on
+tailscale serve --bg 8181     # the port OkulaCooker is published on
 tailscale serve status        # -> https://<machine>.<tailnet>.ts.net/
 ```
 
@@ -110,21 +110,21 @@ server; each visitor's plans live in their own browser storage.
 **Option A — pull the prebuilt image** CI publishes on every push to `main`:
 
 ```sh
-docker run -d --name tapcook --restart unless-stopped -p 8080:8080 \
-  ghcr.io/mexuus/tapcook:latest                    # → http://SERVER_IP:8080
+docker run -d --name okulacooker --restart unless-stopped -p 8080:8080 \
+  ghcr.io/mexuus/okulacooker:latest                    # → http://SERVER_IP:8080
 ```
 
 With compose (gets the hardened settings: read-only rootfs, no capabilities):
 
 ```sh
-curl -O https://raw.githubusercontent.com/Mexuus/tapcook/main/docker-compose.yml
-TAPCOOK_IMAGE=ghcr.io/mexuus/tapcook:latest docker compose up -d
+curl -O https://raw.githubusercontent.com/Mexuus/okulacooker/main/docker-compose.yml
+OKULACOOKER_IMAGE=ghcr.io/mexuus/okulacooker:latest docker compose up -d
 ```
 
 **Option B — build on the server** (needs ~3 GB free disk for the build):
 
 ```sh
-git clone https://github.com/Mexuus/tapcook.git && cd tapcook
+git clone https://github.com/Mexuus/okulacooker.git && cd okulacooker
 docker compose up -d --build
 ```
 
@@ -134,15 +134,15 @@ still works but Locate is blocked. Point a domain at the server, open ports
 80/443, and start the bundled Caddy proxy (automatic Let's Encrypt):
 
 ```sh
-DOMAIN=tapcook.example.com docker compose --profile https up -d
+DOMAIN=okulacooker.example.com docker compose --profile https up -d
 ```
 
 LAN-only alternatives: Tailscale (`tailscale serve 8080`) or your existing
 reverse proxy (Nginx Proxy Manager, Traefik, the ZimaOS remote-access link) in
 front of port 8080.
 
-**Other settings:** `TAPCOOK_PORT=9000` changes the host port. To serve under
-a sub-path, build with `docker compose build --build-arg BASE_HREF=/tapcook/`
+**Other settings:** `OKULACOOKER_PORT=9000` changes the host port. To serve under
+a sub-path, build with `docker compose build --build-arg BASE_HREF=/okulacooker/`
 (the trailing slash matters). **Update:** `docker compose pull && docker compose up -d`
 (Option A) or `git pull && docker compose up -d --build` (Option B).
 
@@ -151,11 +151,11 @@ a sub-path, build with `docker compose build --build-arg BASE_HREF=/tapcook/`
 - **GitHub Actions** (`.github/workflows/ci.yml`): analyze + test + web build on
   every push, an **unsigned iOS build** on a macOS runner (downloadable `.ipa`
   artifact), a **Docker image** smoke-tested and published to
-  `ghcr.io/mexuus/tapcook` (`latest` + `sha-…`) from `main`, and deployment of
+  `ghcr.io/mexuus/okulacooker` (`latest` + `sha-…`) from `main`, and deployment of
   the web app to GitHub Pages from `main` (public repos only).
 - **Codemagic** (`codemagic.yaml`): signed iOS build uploaded to TestFlight on
   tags `v*`. Requires an Apple Developer account and an App Store Connect API
-  key added in Codemagic as `TapCook ASC`.
+  key added in Codemagic as `OkulaCooker ASC`.
 
 ## Attribution
 

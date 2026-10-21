@@ -1,15 +1,15 @@
-# TapCook for ZimaOS (and CasaOS).
+# OkulaCooker for ZimaOS (and CasaOS).
 #
 # ZimaOS → App Store → "+" → Install a customized app → Import,
 # then paste this file (or its raw URL):
-#   https://raw.githubusercontent.com/Mexuus/tapcook/main/zimaos-compose.yml
+#   https://raw.githubusercontent.com/Mexuus/okulacooker/main/zimaos-compose.yml
 #
 # Change the "published" port below if 8080 is already taken on your server.
-name: tapcook
+name: okulacooker
 services:
-  tapcook:
-    image: ghcr.io/mexuus/tapcook:latest
-    container_name: tapcook
+  okulacooker:
+    image: ghcr.io/mexuus/okulacooker:latest
+    container_name: okulacooker
     restart: unless-stopped
     ports:
       - target: 8080
@@ -17,29 +17,29 @@ services:
         protocol: tcp
     environment:
       # Optional: the https address of this app (Tailscale serve/funnel URL or a
-      # reverse proxy with a certificate). When someone opens TapCook over plain
+      # reverse proxy with a certificate). When someone opens OkulaCooker over plain
       # http, where browsers block GPS, the app offers to switch to it.
-      TAPCOOK_SECURE_URL: ""
+      OKULACOOKER_SECURE_URL: ""
     x-casaos:
       ports:
         - container: "8080"
           description:
-            en_US: TapCook web interface
+            en_US: OkulaCooker web interface
 
 x-casaos:
-  id: com.mexuus.tapcook
-  main: tapcook
+  id: com.mexuus.okulacooker
+  main: okulacooker
   index: /
   port_map: "8080"
   scheme: http
-  icon: https://raw.githubusercontent.com/Mexuus/tapcook/main/assets/icon/icon.png
+  icon: https://raw.githubusercontent.com/Mexuus/okulacooker/main/assets/icon/icon.png
   title:
-    en_US: TapCook
+    en_US: OkulaCooker
   tagline:
     en_US: Weekly dinner plans with a priced grocery list
   description:
     en_US: >-
-      TapCook builds a week of dinners around your household size, the nights
+      OkulaCooker builds a week of dinners around your household size, the nights
       you cook, your budget and the grocery store you shop at, then turns the
       plan into a grocery list priced at that store. Meals never repeat unless
       you pick them again. Everything runs in the browser and is stored on each
@@ -51,9 +51,9 @@ x-casaos:
     - amd64
     - arm64
   version: "1.0.0"
-  website: https://github.com/Mexuus/tapcook
-  repo: https://github.com/Mexuus/tapcook
-  support: https://github.com/Mexuus/tapcook/issues
+  website: https://github.com/Mexuus/okulacooker
+  repo: https://github.com/Mexuus/okulacooker
+  support: https://github.com/Mexuus/okulacooker/issues
   tips:
     before_install:
       en_US: |

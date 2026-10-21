@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 enum Aisle {
   produce,
   meat,
-  seafood,
   dairy,
   bakery,
   frozen,
@@ -23,8 +22,6 @@ extension AisleInfo on Aisle {
         return 'Produce';
       case Aisle.meat:
         return 'Meat';
-      case Aisle.seafood:
-        return 'Seafood';
       case Aisle.dairy:
         return 'Dairy & Eggs';
       case Aisle.bakery:
@@ -52,8 +49,6 @@ extension AisleInfo on Aisle {
         return Icons.eco_outlined;
       case Aisle.meat:
         return Icons.kebab_dining_outlined;
-      case Aisle.seafood:
-        return Icons.set_meal_outlined;
       case Aisle.dairy:
         return Icons.egg_outlined;
       case Aisle.bakery:
@@ -132,7 +127,7 @@ class Ingredient {
   final double carbsPer100g;
   final double fatPer100g;
 
-  /// Diet flags from the database: beef, pork, poultry, lamb, fish, shellfish,
+  /// Diet flags from the database: beef, pork, poultry, lamb,
   /// dairy, egg, gluten, nuts, honey.
   final Set<String> flags;
 

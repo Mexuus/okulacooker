@@ -118,7 +118,7 @@ Future<Uint8List> buildRecipePdf(Recipe recipe, int servings) async {
         ],
         pw.SizedBox(height: 24),
         pw.Text(
-          'Made with TapCook. Prices are estimates; always review ingredients, '
+          'Made with OkulaCooker. Prices are estimates; always review ingredients, '
           'measurements, cooking instructions, and allergy information before cooking.',
           style: const pw.TextStyle(color: PdfColors.grey600, fontSize: 9),
         ),

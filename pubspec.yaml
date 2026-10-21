@@ -1,5 +1,5 @@
-name: tapcook
-description: "TapCook - budget-aware weekly dinner planner and grocery list."
+name: okulacooker
+description: "OkulaCooker - budget-aware weekly dinner planner and grocery list."
 publish_to: 'none'
 
 version: 2.2.0+1

@@ -83,7 +83,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           padding: const EdgeInsets.all(20),
           children: [
             const SizedBox(height: 8),
-            Text('TapCook',
+            Text('OkulaCooker',
                 style: theme.textTheme.headlineMedium
                     ?.copyWith(fontWeight: FontWeight.w800)),
             const SizedBox(height: 4),
@@ -254,7 +254,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     label: _budget.round().toString(),
                     onChanged: (v) => setState(() => _budget = v),
                   ),
-                  Text('TapCook keeps the plan under this when it can.',
+                  Text('OkulaCooker keeps the plan under this when it can.',
                       style: theme.textTheme.bodySmall),
                 ],
               ),

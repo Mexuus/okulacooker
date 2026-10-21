@@ -1,0 +1,293 @@
+{
+ "photos": {
+  "s_katsu_curry": {
+   "file": "s_katsu_curry.webp",
+   "credit": "brappy! from Taipei",
+   "license": "CC BY-SA 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AKatsu_curry_rice_by_brappy%21_in_Taipei.jpg"
+  },
+  "s_miso_chicken_broccoli": {
+   "file": "s_miso_chicken_broccoli.webp",
+   "credit": "naotakem",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3A%22Pilaf%22_of_brown_rice%2C_quinoa%2C_and_vegetables%2C_grilled_chicken_thigh_meat%2C_and_saut%C3%A9ed_broccoli_sprouts_%E9%95%B7%E7%B2%92%E7%8E%84%E7%B1%B3%E3%81%A8%E3%82%AD%E3%83%8C%E3%82%A2%E3%81%AE%E3%83%94%E3%83%A9%E3%83%95%E3%82%82%E3%81%A9%E3%81%8D%E3%80%81%E9%B6%8F%E3%83%A2%E3%83%A2%E3%81%AE%E3%82%B0%E3%83%AA%E3%83%AB%E3%80%81%E8%8A%BD%E3%82%AD%E3%83%A3%E3%83%99%E3%83%84%E3%81%AE%E3%82%BD%E3%83%86%E3%83%BC.jpg"
+  },
+  "s_sheetpan_chicken_broccoli": {
+   "file": "s_sheetpan_chicken_broccoli.webp",
+   "credit": "Michael J. Bennett",
+   "license": "CC BY-SA 3.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ARoasted_Chicken_Dinner_Plate%2C_Broccoli%2C_Stuffing%2C_Potatoes%2C_Demi_Glace.jpg"
+  },
+  "s_oyakodon": {
+   "file": "s_oyakodon.webp",
+   "credit": "dishhh from Tokyo",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AOyakodon_by_dishhh.jpg"
+  },
+  "s_massaman_curry": {
+   "file": "s_massaman_curry.webp",
+   "credit": "Takeaway",
+   "license": "CC BY-SA 3.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AKaeng_matsaman_kai.JPG"
+  },
+  "s_tofu_coconut_curry": {
+   "file": "s_tofu_coconut_curry.webp",
+   "credit": "Kari Sullivan from Austin, TX",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AGreen_Tofu_Curry_%283225562399%29.jpg"
+  },
+  "s_sweet_chili_chicken": {
+   "file": "s_sweet_chili_chicken.webp",
+   "credit": "cyclonebill",
+   "license": "CC BY-SA 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AFlickr_-_cyclonebill_-_Ris_med_kylling%2C_peberfrugt%2C_chili_og_kokosm%C3%A6lk.jpg"
+  },
+  "s_ginger_scallion_chicken": {
+   "file": "s_ginger_scallion_chicken.webp",
+   "credit": "T.Tseng",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ACrispy_Chicken%2C_Pasture_Raised_Local_Chicken%2C_Scallion_Ginger_Vinaigrette%2C_Bean_Sprouts.jpg"
+  },
+  "s_pork_noodles": {
+   "file": "s_pork_noodles.webp",
+   "credit": "relgar",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3APork_chow_mein.jpg"
+  },
+  "s_beef_fried_rice": {
+   "file": "s_beef_fried_rice.webp",
+   "credit": "Afifa Afrin",
+   "license": "CC BY-SA 3.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ABeef_fried_rice_in_a_restourant_of_Phuentsoling.jpg"
+  },
+  "s_zaatar_chicken": {
+   "file": "s_zaatar_chicken.webp",
+   "credit": "Alpha from Melbourne, Australia",
+   "license": "CC BY-SA 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ALemon_and_saffron_roasted_chicken_on_pilaf_rice_with_sesame_yoghurt_and_peach_relish_-_Cafe_Mint_AUD24.90_main_%283697197879%29.jpg"
+  },
+  "s_pork_bulgogi": {
+   "file": "s_pork_bulgogi.webp",
+   "credit": "by avlxyz",
+   "license": "CC BY-SA 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AKorean.cuisine-Pork.bulgogi-01.jpg"
+  },
+  "s_panko_chicken_rice": {
+   "file": "s_panko_chicken_rice.webp",
+   "credit": "tab2_dawa",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ATori_no_Karaage_-_Japanese_style_Fried_chicken.jpg"
+  },
+  "s_sesame_chicken": {
+   "file": "s_sesame_chicken.webp",
+   "credit": "jeffreyw",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AChicken_and_snow_peas_with_stir_fried_green_beans_%2815666974844%29.jpg"
+  },
+  "s_fra_diavolo": {
+   "file": "s_fra_diavolo.webp",
+   "credit": "毒島みるく",
+   "license": "CC0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ASpaghetti_arrabbiata_with_grilled_chicken_of_Mister_Donut_in_Japan.jpg"
+  },
+  "s_chicken_milanese": {
+   "file": "s_chicken_milanese.webp",
+   "credit": "mteson Marcelo Teson Los Angeles, CA, USA",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AMilanesa.jpg"
+  },
+  "s_chorizo_tacos": {
+   "file": "s_chorizo_tacos.webp",
+   "credit": "Paul Bailey",
+   "license": "CC BY-SA 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ATacos_-_al_pastor%2C_pollo_and_a_sunkist.jpg"
+  },
+  "s_steak_fajitas": {
+   "file": "s_steak_fajitas.webp",
+   "credit": "Elisa Arteaga from Caracas, Venezuela",
+   "license": "CC BY-SA 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AFlickr_elisart_324248450--Beef_and_chicken_fajitas.jpg"
+  },
+  "s_beef_enchiladas": {
+   "file": "s_beef_enchiladas.webp",
+   "credit": "Jon Sullivan",
+   "license": "Public domain",
+   "source": "https://commons.wikimedia.org/wiki/File%3AEnchilada_Rice_Beans.jpg"
+  },
+  "s_chicken_skewers": {
+   "file": "s_chicken_skewers.webp",
+   "credit": "Alpha",
+   "license": "CC BY-SA 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AMoo_Yaang%2C_Gai_Yaang%2C_grilled_chicken%2C_pork_and_liver_skewers%2C_THB10_per_stick%2C_THB5_for_sticky_rice_-_Chiang_Mai%2C_Night_Bazaar.jpg"
+  },
+  "s_paella": {
+   "file": "s_paella.webp",
+   "credit": "Juan Emilio Prades Bel",
+   "license": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AArr%C3%B3z_en_paella_valenciana.JPG"
+  },
+  "s_pollo_ajillo": {
+   "file": "s_pollo_ajillo.webp",
+   "credit": "Tamorlan",
+   "license": "CC BY-SA 3.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3APollo_al_ajillo_%28Panaderas%29.jpg"
+  },
+  "s_jambalaya_chicken": {
+   "file": "s_jambalaya_chicken.webp",
+   "credit": "No machine-readable author provided. Polyparadigm~commonswik",
+   "license": "CC BY-SA 3.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AJambalaya.JPG"
+  },
+  "s_gumbo": {
+   "file": "s_gumbo.webp",
+   "credit": "Jeremy Thompson",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ANew_Orleans_-_Gumbo_-_2018.jpg"
+  },
+  "s_chickpea_chicken_skillet": {
+   "file": "s_chickpea_chicken_skillet.webp",
+   "credit": "E4024",
+   "license": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3APilav%2C_nohut_yahni%2C_chicken%2C_potatoes_etc.jpg"
+  },
+  "s_corn_chowder": {
+   "file": "s_corn_chowder.webp",
+   "credit": "Wikimedia Commons contributor",
+   "license": "CC BY-SA 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ACorn_chowder_bowl.jpg"
+  },
+  "s_noodle_casserole": {
+   "file": "s_noodle_casserole.webp",
+   "credit": "Blues 1911",
+   "license": "CC BY-SA 3.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3APasta_al_Forno_01.jpg"
+  },
+  "s_sausage_spinach_pasta": {
+   "file": "s_sausage_spinach_pasta.webp",
+   "credit": "Peachyeung316",
+   "license": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3APenne_with_sausage_and_bell_pepper_in_tomato_cream_sauce_from_Savour_Cafe.jpg"
+  },
+  "s_sausage_peppers": {
+   "file": "s_sausage_peppers.webp",
+   "credit": "jeffreyw",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ASausages_cooking_with_peppers_and_onion.jpg"
+  },
+  "s_chicken_cutlets": {
+   "file": "s_chicken_cutlets.webp",
+   "credit": "Qwerty Binary",
+   "license": "CC BY-SA 3.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AChicken_schnitzel_with_fries_and_salad.jpg"
+  },
+  "s_honey_pork_chops": {
+   "file": "s_honey_pork_chops.webp",
+   "credit": "Wikimedia Commons contributor",
+   "license": "CC BY-SA 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3APork_chops_served.jpg"
+  },
+  "s_cobb_salad": {
+   "file": "s_cobb_salad.webp",
+   "credit": "Nan Palmero from San Antonio, TX, USA",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AChicken_Cobb_Salad_-_PINSTACK_Plano_%282015-04-10_19.42.14_by_Nan_Palmero%29.jpg"
+  },
+  "s_chicken_sandwich": {
+   "file": "s_chicken_sandwich.webp",
+   "credit": "Crisco 1492",
+   "license": "CC BY-SA 3.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AChicken_sandwich_at_Mister_Burger_01.jpg"
+  },
+  "s_chicken_asparagus_af": {
+   "file": "s_chicken_asparagus_af.webp",
+   "credit": "HarshLight",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ACitrus-marinated_Chicken_Breast.jpg"
+  },
+  "s_grilled_chicken_asparagus": {
+   "file": "s_grilled_chicken_asparagus.webp",
+   "credit": "Infrogmation of New Orleans",
+   "license": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AGrilled_chicken_and_risotto.jpg"
+  },
+  "s_chicken_fried_steak": {
+   "file": "s_chicken_fried_steak.webp",
+   "credit": "Jessica from Hove, United Kingdom",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AFlickr_wordridden_3397801155--Chicken_fried_steak.jpg"
+  },
+  "s_turkey_chili": {
+   "file": "s_turkey_chili.webp",
+   "credit": "Carstor",
+   "license": "CC BY-SA 2.5",
+   "source": "https://commons.wikimedia.org/wiki/File%3ABowl_of_chili.jpg"
+  },
+  "s_herb_chicken_potatoes": {
+   "file": "s_herb_chicken_potatoes.webp",
+   "credit": "Steve Dunham (dunham_1)",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AChicken_Dinner%2C_2009.jpg"
+  },
+  "s_steak_au_poivre": {
+   "file": "s_steak_au_poivre.webp",
+   "credit": "Zuhair Abdulla",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ASteakaupoivre.jpg"
+  },
+  "s_chicken_kiev": {
+   "file": "s_chicken_kiev.webp",
+   "credit": "Bev Sykes from Davis, CA, USA",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AChicken_Kiev_Flickr.jpg"
+  },
+  "s_frikadeller": {
+   "file": "s_frikadeller.webp",
+   "credit": "Kobako",
+   "license": "CC BY-SA 2.5",
+   "source": "https://commons.wikimedia.org/wiki/File%3AFaschiertes_Laibchen.jpg"
+  }
+ },
+ "recipes": {
+  "Air Fryer Chicken Katsu Curry with Rice": "s_katsu_curry",
+  "Miso Butter Chicken with Blistered Broccoli": "s_miso_chicken_broccoli",
+  "Sheet-Pan Miso Chicken with Broccoli & Potatoes": "s_sheetpan_chicken_broccoli",
+  "Oyakodon — Chicken and Egg Rice Bowls": "s_oyakodon",
+  "Thai Massaman Curry Chicken with Potatoes": "s_massaman_curry",
+  "Thai Coconut Curry Tofu with Bok Choy": "s_tofu_coconut_curry",
+  "Sweet Chili Chicken with Coconut Rice": "s_sweet_chili_chicken",
+  "Ginger Scallion Chicken with Charred Greens": "s_ginger_scallion_chicken",
+  "Orange-Chili Pork Noodles with Bok Choy": "s_pork_noodles",
+  "Beef Fried Rice with Peas and Carrots": "s_beef_fried_rice",
+  "Za'atar Crusted Chicken with Veggie Couscous": "s_zaatar_chicken",
+  "Spicy Korean Pork Bulgogi Rice Bowls": "s_pork_bulgogi",
+  "Air Fryer Crispy Panko Chicken with Sweet Chili Sauce and Rice": "s_panko_chicken_rice",
+  "Sheet-Pan Sesame Chicken with Green Beans": "s_sesame_chicken",
+  "Chicken Fra Diavolo with Linguine": "s_fra_diavolo",
+  "Chicken Milanese with Arugula Salad": "s_chicken_milanese",
+  "Chorizo and Potato Tacos": "s_chorizo_tacos",
+  "Steak Fajita Bowls with Charred Peppers": "s_steak_fajitas",
+  "Beef Enchiladas with Red Chile Sauce": "s_beef_enchiladas",
+  "Grilled Chili-Lime Chicken Skewers with Cilantro Rice": "s_chicken_skewers",
+  "Chicken and Chorizo Paella": "s_paella",
+  "Spanish Garlic Chicken with Potatoes": "s_pollo_ajillo",
+  "Chicken and Sausage Jambalaya": "s_jambalaya_chicken",
+  "Chicken and Sausage Gumbo": "s_gumbo",
+  "Mediterranean Chicken and Chickpea Skillet": "s_chickpea_chicken_skillet",
+  "Chicken Corn Chowder with Potatoes": "s_corn_chowder",
+  "Chicken Noodle Casserole": "s_noodle_casserole",
+  "Creamy Sausage and Spinach Pasta": "s_sausage_spinach_pasta",
+  "Sheet-Pan Sausage, Peppers and Potatoes": "s_sausage_peppers",
+  "Crispy Chicken Cutlets with Arugula Salad": "s_chicken_cutlets",
+  "Honey Garlic Pork Chops with Rice and Green Beans": "s_honey_pork_chops",
+  "Chicken Cobb Salad with Bacon and Egg": "s_cobb_salad",
+  "Crispy Chicken Sandwiches with Slaw and Pickles": "s_chicken_sandwich",
+  "Air Fryer Garlic-Herb Chicken with Asparagus": "s_chicken_asparagus_af",
+  "Grilled Lemon-Herb Chicken with Asparagus": "s_grilled_chicken_asparagus",
+  "Chicken Fried Steak with Country Gravy": "s_chicken_fried_steak",
+  "Turkey Chili with Beans and Cheddar": "s_turkey_chili",
+  "Herb-Crusted Chicken with Roasted Potatoes": "s_herb_chicken_potatoes",
+  "Steak au Poivre with Crispy Potatoes": "s_steak_au_poivre",
+  "Air Fryer Chicken Kiev with Chips and Peas": "s_chicken_kiev",
+  "Frikadeller with Creamy Dill Potatoes": "s_frikadeller"
+ }
+}

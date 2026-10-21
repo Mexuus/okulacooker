@@ -1,0 +1,844 @@
+[
+  {
+    "key": "sl-chicken-scampi-linguine",
+    "title": "Chicken Scampi with Linguine",
+    "cuisine": "Italian",
+    "anchor": "chicken_breast",
+    "serves": 4,
+    "minutes": 35,
+    "difficulty": "Easy",
+    "equipment": "stove",
+    "format": "skillet",
+    "cleanup": 3,
+    "ingredients": [
+      ["pasta_long", 12, "oz"],
+      ["chicken_breast", 1.25, "lb"],
+      ["flour_ap", 2, "tbsp"],
+      ["butter_unsalted", 4, "tbsp"],
+      ["olive_oil_evoo", 2, "tbsp"],
+      ["garlic_head", 8, "clove"],
+      ["chili_flake", 0.5, "tsp"],
+      ["wine_white_dry", 0.5, "cup"],
+      ["broth_chicken", 0.5, "cup"],
+      ["lemon", 1, "count"],
+      ["parsley_fresh", 0.25, "cup"],
+      ["parmesan", 0.5, "cup"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Slice", "body": "{amt:chicken_breast} of chicken breasts in half horizontally, then cut the halves into 1-inch strips. Pat them dry and season with {amt:salt_kosher:0.33} of salt and {amt:pepper_black:0.5} of pepper."},
+        {"verb": "Dust", "body": "the chicken with {amt:flour_ap} of flour and toss until every strip wears a thin coat — that is what gives the sauce its body."},
+        {"verb": "Thin-slice", "body": "{amt:garlic_head} of garlic, chop {amt:parsley_fresh:0.75} of parsley and zest and juice {amt:lemon|lemon|lemons}."}
+      ]},
+      {"phase": "Pasta", "minutes": 10, "actions": [
+        {"verb": "Boil", "body": "a large pot of water with the remaining {amt:salt_kosher:0.33} of salt and cook {amt:pasta_long} of linguine to just under al dente.", "duration": "9 min"},
+        {"verb": "Reserve", "body": "1 cup of the starchy pasta water before draining — you will need it to loosen the sauce."}
+      ]},
+      {"phase": "Sear", "minutes": 8, "actions": [
+        {"verb": "Heat", "body": "{amt:olive_oil_evoo} of olive oil in a large skillet over medium-high heat until it shimmers."},
+        {"verb": "Sear", "body": "the chicken in a single layer, undisturbed, until golden on the first side, then toss and cook through to 165°F. Move it to a plate.", "duration": "6 min"}
+      ]},
+      {"phase": "Sauce", "minutes": 7, "actions": [
+        {"verb": "Melt", "body": "{amt:butter_unsalted:0.5} of butter in the empty skillet over medium-low heat and cook the garlic with {amt:chili_flake} of red pepper flakes until fragrant and barely blond, about 90 seconds — browned garlic turns bitter."},
+        {"verb": "Deglaze", "body": "with {amt:wine_white_dry} of dry white wine, scraping the pan, and let it reduce by half, then add {amt:broth_chicken} of chicken broth.", "duration": "3 min"},
+        {"verb": "Swirl in", "body": "the remaining {amt:butter_unsalted:0.5} of butter, the lemon juice and zest and the last {amt:salt_kosher:0.34} of salt off the heat so the sauce stays glossy."},
+        {"verb": "Toss", "body": "the drained linguine and the chicken with the sauce, splashing in pasta water until it clings. Finish with {amt:parmesan} of grated parmesan and the remaining {amt:parsley_fresh:0.25} of parsley."}
+      ]}
+    ]
+  },
+  {
+    "key": "sl-chicken-fra-diavolo-linguine",
+    "title": "Chicken Fra Diavolo with Linguine",
+    "cuisine": "Italian",
+    "anchor": "chicken_thigh_boneless",
+    "serves": 4,
+    "minutes": 40,
+    "difficulty": "Easy",
+    "equipment": "stove",
+    "format": "skillet",
+    "cleanup": 3,
+    "ingredients": [
+      ["pasta_long", 12, "oz"],
+      ["chicken_thigh_boneless", 1.25, "lb"],
+      ["olive_oil_evoo", 2, "tbsp"],
+      ["onion_yellow", 1, "count"],
+      ["garlic_head", 6, "clove"],
+      ["chili_flake", 1, "tsp"],
+      ["tomato_paste", 2, "tbsp"],
+      ["wine_white_dry", 0.5, "cup"],
+      ["tomato_canned_crushed", 1, "count"],
+      ["basil_fresh", 0.25, "cup"],
+      ["parsley_fresh", 2, "tbsp"],
+      ["parmesan", 0.33, "cup"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Cut", "body": "{amt:chicken_thigh_boneless} of chicken thighs into 1½-inch pieces and season with {amt:salt_kosher:0.33} of salt and {amt:pepper_black:0.5} of pepper."},
+        {"verb": "Dice", "body": "{amt:onion_yellow|onion|onions} finely and thin-slice {amt:garlic_head} of garlic."},
+        {"verb": "Tear", "body": "{amt:basil_fresh} of basil leaves and chop {amt:parsley_fresh} of parsley; keep them for the end."}
+      ]},
+      {"phase": "Sear", "minutes": 8, "actions": [
+        {"verb": "Heat", "body": "{amt:olive_oil_evoo} of olive oil in a deep skillet over medium-high heat and brown the chicken in a single layer on two sides. It does not need to be cooked through yet.", "duration": "6 min"},
+        {"verb": "Transfer", "body": "the chicken to a plate and lower the heat to medium."}
+      ]},
+      {"phase": "Sauce", "minutes": 15, "actions": [
+        {"verb": "Soften", "body": "the onion in the same pan with a pinch of the remaining salt until translucent.", "duration": "4 min"},
+        {"verb": "Bloom", "body": "the garlic, {amt:chili_flake} of red pepper flakes and {amt:tomato_paste} of tomato paste for 1 minute — the paste should darken to brick red. Use the full teaspoon of flakes if you want it properly diavolo."},
+        {"verb": "Deglaze", "body": "with {amt:wine_white_dry} of dry white wine and simmer until nearly dry.", "duration": "2 min"},
+        {"verb": "Simmer", "body": "{amt:tomato_canned_crushed} of crushed tomatoes with {amt:salt_kosher:0.33} of salt, then return the chicken and any juices and cook until the sauce is thick and the chicken reads 165°F.", "duration": "10 min"}
+      ]},
+      {"phase": "Finish", "minutes": 7, "actions": [
+        {"verb": "Boil", "body": "{amt:pasta_long} of linguine in well-salted water with the last {amt:salt_kosher:0.34} of salt until al dente, reserving a cup of the water before draining.", "duration": "9 min"},
+        {"verb": "Toss", "body": "the linguine straight into the sauce with a splash of pasta water and the remaining {amt:pepper_black:0.5} of pepper so every strand is coated."},
+        {"verb": "Serve", "body": "topped with the basil, parsley and {amt:parmesan} of grated parmesan."}
+      ]}
+    ]
+  },
+  {
+    "key": "sl-chicken-milanese-arugula",
+    "title": "Chicken Milanese with Arugula Salad",
+    "cuisine": "Italian",
+    "anchor": "chicken_breast",
+    "serves": 4,
+    "minutes": 35,
+    "difficulty": "Medium",
+    "equipment": "stove",
+    "format": "skillet",
+    "cleanup": 4,
+    "ingredients": [
+      ["chicken_breast", 1.5, "lb"],
+      ["flour_ap", 0.5, "cup"],
+      ["egg_large", 2, "count"],
+      ["breadcrumb_panko", 1.5, "cup"],
+      ["parmesan", 0.5, "cup"],
+      ["oil_neutral", 5, "tbsp"],
+      ["arugula", 4, "cup"],
+      ["tomato_cherry", 1, "cup"],
+      ["lemon", 1, "count"],
+      ["olive_oil_evoo", 2, "tbsp"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 12, "actions": [
+        {"verb": "Halve", "body": "{amt:chicken_breast} of chicken breasts horizontally to make 4 thin cutlets."},
+        {"verb": "Pound", "body": "each cutlet between two sheets of plastic wrap to an even ¼ inch — thin and even is the whole trick to a crust that browns before the meat dries out."},
+        {"verb": "Season", "body": "both sides with {amt:salt_kosher:0.66} of salt and {amt:pepper_black:0.5} of pepper."}
+      ]},
+      {"phase": "Bread", "minutes": 8, "actions": [
+        {"verb": "Set up", "body": "three shallow dishes: {amt:flour_ap} of flour in the first, {amt:egg_large|egg|eggs} beaten in the second, and {amt:breadcrumb_panko} of panko breadcrumbs mixed with {amt:parmesan:0.5} of grated parmesan in the third."},
+        {"verb": "Coat", "body": "each cutlet in flour, then egg, then press it firmly into the panko on both sides so the crumbs stick. Rest the breaded cutlets on a rack for a few minutes."}
+      ]},
+      {"phase": "Fry", "minutes": 10, "actions": [
+        {"verb": "Heat", "body": "{amt:oil_neutral:0.5} of vegetable oil in a large skillet over medium-high heat until a crumb sizzles on contact."},
+        {"verb": "Fry", "body": "two cutlets at a time until deep golden on the first side, then flip and cook until the second side matches and the centre reads 165°F.", "duration": "6 min"},
+        {"verb": "Drain", "body": "on a rack and season with a pinch of salt while hot. Add the remaining {amt:oil_neutral:0.5} of oil and fry the second batch.", "duration": "4 min"}
+      ]},
+      {"phase": "Salad", "minutes": 5, "actions": [
+        {"verb": "Whisk", "body": "the juice of {amt:lemon|lemon|lemons} with {amt:olive_oil_evoo} of olive oil, the last {amt:salt_kosher:0.34} of salt and the remaining {amt:pepper_black:0.5} of pepper."},
+        {"verb": "Toss", "body": "{amt:arugula} of arugula and {amt:tomato_cherry} of halved cherry tomatoes with the dressing just before serving."},
+        {"verb": "Pile", "body": "the salad over each hot cutlet and shave the remaining {amt:parmesan:0.5} of parmesan on top."}
+      ]}
+    ]
+  },
+  {
+    "key": "sl-sausage-stuffed-zucchini-boats",
+    "title": "Italian Sausage Stuffed Zucchini Boats",
+    "cuisine": "Italian",
+    "anchor": "sausage_italian",
+    "serves": 4,
+    "minutes": 55,
+    "difficulty": "Easy",
+    "equipment": "oven",
+    "format": "oven",
+    "cleanup": 4,
+    "ingredients": [
+      ["zucchini", 4, "count"],
+      ["sausage_italian", 1, "lb"],
+      ["onion_yellow", 1, "count"],
+      ["garlic_head", 3, "clove"],
+      ["marinara", 1, "count"],
+      ["mozzarella_low_moisture", 1.5, "cup"],
+      ["parmesan", 0.25, "cup"],
+      ["breadcrumb_panko", 0.5, "cup"],
+      ["italian_seasoning", 1.5, "tsp"],
+      ["olive_oil_evoo", 1, "tbsp"],
+      ["basil_fresh", 2, "tbsp"],
+      ["salt_kosher", 1, "tsp"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 12, "actions": [
+        {"verb": "Heat", "body": "the oven to 400°F and oil a 9×13-inch baking dish with {amt:olive_oil_evoo} of olive oil."},
+        {"verb": "Halve", "body": "{amt:zucchini|zucchini|zucchini} lengthwise and scoop out the centres with a spoon, leaving a ¼-inch shell. Chop the scooped flesh and keep it."},
+        {"verb": "Season", "body": "the shells with {amt:salt_kosher:0.5} of salt and set them cut side up in the dish while you build the filling."},
+        {"verb": "Dice", "body": "{amt:onion_yellow|onion|onions} and mince {amt:garlic_head} of garlic."}
+      ]},
+      {"phase": "Filling", "minutes": 13, "actions": [
+        {"verb": "Brown", "body": "{amt:sausage_italian} of Italian sausage, casings removed, in a skillet over medium-high heat, breaking it into small crumbles until no pink remains and it reads 160°F.", "duration": "7 min"},
+        {"verb": "Add", "body": "the onion and the chopped zucchini centres and cook until softened and the pan looks dry.", "duration": "4 min"},
+        {"verb": "Stir in", "body": "the garlic, {amt:italian_seasoning} of Italian seasoning, the remaining {amt:salt_kosher:0.5} of salt and {amt:pepper_black} of pepper for 1 minute, then take the pan off the heat and mix in {amt:marinara:0.6} of marinara."}
+      ]},
+      {"phase": "Bake", "minutes": 25, "actions": [
+        {"verb": "Spoon", "body": "the remaining {amt:marinara:0.4} of marinara around the zucchini shells, then mound the sausage filling into them."},
+        {"verb": "Scatter", "body": "{amt:breadcrumb_panko} of panko breadcrumbs and {amt:parmesan} of parmesan over the tops."},
+        {"verb": "Bake", "body": "covered with foil until the zucchini is tender when pierced.", "duration": "18 min"},
+        {"verb": "Top", "body": "with {amt:mozzarella_low_moisture} of mozzarella and bake uncovered until melted and browned in spots.", "duration": "7 min"}
+      ]},
+      {"phase": "Serve", "minutes": 5, "actions": [
+        {"verb": "Rest", "body": "the boats for 5 minutes so they firm up, then finish with {amt:basil_fresh} of torn basil and serve two halves per person.", "duration": "5 min"}
+      ]}
+    ]
+  },
+  {
+    "key": "sl-baked-caprese-chicken-orzo",
+    "title": "Baked Caprese Chicken with Orzo",
+    "cuisine": "Italian",
+    "anchor": "chicken_breast",
+    "serves": 4,
+    "minutes": 45,
+    "difficulty": "Easy",
+    "equipment": "oven",
+    "format": "oven",
+    "cleanup": 2,
+    "ingredients": [
+      ["chicken_breast", 1.5, "lb"],
+      ["pasta_orzo", 1.25, "cup"],
+      ["broth_chicken", 2.5, "cup"],
+      ["tomato_cherry", 2, "cup"],
+      ["mozzarella_low_moisture", 1, "cup"],
+      ["basil_fresh", 0.25, "cup"],
+      ["vinegar_balsamic", 2, "tbsp"],
+      ["olive_oil_evoo", 2, "tbsp"],
+      ["garlic_head", 4, "clove"],
+      ["italian_seasoning", 2, "tsp"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Heat", "body": "the oven to 400°F with a rack in the middle."},
+        {"verb": "Halve", "body": "{amt:chicken_breast} of chicken breasts horizontally so they cook in the same time as the orzo, then rub them with {amt:olive_oil_evoo:0.5} of olive oil, {amt:italian_seasoning:0.5} of Italian seasoning, {amt:salt_kosher:0.33} of salt and {amt:pepper_black:0.5} of pepper."},
+        {"verb": "Mince", "body": "{amt:garlic_head} of garlic and halve {amt:tomato_cherry} of cherry tomatoes."}
+      ]},
+      {"phase": "Assemble", "minutes": 5, "actions": [
+        {"verb": "Stir", "body": "{amt:pasta_orzo} of orzo, {amt:broth_chicken} of chicken broth, the garlic, half the tomatoes, the remaining {amt:italian_seasoning:0.5} of Italian seasoning and {amt:salt_kosher:0.33} of salt together in a 9×13-inch baking dish."},
+        {"verb": "Nestle", "body": "the chicken on top and scatter the rest of the tomatoes around it."}
+      ]},
+      {"phase": "Bake", "minutes": 25, "actions": [
+        {"verb": "Bake", "body": "covered tightly with foil until the orzo has drunk most of the broth and the chicken reads 165°F.", "duration": "22 min"},
+        {"verb": "Lay", "body": "{amt:mozzarella_low_moisture} of sliced mozzarella over the chicken and bake uncovered until it melts and slumps.", "duration": "6 min"}
+      ]},
+      {"phase": "Finish", "minutes": 5, "actions": [
+        {"verb": "Drizzle", "body": "with {amt:vinegar_balsamic} of balsamic vinegar and the last {amt:olive_oil_evoo:0.5} of olive oil."},
+        {"verb": "Scatter", "body": "{amt:basil_fresh} of torn basil, the remaining {amt:salt_kosher:0.34} of salt and {amt:pepper_black:0.5} of pepper over the top, stir the orzo once and serve."}
+      ]}
+    ]
+  },
+  {
+    "key": "sl-chorizo-potato-tacos",
+    "title": "Chorizo and Potato Tacos",
+    "cuisine": "Mexican",
+    "anchor": "sausage_chorizo",
+    "serves": 4,
+    "minutes": 35,
+    "difficulty": "Easy",
+    "equipment": "stove",
+    "format": "skillet",
+    "cleanup": 3,
+    "ingredients": [
+      ["sausage_chorizo", 10, "oz"],
+      ["potato_yukon", 1.25, "lb"],
+      ["tortilla_corn", 12, "count"],
+      ["onion_yellow", 1, "count"],
+      ["oil_neutral", 1.5, "tbsp"],
+      ["salsa", 0.5, "cup"],
+      ["sour_cream", 0.33, "cup"],
+      ["onion_red", 0.5, "count"],
+      ["cilantro", 0.5, "cup"],
+      ["lime", 2, "count"],
+      ["salt_kosher", 1, "tsp"],
+      ["pepper_black", 0.25, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 8, "actions": [
+        {"verb": "Dice", "body": "{amt:potato_yukon} of Yukon gold potatoes into ½-inch cubes and rinse them, then dry them well on a towel."},
+        {"verb": "Chop", "body": "{amt:onion_yellow|onion|onions}, thin-slice {amt:onion_red|red onion|red onions} for the top and chop {amt:cilantro} of cilantro."},
+        {"verb": "Cut", "body": "{amt:lime|lime|limes} into wedges."}
+      ]},
+      {"phase": "Potatoes", "minutes": 14, "actions": [
+        {"verb": "Fry", "body": "the potatoes in {amt:oil_neutral} of vegetable oil in a large skillet over medium heat, spread in one layer, turning only every few minutes so they crisp.", "duration": "11 min"},
+        {"verb": "Season", "body": "with {amt:salt_kosher:0.6} of salt and {amt:pepper_black} of pepper once they are tender and golden, then push them to one side of the pan."}
+      ]},
+      {"phase": "Chorizo", "minutes": 8, "actions": [
+        {"verb": "Brown", "body": "{amt:sausage_chorizo} of chorizo in the cleared side of the skillet, breaking it up, until the fat renders out and the edges crisp.", "duration": "5 min"},
+        {"verb": "Add", "body": "the yellow onion and cook until soft, then fold everything together so the potatoes soak up the red chorizo fat. Taste and add the rest of the salt if needed.", "duration": "3 min"}
+      ]},
+      {"phase": "Assemble", "minutes": 5, "actions": [
+        {"verb": "Warm", "body": "{amt:tortilla_corn|corn tortilla|corn tortillas} directly over a burner or in a dry pan until pliable and spotted, then stack them in a towel."},
+        {"verb": "Fill", "body": "each tortilla with the chorizo and potato, then top with {amt:salsa} of salsa, {amt:sour_cream} of sour cream, the red onion, the cilantro, the remaining {amt:salt_kosher:0.4} of salt to taste and a squeeze of lime."}
+      ]}
+    ]
+  },
+  {
+    "key": "sl-steak-fajita-bowls",
+    "title": "Steak Fajita Bowls with Charred Peppers",
+    "cuisine": "Mexican",
+    "anchor": "beef_steak_sirloin",
+    "serves": 4,
+    "minutes": 35,
+    "difficulty": "Easy",
+    "equipment": "stove",
+    "format": "skillet",
+    "cleanup": 4,
+    "ingredients": [
+      ["beef_steak_sirloin", 1.25, "lb"],
+      ["rice_long_grain", 1.25, "cup"],
+      ["bell_pepper", 2, "count"],
+      ["onion_red", 1, "count"],
+      ["oil_neutral", 2, "tbsp"],
+      ["chili_powder", 2, "tsp"],
+      ["cumin_ground", 2, "tsp"],
+      ["paprika_smoked", 1, "tsp"],
+      ["garlic_head", 3, "clove"],
+      ["bean_black_canned", 1, "count"],
+      ["avocado", 1, "count"],
+      ["sour_cream", 0.33, "cup"],
+      ["lime", 2, "count"],
+      ["cilantro", 0.5, "cup"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Slice", "body": "{amt:beef_steak_sirloin} of sirloin steak against the grain into thin strips and toss them with {amt:chili_powder} of chili powder, {amt:cumin_ground} of cumin, {amt:paprika_smoked} of smoked paprika, {amt:salt_kosher:0.5} of salt and {amt:pepper_black:0.5} of pepper."},
+        {"verb": "Cut", "body": "{amt:bell_pepper|bell pepper|bell peppers} and {amt:onion_red|red onion|red onions} into thick strips and mince {amt:garlic_head} of garlic."},
+        {"verb": "Chop", "body": "{amt:cilantro} of cilantro, cut {amt:lime|lime|limes} into wedges and drain and rinse {amt:bean_black_canned} of black beans."}
+      ]},
+      {"phase": "Rice", "minutes": 5, "actions": [
+        {"verb": "Simmer", "body": "{amt:rice_long_grain} of rice, covered, in 2 cups of water with {amt:salt_kosher:0.25} of salt over low heat, then let it steam off the heat for 5 minutes and fluff it.", "duration": "18 min"}
+      ]},
+      {"phase": "Sear", "minutes": 12, "actions": [
+        {"verb": "Heat", "body": "{amt:oil_neutral:0.5} of vegetable oil in a cast-iron or heavy skillet over high heat until it just begins to smoke."},
+        {"verb": "Char", "body": "the peppers and onion in one layer, undisturbed, until blackened in spots but still crisp, then tip them into a bowl.", "duration": "5 min"},
+        {"verb": "Sear", "body": "the steak in the remaining {amt:oil_neutral:0.5} of oil in a single layer for about 90 seconds a side — medium-rare strips stay tender. Stir in the garlic for the last 30 seconds.", "duration": "4 min"},
+        {"verb": "Warm", "body": "the black beans in the hot pan with the last {amt:salt_kosher:0.25} of salt and the remaining {amt:pepper_black:0.5} of pepper.", "duration": "2 min"}
+      ]},
+      {"phase": "Build", "minutes": 8, "actions": [
+        {"verb": "Slice", "body": "{amt:avocado|avocado|avocados} and squeeze a lime wedge over it."},
+        {"verb": "Divide", "body": "the rice among four bowls and top with the beans, charred peppers and steak with all its juices."},
+        {"verb": "Finish", "body": "with {amt:sour_cream} of sour cream, the cilantro, the avocado and the remaining lime wedges."}
+      ]}
+    ]
+  },
+  {
+    "key": "sl-blackened-chicken-avocado-salsa",
+    "title": "Blackened Chicken with Avocado Salsa",
+    "cuisine": "Mexican",
+    "anchor": "chicken_breast",
+    "serves": 4,
+    "minutes": 35,
+    "difficulty": "Easy",
+    "equipment": "stove",
+    "format": "skillet",
+    "cleanup": 3,
+    "ingredients": [
+      ["chicken_breast", 1.5, "lb"],
+      ["rice_long_grain", 1.25, "cup"],
+      ["paprika_smoked", 1, "tbsp"],
+      ["garlic_powder", 1, "tsp"],
+      ["onion_powder", 1, "tsp"],
+      ["oregano_dried", 1, "tsp"],
+      ["cumin_ground", 1, "tsp"],
+      ["cayenne", 0.5, "tsp"],
+      ["oil_neutral", 1, "tbsp"],
+      ["butter_unsalted", 2, "tbsp"],
+      ["avocado", 2, "count"],
+      ["tomato_fresh", 1, "count"],
+      ["onion_red", 0.5, "count"],
+      ["lime", 2, "count"],
+      ["cilantro", 0.5, "cup"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Halve", "body": "{amt:chicken_breast} of chicken breasts horizontally into four even cutlets and pat them dry."},
+        {"verb": "Mix", "body": "the blackening rub: {amt:paprika_smoked} of smoked paprika, {amt:garlic_powder} of garlic powder, {amt:onion_powder} of onion powder, {amt:oregano_dried} of oregano, {amt:cumin_ground} of cumin, {amt:cayenne} of cayenne, {amt:salt_kosher:0.5} of salt and {amt:pepper_black:0.5} of pepper."},
+        {"verb": "Coat", "body": "the cutlets all over with the rub and let them sit while the rice cooks."}
+      ]},
+      {"phase": "Rice", "minutes": 5, "actions": [
+        {"verb": "Simmer", "body": "{amt:rice_long_grain} of rice, covered, in 2 cups of water with {amt:salt_kosher:0.25} of salt over low heat, then steam it off the heat and fluff.", "duration": "18 min"}
+      ]},
+      {"phase": "Blacken", "minutes": 12, "actions": [
+        {"verb": "Heat", "body": "{amt:oil_neutral} of vegetable oil in a cast-iron skillet over medium-high heat until it shimmers — open a window, this one smokes."},
+        {"verb": "Cook", "body": "the cutlets without moving them until the spices form a dark crust, then flip and cook until they read 165°F.", "duration": "8 min"},
+        {"verb": "Baste", "body": "with {amt:butter_unsalted} of butter in the last minute, spooning it over, then rest the chicken for 5 minutes before slicing.", "duration": "5 min"}
+      ]},
+      {"phase": "Salsa", "minutes": 8, "actions": [
+        {"verb": "Dice", "body": "{amt:avocado|avocado|avocados} and {amt:tomato_fresh|tomato|tomatoes} and finely chop {amt:onion_red|red onion|red onions}."},
+        {"verb": "Fold", "body": "them together gently with {amt:cilantro} of chopped cilantro,         the juice of {amt:lime:0.5|lime|limes} and the remaining {amt:salt_kosher:0.25} of salt and {amt:pepper_black:0.5} of pepper."},
+                {"verb": "Serve", "body": "the sliced chicken over the rice with the avocado salsa and the remaining {amt:lime:0.5|lime|limes} cut into wedges."}
+      ]}
+    ]
+  },
+  {
+    "key": "sl-beef-enchiladas-red-chile",
+    "title": "Beef Enchiladas with Red Chile Sauce",
+    "cuisine": "Mexican",
+    "anchor": "ground_beef",
+    "serves": 4,
+    "minutes": 55,
+    "difficulty": "Medium",
+    "equipment": "oven",
+    "format": "oven",
+    "cleanup": 5,
+    "ingredients": [
+      ["ground_beef", 1, "lb"],
+      ["tortilla_corn", 12, "count"],
+      ["oil_neutral", 1, "tbsp"],
+      ["flour_ap", 2, "tbsp"],
+      ["chili_powder", 3, "tbsp"],
+      ["cumin_ground", 2, "tsp"],
+      ["garlic_powder", 1, "tsp"],
+      ["oregano_dried", 1, "tsp"],
+      ["tomato_sauce", 2, "count"],
+      ["broth_chicken", 1, "cup"],
+      ["onion_yellow", 1, "count"],
+      ["bean_pinto_canned", 1, "count"],
+      ["cheddar", 1.5, "cup"],
+      ["cilantro", 0.25, "cup"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Heat", "body": "the oven to 375°F and set out a 9×13-inch baking dish."},
+        {"verb": "Dice", "body": "{amt:onion_yellow|onion|onions}, drain and rinse {amt:bean_pinto_canned} of pinto beans and chop {amt:cilantro} of cilantro."},
+        {"verb": "Grate", "body": "{amt:cheddar} of cheddar if it is not already shredded."}
+      ]},
+      {"phase": "Sauce", "minutes": 12, "actions": [
+        {"verb": "Whisk", "body": "{amt:oil_neutral} of vegetable oil and {amt:flour_ap} of flour in a saucepan over medium heat for 1 minute to make a quick roux."},
+        {"verb": "Stir in", "body": "{amt:chili_powder:0.8} of chili powder, {amt:cumin_ground:0.5} of cumin, {amt:garlic_powder} of garlic powder and {amt:oregano_dried} of oregano for 30 seconds, until it smells toasty rather than raw."},
+        {"verb": "Pour in", "body": "{amt:tomato_sauce} of tomato sauce and {amt:broth_chicken} of chicken broth, whisking out any lumps, and simmer until it coats a spoon.", "duration": "8 min"},
+        {"verb": "Season", "body": "the sauce with {amt:salt_kosher:0.33} of salt and {amt:pepper_black:0.5} of pepper, then take it off the heat."}
+      ]},
+      {"phase": "Filling", "minutes": 10, "actions": [
+        {"verb": "Brown", "body": "{amt:ground_beef} of ground beef with the onion in a skillet over medium-high heat, breaking it up, until no pink remains and it reads 160°F. Spoon off the fat.", "duration": "8 min"},
+        {"verb": "Mix in", "body": "the pinto beans, the remaining {amt:chili_powder:0.2} of chili powder, {amt:cumin_ground:0.5} of cumin, {amt:salt_kosher:0.33} of salt, {amt:pepper_black:0.5} of pepper and about ½ cup of the red chile sauce."}
+      ]},
+      {"phase": "Bake", "minutes": 23, "actions": [
+        {"verb": "Soften", "body": "{amt:tortilla_corn|corn tortilla|corn tortillas} 30 seconds a side in a dry pan, or wrapped in a damp towel in the microwave, so they roll without cracking."},
+        {"verb": "Roll", "body": "a spoonful of filling and a pinch of the cheddar in each tortilla and lay them seam side down in the dish, spread with a thin layer of sauce."},
+        {"verb": "Cover", "body": "the enchiladas with the remaining sauce and the rest of the cheddar, and the last {amt:salt_kosher:0.34} of salt if you like."},
+        {"verb": "Bake", "body": "until the sauce bubbles at the edges and the cheese is melted, then rest 5 minutes and shower with the cilantro.", "duration": "18 min"}
+      ]}
+    ]
+  },
+  {
+    "key": "sl-chile-lime-chicken-skewers",
+    "title": "Grilled Chili-Lime Chicken Skewers with Cilantro Rice",
+    "cuisine": "Mexican",
+    "anchor": "chicken_thigh_boneless",
+    "serves": 4,
+    "minutes": 45,
+    "difficulty": "Easy",
+    "equipment": "grill",
+    "format": "grill",
+    "cleanup": 3,
+    "ingredients": [
+      ["chicken_thigh_boneless", 1.75, "lb"],
+      ["rice_long_grain", 1.25, "cup"],
+      ["lime", 4, "count"],
+      ["oil_neutral", 2, "tbsp"],
+      ["chili_powder", 1, "tbsp"],
+      ["cumin_ground", 2, "tsp"],
+      ["garlic_head", 4, "clove"],
+      ["honey", 1, "tbsp"],
+      ["bell_pepper", 1, "count"],
+      ["onion_red", 1, "count"],
+      ["cilantro", 0.5, "cup"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Cut", "body": "{amt:chicken_thigh_boneless} of chicken thighs into 1½-inch chunks."},
+        {"verb": "Whisk", "body": "the marinade: {amt:oil_neutral} of vegetable oil, the juice of {amt:lime:0.5|lime|limes}, {amt:chili_powder} of chili powder, {amt:cumin_ground} of cumin, {amt:garlic_head} of minced garlic, {amt:honey} of honey, {amt:salt_kosher:0.5} of salt and {amt:pepper_black:0.5} of pepper."},
+        {"verb": "Cut", "body": "{amt:bell_pepper|bell pepper|bell peppers} and {amt:onion_red|red onion|red onions} into 1½-inch squares, and soak wooden skewers in water if you are using them."}
+      ]},
+      {"phase": "Marinate", "minutes": 15, "actions": [
+        {"verb": "Toss", "body": "the chicken in the marinade and let it sit at room temperature while the grill heats — any longer than about 30 minutes and the lime starts to cure the meat.", "duration": "15 min"},
+        {"verb": "Heat", "body": "the grill to medium-high, about 425°F, and scrape and oil the grates."}
+      ]},
+      {"phase": "Rice", "minutes": 8, "actions": [
+        {"verb": "Simmer", "body": "{amt:rice_long_grain} of rice, covered, in 2 cups of water with {amt:salt_kosher:0.25} of salt over low heat, then steam it off the heat for 5 minutes.", "duration": "18 min"},
+        {"verb": "Fold", "body": "{amt:cilantro} of chopped cilantro and the juice of {amt:lime:0.25|lime|limes} through the hot rice."}
+      ]},
+      {"phase": "Grill", "minutes": 12, "actions": [
+        {"verb": "Thread", "body": "the chicken onto skewers, alternating with the pepper and onion pieces, and leave a little space between pieces so they char instead of steam."},
+        {"verb": "Grill", "body": "with the lid down, turning every 3 minutes, until the chicken is charred at the edges and reads 165°F at the centre.", "duration": "10 min"},
+        {"verb": "Rest", "body": "the skewers for 3 minutes, then season with the last {amt:salt_kosher:0.25} of salt and the remaining {amt:pepper_black:0.5} of pepper and serve over the cilantro rice with {amt:lime:0.25|lime|limes} cut into wedges.", "duration": "3 min"}
+      ]}
+    ]
+  },
+  {
+    "key": "sl-chicken-chorizo-paella",
+    "title": "Chicken and Chorizo Paella",
+    "cuisine": "Spanish",
+    "anchor": "chicken_thigh_boneless",
+    "serves": 4,
+    "minutes": 50,
+    "difficulty": "Medium",
+    "equipment": "stove",
+    "format": "skillet",
+    "cleanup": 2,
+    "ingredients": [
+      ["chicken_thigh_boneless", 1, "lb"],
+      ["sausage_chorizo", 6, "oz"],
+      ["arborio_rice", 1.25, "cup"],
+      ["broth_chicken", 3.5, "cup"],
+      ["tomato_canned_diced", 1, "count"],
+      ["onion_yellow", 1, "count"],
+      ["bell_pepper", 1, "count"],
+      ["garlic_head", 4, "clove"],
+      ["paprika_smoked", 2, "tsp"],
+      ["turmeric", 0.5, "tsp"],
+      ["peas_frozen", 1, "cup"],
+      ["olive_oil_evoo", 2, "tbsp"],
+      ["lemon", 1, "count"],
+      ["parsley_fresh", 2, "tbsp"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 12, "actions": [
+        {"verb": "Cut", "body": "{amt:chicken_thigh_boneless} of chicken thighs into 1½-inch pieces and season with {amt:salt_kosher:0.5} of salt and {amt:pepper_black:0.5} of pepper."},
+        {"verb": "Slice", "body": "{amt:sausage_chorizo} of chorizo into coins, dice {amt:onion_yellow|onion|onions} and {amt:bell_pepper|bell pepper|bell peppers} and mince {amt:garlic_head} of garlic."},
+        {"verb": "Warm", "body": "{amt:broth_chicken} of chicken broth in a saucepan with {amt:turmeric} of turmeric so the rice takes on colour the moment it goes in.", "duration": "5 min"}
+      ]},
+      {"phase": "Brown", "minutes": 10, "actions": [
+        {"verb": "Render", "body": "the chorizo in {amt:olive_oil_evoo} of olive oil in a wide 12-inch skillet over medium heat until its orange fat runs, then scoop it out.", "duration": "4 min"},
+        {"verb": "Brown", "body": "the chicken in that fat on two sides and set it aside with the chorizo.", "duration": "4 min"},
+        {"verb": "Soften", "body": "the onion and pepper in the pan until slippery, then add the garlic and {amt:paprika_smoked} of smoked paprika for 1 minute."}
+      ]},
+      {"phase": "Simmer", "minutes": 20, "actions": [
+        {"verb": "Stir in", "body": "{amt:tomato_canned_diced} of diced tomatoes, drained, and cook until the mixture looks jammy.", "duration": "3 min"},
+        {"verb": "Add", "body": "{amt:arborio_rice} of rice and stir for a minute so every grain is coated, then spread it flat and pour over the hot broth with the remaining {amt:salt_kosher:0.5} of salt."},
+        {"verb": "Nestle", "body": "the chicken and chorizo back in and simmer uncovered without stirring — stirring makes it risotto, not paella.", "duration": "15 min"},
+        {"verb": "Scatter", "body": "{amt:peas_frozen} of frozen peas over the top for the last 5 minutes and check the chicken reads 165°F.", "duration": "5 min"}
+      ]},
+      {"phase": "Rest", "minutes": 8, "actions": [
+        {"verb": "Crank", "body": "the heat to high for 60-90 seconds at the very end if you want the toasted socarrat crust on the bottom — listen for crackling, not burning."},
+        {"verb": "Rest", "body": "the pan covered with a clean towel so the rice finishes steaming.", "duration": "5 min"},
+        {"verb": "Finish", "body": "with {amt:parsley_fresh} of chopped parsley, the remaining {amt:pepper_black:0.5} of pepper and {amt:lemon|lemon|lemons} cut into wedges."}
+      ]}
+    ]
+  },
+  {
+    "key": "sl-pollo-al-ajillo-potatoes",
+    "title": "Spanish Garlic Chicken with Potatoes",
+    "cuisine": "Spanish",
+    "anchor": "chicken_thigh_bone_in",
+    "serves": 4,
+    "minutes": 45,
+    "difficulty": "Easy",
+    "equipment": "stove",
+    "format": "skillet",
+    "cleanup": 3,
+    "ingredients": [
+      ["chicken_thigh_bone_in", 1.75, "lb"],
+      ["potato_yukon", 1.5, "lb"],
+      ["olive_oil_evoo", 3, "tbsp"],
+      ["garlic_head", 10, "clove"],
+      ["wine_white_dry", 0.5, "cup"],
+      ["broth_chicken", 0.5, "cup"],
+      ["paprika_smoked", 1, "tsp"],
+      ["bay_leaf", 1, "count"],
+      ["lemon", 1, "count"],
+      ["parsley_fresh", 0.25, "cup"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Pat", "body": "{amt:chicken_thigh_bone_in} of bone-in chicken thighs very dry and season them all over with {amt:salt_kosher:0.5} of salt and {amt:pepper_black:0.5} of pepper."},
+        {"verb": "Cut", "body": "{amt:potato_yukon} of Yukon gold potatoes into ¾-inch chunks."},
+        {"verb": "Peel", "body": "{amt:garlic_head} of garlic and leave the cloves whole — this dish lives on sweet, soft whole garlic, not minced garlic."}
+      ]},
+      {"phase": "Potatoes", "minutes": 15, "actions": [
+        {"verb": "Fry", "body": "the potatoes in {amt:olive_oil_evoo:0.66} of olive oil in a large skillet over medium heat until golden and nearly tender, turning occasionally.", "duration": "12 min"},
+        {"verb": "Lift", "body": "the potatoes onto a plate and season with {amt:salt_kosher:0.25} of salt."}
+      ]},
+      {"phase": "Chicken", "minutes": 12, "actions": [
+        {"verb": "Brown", "body": "the chicken skin side down in the remaining {amt:olive_oil_evoo:0.34} of oil over medium-high heat until the skin is crisp and releases easily, then turn it.", "duration": "9 min"},
+        {"verb": "Add", "body": "the whole garlic cloves and {amt:bay_leaf|bay leaf|bay leaves} around the chicken and let the cloves turn golden, about 2 minutes."}
+      ]},
+      {"phase": "Sauce", "minutes": 8, "actions": [
+        {"verb": "Deglaze", "body": "with {amt:wine_white_dry} of dry white wine, scraping the pan, and let it bubble down by half.", "duration": "3 min"},
+        {"verb": "Pour in", "body": "{amt:broth_chicken} of chicken broth with {amt:paprika_smoked} of smoked paprika and the remaining {amt:salt_kosher:0.25} of salt, return the potatoes and simmer until the chicken reads 165°F and the sauce is syrupy.", "duration": "5 min"},
+        {"verb": "Finish", "body": "with {amt:parsley_fresh} of chopped parsley, the remaining {amt:pepper_black:0.5} of pepper and a squeeze from {amt:lemon|lemon|lemons}, pulling out the bay leaf before serving."}
+      ]}
+    ]
+  },
+  {
+    "key": "sl-chicken-sausage-jambalaya",
+    "title": "Chicken and Sausage Jambalaya",
+    "cuisine": "Cajun",
+    "anchor": "chicken_thigh_boneless",
+    "serves": 4,
+    "minutes": 55,
+    "difficulty": "Easy",
+    "equipment": "stove",
+    "format": "pot",
+    "cleanup": 2,
+    "ingredients": [
+      ["chicken_thigh_boneless", 1, "lb"],
+      ["sausage_chorizo", 6, "oz"],
+      ["rice_long_grain", 1.5, "cup"],
+      ["broth_chicken", 3, "cup"],
+      ["tomato_canned_diced", 1, "count"],
+      ["onion_yellow", 1, "count"],
+      ["bell_pepper", 1, "count"],
+      ["celery", 2, "stalk"],
+      ["garlic_head", 4, "clove"],
+      ["oil_neutral", 1, "tbsp"],
+      ["paprika_smoked", 2, "tsp"],
+      ["thyme_dried", 1, "tsp"],
+      ["oregano_dried", 1, "tsp"],
+      ["cayenne", 0.5, "tsp"],
+      ["bay_leaf", 2, "count"],
+      ["scallion", 3, "count"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 12, "actions": [
+        {"verb": "Cut", "body": "{amt:chicken_thigh_boneless} of chicken thighs into 1-inch pieces and season with {amt:salt_kosher:0.33} of salt and {amt:pepper_black:0.5} of pepper."},
+        {"verb": "Slice", "body": "{amt:sausage_chorizo} of chorizo into coins."},
+        {"verb": "Chop", "body": "the trinity: {amt:onion_yellow|onion|onions}, {amt:bell_pepper|bell pepper|bell peppers} and {amt:celery} of celery, all in a small dice, and mince {amt:garlic_head} of garlic."},
+        {"verb": "Rinse", "body": "{amt:rice_long_grain} of rice until the water runs clear and slice {amt:scallion|scallion|scallions}."}
+      ]},
+      {"phase": "Brown", "minutes": 10, "actions": [
+        {"verb": "Render", "body": "the chorizo in {amt:oil_neutral} of vegetable oil in a Dutch oven over medium-high heat until browned, then scoop it out.", "duration": "4 min"},
+        {"verb": "Brown", "body": "the chicken in the rendered fat for a couple of minutes a side and set it aside with the sausage.", "duration": "4 min"},
+        {"verb": "Cook", "body": "the trinity in the pot until softened and the browned bits lift off the bottom, then add the garlic for 1 minute."}
+      ]},
+      {"phase": "Simmer", "minutes": 25, "actions": [
+        {"verb": "Stir in", "body": "{amt:paprika_smoked} of smoked paprika, {amt:thyme_dried} of thyme, {amt:oregano_dried} of oregano, {amt:cayenne} of cayenne and {amt:bay_leaf|bay leaf|bay leaves} for 30 seconds."},
+        {"verb": "Add", "body": "the rice and stir until the grains are glossy, then pour in {amt:broth_chicken} of chicken broth and {amt:tomato_canned_diced} of diced tomatoes with their juice and the remaining {amt:salt_kosher:0.67} of salt."},
+        {"verb": "Return", "body": "the chicken and sausage, bring it to a boil, then drop to the lowest heat, cover and leave it completely alone — lifting the lid lets out the steam the rice needs.", "duration": "22 min"}
+      ]},
+      {"phase": "Rest", "minutes": 8, "actions": [
+        {"verb": "Rest", "body": "the covered pot off the heat so the rice finishes absorbing the liquid.", "duration": "7 min"},
+        {"verb": "Fluff", "body": "with a fork, pull out the bay leaves, check the chicken reads 165°F and fold in the scallions and the remaining {amt:pepper_black:0.5} of pepper."}
+      ]}
+    ]
+  },
+  {
+    "key": "sl-chicken-sausage-gumbo",
+    "title": "Chicken and Sausage Gumbo",
+    "cuisine": "Cajun",
+    "anchor": "chicken_thigh_boneless",
+    "serves": 4,
+    "minutes": 70,
+    "difficulty": "Medium",
+    "equipment": "stove",
+    "format": "pot",
+    "cleanup": 3,
+    "ingredients": [
+      ["chicken_thigh_boneless", 1.25, "lb"],
+      ["sausage_chorizo", 5, "oz"],
+      ["oil_neutral", 4, "tbsp"],
+      ["flour_ap", 0.33, "cup"],
+      ["onion_yellow", 1, "count"],
+      ["bell_pepper", 1, "count"],
+      ["celery", 3, "stalk"],
+      ["garlic_head", 4, "clove"],
+      ["broth_chicken", 6, "cup"],
+      ["rice_long_grain", 1, "cup"],
+      ["paprika_smoked", 2, "tsp"],
+      ["thyme_dried", 1, "tsp"],
+      ["cayenne", 0.5, "tsp"],
+      ["bay_leaf", 2, "count"],
+      ["hot_sauce", 1, "tbsp"],
+      ["scallion", 3, "count"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 12, "actions": [
+        {"verb": "Cut", "body": "{amt:chicken_thigh_boneless} of chicken thighs into bite-sized pieces and season with {amt:salt_kosher:0.33} of salt and {amt:pepper_black:0.5} of pepper."},
+        {"verb": "Slice", "body": "{amt:sausage_chorizo} of chorizo into coins."},
+        {"verb": "Dice", "body": "{amt:onion_yellow|onion|onions}, {amt:bell_pepper|bell pepper|bell peppers} and {amt:celery} of celery and mince {amt:garlic_head} of garlic — have them ready in a bowl before you start the roux."},
+        {"verb": "Slice", "body": "{amt:scallion|scallion|scallions} for serving."}
+      ]},
+      {"phase": "Roux", "minutes": 20, "actions": [
+        {"verb": "Brown", "body": "the chorizo in a heavy pot over medium heat, then remove it, leaving the fat behind.", "duration": "4 min"},
+        {"verb": "Whisk", "body": "{amt:oil_neutral} of vegetable oil and {amt:flour_ap} of flour into the pot and cook over medium-low heat, stirring constantly, until the roux is the colour of peanut butter and smells nutty. Do not walk away; a scorched roux has to be thrown out.", "duration": "15 min"},
+        {"verb": "Dump in", "body": "the onion, pepper and celery all at once to stop the roux cooking, and stir until they soften."}
+      ]},
+      {"phase": "Simmer", "minutes": 30, "actions": [
+        {"verb": "Stir in", "body": "the garlic, {amt:paprika_smoked} of smoked paprika, {amt:thyme_dried} of thyme, {amt:cayenne} of cayenne and {amt:bay_leaf|bay leaf|bay leaves} for 1 minute."},
+        {"verb": "Whisk in", "body": "{amt:broth_chicken} of chicken broth a cup at a time so the roux dissolves smoothly, then bring it to a gentle simmer with the remaining {amt:salt_kosher:0.67} of salt."},
+        {"verb": "Add", "body": "the chicken and the browned sausage and simmer uncovered until the gumbo coats a spoon and the chicken reads 165°F.", "duration": "25 min"},
+        {"verb": "Cook", "body": "{amt:rice_long_grain} of rice meanwhile, covered, in 1½ cups of water over low heat, then steam it off the heat.", "duration": "18 min"}
+      ]},
+      {"phase": "Serve", "minutes": 8, "actions": [
+        {"verb": "Skim", "body": "any fat from the surface, lift out the bay leaves and season with {amt:hot_sauce} of hot sauce and the remaining {amt:pepper_black:0.5} of pepper."},
+        {"verb": "Ladle", "body": "the gumbo into bowls around a scoop of rice and shower with the scallions."}
+      ]}
+    ]
+  },
+  {
+    "key": "sl-med-chicken-chickpea-skillet",
+    "title": "Mediterranean Chicken and Chickpea Skillet",
+    "cuisine": "Mediterranean",
+    "anchor": "chicken_thigh_boneless",
+    "serves": 4,
+    "minutes": 40,
+    "difficulty": "Easy",
+    "equipment": "stove",
+    "format": "skillet",
+    "cleanup": 3,
+    "ingredients": [
+      ["chicken_thigh_boneless", 1.25, "lb"],
+      ["bean_chickpea_canned", 2, "count"],
+      ["couscous", 0.75, "cup"],
+      ["broth_chicken", 1, "cup"],
+      ["tomato_cherry", 2, "cup"],
+      ["spinach_fresh", 4, "cup"],
+      ["onion_yellow", 1, "count"],
+      ["garlic_head", 4, "clove"],
+      ["olive_oil_evoo", 3, "tbsp"],
+      ["oregano_dried", 2, "tsp"],
+      ["paprika_smoked", 1, "tsp"],
+      ["cumin_ground", 1, "tsp"],
+      ["olive_kalamata", 0.5, "cup"],
+      ["feta", 0.5, "cup"],
+      ["lemon", 1, "count"],
+      ["parsley_fresh", 0.25, "cup"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 12, "actions": [
+        {"verb": "Cut", "body": "{amt:chicken_thigh_boneless} of chicken thighs into 1½-inch pieces and toss them with {amt:oregano_dried:0.5} of oregano, {amt:paprika_smoked} of smoked paprika, {amt:cumin_ground} of cumin, {amt:salt_kosher:0.4} of salt and {amt:pepper_black:0.5} of pepper."},
+        {"verb": "Drain", "body": "and rinse {amt:bean_chickpea_canned} of chickpeas and pat them dry so they brown rather than steam."},
+        {"verb": "Slice", "body": "{amt:onion_yellow|onion|onions}, mince {amt:garlic_head} of garlic, halve {amt:tomato_cherry} of cherry tomatoes and {amt:olive_kalamata} of olives."}
+      ]},
+      {"phase": "Sear", "minutes": 10, "actions": [
+        {"verb": "Brown", "body": "the chicken in {amt:olive_oil_evoo:0.66} of olive oil in a large skillet over medium-high heat, in one layer, until well coloured on two sides, then move it to a plate.", "duration": "7 min"},
+        {"verb": "Soften", "body": "the onion in the same pan until golden at the edges, then add the garlic and the remaining {amt:oregano_dried:0.5} of oregano for 1 minute.", "duration": "3 min"}
+      ]},
+      {"phase": "Simmer", "minutes": 12, "actions": [
+        {"verb": "Add", "body": "the chickpeas and tomatoes with {amt:salt_kosher:0.3} of salt and cook until the tomatoes slump and start to break down.", "duration": "5 min"},
+        {"verb": "Return", "body": "the chicken with its juices and {amt:broth_chicken:0.5} of chicken broth and simmer until the chicken reads 165°F and the sauce thickens.", "duration": "6 min"},
+        {"verb": "Steam", "body": "the couscous meanwhile: pour the remaining {amt:broth_chicken:0.5} of broth, boiling, over {amt:couscous} of couscous with the last {amt:salt_kosher:0.3} of salt, cover and leave it 5 minutes, then fluff.", "duration": "5 min"}
+      ]},
+      {"phase": "Finish", "minutes": 6, "actions": [
+        {"verb": "Wilt", "body": "{amt:spinach_fresh} of baby spinach and the olives into the skillet, a handful at a time, off the heat."},
+        {"verb": "Brighten", "body": "with the juice of {amt:lemon|lemon|lemons} and the remaining {amt:pepper_black:0.5} of pepper."},
+        {"verb": "Serve", "body": "over the couscous, crumbled with {amt:feta} of feta and {amt:parsley_fresh} of chopped parsley."}
+      ]}
+    ]
+  },
+  {
+    "key": "sl-med-baked-chicken-olives",
+    "title": "Mediterranean Baked Chicken with Olives and Tomatoes",
+    "cuisine": "Mediterranean",
+    "anchor": "chicken_thigh_bone_in",
+    "serves": 4,
+    "minutes": 60,
+    "difficulty": "Easy",
+    "equipment": "oven",
+    "format": "oven",
+    "cleanup": 2,
+    "ingredients": [
+      ["chicken_thigh_bone_in", 1.75, "lb"],
+      ["potato_yukon", 1.25, "lb"],
+      ["tomato_cherry", 2, "cup"],
+      ["olive_kalamata", 0.75, "cup"],
+      ["onion_red", 1, "count"],
+      ["garlic_head", 5, "clove"],
+      ["olive_oil_evoo", 3, "tbsp"],
+      ["oregano_dried", 2, "tsp"],
+      ["caper", 2, "tbsp"],
+      ["lemon", 1, "count"],
+      ["parsley_fresh", 0.25, "cup"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 12, "actions": [
+        {"verb": "Heat", "body": "the oven to 425°F with a rack in the upper third."},
+        {"verb": "Pat", "body": "{amt:chicken_thigh_bone_in} of bone-in chicken thighs dry and rub them with {amt:olive_oil_evoo:0.33} of olive oil, {amt:oregano_dried:0.5} of oregano, {amt:salt_kosher:0.4} of salt and {amt:pepper_black:0.5} of pepper."},
+        {"verb": "Cut", "body": "{amt:potato_yukon} of Yukon gold potatoes into 1-inch chunks and {amt:onion_red|red onion|red onions} into thick wedges; smash {amt:garlic_head} of garlic cloves."}
+      ]},
+      {"phase": "Roast", "minutes": 15, "actions": [
+        {"verb": "Toss", "body": "the potatoes, onion and garlic in a large roasting pan with the remaining {amt:olive_oil_evoo:0.67} of oil, {amt:oregano_dried:0.5} of oregano and {amt:salt_kosher:0.3} of salt."},
+        {"verb": "Roast", "body": "the vegetables on their own so they get a head start on the chicken.", "duration": "15 min"}
+      ]},
+      {"phase": "Bake", "minutes": 28, "actions": [
+        {"verb": "Nestle", "body": "the chicken skin side up among the potatoes and scatter {amt:tomato_cherry} of cherry tomatoes, {amt:olive_kalamata} of olives and {amt:caper} of capers around it."},
+        {"verb": "Roast", "body": "uncovered until the skin is crisp, the tomatoes have burst and the thighs read 175°F at the bone — dark meat is better a little past 165°F.", "duration": "28 min"}
+      ]},
+      {"phase": "Finish", "minutes": 5, "actions": [
+        {"verb": "Squeeze", "body": "{amt:lemon|lemon|lemons} over the pan and stir the juices through the potatoes."},
+        {"verb": "Scatter", "body": "{amt:parsley_fresh} of chopped parsley, the last {amt:salt_kosher:0.3} of salt and the remaining {amt:pepper_black:0.5} of pepper over everything and serve straight from the pan."}
+      ]}
+    ]
+  },
+  {
+    "key": "sl-baked-feta-chicken-orzo",
+    "title": "Baked Feta Chicken with Cherry Tomatoes and Orzo",
+    "cuisine": "Greek",
+    "anchor": "chicken_breast",
+    "serves": 4,
+    "minutes": 50,
+    "difficulty": "Easy",
+    "equipment": "oven",
+    "format": "oven",
+    "cleanup": 2,
+    "ingredients": [
+      ["chicken_breast", 1.5, "lb"],
+      ["feta", 8, "oz"],
+      ["tomato_cherry", 3, "cup"],
+      ["pasta_orzo", 1.25, "cup"],
+      ["broth_chicken", 2.5, "cup"],
+      ["spinach_fresh", 3, "cup"],
+      ["onion_red", 0.5, "count"],
+      ["garlic_head", 4, "clove"],
+      ["olive_oil_evoo", 3, "tbsp"],
+      ["oregano_dried", 2, "tsp"],
+      ["lemon", 1, "count"],
+      ["parsley_fresh", 2, "tbsp"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 12, "actions": [
+        {"verb": "Heat", "body": "the oven to 400°F."},
+        {"verb": "Cut", "body": "{amt:chicken_breast} of chicken breasts into large 2-inch chunks and toss them with {amt:olive_oil_evoo:0.33} of olive oil, {amt:oregano_dried:0.5} of oregano, {amt:salt_kosher:0.33} of salt and {amt:pepper_black:0.5} of pepper."},
+        {"verb": "Slice", "body": "{amt:onion_red|red onion|red onions} thinly and mince {amt:garlic_head} of garlic."}
+      ]},
+      {"phase": "Assemble", "minutes": 8, "actions": [
+        {"verb": "Scatter", "body": "{amt:tomato_cherry} of cherry tomatoes, the onion and the garlic in a 9×13-inch baking dish with the remaining {amt:olive_oil_evoo:0.67} of olive oil and {amt:oregano_dried:0.5} of oregano."},
+        {"verb": "Set", "body": "the whole block of {amt:feta} of feta in the middle and tuck the chicken around it."}
+      ]},
+      {"phase": "Bake", "minutes": 25, "actions": [
+        {"verb": "Bake", "body": "uncovered until the tomatoes blister and split and the feta is soft and browning at the edges.", "duration": "20 min"},
+        {"verb": "Stir in", "body": "{amt:pasta_orzo} of orzo and {amt:broth_chicken} of hot chicken broth with the remaining {amt:salt_kosher:0.33} of salt, mashing the feta and tomatoes into a sauce as you go."},
+        {"verb": "Return", "body": "the dish to the oven, covered with foil, until the orzo is tender and the chicken reads 165°F.", "duration": "12 min"}
+      ]},
+      {"phase": "Finish", "minutes": 5, "actions": [
+        {"verb": "Fold", "body": "{amt:spinach_fresh} of baby spinach through the hot orzo until it wilts."},
+        {"verb": "Finish", "body": "with the juice of {amt:lemon|lemon|lemons}, {amt:parsley_fresh} of chopped parsley, the last {amt:salt_kosher:0.34} of salt and the remaining {amt:pepper_black:0.5} of pepper."}
+      ]}
+    ]
+  }
+]

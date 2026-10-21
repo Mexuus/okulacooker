@@ -1,0 +1,791 @@
+[
+  {
+    "key": "sa-air-fryer-chicken-katsu-curry",
+    "title": "Air Fryer Chicken Katsu Curry with Rice",
+    "cuisine": "Japanese",
+    "anchor": "chicken_breast",
+    "serves": 4,
+    "minutes": 45,
+    "difficulty": "Medium",
+    "equipment": "air_fryer",
+    "format": "air",
+    "cleanup": 5,
+    "ingredients": [
+      ["chicken_breast", 1.5, "lb"],
+      ["salt_kosher", 1.25, "tsp"],
+      ["pepper_black", 0.5, "tsp"],
+      ["flour_ap", 0.5, "cup"],
+      ["egg_large", 2, "count"],
+      ["breadcrumb_panko", 1.5, "cup"],
+      ["oil_neutral", 2, "tbsp"],
+      ["rice_long_grain", 1.25, "cup"],
+      ["onion_yellow", 1, "count"],
+      ["carrot", 2, "count"],
+      ["garlic_head", 3, "clove"],
+      ["ginger_fresh", 1, "tbsp"],
+      ["butter_unsalted", 2, "tbsp"],
+      ["curry_powder", 2, "tbsp"],
+      ["garam_masala", 1, "tsp"],
+      ["broth_chicken", 2.5, "cup"],
+      ["soy_sauce", 1, "tbsp"],
+      ["honey", 1, "tbsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Butterfly", "body": "{amt:chicken_breast} of chicken breasts through the side and open them flat, then pound the thick end to an even ½ inch. Season both sides with {amt:salt_kosher:0.5} of salt and {amt:pepper_black} of pepper."},
+        {"verb": "Measure", "body": "the rice: rinse {amt:rice_long_grain} of white rice until the water runs clear and simmer it, covered, in 1½ times its volume of salted water for 15 minutes, then let it steam off the heat.", "duration": "15 min"},
+        {"verb": "Dice", "body": "{amt:onion_yellow|onion|onions} and {amt:carrot|carrot|carrots}, mince {amt:garlic_head} of garlic and grate {amt:ginger_fresh} of ginger."}
+      ]},
+      {"phase": "Curry sauce", "minutes": 15, "actions": [
+        {"verb": "Melt", "body": "{amt:butter_unsalted} of butter in a saucepan over medium heat and cook the onion and carrot until the onion is soft and golden at the edges.", "duration": "7 min"},
+        {"verb": "Stir in", "body": "the garlic and ginger for 30 seconds, then {amt:curry_powder} of curry powder, {amt:garam_masala} of garam masala and {amt:flour_ap:0.4} of the flour. Cook the paste for a full minute so the raw flour taste disappears."},
+        {"verb": "Whisk in", "body": "{amt:broth_chicken} of chicken broth a splash at a time to keep it lump-free, then {amt:soy_sauce} of soy sauce and {amt:honey} of honey. Simmer until it coats a spoon like thin gravy.", "duration": "6 min"},
+        {"verb": "Season", "body": "the sauce with {amt:salt_kosher:0.25} of the salt and keep it warm over the lowest heat."}
+      ]},
+      {"phase": "Bread and air fry", "minutes": 16, "actions": [
+        {"verb": "Set up", "body": "three shallow dishes: the remaining {amt:flour_ap:0.6} of flour in the first, {amt:egg_large|egg|eggs} beaten in the second, and {amt:breadcrumb_panko} of panko tossed with {amt:oil_neutral} of oil and the last {amt:salt_kosher:0.25} of salt in the third — oiling the panko is what browns it without a fryer."},
+        {"verb": "Coat", "body": "each cutlet in flour, then egg, then press it firmly into the panko on both sides so the crumbs stick in a solid layer."},
+        {"verb": "Heat", "body": "the air fryer to 400°F and cook the cutlets in a single layer, flipping once halfway, until deep golden and 165°F at the center. Work in two batches if they don't fit without touching.", "duration": "14 min"}
+      ]},
+      {"phase": "Serve", "minutes": 4, "actions": [
+        {"verb": "Rest", "body": "the katsu on a rack for 2 minutes, then slice each cutlet crosswise into finger-wide strips.", "duration": "2 min"},
+        {"verb": "Plate", "body": "a bed of rice, lay the sliced katsu alongside and ladle the curry sauce over the rice and the edge of the cutlet so the crust stays crisp."}
+      ]}
+    ]
+  },
+  {
+    "key": "sa-miso-butter-chicken-broccoli",
+    "title": "Miso Butter Chicken with Blistered Broccoli",
+    "cuisine": "Japanese",
+    "anchor": "chicken_thigh_boneless",
+    "serves": 4,
+    "minutes": 35,
+    "difficulty": "Easy",
+    "equipment": "stove",
+    "format": "skillet",
+    "cleanup": 3,
+    "ingredients": [
+      ["chicken_thigh_boneless", 1.5, "lb"],
+      ["miso_white", 3, "tbsp"],
+      ["butter_unsalted", 3, "tbsp"],
+      ["soy_sauce", 1, "tbsp"],
+      ["honey", 1, "tbsp"],
+      ["vinegar_rice", 1, "tbsp"],
+      ["garlic_head", 3, "clove"],
+      ["ginger_fresh", 1, "tbsp"],
+      ["broccoli", 1, "lb"],
+      ["rice_long_grain", 1.25, "cup"],
+      ["oil_neutral", 1, "tbsp"],
+      ["salt_kosher", 0.75, "tsp"],
+      ["pepper_black", 0.25, "tsp"],
+      ["scallion", 3, "count"],
+      ["sesame_seed", 1, "tbsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 8, "actions": [
+        {"verb": "Measure", "body": "the rice: rinse {amt:rice_long_grain} of white rice and simmer it, covered, in 1½ times its volume of salted water for 15 minutes, then let it steam off the heat for 5 minutes.", "duration": "15 min"},
+        {"verb": "Whisk", "body": "{amt:miso_white} of white miso with {amt:soy_sauce} of soy sauce, {amt:honey} of honey and {amt:vinegar_rice} of rice vinegar until smooth. Mince {amt:garlic_head} of garlic and grate {amt:ginger_fresh} of ginger into it."},
+        {"verb": "Pat", "body": "{amt:chicken_thigh_boneless} of boneless thighs dry and season them with {amt:salt_kosher:0.67} of salt and {amt:pepper_black} of pepper. Cut {amt:broccoli} of broccoli into small florets."}
+      ]},
+      {"phase": "Sear the chicken", "minutes": 14, "actions": [
+        {"verb": "Heat", "body": "{amt:oil_neutral} of oil in a large skillet over medium-high until it shimmers, then lay the thighs in smooth side down and leave them alone until deeply browned.", "duration": "6 min"},
+        {"verb": "Flip", "body": "and cook until the thickest thigh reads 165°F, then move the chicken to a plate.", "duration": "5 min"}
+      ]},
+      {"phase": "Broccoli and sauce", "minutes": 8, "actions": [
+        {"verb": "Blister", "body": "the broccoli cut side down in the same skillet over medium-high with the remaining {amt:salt_kosher:0.33} of salt, undisturbed, until the flat faces are charred. Add 3 tablespoons of water, cover and steam until crisp-tender.", "duration": "5 min"},
+        {"verb": "Lower", "body": "the heat, push the broccoli aside and melt {amt:butter_unsalted} of butter into the pan. Stir the miso mixture in off the boil — miso turns bitter if you scorch it — and let it bubble into a glossy glaze.", "duration": "1 min"},
+        {"verb": "Return", "body": "the chicken and any resting juices to the pan and turn the thighs in the miso butter until coated."}
+      ]},
+      {"phase": "Serve", "minutes": 5, "actions": [
+        {"verb": "Slice", "body": "the thighs crosswise and spoon the pan glaze over the top."},
+        {"verb": "Finish", "body": "the bowls with the broccoli, thinly sliced {amt:scallion|scallion|scallions} and {amt:sesame_seed} of toasted sesame seeds over the rice."}
+      ]}
+    ]
+  },
+  {
+    "key": "sa-sheet-pan-miso-chicken-broccoli-potatoes",
+    "title": "Sheet-Pan Miso Chicken with Broccoli & Potatoes",
+    "cuisine": "Japanese",
+    "anchor": "chicken_thigh_boneless",
+    "serves": 4,
+    "minutes": 50,
+    "difficulty": "Easy",
+    "equipment": "oven",
+    "format": "oven",
+    "cleanup": 2,
+    "ingredients": [
+      ["chicken_thigh_boneless", 1.75, "lb"],
+      ["potato_yukon", 1.25, "lb"],
+      ["broccoli", 1, "lb"],
+      ["miso_white", 3, "tbsp"],
+      ["oil_neutral", 3, "tbsp"],
+      ["soy_sauce", 2, "tbsp"],
+      ["honey", 1.5, "tbsp"],
+      ["vinegar_rice", 1, "tbsp"],
+      ["garlic_head", 4, "clove"],
+      ["ginger_fresh", 1, "tbsp"],
+      ["sesame_oil", 1, "tsp"],
+      ["salt_kosher", 1, "tsp"],
+      ["pepper_black", 0.5, "tsp"],
+      ["scallion", 2, "count"],
+      ["sesame_seed", 1, "tbsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 12, "actions": [
+        {"verb": "Heat", "body": "the oven to 425°F with a rack in the upper third and line a large rimmed sheet pan with foil."},
+        {"verb": "Whisk", "body": "{amt:miso_white} of white miso with {amt:soy_sauce} of soy sauce, {amt:honey} of honey, {amt:vinegar_rice} of rice vinegar, {amt:sesame_oil} of sesame oil, {amt:garlic_head} of minced garlic and {amt:ginger_fresh} of grated ginger."},
+        {"verb": "Toss", "body": "{amt:chicken_thigh_boneless} of boneless thighs with half the miso mixture and let them sit while the potatoes get a head start."},
+        {"verb": "Cut", "body": "{amt:potato_yukon} of Yukon gold potatoes into ¾-inch chunks and toss them with {amt:oil_neutral:0.5} of oil, {amt:salt_kosher:0.6} of salt and {amt:pepper_black:0.6} of pepper."}
+      ]},
+      {"phase": "Roast the potatoes", "minutes": 20, "actions": [
+        {"verb": "Spread", "body": "the potatoes cut side down over the whole pan and roast until the undersides are browned and a knife slides in easily.", "duration": "20 min"},
+        {"verb": "Cut", "body": "{amt:broccoli} of broccoli into florets meanwhile and toss them with the remaining {amt:oil_neutral:0.5} of oil, {amt:salt_kosher:0.4} of salt and {amt:pepper_black:0.4} of pepper."}
+      ]},
+      {"phase": "Add chicken and broccoli", "minutes": 18, "actions": [
+        {"verb": "Push", "body": "the potatoes to one third of the pan, nestle the marinated thighs in the middle and scatter the broccoli along the last third."},
+        {"verb": "Roast", "body": "until the broccoli tips are charred and the thickest thigh reads 165°F.", "duration": "16 min"},
+        {"verb": "Brush", "body": "the chicken with the reserved miso mixture and broil for 2 minutes so the glaze caramelizes and the edges darken.", "duration": "2 min"}
+      ]},
+      {"phase": "Serve", "minutes": 3, "actions": [
+        {"verb": "Scatter", "body": "sliced {amt:scallion|scallion|scallions} and {amt:sesame_seed} of sesame seeds over the pan and serve straight from it, spooning the pan juices over the potatoes."}
+      ]}
+    ]
+  },
+  {
+    "key": "sa-oyakodon-chicken-egg-rice-bowls",
+    "title": "Oyakodon — Chicken and Egg Rice Bowls",
+    "cuisine": "Japanese",
+    "anchor": "chicken_thigh_boneless",
+    "serves": 4,
+    "minutes": 30,
+    "difficulty": "Easy",
+    "equipment": "stove",
+    "format": "skillet",
+    "cleanup": 3,
+    "ingredients": [
+      ["chicken_thigh_boneless", 1.25, "lb"],
+      ["egg_large", 6, "count"],
+      ["onion_yellow", 1, "count"],
+      ["broth_chicken", 1.5, "cup"],
+      ["soy_sauce", 0.33, "cup"],
+      ["sugar_white", 2, "tbsp"],
+      ["vinegar_rice", 1, "tbsp"],
+      ["rice_long_grain", 1.5, "cup"],
+      ["scallion", 3, "count"],
+      ["peas_frozen", 0.5, "cup"]
+    ],
+    "steps": [
+      {"phase": "Rice", "minutes": 6, "actions": [
+        {"verb": "Measure", "body": "the rice: rinse {amt:rice_long_grain} of white rice until the water runs clear, then simmer it, covered, in 1½ times its volume of water for 15 minutes and let it steam off the heat for 5 minutes.", "duration": "15 min"},
+        {"verb": "Slice", "body": "{amt:onion_yellow|onion|onions} into thin half-moons and {amt:chicken_thigh_boneless} of boneless thighs into bite-size pieces."}
+      ]},
+      {"phase": "Simmer", "minutes": 12, "actions": [
+        {"verb": "Combine", "body": "{amt:broth_chicken} of chicken broth, {amt:soy_sauce} of soy sauce, {amt:sugar_white} of sugar and {amt:vinegar_rice} of rice vinegar in a wide skillet and bring it to a simmer with the onion."},
+        {"verb": "Cook", "body": "the onion until it turns translucent and sweet.", "duration": "4 min"},
+        {"verb": "Add", "body": "the chicken in one layer and simmer gently, turning the pieces once, until they are cooked through at 165°F and the broth has reduced by about a third.", "duration": "7 min"},
+        {"verb": "Scatter", "body": "{amt:peas_frozen} of frozen peas over the top to warm through."}
+      ]},
+      {"phase": "Eggs", "minutes": 6, "actions": [
+        {"verb": "Beat", "body": "{amt:egg_large|egg|eggs} loosely with chopsticks — leave visible streaks of white rather than whisking them smooth, which is what gives oyakodon its ribboned texture."},
+        {"verb": "Pour", "body": "two thirds of the egg over the simmering chicken in a spiral, cover and cook on low until it is just set at the edges but still loose in the middle.", "duration": "2 min"},
+        {"verb": "Drizzle", "body": "the last of the egg over the top, cover and pull the pan off the heat so the residual steam finishes it to a soft custard.", "duration": "1 min"}
+      ]},
+      {"phase": "Serve", "minutes": 4, "actions": [
+        {"verb": "Spoon", "body": "the rice into four deep bowls and slide a quarter of the chicken and egg onto each, pouring over any broth left in the pan."},
+        {"verb": "Top", "body": "with thinly sliced {amt:scallion|scallion|scallions}."}
+      ]}
+    ]
+  },
+  {
+    "key": "sa-thai-massaman-chicken-potatoes",
+    "title": "Thai Massaman Curry Chicken with Potatoes",
+    "cuisine": "Thai",
+    "anchor": "chicken_thigh_boneless",
+    "serves": 4,
+    "minutes": 50,
+    "difficulty": "Easy",
+    "equipment": "stove",
+    "format": "pot",
+    "cleanup": 3,
+    "ingredients": [
+      ["chicken_thigh_boneless", 1.25, "lb"],
+      ["curry_paste_red", 3, "tbsp"],
+      ["coconut_milk", 1, "count"],
+      ["potato_yukon", 1, "lb"],
+      ["onion_yellow", 1, "count"],
+      ["peanut_butter", 2, "tbsp"],
+      ["peanut_raw", 0.25, "cup"],
+      ["sugar_brown", 1, "tbsp"],
+      ["soy_sauce", 2, "tbsp"],
+      ["lime", 1, "count"],
+      ["cinnamon_ground", 0.5, "tsp"],
+      ["ginger_fresh", 1, "tbsp"],
+      ["oil_neutral", 1, "tbsp"],
+      ["salt_kosher", 0.75, "tsp"],
+      ["rice_long_grain", 1, "cup"],
+      ["cilantro", 0.25, "cup"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Cut", "body": "{amt:chicken_thigh_boneless} of boneless thighs into 1½-inch pieces and season them with {amt:salt_kosher:0.5} of salt."},
+        {"verb": "Peel", "body": "{amt:potato_yukon} of Yukon gold potatoes and cut them into 1-inch chunks. Slice {amt:onion_yellow|onion|onions} into thick wedges and grate {amt:ginger_fresh} of ginger."},
+        {"verb": "Measure", "body": "the rice: rinse {amt:rice_long_grain} of white rice and simmer it, covered, in 1½ times its volume of salted water for 15 minutes, then let it steam off the heat.", "duration": "15 min"}
+      ]},
+      {"phase": "Bloom the paste", "minutes": 8, "actions": [
+        {"verb": "Heat", "body": "{amt:oil_neutral} of oil in a Dutch oven over medium and open the can of coconut milk without shaking it. Spoon {amt:coconut_milk:0.3} of the thick cream from the top into the pot and let it bubble until the fat separates and glistens.", "duration": "3 min"},
+        {"verb": "Fry", "body": "{amt:curry_paste_red} of red curry paste in the coconut cream, stirring constantly, until it smells toasty and darkens a shade.", "duration": "3 min"},
+        {"verb": "Stir in", "body": "the ginger and {amt:cinnamon_ground} of cinnamon for 30 seconds — the warm spice is what makes a massaman taste different from a plain red curry."}
+      ]},
+      {"phase": "Simmer", "minutes": 27, "actions": [
+        {"verb": "Add", "body": "the chicken and turn it in the paste until coated, then pour in the remaining {amt:coconut_milk:0.7} of coconut milk, 1 cup of water, {amt:soy_sauce} of soy sauce and {amt:sugar_brown} of brown sugar."},
+        {"verb": "Tip in", "body": "the potatoes and onion wedges, bring to a bare simmer and cook uncovered, stirring now and then, until the potatoes are tender and the sauce has thickened.", "duration": "22 min"},
+        {"verb": "Whisk in", "body": "{amt:peanut_butter} of peanut butter and the remaining {amt:salt_kosher:0.5} of salt, then check the chicken reads 165°F."}
+      ]},
+      {"phase": "Finish", "minutes": 5, "actions": [
+        {"verb": "Squeeze", "body": "in the juice of {amt:lime|lime|limes} off the heat and taste — it should land salty, sweet and sour all at once."},
+        {"verb": "Serve", "body": "over the rice, scattered with {amt:peanut_raw} of roughly chopped roasted peanuts and {amt:cilantro} of cilantro."}
+      ]}
+    ]
+  },
+  {
+    "key": "sa-thai-coconut-curry-tofu-bok-choy",
+    "title": "Thai Coconut Curry Tofu with Bok Choy",
+    "cuisine": "Thai",
+    "anchor": "tofu_firm",
+    "serves": 4,
+    "minutes": 40,
+    "difficulty": "Easy",
+    "equipment": "stove",
+    "format": "skillet",
+    "cleanup": 3,
+    "ingredients": [
+      ["tofu_firm", 28, "oz"],
+      ["curry_paste_red", 3, "tbsp"],
+      ["coconut_milk", 1, "count"],
+      ["bok_choy", 1, "lb"],
+      ["bell_pepper", 1, "count"],
+      ["garlic_head", 3, "clove"],
+      ["ginger_fresh", 1, "tbsp"],
+      ["soy_sauce", 2, "tbsp"],
+      ["sugar_brown", 1, "tbsp"],
+      ["lime", 2, "count"],
+      ["oil_neutral", 2, "tbsp"],
+      ["cornstarch", 3, "tbsp"],
+      ["rice_long_grain", 1.25, "cup"],
+      ["basil_fresh", 0.25, "cup"],
+      ["salt_kosher", 0.75, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Press and prep", "minutes": 12, "actions": [
+        {"verb": "Drain", "body": "{amt:tofu_firm} of firm tofu, wrap the blocks in a clean towel and press them under a heavy pan while you prep everything else — wet tofu will never crisp.", "duration": "10 min"},
+        {"verb": "Measure", "body": "the rice: rinse {amt:rice_long_grain} of white rice and simmer it, covered, in 1½ times its volume of salted water for 15 minutes, then let it steam off the heat.", "duration": "15 min"},
+        {"verb": "Halve", "body": "{amt:bok_choy} of baby bok choy lengthwise, slice {amt:bell_pepper|bell pepper|bell peppers}, mince {amt:garlic_head} of garlic and grate {amt:ginger_fresh} of ginger."}
+      ]},
+      {"phase": "Crisp the tofu", "minutes": 12, "actions": [
+        {"verb": "Cube", "body": "the pressed tofu into 1-inch pieces and toss them with {amt:cornstarch} of cornstarch and {amt:salt_kosher:0.5} of salt until every face is dusty."},
+        {"verb": "Fry", "body": "the tofu in {amt:oil_neutral} of oil in a large nonstick skillet over medium-high, turning only when each side releases easily, until golden and crisp all over. Move it to a plate.", "duration": "10 min"}
+      ]},
+      {"phase": "Curry", "minutes": 12, "actions": [
+        {"verb": "Fry", "body": "{amt:curry_paste_red} of red curry paste with the garlic and ginger in the same pan for a minute until it smells toasty."},
+        {"verb": "Pour in", "body": "{amt:coconut_milk} of coconut milk and ½ cup of water with {amt:soy_sauce} of soy sauce and {amt:sugar_brown} of brown sugar, scraping the pan, and simmer until it thickens slightly.", "duration": "5 min"},
+        {"verb": "Add", "body": "the bell pepper and bok choy, cut side down, cover and cook until the stems are crisp-tender and the leaves have wilted into the sauce.", "duration": "5 min"}
+      ]},
+      {"phase": "Finish", "minutes": 4, "actions": [
+        {"verb": "Return", "body": "the tofu to the pan, add the remaining {amt:salt_kosher:0.5} of salt and turn everything once — serve soon so the crust survives."},
+        {"verb": "Squeeze", "body": "the juice of {amt:lime|lime|limes} over the top off the heat, tear in {amt:basil_fresh} of fresh basil and spoon it over the rice."}
+      ]}
+    ]
+  },
+  {
+    "key": "sa-sweet-chili-chicken-coconut-rice",
+    "title": "Sweet Chili Chicken with Coconut Rice",
+    "cuisine": "Thai",
+    "anchor": "chicken_thigh_boneless",
+    "serves": 4,
+    "minutes": 40,
+    "difficulty": "Easy",
+    "equipment": "stove",
+    "format": "skillet",
+    "cleanup": 3,
+    "ingredients": [
+      ["chicken_thigh_boneless", 1.5, "lb"],
+      ["rice_long_grain", 1.25, "cup"],
+      ["coconut_milk", 1, "count"],
+      ["bok_choy", 1, "lb"],
+      ["honey", 3, "tbsp"],
+      ["chili_flake", 1, "tsp"],
+      ["garlic_head", 4, "clove"],
+      ["lime", 2, "count"],
+      ["soy_sauce", 2, "tbsp"],
+      ["vinegar_rice", 1, "tbsp"],
+      ["cornstarch", 2, "tsp"],
+      ["oil_neutral", 2, "tbsp"],
+      ["salt_kosher", 1, "tsp"],
+      ["cilantro", 0.25, "cup"]
+    ],
+    "steps": [
+      {"phase": "Coconut rice", "minutes": 20, "actions": [
+        {"verb": "Rinse", "body": "{amt:rice_long_grain} of white rice until the water runs clear, then combine it in a saucepan with {amt:coconut_milk} of coconut milk, 1 cup of water and {amt:salt_kosher:0.4} of salt."},
+        {"verb": "Simmer", "body": "covered on the lowest heat, without lifting the lid, until the liquid is absorbed.", "duration": "17 min"},
+        {"verb": "Rest", "body": "off the heat for 5 minutes, then fluff with a fork.", "duration": "5 min"}
+      ]},
+      {"phase": "Sweet chili sauce", "minutes": 6, "actions": [
+        {"verb": "Mince", "body": "{amt:garlic_head} of garlic and stir it into {amt:honey} of honey, {amt:vinegar_rice} of rice vinegar, {amt:soy_sauce} of soy sauce and {amt:chili_flake} of red pepper flakes."},
+        {"verb": "Whisk", "body": "{amt:cornstarch} of cornstarch with 2 tablespoons of water and set it beside the stove — that slurry is what turns the honey mixture into a clinging sweet chili glaze."}
+      ]},
+      {"phase": "Cook the chicken", "minutes": 12, "actions": [
+        {"verb": "Cut", "body": "{amt:chicken_thigh_boneless} of boneless thighs into 1-inch pieces and season with {amt:salt_kosher:0.6} of salt."},
+        {"verb": "Sear", "body": "the chicken in {amt:oil_neutral:0.5} of oil in a large skillet over medium-high, in one layer and undisturbed, until browned on the first side, then stir and cook through to 165°F.", "duration": "8 min"},
+        {"verb": "Pour in", "body": "the sauce and the slurry and toss for a minute until the glaze is thick and shiny. Scrape it onto a plate."}
+      ]},
+      {"phase": "Greens and serve", "minutes": 6, "actions": [
+        {"verb": "Halve", "body": "{amt:bok_choy} of baby bok choy lengthwise and sear it cut side down in the remaining {amt:oil_neutral:0.5} of oil until charred, then add a splash of water, cover and steam until the stems are crisp-tender.", "duration": "4 min"},
+        {"verb": "Serve", "body": "the glazed chicken and bok choy over the coconut rice with {amt:cilantro} of cilantro and wedges of {amt:lime|lime|limes} for squeezing."}
+      ]}
+    ]
+  },
+  {
+    "key": "sa-ginger-scallion-chicken-charred-greens",
+    "title": "Ginger Scallion Chicken with Charred Greens",
+    "cuisine": "Chinese",
+    "anchor": "chicken_thigh_boneless",
+    "serves": 4,
+    "minutes": 40,
+    "difficulty": "Easy",
+    "equipment": "stove",
+    "format": "skillet",
+    "cleanup": 3,
+    "ingredients": [
+      ["chicken_thigh_boneless", 1.5, "lb"],
+      ["scallion", 6, "count"],
+      ["ginger_fresh", 3, "tbsp"],
+      ["oil_neutral", 0.33, "cup"],
+      ["soy_sauce", 3, "tbsp"],
+      ["vinegar_rice", 1, "tbsp"],
+      ["sesame_oil", 1, "tsp"],
+      ["sugar_white", 1, "tsp"],
+      ["salt_kosher", 1.25, "tsp"],
+      ["bok_choy", 1, "lb"],
+      ["garlic_head", 3, "clove"],
+      ["rice_long_grain", 1.25, "cup"],
+      ["chili_flake", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Rice and prep", "minutes": 10, "actions": [
+        {"verb": "Measure", "body": "the rice: rinse {amt:rice_long_grain} of white rice and simmer it, covered, in 1½ times its volume of salted water for 15 minutes, then let it steam off the heat.", "duration": "15 min"},
+        {"verb": "Slice", "body": "{amt:scallion|scallion|scallions} thinly, whites and greens together, and grate {amt:ginger_fresh} of ginger. Mince {amt:garlic_head} of garlic and halve {amt:bok_choy} of baby bok choy lengthwise."},
+        {"verb": "Pat", "body": "{amt:chicken_thigh_boneless} of boneless thighs dry and season them all over with {amt:salt_kosher:0.4} of salt."}
+      ]},
+      {"phase": "Ginger scallion sauce", "minutes": 6, "actions": [
+        {"verb": "Combine", "body": "the scallions and ginger in a heatproof bowl with {amt:salt_kosher:0.3} of salt, {amt:sugar_white} of sugar and {amt:chili_flake} of red pepper flakes."},
+        {"verb": "Heat", "body": "{amt:oil_neutral:0.6} of oil in a small pan until it just begins to smoke, then pour it straight over the scallions — it should hiss and bubble, which cooks the raw bite out in seconds."},
+        {"verb": "Stir in", "body": "{amt:soy_sauce:0.5} of soy sauce, {amt:vinegar_rice} of rice vinegar and {amt:sesame_oil} of sesame oil and set the sauce aside."}
+      ]},
+      {"phase": "Sear and steam", "minutes": 18, "actions": [
+        {"verb": "Sear", "body": "the thighs smooth side down in the remaining {amt:oil_neutral:0.4} of oil in a large skillet over medium-high, pressing them flat, until deeply browned.", "duration": "7 min"},
+        {"verb": "Flip", "body": "the chicken, add the garlic and the rest of the soy sauce, cover and cook until the thickest piece reads 165°F. Move it to a board to rest.", "duration": "6 min"},
+        {"verb": "Char", "body": "the bok choy cut side down in the drippings with the last {amt:salt_kosher:0.3} of salt until blackened in spots, then splash in water, cover and steam until the stems bend.", "duration": "4 min"}
+      ]},
+      {"phase": "Serve", "minutes": 4, "actions": [
+        {"verb": "Slice", "body": "the rested chicken crosswise and fan it over bowls of rice with the charred greens."},
+        {"verb": "Spoon", "body": "the ginger scallion sauce generously over the chicken and let it run down into the rice."}
+      ]}
+    ]
+  },
+  {
+    "key": "sa-orange-chili-pork-noodles-bok-choy",
+    "title": "Orange-Chili Pork Noodles with Bok Choy",
+    "cuisine": "Chinese",
+    "anchor": "pork_tenderloin",
+    "serves": 4,
+    "minutes": 35,
+    "difficulty": "Easy",
+    "equipment": "stove",
+    "format": "skillet",
+    "cleanup": 4,
+    "ingredients": [
+      ["pork_tenderloin", 1.25, "lb"],
+      ["rice_noodle", 10, "oz"],
+      ["orange", 2, "count"],
+      ["soy_sauce", 3, "tbsp"],
+      ["honey", 2, "tbsp"],
+      ["chili_flake", 1, "tsp"],
+      ["garlic_head", 4, "clove"],
+      ["ginger_fresh", 1, "tbsp"],
+      ["cornstarch", 1, "tbsp"],
+      ["oil_neutral", 2, "tbsp"],
+      ["sesame_oil", 1, "tsp"],
+      ["bok_choy", 1, "lb"],
+      ["scallion", 3, "count"],
+      ["vinegar_rice", 1, "tbsp"],
+      ["salt_kosher", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 12, "actions": [
+        {"verb": "Soak", "body": "{amt:rice_noodle} of rice noodles in just-boiled water until pliable but still firm, then drain and rinse them under cold water so they don't glue together.", "duration": "8 min"},
+        {"verb": "Trim", "body": "the silverskin from {amt:pork_tenderloin} of pork tenderloin and slice it against the grain into thin coins. Toss with {amt:salt_kosher} of salt and {amt:cornstarch:0.5} of the cornstarch."},
+        {"verb": "Zest", "body": "and juice {amt:orange|orange|oranges}, keeping the zest separate. Mince {amt:garlic_head} of garlic, grate {amt:ginger_fresh} of ginger and halve {amt:bok_choy} of baby bok choy."}
+      ]},
+      {"phase": "Sauce", "minutes": 3, "actions": [
+        {"verb": "Whisk", "body": "the orange juice with {amt:soy_sauce} of soy sauce, {amt:honey} of honey, {amt:vinegar_rice} of rice vinegar, {amt:chili_flake} of red pepper flakes and the remaining {amt:cornstarch:0.5} of cornstarch until no lumps remain."}
+      ]},
+      {"phase": "Stir-fry", "minutes": 14, "actions": [
+        {"verb": "Sear", "body": "the pork in {amt:oil_neutral:0.5} of oil in a very hot wok or wide skillet, spread out in one layer, until browned on the edges and just cooked to 145°F. Tip it onto a plate.", "duration": "5 min"},
+        {"verb": "Stir-fry", "body": "the bok choy in the remaining {amt:oil_neutral:0.5} of oil over high heat until the cut faces char and the leaves wilt, then add the garlic, ginger and orange zest for 30 seconds.", "duration": "4 min"},
+        {"verb": "Pour in", "body": "the sauce and let it bubble and thicken, then add the drained noodles and toss with tongs until every strand is coated and glossy.", "duration": "3 min"},
+        {"verb": "Return", "body": "the pork and its juices and toss once more to heat through."}
+      ]},
+      {"phase": "Serve", "minutes": 3, "actions": [
+        {"verb": "Finish", "body": "off the heat with {amt:sesame_oil} of sesame oil and a scatter of sliced {amt:scallion|scallion|scallions}, then divide between four bowls."}
+      ]}
+    ]
+  },
+  {
+    "key": "sa-beef-fried-rice",
+    "title": "Beef Fried Rice with Peas and Carrots",
+    "cuisine": "Chinese",
+    "anchor": "beef_steak_sirloin",
+    "serves": 4,
+    "minutes": 40,
+    "difficulty": "Easy",
+    "equipment": "stove",
+    "format": "skillet",
+    "cleanup": 3,
+    "ingredients": [
+      ["rice_long_grain", 1.5, "cup"],
+      ["beef_steak_sirloin", 1, "lb"],
+      ["egg_large", 3, "count"],
+      ["peas_frozen", 1, "cup"],
+      ["carrot", 2, "count"],
+      ["scallion", 4, "count"],
+      ["garlic_head", 3, "clove"],
+      ["ginger_fresh", 1, "tbsp"],
+      ["soy_sauce", 3, "tbsp"],
+      ["sesame_oil", 2, "tsp"],
+      ["oil_neutral", 3, "tbsp"],
+      ["pepper_black", 0.5, "tsp"],
+      ["salt_kosher", 0.75, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Rice", "minutes": 20, "actions": [
+        {"verb": "Measure", "body": "the rice: rinse {amt:rice_long_grain} of white rice and simmer it, covered, in 1½ times its volume of water for 15 minutes.", "duration": "15 min"},
+        {"verb": "Spread", "body": "the cooked rice on a sheet pan and leave it somewhere cool, or chill it in the freezer, until the grains are dry and separate — day-old rice fries best and warm rice steams into mush.", "duration": "15 min"}
+      ]},
+      {"phase": "Prep", "minutes": 8, "actions": [
+        {"verb": "Slice", "body": "{amt:beef_steak_sirloin} of sirloin against the grain into thin strips and season with {amt:salt_kosher:0.4} of salt and {amt:pepper_black:0.5} of pepper."},
+        {"verb": "Dice", "body": "{amt:carrot|carrot|carrots} small, mince {amt:garlic_head} of garlic, grate {amt:ginger_fresh} of ginger and slice {amt:scallion|scallion|scallions}, keeping the greens for the end."},
+        {"verb": "Beat", "body": "{amt:egg_large|egg|eggs} with a pinch of the salt."}
+      ]},
+      {"phase": "Fry", "minutes": 12, "actions": [
+        {"verb": "Sear", "body": "the beef in {amt:oil_neutral:0.33} of oil in a wok or large skillet over the highest heat, spread in one layer, until browned outside and barely pink inside. Scrape it onto a plate.", "duration": "3 min"},
+        {"verb": "Scramble", "body": "the eggs in {amt:oil_neutral:0.33} of oil until just set, break them into curds and set them with the beef.", "duration": "2 min"},
+        {"verb": "Stir-fry", "body": "the carrot and scallion whites in the last {amt:oil_neutral:0.33} of oil for 2 minutes, then add the garlic and ginger for 30 seconds."},
+        {"verb": "Add", "body": "the cold rice and press it against the hot pan, tossing every 30 seconds, until the grains are separate and popping. Stir in {amt:peas_frozen} of frozen peas.", "duration": "5 min"},
+        {"verb": "Drizzle", "body": "{amt:soy_sauce} of soy sauce around the rim of the pan so it sizzles as it hits, then toss with the remaining {amt:salt_kosher:0.6} of salt and {amt:pepper_black:0.5} of pepper."}
+      ]},
+      {"phase": "Serve", "minutes": 3, "actions": [
+        {"verb": "Fold", "body": "the beef and egg back in, finish with {amt:sesame_oil} of sesame oil off the heat and top with the reserved scallion greens."}
+      ]}
+    ]
+  },
+  {
+    "key": "sa-harissa-chicken-grain-bowls-kale",
+    "title": "Harissa Chicken Grain Bowls with Kale",
+    "cuisine": "Middle Eastern",
+    "anchor": "chicken_thigh_boneless",
+    "serves": 4,
+    "minutes": 45,
+    "difficulty": "Easy",
+    "equipment": "oven",
+    "format": "oven",
+    "cleanup": 4,
+    "ingredients": [
+      ["chicken_thigh_boneless", 1.5, "lb"],
+      ["harissa", 3, "tbsp"],
+      ["olive_oil_evoo", 3, "tbsp"],
+      ["lemon", 1, "count"],
+      ["garlic_head", 3, "clove"],
+      ["cumin_ground", 1, "tsp"],
+      ["paprika_smoked", 1, "tsp"],
+      ["salt_kosher", 1.25, "tsp"],
+      ["quinoa", 1, "cup"],
+      ["kale", 6, "oz"],
+      ["bean_chickpea_canned", 1, "count"],
+      ["yogurt_greek", 0.5, "cup"],
+      ["tahini", 2, "tbsp"],
+      ["pepita", 0.25, "cup"],
+      ["parsley_fresh", 2, "tbsp"]
+    ],
+    "steps": [
+      {"phase": "Marinate", "minutes": 10, "actions": [
+        {"verb": "Heat", "body": "the oven to 425°F and line a sheet pan with parchment."},
+        {"verb": "Stir", "body": "{amt:harissa} of harissa with {amt:olive_oil_evoo:0.5} of olive oil, {amt:garlic_head} of minced garlic, {amt:cumin_ground} of cumin, {amt:paprika_smoked} of smoked paprika, {amt:salt_kosher:0.5} of salt and the zest of {amt:lemon|lemon|lemons}."},
+        {"verb": "Toss", "body": "{amt:chicken_thigh_boneless} of boneless thighs in two thirds of the harissa mixture, keeping the rest for the dressing."},
+        {"verb": "Drain", "body": "and rinse {amt:bean_chickpea_canned} of chickpeas and pat them dry."}
+      ]},
+      {"phase": "Roast", "minutes": 25, "actions": [
+        {"verb": "Spread", "body": "the chicken on one half of the pan and the chickpeas on the other, and roast until the chickpeas crackle and the thighs read 165°F with charred edges.", "duration": "24 min"},
+        {"verb": "Simmer", "body": "{amt:quinoa} of quinoa meanwhile in 2 cups of salted water, covered, until the germs uncoil and the water is gone, then rest it off the heat for 5 minutes and fluff.", "duration": "15 min"}
+      ]},
+      {"phase": "Kale and dressing", "minutes": 7, "actions": [
+        {"verb": "Strip", "body": "{amt:kale} of kale from its stems, tear it into bite-size pieces and massage it in a bowl with the remaining {amt:olive_oil_evoo:0.5} of olive oil, the juice of the lemon and {amt:salt_kosher:0.3} of salt until it darkens and softens.", "duration": "2 min"},
+        {"verb": "Whisk", "body": "{amt:yogurt_greek} of Greek yogurt with {amt:tahini} of tahini, the reserved harissa mixture, the last {amt:salt_kosher:0.2} of salt and enough cold water to make it pourable."}
+      ]},
+      {"phase": "Build", "minutes": 4, "actions": [
+        {"verb": "Slice", "body": "the rested chicken into thick strips."},
+        {"verb": "Layer", "body": "quinoa, massaged kale, chickpeas and chicken into four bowls, drizzle over the harissa yogurt and top with {amt:pepita} of toasted pepitas and {amt:parsley_fresh} of chopped parsley."}
+      ]}
+    ]
+  },
+  {
+    "key": "sa-zaatar-crusted-chicken-veggie-couscous",
+    "title": "Za'atar Crusted Chicken with Veggie Couscous",
+    "cuisine": "Middle Eastern",
+    "anchor": "chicken_breast",
+    "serves": 4,
+    "minutes": 40,
+    "difficulty": "Easy",
+    "equipment": "oven",
+    "format": "oven",
+    "cleanup": 3,
+    "ingredients": [
+      ["chicken_breast", 1.75, "lb"],
+      ["za_atar", 3, "tbsp"],
+      ["olive_oil_evoo", 4, "tbsp"],
+      ["lemon", 1, "count"],
+      ["garlic_head", 3, "clove"],
+      ["salt_kosher", 1.25, "tsp"],
+      ["pepper_black", 0.5, "tsp"],
+      ["couscous", 1, "cup"],
+      ["zucchini", 1, "count"],
+      ["bell_pepper", 1, "count"],
+      ["tomato_cherry", 1, "cup"],
+      ["broth_chicken", 1.25, "cup"],
+      ["parsley_fresh", 0.25, "cup"],
+      ["feta", 3, "oz"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Heat", "body": "the oven to 425°F and set a rack in the upper third."},
+        {"verb": "Pat", "body": "{amt:chicken_breast} of chicken breasts dry and rub them with {amt:olive_oil_evoo:0.25} of olive oil, {amt:salt_kosher:0.4} of salt and {amt:pepper_black:0.5} of pepper."},
+        {"verb": "Press", "body": "{amt:za_atar} of za'atar onto the top of each breast in a thick, even crust along with {amt:garlic_head} of minced garlic and the zest of {amt:lemon|lemon|lemons}."},
+        {"verb": "Cut", "body": "{amt:zucchini|zucchini|zucchini} and {amt:bell_pepper|bell pepper|bell peppers} into ¾-inch pieces and halve {amt:tomato_cherry} of cherry tomatoes."}
+      ]},
+      {"phase": "Roast", "minutes": 22, "actions": [
+        {"verb": "Toss", "body": "the vegetables with {amt:olive_oil_evoo:0.5} of olive oil, {amt:salt_kosher:0.4} of salt and {amt:pepper_black:0.5} of pepper and spread them over a sheet pan."},
+        {"verb": "Nestle", "body": "the chicken among the vegetables, crust side up, and roast until the thickest breast reads 165°F and the peppers are blistered.", "duration": "22 min"}
+      ]},
+      {"phase": "Couscous", "minutes": 6, "actions": [
+        {"verb": "Bring", "body": "{amt:broth_chicken} of chicken broth to a boil with the remaining {amt:salt_kosher:0.2} of salt, stir in {amt:couscous} of couscous, cover and pull it off the heat.", "duration": "5 min"},
+        {"verb": "Fluff", "body": "the couscous with a fork and fold in the roasted vegetables and every drop of pan juice."}
+      ]},
+      {"phase": "Serve", "minutes": 4, "actions": [
+        {"verb": "Rest", "body": "the chicken for 5 minutes, then slice it thickly across the grain.", "duration": "5 min"},
+        {"verb": "Dress", "body": "the couscous with the juice of the lemon and the last {amt:olive_oil_evoo:0.25} of olive oil, then top with the chicken, {amt:feta} of crumbled feta and {amt:parsley_fresh} of chopped parsley."}
+      ]}
+    ]
+  },
+  {
+    "key": "sa-kerala-coconut-chicken-curry",
+    "title": "Kerala Coconut Chicken Curry with Rice",
+    "cuisine": "Indian",
+    "anchor": "chicken_thigh_boneless",
+    "serves": 4,
+    "minutes": 45,
+    "difficulty": "Easy",
+    "equipment": "stove",
+    "format": "pot",
+    "cleanup": 3,
+    "ingredients": [
+      ["chicken_thigh_boneless", 1.75, "lb"],
+      ["coconut_milk", 1, "count"],
+      ["onion_yellow", 1, "count"],
+      ["tomato_fresh", 2, "count"],
+      ["garlic_head", 5, "clove"],
+      ["ginger_fresh", 1, "tbsp"],
+      ["curry_powder", 1, "tbsp"],
+      ["turmeric", 1, "tsp"],
+      ["coriander_ground", 2, "tsp"],
+      ["garam_masala", 1, "tsp"],
+      ["chili_flake", 0.5, "tsp"],
+      ["oil_neutral", 2, "tbsp"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["rice_basmati", 1.25, "cup"],
+      ["cilantro", 0.25, "cup"],
+      ["lime", 1, "count"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Cut", "body": "{amt:chicken_thigh_boneless} of boneless thighs into large bite-size pieces and toss them with {amt:turmeric:0.5} of turmeric and {amt:salt_kosher:0.4} of salt."},
+        {"verb": "Slice", "body": "{amt:onion_yellow|onion|onions} thinly, chop {amt:tomato_fresh|tomato|tomatoes}, mince {amt:garlic_head} of garlic and grate {amt:ginger_fresh} of ginger."},
+        {"verb": "Rinse", "body": "{amt:rice_basmati} of basmati and simmer it, covered, in 1½ times its volume of salted water for 15 minutes, then let it steam off the heat for 5 minutes.", "duration": "15 min"}
+      ]},
+      {"phase": "Build the masala", "minutes": 12, "actions": [
+        {"verb": "Fry", "body": "the onion in {amt:oil_neutral} of oil in a Dutch oven over medium-high until the edges are properly browned, not just soft — that colour is the backbone of the curry.", "duration": "8 min"},
+        {"verb": "Stir in", "body": "the garlic and ginger for a minute, then {amt:curry_powder} of curry powder, {amt:coriander_ground} of ground coriander, the remaining {amt:turmeric:0.5} of turmeric and {amt:chili_flake} of red pepper flakes. Fry the spices in the oil for 30 seconds."},
+        {"verb": "Add", "body": "the tomatoes and a splash of water and cook, mashing them down, until they collapse into a thick paste and the oil separates at the edges.", "duration": "4 min"}
+      ]},
+      {"phase": "Simmer", "minutes": 18, "actions": [
+        {"verb": "Turn", "body": "the chicken through the masala until every piece is coated, then pour in {amt:coconut_milk} of coconut milk and ½ cup of water."},
+        {"verb": "Simmer", "body": "uncovered on low, stirring occasionally, until the sauce thickens to a gravy and the chicken reads 165°F.", "duration": "16 min"},
+        {"verb": "Season", "body": "with {amt:garam_masala} of garam masala and the remaining {amt:salt_kosher:0.6} of salt and let it sit for 2 minutes off the heat."}
+      ]},
+      {"phase": "Serve", "minutes": 5, "actions": [
+        {"verb": "Squeeze", "body": "in the juice of {amt:lime|lime|limes} and taste for salt."},
+        {"verb": "Ladle", "body": "the curry over the basmati and scatter {amt:cilantro} of chopped cilantro over the top."}
+      ]}
+    ]
+  },
+  {
+    "key": "sa-korean-spicy-pork-bulgogi-bowls",
+    "title": "Spicy Korean Pork Bulgogi Rice Bowls",
+    "cuisine": "Korean",
+    "anchor": "pork_shoulder",
+    "serves": 4,
+    "minutes": 40,
+    "difficulty": "Easy",
+    "equipment": "stove",
+    "format": "skillet",
+    "cleanup": 3,
+    "ingredients": [
+      ["pork_shoulder", 1.5, "lb"],
+      ["gochujang", 0.25, "cup"],
+      ["soy_sauce", 2, "tbsp"],
+      ["sugar_brown", 2, "tbsp"],
+      ["sesame_oil", 1, "tbsp"],
+      ["garlic_head", 5, "clove"],
+      ["ginger_fresh", 1, "tbsp"],
+      ["onion_yellow", 1, "count"],
+      ["scallion", 4, "count"],
+      ["oil_neutral", 1, "tbsp"],
+      ["rice_long_grain", 1.5, "cup"],
+      ["cucumber", 1, "count"],
+      ["vinegar_rice", 2, "tbsp"],
+      ["sesame_seed", 1, "tbsp"],
+      ["lettuce_romaine", 2, "cup"],
+      ["salt_kosher", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Marinate", "minutes": 15, "actions": [
+        {"verb": "Freeze", "body": "{amt:pork_shoulder} of pork shoulder for 15 minutes until firm, then slice it as thinly as you can across the grain — thin slices are what let the marinade caramelize instead of stew.", "duration": "15 min"},
+        {"verb": "Whisk", "body": "{amt:gochujang} of gochujang with {amt:soy_sauce} of soy sauce, {amt:sugar_brown} of brown sugar, {amt:sesame_oil:0.66} of sesame oil, {amt:garlic_head} of minced garlic and {amt:ginger_fresh} of grated ginger."},
+        {"verb": "Toss", "body": "the pork and {amt:onion_yellow|onion|onions}, sliced into half-moons, through the marinade and leave it while the rice cooks.", "duration": "15 min"},
+        {"verb": "Measure", "body": "the rice: rinse {amt:rice_long_grain} of white rice and simmer it, covered, in 1½ times its volume of salted water for 15 minutes, then let it steam off the heat.", "duration": "15 min"}
+      ]},
+      {"phase": "Quick cucumber salad", "minutes": 5, "actions": [
+        {"verb": "Slice", "body": "{amt:cucumber|cucumber|cucumbers} into thin coins and toss them with {amt:vinegar_rice} of rice vinegar, {amt:salt_kosher} of salt and the remaining {amt:sesame_oil:0.34} of sesame oil."},
+        {"verb": "Set aside", "body": "the cucumbers to pickle while you cook, tossing once."}
+      ]},
+      {"phase": "Sear", "minutes": 14, "actions": [
+        {"verb": "Heat", "body": "{amt:oil_neutral} of oil in a large cast-iron skillet over high until it just smokes."},
+        {"verb": "Cook", "body": "the pork in two batches, spread flat and left alone, until the marinade blackens in spots and the edges crisp. Crowding the pan steams the meat and loses the char.", "duration": "10 min"},
+        {"verb": "Return", "body": "both batches to the pan with any marinade left in the bowl and toss for a minute until glazed and cooked through."}
+      ]},
+      {"phase": "Serve", "minutes": 5, "actions": [
+        {"verb": "Pile", "body": "the pork over bowls of rice with the pickled cucumber and {amt:lettuce_romaine} of shredded romaine alongside for wrapping."},
+        {"verb": "Scatter", "body": "sliced {amt:scallion|scallion|scallions} and {amt:sesame_seed} of toasted sesame seeds over the top."}
+      ]}
+    ]
+  },
+  {
+    "key": "sa-air-fryer-panko-chicken-sweet-chili",
+    "title": "Air Fryer Crispy Panko Chicken with Sweet Chili Sauce and Rice",
+    "cuisine": "Asian",
+    "anchor": "chicken_breast",
+    "serves": 4,
+    "minutes": 40,
+    "difficulty": "Easy",
+    "equipment": "air_fryer",
+    "format": "air",
+    "cleanup": 5,
+    "ingredients": [
+      ["chicken_breast", 1.5, "lb"],
+      ["rice_long_grain", 1.5, "cup"],
+      ["salt_kosher", 1.25, "tsp"],
+      ["pepper_black", 0.5, "tsp"],
+      ["flour_ap", 0.33, "cup"],
+      ["garlic_powder", 1, "tsp"],
+      ["egg_large", 2, "count"],
+      ["breadcrumb_panko", 1.5, "cup"],
+      ["oil_neutral", 1, "tbsp"],
+      ["honey", 0.33, "cup"],
+      ["vinegar_rice", 0.25, "cup"],
+      ["chili_flake", 1.5, "tsp"],
+      ["garlic_head", 2, "clove"],
+      ["cornstarch", 2, "tsp"],
+      ["scallion", 2, "count"],
+      ["broccoli", 12, "oz"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 12, "actions": [
+        {"verb": "Measure", "body": "the rice: rinse {amt:rice_long_grain} of white rice and simmer it, covered, in 1½ times its volume of salted water for 15 minutes, then let it steam off the heat.", "duration": "15 min"},
+        {"verb": "Cut", "body": "{amt:chicken_breast} of chicken breasts into 1½-inch chunks and season them with {amt:salt_kosher:0.6} of salt and {amt:pepper_black} of pepper."},
+        {"verb": "Set up", "body": "three dishes: {amt:flour_ap} of flour whisked with {amt:garlic_powder} of garlic powder, {amt:egg_large|egg|eggs} beaten, and {amt:breadcrumb_panko} of panko tossed with {amt:oil_neutral} of oil and the remaining {amt:salt_kosher:0.4} of salt."},
+        {"verb": "Bread", "body": "each piece through the flour, the egg and then the panko, pressing hard so the crumbs form a solid shell."}
+      ]},
+      {"phase": "Air fry", "minutes": 16, "actions": [
+        {"verb": "Heat", "body": "the air fryer to 390°F and arrange the chicken in a single layer with space between the pieces."},
+        {"verb": "Cook", "body": "for 7 minutes, shake the basket, then cook until the crust is deep golden and the chicken reads 165°F. Repeat with any second batch.", "duration": "14 min"},
+        {"verb": "Air fry", "body": "{amt:broccoli} of broccoli florets at the same temperature on the last batch until the edges are browned and the stems are tender.", "duration": "8 min"}
+      ]},
+      {"phase": "Sweet chili sauce", "minutes": 8, "actions": [
+        {"verb": "Simmer", "body": "{amt:honey} of honey, {amt:vinegar_rice} of rice vinegar, {amt:chili_flake} of red pepper flakes and {amt:garlic_head} of minced garlic in a small saucepan for 3 minutes.", "duration": "3 min"},
+        {"verb": "Whisk in", "body": "{amt:cornstarch} of cornstarch slaked in 2 tablespoons of cold water and cook until the sauce turns clear and syrupy, then take it off the heat to thicken further.", "duration": "2 min"}
+      ]},
+      {"phase": "Serve", "minutes": 4, "actions": [
+        {"verb": "Pile", "body": "the crispy chicken and broccoli over bowls of rice and spoon the sweet chili sauce over at the table so the crust stays crunchy."},
+        {"verb": "Scatter", "body": "sliced {amt:scallion|scallion|scallions} over the top."}
+      ]}
+    ]
+  },
+  {
+    "key": "sa-sheet-pan-sesame-chicken-green-beans",
+    "title": "Sheet-Pan Sesame Chicken with Green Beans",
+    "cuisine": "Asian",
+    "anchor": "chicken_thigh_boneless",
+    "serves": 4,
+    "minutes": 45,
+    "difficulty": "Easy",
+    "equipment": "oven",
+    "format": "oven",
+    "cleanup": 3,
+    "ingredients": [
+      ["chicken_thigh_boneless", 1.75, "lb"],
+      ["green_bean", 1, "lb"],
+      ["soy_sauce", 0.33, "cup"],
+      ["honey", 3, "tbsp"],
+      ["vinegar_rice", 2, "tbsp"],
+      ["sesame_oil", 1, "tbsp"],
+      ["garlic_head", 4, "clove"],
+      ["ginger_fresh", 1, "tbsp"],
+      ["cornstarch", 1, "tbsp"],
+      ["oil_neutral", 2, "tbsp"],
+      ["chili_flake", 0.5, "tsp"],
+      ["rice_long_grain", 1.25, "cup"],
+      ["sesame_seed", 1, "tbsp"],
+      ["scallion", 3, "count"],
+      ["salt_kosher", 0.75, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 12, "actions": [
+        {"verb": "Heat", "body": "the oven to 425°F and line a large rimmed sheet pan with foil."},
+        {"verb": "Whisk", "body": "{amt:soy_sauce} of soy sauce with {amt:honey} of honey, {amt:vinegar_rice} of rice vinegar, {amt:sesame_oil} of sesame oil, {amt:garlic_head} of minced garlic, {amt:ginger_fresh} of grated ginger and {amt:chili_flake} of red pepper flakes. Set half aside for the glaze."},
+        {"verb": "Toss", "body": "{amt:chicken_thigh_boneless} of boneless thighs in the other half with {amt:salt_kosher:0.5} of salt and {amt:oil_neutral:0.5} of oil."},
+        {"verb": "Measure", "body": "the rice: rinse {amt:rice_long_grain} of white rice and simmer it, covered, in 1½ times its volume of salted water for 15 minutes, then let it steam off the heat.", "duration": "15 min"}
+      ]},
+      {"phase": "Roast", "minutes": 25, "actions": [
+        {"verb": "Spread", "body": "the thighs over two thirds of the pan, leaving space between them so they roast rather than steam, and bake for 15 minutes.", "duration": "15 min"},
+        {"verb": "Trim", "body": "{amt:green_bean} of green beans meanwhile and toss them with the remaining {amt:oil_neutral:0.5} of oil and {amt:salt_kosher:0.5} of salt."},
+        {"verb": "Add", "body": "the beans to the empty third of the pan and roast until they are blistered and the thickest thigh reads 165°F.", "duration": "10 min"}
+      ]},
+      {"phase": "Glaze", "minutes": 5, "actions": [
+        {"verb": "Whisk", "body": "{amt:cornstarch} of cornstarch into the reserved soy mixture and simmer it in a small pan until it thickens into a glossy glaze.", "duration": "3 min"},
+        {"verb": "Brush", "body": "the glaze over the chicken and run the pan under the broiler until the edges bubble and darken.", "duration": "2 min"}
+      ]},
+      {"phase": "Serve", "minutes": 4, "actions": [
+        {"verb": "Slice", "body": "the thighs and serve them over the rice with the green beans and any glaze left on the pan."},
+        {"verb": "Finish", "body": "with {amt:sesame_seed} of toasted sesame seeds and sliced {amt:scallion|scallion|scallions}."}
+      ]}
+    ]
+  }
+]

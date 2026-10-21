@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../models/settings.dart';
 
-/// Builds Material 3 themes for TapCook. Uses the bundled Schibsted Grotesk
+/// Builds Material 3 themes for OkulaCooker. Uses the bundled Schibsted Grotesk
 /// typeface. The Fall theme is the seasonal look; all themes are free.
 class AppThemes {
   static const _fontFamily = 'SchibstedGrotesk';

@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:tapcook/data/recipe_db.dart';
-import 'package:tapcook/services/price_book.dart';
+import 'package:okulacooker/data/recipe_db.dart';
+import 'package:okulacooker/services/price_book.dart';
 
 /// Loads the bundled recipe database and price book from disk for tests.
 void loadTestData() {

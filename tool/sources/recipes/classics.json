@@ -1,878 +1,2262 @@
 [
-  {
-    "key": "classic-stuffed-bell-peppers",
-    "title": "Classic Stuffed Bell Peppers",
-    "cuisine": "American",
-    "anchor": "ground_beef",
-    "serves": 4,
-    "minutes": 75,
-    "difficulty": "Easy",
-    "equipment": "oven",
-    "format": "oven",
-    "cleanup": 4,
-    "ingredients": [
-      ["bell_pepper", 4, "count"],
-      ["rice_long_grain", 0.5, "cup"],
-      ["olive_oil_evoo", 1, "tbsp"],
-      ["ground_beef", 1, "lb"],
-      ["onion_yellow", 1, "count"],
-      ["garlic_head", 3, "clove"],
-      ["italian_seasoning", 1.5, "tsp"],
-      ["salt_kosher", 1, "tsp"],
-      ["pepper_black", 0.5, "tsp"],
-      ["worcestershire", 1, "tbsp"],
-      ["tomato_canned_diced", 1, "count"],
-      ["tomato_sauce", 1, "count"],
-      ["mozzarella_low_moisture", 1.5, "cup"],
-      ["parsley_fresh", 2, "tbsp"]
-    ],
-    "steps": [
-      {"phase": "Prep", "minutes": 10, "actions": [
-        {"verb": "Heat", "body": "the oven to 375°F with a rack in the middle."},
-        {"verb": "Simmer", "body": "{amt:rice_long_grain} of rice in 1 cup of salted water, covered, over low heat until the water is absorbed.", "duration": "15 min"},
-        {"verb": "Halve", "body": "{amt:bell_pepper|bell pepper|bell peppers} lengthwise through the stem and pull out the seeds and ribs. Rub the halves with {amt:olive_oil_evoo} of olive oil, set them cut side up in a 9×13-inch baking dish and bake empty to soften while you make the filling.", "duration": "10 min"}
-      ]},
-      {"phase": "Filling", "minutes": 20, "actions": [
-        {"verb": "Dice", "body": "{amt:onion_yellow|onion|onions} and mince {amt:garlic_head} of garlic."},
-        {"verb": "Brown", "body": "{amt:ground_beef} of ground beef with the onion in a large skillet over medium-high heat, breaking it up, until no pink remains and it reads 160°F. Spoon off the excess fat.", "duration": "8 min"},
-        {"verb": "Stir in", "body": "the garlic, {amt:italian_seasoning} of Italian seasoning, {amt:salt_kosher} of salt, {amt:pepper_black} of pepper and {amt:worcestershire} of Worcestershire sauce and cook for 1 minute."},
-        {"verb": "Mix", "body": "in the cooked rice, {amt:tomato_canned_diced} of diced tomatoes (drained), {amt:tomato_sauce:0.5} of tomato sauce and {amt:mozzarella_low_moisture:0.5} of mozzarella, off the heat."}
-      ]},
-      {"phase": "Bake", "minutes": 40, "actions": [
-        {"verb": "Stuff", "body": "the softened pepper halves generously with the filling, mounding it on top, and spoon the remaining tomato sauce over them. Pour 2 tablespoons of water into the bottom of the dish."},
-        {"verb": "Bake", "body": "covered tightly with foil until the peppers are tender when pierced.", "duration": "25 min"},
-        {"verb": "Top", "body": "with the remaining mozzarella and bake uncovered until the cheese is melted and bubbling.", "duration": "10 min"}
-      ]},
-      {"phase": "Serve", "minutes": 5, "actions": [
-        {"verb": "Rest", "body": "for 5 minutes, then sprinkle with {amt:parsley_fresh} of chopped parsley and serve two halves per person.", "duration": "5 min"}
-      ]}
+ {
+  "key": "classic-stuffed-bell-peppers",
+  "title": "Classic Stuffed Bell Peppers",
+  "cuisine": "American",
+  "anchor": "ground_beef",
+  "serves": 4,
+  "minutes": 75,
+  "difficulty": "Easy",
+  "equipment": "oven",
+  "format": "oven",
+  "cleanup": 4,
+  "ingredients": [
+   [
+    "bell_pepper",
+    4,
+    "count"
+   ],
+   [
+    "rice_long_grain",
+    0.5,
+    "cup"
+   ],
+   [
+    "olive_oil_evoo",
+    1,
+    "tbsp"
+   ],
+   [
+    "ground_beef",
+    1,
+    "lb"
+   ],
+   [
+    "onion_yellow",
+    1,
+    "count"
+   ],
+   [
+    "garlic_head",
+    3,
+    "clove"
+   ],
+   [
+    "italian_seasoning",
+    1.5,
+    "tsp"
+   ],
+   [
+    "salt_kosher",
+    1,
+    "tsp"
+   ],
+   [
+    "pepper_black",
+    0.5,
+    "tsp"
+   ],
+   [
+    "worcestershire_vegan",
+    1,
+    "tbsp"
+   ],
+   [
+    "tomato_canned_diced",
+    1,
+    "count"
+   ],
+   [
+    "tomato_sauce",
+    1,
+    "count"
+   ],
+   [
+    "mozzarella_low_moisture",
+    1.5,
+    "cup"
+   ],
+   [
+    "parsley_fresh",
+    2,
+    "tbsp"
+   ]
+  ],
+  "steps": [
+   {
+    "phase": "Prep",
+    "minutes": 10,
+    "actions": [
+     {
+      "verb": "Heat",
+      "body": "the oven to 375°F with a rack in the middle."
+     },
+     {
+      "verb": "Simmer",
+      "body": "{amt:rice_long_grain} of rice in 1 cup of salted water, covered, over low heat until the water is absorbed.",
+      "duration": "15 min"
+     },
+     {
+      "verb": "Halve",
+      "body": "{amt:bell_pepper|bell pepper|bell peppers} lengthwise through the stem and pull out the seeds and ribs. Rub the halves with {amt:olive_oil_evoo} of olive oil, set them cut side up in a 9×13-inch baking dish and bake empty to soften while you make the filling.",
+      "duration": "10 min"
+     }
     ]
-  },
-  {
-    "key": "classic-black-bean-burgers",
-    "title": "Black Bean Burgers",
-    "cuisine": "American",
-    "anchor": "bean_black_canned",
-    "serves": 4,
-    "minutes": 50,
-    "difficulty": "Easy",
-    "equipment": "stove",
-    "format": "skillet",
-    "cleanup": 3,
-    "ingredients": [
-      ["bean_black_canned", 2, "count"],
-      ["oil_neutral", 3, "tbsp"],
-      ["onion_yellow", 0.5, "count"],
-      ["bell_pepper", 0.5, "count"],
-      ["garlic_head", 3, "clove"],
-      ["cumin_ground", 1, "tsp"],
-      ["chili_powder", 1, "tsp"],
-      ["paprika_smoked", 0.5, "tsp"],
-      ["salt_kosher", 0.75, "tsp"],
-      ["pepper_black", 0.25, "tsp"],
-      ["egg_large", 1, "count"],
-      ["breadcrumb_panko", 0.5, "cup"],
-      ["cheddar", 3, "oz"],
-      ["bun_burger", 4, "count"],
-      ["lettuce_romaine", 1, "cup"],
-      ["tomato_fresh", 1, "count"],
-      ["avocado", 1, "count"]
-    ],
-    "steps": [
-      {"phase": "Prep", "minutes": 10, "actions": [
-        {"verb": "Drain", "body": "and rinse {amt:bean_black_canned} of black beans, then spread them on paper towels and pat them very dry — dry beans are what keep the patties from turning mushy."},
-        {"verb": "Dice", "body": "{amt:onion_yellow|onion|onions} and {amt:bell_pepper|bell pepper|bell peppers} finely and mince {amt:garlic_head} of garlic."}
-      ]},
-      {"phase": "Sauté", "minutes": 6, "actions": [
-        {"verb": "Cook", "body": "the onion and pepper in {amt:oil_neutral:0.33} of oil in a large nonstick skillet over medium heat until soft and most of their moisture has cooked off.", "duration": "5 min"},
-        {"verb": "Stir in", "body": "the garlic, {amt:cumin_ground} of cumin, {amt:chili_powder} of chili powder and {amt:paprika_smoked} of smoked paprika for 30 seconds, then scrape into a large bowl to cool slightly. Wipe out the skillet."}
-      ]},
-      {"phase": "Shape", "minutes": 20, "actions": [
-        {"verb": "Mash", "body": "the beans into the vegetables with a potato masher or fork, leaving about a quarter of them in chunks for texture."},
-        {"verb": "Mix", "body": "in {amt:egg_large|egg|eggs}, {amt:breadcrumb_panko} of panko, {amt:salt_kosher} of salt and {amt:pepper_black} of pepper until the mixture holds together when squeezed."},
-        {"verb": "Form", "body": "into 4 patties about ¾ inch thick and chill them on a plate so they firm up.", "duration": "15 min"}
-      ]},
-      {"phase": "Cook", "minutes": 12, "actions": [
-        {"verb": "Fry", "body": "the patties in the remaining oil in the skillet over medium heat until a dark crust forms, then flip gently.", "duration": "5 min"},
-        {"verb": "Top", "body": "each with {amt:cheddar} of sliced cheddar, divided, cover and cook until the second side is crisp and the cheese melts.", "duration": "4 min"},
-        {"verb": "Toast", "body": "{amt:bun_burger|burger bun|burger buns}, cut side down, in the hot skillet for about a minute."}
-      ]},
-      {"phase": "Serve", "minutes": 3, "actions": [
-        {"verb": "Slice", "body": "{amt:tomato_fresh|tomato|tomatoes} and {amt:avocado|avocado|avocados}."},
-        {"verb": "Build", "body": "the burgers on the toasted buns with {amt:lettuce_romaine} of romaine leaves, the tomato and avocado."}
-      ]}
+   },
+   {
+    "phase": "Filling",
+    "minutes": 20,
+    "actions": [
+     {
+      "verb": "Dice",
+      "body": "{amt:onion_yellow|onion|onions} and mince {amt:garlic_head} of garlic."
+     },
+     {
+      "verb": "Brown",
+      "body": "{amt:ground_beef} of ground beef with the onion in a large skillet over medium-high heat, breaking it up, until no pink remains and it reads 160°F. Spoon off the excess fat.",
+      "duration": "8 min"
+     },
+     {
+      "verb": "Stir in",
+      "body": "the garlic, {amt:italian_seasoning} of Italian seasoning, {amt:salt_kosher} of salt, {amt:pepper_black} of pepper and {amt:worcestershire_vegan} of Worcestershire sauce and cook for 1 minute."
+     },
+     {
+      "verb": "Mix",
+      "body": "in the cooked rice, {amt:tomato_canned_diced} of diced tomatoes (drained), {amt:tomato_sauce:0.5} of tomato sauce and {amt:mozzarella_low_moisture:0.5} of mozzarella, off the heat."
+     }
     ]
-  },
-  {
-    "key": "classic-sesame-chicken",
-    "title": "Sesame Chicken with Rice",
-    "cuisine": "Chinese",
-    "anchor": "chicken_thigh_boneless",
-    "serves": 4,
+   },
+   {
+    "phase": "Bake",
     "minutes": 40,
-    "difficulty": "Medium",
-    "equipment": "stove",
-    "format": "skillet",
-    "cleanup": 4,
-    "ingredients": [
-      ["rice_long_grain", 1.25, "cup"],
-      ["chicken_thigh_boneless", 1.5, "lb"],
-      ["salt_kosher", 0.5, "tsp"],
-      ["pepper_black", 0.25, "tsp"],
-      ["egg_large", 1, "count"],
-      ["cornstarch", 6, "tbsp"],
-      ["soy_sauce", 0.25, "cup"],
-      ["honey", 3, "tbsp"],
-      ["sugar_brown", 2, "tbsp"],
-      ["vinegar_rice", 1, "tbsp"],
-      ["sesame_oil", 2, "tsp"],
-      ["garlic_head", 3, "clove"],
-      ["ginger_fresh", 1, "tsp"],
-      ["oil_neutral", 3, "tbsp"],
-      ["broccoli", 3, "cup"],
-      ["sesame_seed", 1, "tbsp"],
-      ["scallion", 3, "count"]
-    ],
-    "steps": [
-      {"phase": "Prep", "minutes": 12, "actions": [
-        {"verb": "Start", "body": "the rice: rinse {amt:rice_long_grain} of rice and simmer it, covered, in 2 cups of salted water over low heat, then let it steam off the heat.", "duration": "18 min"},
-        {"verb": "Cut", "body": "{amt:chicken_thigh_boneless} of chicken thighs into 1-inch pieces and season with {amt:salt_kosher} of salt and {amt:pepper_black} of pepper."},
-        {"verb": "Coat", "body": "the chicken: toss it with {amt:egg_large|beaten egg|beaten eggs}, then with {amt:cornstarch:0.8333} of cornstarch until every piece is dusted."},
-        {"verb": "Whisk", "body": "the sauce: {amt:soy_sauce} of soy sauce, {amt:honey} of honey, {amt:sugar_brown} of brown sugar, {amt:vinegar_rice} of rice vinegar, {amt:sesame_oil} of sesame oil, ¼ cup of water and the remaining {amt:cornstarch:0.1667} of cornstarch."},
-        {"verb": "Mince", "body": "{amt:garlic_head} of garlic, grate {amt:ginger_fresh} of ginger and slice {amt:scallion|scallion|scallions}."}
-      ]},
-      {"phase": "Fry", "minutes": 14, "actions": [
-        {"verb": "Fry", "body": "the chicken in two batches in {amt:oil_neutral:0.67} of oil in a large skillet over medium-high heat, turning, until golden and crisp and it reads 165°F. Move to a plate.", "duration": "6 min"},
-        {"verb": "Steam", "body": "{amt:broccoli} of broccoli florets in a covered saucepan with ½ inch of boiling water until bright green and just tender.", "duration": "4 min"}
-      ]},
-      {"phase": "Sauce", "minutes": 6, "actions": [
-        {"verb": "Sizzle", "body": "the garlic and ginger in the remaining {amt:oil_neutral:0.33} of oil for 30 seconds."},
-        {"verb": "Pour in", "body": "the sauce (whisk it again first) and simmer, stirring, until glossy and thick.", "duration": "2 min"},
-        {"verb": "Toss", "body": "the crispy chicken in the sauce until coated."}
-      ]},
-      {"phase": "Serve", "minutes": 3, "actions": [
-        {"verb": "Serve", "body": "over the rice with the broccoli, scattered with {amt:sesame_seed} of sesame seeds and the scallions."}
-      ]}
+    "actions": [
+     {
+      "verb": "Stuff",
+      "body": "the softened pepper halves generously with the filling, mounding it on top, and spoon the remaining tomato sauce over them. Pour 2 tablespoons of water into the bottom of the dish."
+     },
+     {
+      "verb": "Bake",
+      "body": "covered tightly with foil until the peppers are tender when pierced.",
+      "duration": "25 min"
+     },
+     {
+      "verb": "Top",
+      "body": "with the remaining mozzarella and bake uncovered until the cheese is melted and bubbling.",
+      "duration": "10 min"
+     }
     ]
-  },
-  {
-    "key": "classic-cashew-chicken",
-    "title": "Cashew Chicken with Rice",
-    "cuisine": "Chinese",
-    "anchor": "chicken_breast",
-    "serves": 4,
-    "minutes": 35,
-    "difficulty": "Easy",
-    "equipment": "stove",
-    "format": "skillet",
-    "cleanup": 3,
-    "ingredients": [
-      ["rice_long_grain", 1.5, "cup"],
-      ["chicken_breast", 1.5, "lb"],
-      ["soy_sauce", 4, "tbsp"],
-      ["cornstarch", 2, "tbsp"],
-      ["cashew_raw", 0.75, "cup"],
-      ["broth_chicken", 0.5, "cup"],
-      ["oyster_sauce", 2, "tbsp"],
-      ["hoisin_sauce", 1, "tbsp"],
-      ["vinegar_rice", 1, "tbsp"],
-      ["sugar_brown", 1, "tbsp"],
-      ["sesame_oil", 1, "tsp"],
-      ["oil_neutral", 3, "tbsp"],
-      ["bell_pepper", 1, "count"],
-      ["onion_yellow", 0.5, "count"],
-      ["garlic_head", 3, "clove"],
-      ["ginger_fresh", 1, "tsp"],
-      ["scallion", 3, "count"]
-    ],
-    "steps": [
-      {"phase": "Prep", "minutes": 12, "actions": [
-        {"verb": "Start", "body": "the rice: rinse {amt:rice_long_grain} of rice and simmer it, covered, in 2¼ cups of salted water over low heat, then let it steam off the heat.", "duration": "18 min"},
-        {"verb": "Cut", "body": "{amt:chicken_breast} of chicken breast into ¾-inch cubes and toss with {amt:soy_sauce:0.25} of soy sauce and {amt:cornstarch:0.5} of cornstarch."},
-        {"verb": "Whisk", "body": "the sauce: {amt:broth_chicken} of chicken broth, the remaining {amt:soy_sauce:0.75} of soy sauce, {amt:oyster_sauce} of oyster sauce, {amt:hoisin_sauce} of hoisin, {amt:vinegar_rice} of rice vinegar, {amt:sugar_brown} of brown sugar, {amt:sesame_oil} of sesame oil and the remaining {amt:cornstarch:0.5} of cornstarch."},
-        {"verb": "Chop", "body": "{amt:bell_pepper|bell pepper|bell peppers} and {amt:onion_yellow|onion|onions} into 1-inch pieces, mince {amt:garlic_head} of garlic, grate {amt:ginger_fresh} of ginger and slice {amt:scallion|scallion|scallions}."}
-      ]},
-      {"phase": "Stir-fry", "minutes": 16, "actions": [
-        {"verb": "Toast", "body": "{amt:cashew_raw} of cashews in a dry large skillet or wok over medium heat, stirring, until golden. Tip them out.", "duration": "4 min"},
-        {"verb": "Sear", "body": "the chicken in {amt:oil_neutral:0.67} of oil over high heat in a single layer, turning once, until browned and it reads 165°F. Move to a plate.", "duration": "6 min"},
-        {"verb": "Stir-fry", "body": "the pepper and onion in the remaining {amt:oil_neutral:0.33} of oil until crisp-tender, adding the garlic and ginger for the last 30 seconds.", "duration": "3 min"},
-        {"verb": "Add", "body": "the chicken back with the sauce (whisk it first) and toss until it bubbles and turns glossy, about 1 minute, then fold in the cashews."}
-      ]},
-      {"phase": "Serve", "minutes": 4, "actions": [
-        {"verb": "Serve", "body": "over the rice, topped with the scallions."}
-      ]}
+   },
+   {
+    "phase": "Serve",
+    "minutes": 5,
+    "actions": [
+     {
+      "verb": "Rest",
+      "body": "for 5 minutes, then sprinkle with {amt:parsley_fresh} of chopped parsley and serve two halves per person.",
+      "duration": "5 min"
+     }
     ]
-  },
-  {
-    "key": "classic-chicken-lettuce-wraps",
-    "title": "Chicken Lettuce Wraps with Rice",
-    "cuisine": "Chinese",
-    "anchor": "chicken_thigh_boneless",
-    "serves": 4,
-    "minutes": 35,
-    "difficulty": "Easy",
-    "equipment": "stove",
-    "format": "skillet",
-    "cleanup": 2,
-    "ingredients": [
-      ["rice_long_grain", 1.25, "cup"],
-      ["chicken_thigh_boneless", 1.5, "lb"],
-      ["oil_neutral", 1, "tbsp"],
-      ["onion_yellow", 0.5, "count"],
-      ["mushroom_cremini", 8, "oz"],
-      ["garlic_head", 3, "clove"],
-      ["ginger_fresh", 1, "tbsp"],
-      ["hoisin_sauce", 0.25, "cup"],
-      ["soy_sauce", 2, "tbsp"],
-      ["vinegar_rice", 1, "tbsp"],
-      ["sesame_oil", 1, "tsp"],
-      ["carrot", 1, "count"],
-      ["scallion", 4, "count"],
-      ["lettuce_romaine", 12, "oz"]
-    ],
-    "steps": [
-      {"phase": "Prep", "minutes": 15, "actions": [
-        {"verb": "Start", "body": "the rice: rinse {amt:rice_long_grain} of rice and simmer it, covered, in 2 cups of salted water over low heat, then let it steam off the heat.", "duration": "18 min"},
-        {"verb": "Chop", "body": "{amt:chicken_thigh_boneless} of chicken thighs into ¼-inch bits (or pulse in a food processor in short bursts until coarsely minced, not pasty). Chop {amt:onion_yellow|onion|onions} and {amt:mushroom_cremini} of mushrooms very finely, mince {amt:garlic_head} of garlic and grate {amt:ginger_fresh} of ginger."},
-        {"verb": "Stir", "body": "together {amt:hoisin_sauce} of hoisin, {amt:soy_sauce} of soy sauce, {amt:vinegar_rice} of rice vinegar and {amt:sesame_oil} of sesame oil."},
-        {"verb": "Shred", "body": "{amt:carrot|carrot|carrots}, slice {amt:scallion|scallion|scallions} and separate {amt:lettuce_romaine} of romaine hearts into cup-shaped leaves."}
-      ]},
-      {"phase": "Cook", "minutes": 15, "actions": [
-        {"verb": "Brown", "body": "the chicken in {amt:oil_neutral} of oil in a large skillet over medium-high heat, stirring and breaking up clumps, until no pink remains and it reads 165°F.", "duration": "6 min"},
-        {"verb": "Add", "body": "the onion and mushrooms and cook until the mushrooms release their liquid and it evaporates.", "duration": "5 min"},
-        {"verb": "Stir in", "body": "the garlic and ginger for 30 seconds, then the sauce and half the scallions; cook until the filling is glossy, about 1 minute."}
-      ]},
-      {"phase": "Serve", "minutes": 5, "actions": [
-        {"verb": "Serve", "body": "family style: spoon a little rice and filling into each lettuce cup and top with shredded carrot and the remaining scallions."}
-      ]}
+   }
+  ]
+ },
+ {
+  "key": "classic-black-bean-burgers",
+  "title": "Black Bean Burgers",
+  "cuisine": "American",
+  "anchor": "bean_black_canned",
+  "serves": 4,
+  "minutes": 50,
+  "difficulty": "Easy",
+  "equipment": "stove",
+  "format": "skillet",
+  "cleanup": 3,
+  "ingredients": [
+   [
+    "bean_black_canned",
+    2,
+    "count"
+   ],
+   [
+    "oil_neutral",
+    3,
+    "tbsp"
+   ],
+   [
+    "onion_yellow",
+    0.5,
+    "count"
+   ],
+   [
+    "bell_pepper",
+    0.5,
+    "count"
+   ],
+   [
+    "garlic_head",
+    3,
+    "clove"
+   ],
+   [
+    "cumin_ground",
+    1,
+    "tsp"
+   ],
+   [
+    "chili_powder",
+    1,
+    "tsp"
+   ],
+   [
+    "paprika_smoked",
+    0.5,
+    "tsp"
+   ],
+   [
+    "salt_kosher",
+    0.75,
+    "tsp"
+   ],
+   [
+    "pepper_black",
+    0.25,
+    "tsp"
+   ],
+   [
+    "egg_large",
+    1,
+    "count"
+   ],
+   [
+    "breadcrumb_panko",
+    0.5,
+    "cup"
+   ],
+   [
+    "cheddar",
+    3,
+    "oz"
+   ],
+   [
+    "bun_burger",
+    4,
+    "count"
+   ],
+   [
+    "lettuce_romaine",
+    1,
+    "cup"
+   ],
+   [
+    "tomato_fresh",
+    1,
+    "count"
+   ],
+   [
+    "avocado",
+    1,
+    "count"
+   ]
+  ],
+  "steps": [
+   {
+    "phase": "Prep",
+    "minutes": 10,
+    "actions": [
+     {
+      "verb": "Drain",
+      "body": "and rinse {amt:bean_black_canned} of black beans, then spread them on paper towels and pat them very dry — dry beans are what keep the patties from turning mushy."
+     },
+     {
+      "verb": "Dice",
+      "body": "{amt:onion_yellow|onion|onions} and {amt:bell_pepper|bell pepper|bell peppers} finely and mince {amt:garlic_head} of garlic."
+     }
     ]
-  },
-  {
-    "key": "classic-honey-garlic-salmon",
-    "title": "Honey Garlic Salmon with Rice and Green Beans",
-    "cuisine": "American",
-    "anchor": "salmon_fillet",
-    "serves": 4,
-    "minutes": 30,
-    "difficulty": "Easy",
-    "equipment": "stove",
-    "format": "skillet",
-    "cleanup": 3,
-    "ingredients": [
-      ["rice_long_grain", 1.25, "cup"],
-      ["salmon_fillet", 4, "count"],
-      ["salt_kosher", 1, "tsp"],
-      ["pepper_black", 0.5, "tsp"],
-      ["green_bean", 1, "lb"],
-      ["oil_neutral", 2, "tbsp"],
-      ["garlic_head", 5, "clove"],
-      ["honey", 0.25, "cup"],
-      ["soy_sauce", 3, "tbsp"],
-      ["lemon", 0.5, "count"],
-      ["butter_unsalted", 2, "tbsp"]
-    ],
-    "steps": [
-      {"phase": "Prep", "minutes": 8, "actions": [
-        {"verb": "Start", "body": "the rice: rinse {amt:rice_long_grain} of rice and simmer it, covered, in 2 cups of salted water over low heat, then let it steam off the heat.", "duration": "18 min"},
-        {"verb": "Pat", "body": "{amt:salmon_fillet|salmon fillet|salmon fillets} (about 6 oz each) dry and season with {amt:salt_kosher:0.75} of salt and {amt:pepper_black} of pepper."},
-        {"verb": "Mince", "body": "{amt:garlic_head} of garlic and trim {amt:green_bean} of green beans."},
-        {"verb": "Whisk", "body": "{amt:honey} of honey, {amt:soy_sauce} of soy sauce and the juice of {amt:lemon|lemon|lemons}."}
-      ]},
-      {"phase": "Green beans", "minutes": 8, "actions": [
-        {"verb": "Cook", "body": "the green beans in {amt:oil_neutral:0.5} of oil in a large skillet over medium-high heat with 3 tablespoons of water, covered, until bright green.", "duration": "4 min"},
-        {"verb": "Uncover", "body": "and keep cooking until the water is gone and the beans blister in spots, adding a third of the garlic and the remaining {amt:salt_kosher:0.25} of salt for the last minute. Move to a plate and wipe the pan.", "duration": "3 min"}
-      ]},
-      {"phase": "Salmon", "minutes": 12, "actions": [
-        {"verb": "Sear", "body": "the salmon presentation side down in the remaining {amt:oil_neutral:0.5} of oil over medium-high heat until deeply golden.", "duration": "4 min"},
-        {"verb": "Flip", "body": "the fillets, turn the heat to medium and add {amt:butter_unsalted} of butter and the rest of the garlic; let it sizzle for 30 seconds."},
-        {"verb": "Pour in", "body": "the honey mixture and simmer, spooning it over the fish, until the sauce is syrupy and the salmon reads 145°F in the thickest part.", "duration": "3 min"}
-      ]},
-      {"phase": "Serve", "minutes": 2, "actions": [
-        {"verb": "Serve", "body": "the salmon over the rice with the green beans, drizzling the pan sauce over everything."}
-      ]}
+   },
+   {
+    "phase": "Sauté",
+    "minutes": 6,
+    "actions": [
+     {
+      "verb": "Cook",
+      "body": "the onion and pepper in {amt:oil_neutral:0.33} of oil in a large nonstick skillet over medium heat until soft and most of their moisture has cooked off.",
+      "duration": "5 min"
+     },
+     {
+      "verb": "Stir in",
+      "body": "the garlic, {amt:cumin_ground} of cumin, {amt:chili_powder} of chili powder and {amt:paprika_smoked} of smoked paprika for 30 seconds, then scrape into a large bowl to cool slightly. Wipe out the skillet."
+     }
     ]
-  },
-  {
-    "key": "classic-cajun-shrimp-pasta",
-    "title": "Cajun Shrimp Pasta",
-    "cuisine": "Cajun",
-    "anchor": "shrimp_frozen",
-    "serves": 4,
-    "minutes": 30,
-    "difficulty": "Easy",
-    "equipment": "stove",
-    "format": "skillet",
-    "cleanup": 3,
-    "ingredients": [
-      ["pasta_long", 12, "oz"],
-      ["shrimp_frozen", 1, "lb"],
-      ["paprika_smoked", 2, "tsp"],
-      ["garlic_powder", 1, "tsp"],
-      ["onion_powder", 1, "tsp"],
-      ["oregano_dried", 1, "tsp"],
-      ["thyme_dried", 0.5, "tsp"],
-      ["cayenne", 0.5, "tsp"],
-      ["salt_kosher", 1, "tsp"],
-      ["pepper_black", 0.5, "tsp"],
-      ["olive_oil_evoo", 1, "tbsp"],
-      ["butter_unsalted", 2, "tbsp"],
-      ["bell_pepper", 1, "count"],
-      ["garlic_head", 4, "clove"],
-      ["broth_chicken", 0.5, "cup"],
-      ["cream_heavy", 1, "cup"],
-      ["parmesan", 0.5, "cup"],
-      ["parsley_fresh", 2, "tbsp"]
-    ],
-    "steps": [
-      {"phase": "Prep", "minutes": 8, "actions": [
-        {"verb": "Mix", "body": "a Cajun seasoning from {amt:paprika_smoked} of smoked paprika, {amt:garlic_powder} of garlic powder, {amt:onion_powder} of onion powder, {amt:oregano_dried} of oregano, {amt:thyme_dried} of thyme, {amt:cayenne} of cayenne, {amt:salt_kosher} of salt and {amt:pepper_black} of black pepper."},
-        {"verb": "Toss", "body": "{amt:shrimp_frozen} of thawed, peeled and deveined shrimp with half the seasoning."},
-        {"verb": "Slice", "body": "{amt:bell_pepper|bell pepper|bell peppers} into thin strips and mince {amt:garlic_head} of garlic."},
-        {"verb": "Boil", "body": "{amt:pasta_long} of fettuccine or linguine in well-salted water until al dente, then drain, saving 1 cup of the cooking water.", "duration": "10 min"}
-      ]},
-      {"phase": "Shrimp", "minutes": 5, "actions": [
-        {"verb": "Sear", "body": "the shrimp in {amt:olive_oil_evoo} of olive oil and {amt:butter_unsalted:0.5} of butter in a large skillet over medium-high heat, about 1 minute per side, until pink and just opaque. Move to a plate.", "duration": "2 min"}
-      ]},
-      {"phase": "Sauce", "minutes": 12, "actions": [
-        {"verb": "Sauté", "body": "the bell pepper in the remaining {amt:butter_unsalted:0.5} of butter until softened, adding the garlic and the rest of the seasoning for the last minute.", "duration": "4 min"},
-        {"verb": "Pour in", "body": "{amt:broth_chicken} of chicken broth, scraping up the browned bits, then {amt:cream_heavy} of heavy cream. Simmer until it lightly coats a spoon.", "duration": "4 min"},
-        {"verb": "Stir in", "body": "{amt:parmesan} of grated parmesan until smooth."}
-      ]},
-      {"phase": "Finish", "minutes": 5, "actions": [
-        {"verb": "Toss", "body": "the pasta and shrimp in the sauce over low heat, loosening with splashes of pasta water until silky."},
-        {"verb": "Serve", "body": "right away, sprinkled with {amt:parsley_fresh} of chopped parsley."}
-      ]}
+   },
+   {
+    "phase": "Shape",
+    "minutes": 20,
+    "actions": [
+     {
+      "verb": "Mash",
+      "body": "the beans into the vegetables with a potato masher or fork, leaving about a quarter of them in chunks for texture."
+     },
+     {
+      "verb": "Mix",
+      "body": "in {amt:egg_large|egg|eggs}, {amt:breadcrumb_panko} of panko, {amt:salt_kosher} of salt and {amt:pepper_black} of pepper until the mixture holds together when squeezed."
+     },
+     {
+      "verb": "Form",
+      "body": "into 4 patties about ¾ inch thick and chill them on a plate so they firm up.",
+      "duration": "15 min"
+     }
     ]
-  },
-  {
-    "key": "classic-shrimp-fried-rice",
-    "title": "Shrimp Fried Rice",
-    "cuisine": "Chinese",
-    "anchor": "shrimp_frozen",
-    "serves": 4,
-    "minutes": 45,
-    "difficulty": "Easy",
-    "equipment": "stove",
-    "format": "skillet",
-    "cleanup": 3,
-    "ingredients": [
-      ["rice_long_grain", 1.5, "cup"],
-      ["shrimp_frozen", 1, "lb"],
-      ["salt_kosher", 0.5, "tsp"],
-      ["pepper_black", 0.25, "tsp"],
-      ["egg_large", 3, "count"],
-      ["oil_neutral", 3, "tbsp"],
-      ["onion_yellow", 0.5, "count"],
-      ["carrot", 1, "count"],
-      ["garlic_head", 3, "clove"],
-      ["peas_frozen", 0.75, "cup"],
-      ["scallion", 4, "count"],
-      ["soy_sauce", 3, "tbsp"],
-      ["oyster_sauce", 1, "tbsp"],
-      ["sesame_oil", 2, "tsp"]
-    ],
-    "steps": [
-      {"phase": "Rice", "minutes": 30, "actions": [
-        {"verb": "Cook", "body": "{amt:rice_long_grain} of rinsed rice, covered, in 2 cups of water over low heat until tender and a little firm (skip this step if you have about 4½ cups of day-old rice).", "duration": "15 min"},
-        {"verb": "Spread", "body": "the rice on a sheet pan and let it cool and dry out, uncovered, so the grains fry instead of steaming.", "duration": "15 min"},
-        {"verb": "Meanwhile, prep", "body": "the rest: season {amt:shrimp_frozen} of thawed, peeled shrimp with {amt:salt_kosher} of salt and {amt:pepper_black} of pepper; beat {amt:egg_large|egg|eggs}; dice {amt:onion_yellow|onion|onions} and {amt:carrot|carrot|carrots}; mince {amt:garlic_head} of garlic; and slice {amt:scallion|scallion|scallions}, keeping the whites and greens apart."}
-      ]},
-      {"phase": "Stir-fry", "minutes": 12, "actions": [
-        {"verb": "Sear", "body": "the shrimp in {amt:oil_neutral:0.33} of oil in a wok or large skillet over high heat until pink and just opaque, then move to a plate.", "duration": "2 min"},
-        {"verb": "Scramble", "body": "the eggs in the same pan until barely set, break them up and add them to the shrimp."},
-        {"verb": "Stir-fry", "body": "the onion, carrot and scallion whites in another {amt:oil_neutral:0.33} of oil until the carrot is crisp-tender, then add the garlic and {amt:peas_frozen} of frozen peas for 1 minute.", "duration": "3 min"},
-        {"verb": "Fry", "body": "the rice with the last {amt:oil_neutral:0.33} of oil, pressing it against the hot pan and tossing, until heated through and a few grains crackle.", "duration": "3 min"},
-        {"verb": "Season", "body": "with {amt:soy_sauce} of soy sauce, {amt:oyster_sauce} of oyster sauce and {amt:sesame_oil} of sesame oil, then fold in the shrimp, eggs and scallion greens."}
-      ]},
-      {"phase": "Serve", "minutes": 3, "actions": [
-        {"verb": "Taste", "body": "and add a splash more soy sauce if needed, then serve hot."}
-      ]}
+   },
+   {
+    "phase": "Cook",
+    "minutes": 12,
+    "actions": [
+     {
+      "verb": "Fry",
+      "body": "the patties in the remaining oil in the skillet over medium heat until a dark crust forms, then flip gently.",
+      "duration": "5 min"
+     },
+     {
+      "verb": "Top",
+      "body": "each with {amt:cheddar} of sliced cheddar, divided, cover and cook until the second side is crisp and the cheese melts.",
+      "duration": "4 min"
+     },
+     {
+      "verb": "Toast",
+      "body": "{amt:bun_burger|burger bun|burger buns}, cut side down, in the hot skillet for about a minute."
+     }
     ]
-  },
-  {
-    "key": "classic-chicken-korma",
-    "title": "Chicken Korma with Basmati Rice",
-    "cuisine": "Indian",
-    "anchor": "chicken_thigh_boneless",
-    "serves": 4,
-    "minutes": 55,
-    "difficulty": "Medium",
-    "equipment": "stove",
-    "format": "pot",
-    "cleanup": 4,
-    "ingredients": [
-      ["chicken_thigh_boneless", 1.5, "lb"],
-      ["yogurt_greek", 0.5, "cup"],
-      ["salt_kosher", 1.5, "tsp"],
-      ["cashew_raw", 0.33, "cup"],
-      ["butter_unsalted", 2, "tbsp"],
-      ["oil_neutral", 1, "tbsp"],
-      ["onion_yellow", 1, "count"],
-      ["garlic_head", 4, "clove"],
-      ["ginger_fresh", 1, "tbsp"],
-      ["garam_masala", 2, "tsp"],
-      ["coriander_ground", 2, "tsp"],
-      ["cumin_ground", 1, "tsp"],
-      ["turmeric", 0.5, "tsp"],
-      ["cinnamon_ground", 0.25, "tsp"],
-      ["cayenne", 0.125, "tsp"],
-      ["tomato_paste", 1, "tbsp"],
-      ["broth_chicken", 1, "cup"],
-      ["sugar_white", 1, "tsp"],
-      ["cream_heavy", 0.5, "cup"],
-      ["rice_basmati", 1.25, "cup"],
-      ["cilantro", 0.25, "cup"]
-    ],
-    "steps": [
-      {"phase": "Prep", "minutes": 15, "actions": [
-        {"verb": "Cut", "body": "{amt:chicken_thigh_boneless} of chicken thighs into 1½-inch pieces and coat with {amt:yogurt_greek} of Greek yogurt and {amt:salt_kosher:0.5} of salt. Let it sit while you prep.", "duration": "15 min"},
-        {"verb": "Soak", "body": "{amt:cashew_raw} of cashews in ½ cup of boiling water, then blend them with the water into a smooth paste.", "duration": "10 min"},
-        {"verb": "Dice", "body": "{amt:onion_yellow|onion|onions} finely, mince {amt:garlic_head} of garlic and grate {amt:ginger_fresh} of ginger."}
-      ]},
-      {"phase": "Base", "minutes": 15, "actions": [
-        {"verb": "Cook", "body": "the onion in {amt:butter_unsalted} of butter and {amt:oil_neutral} of oil in a heavy pot over medium heat, stirring often, until soft and golden.", "duration": "10 min"},
-        {"verb": "Stir in", "body": "the garlic and ginger for 1 minute, then {amt:garam_masala:0.5} of garam masala, {amt:coriander_ground} of coriander, {amt:cumin_ground} of cumin, {amt:turmeric} of turmeric, {amt:cinnamon_ground} of cinnamon and {amt:cayenne} of cayenne for 30 seconds until fragrant."},
-        {"verb": "Add", "body": "{amt:tomato_paste} of tomato paste and cook, stirring, for 1 minute."}
-      ]},
-      {"phase": "Simmer", "minutes": 20, "actions": [
-        {"verb": "Start", "body": "the rice: rinse {amt:rice_basmati} of basmati and simmer it, covered, in 2 cups of salted water over low heat, then rest it off the heat for 5 minutes.", "duration": "15 min"},
-        {"verb": "Add", "body": "the chicken with its yogurt, {amt:broth_chicken} of chicken broth, the cashew paste, {amt:sugar_white} of sugar and the remaining {amt:salt_kosher:0.5} of salt. Simmer, partly covered and stirring now and then, until the chicken reads 165°F and the sauce has thickened.", "duration": "15 min"},
-        {"verb": "Stir in", "body": "{amt:cream_heavy} of heavy cream and the rest of the garam masala and warm through for 2 minutes without boiling."}
-      ]},
-      {"phase": "Serve", "minutes": 5, "actions": [
-        {"verb": "Serve", "body": "over the basmati rice, scattered with {amt:cilantro} of chopped cilantro."}
-      ]}
+   },
+   {
+    "phase": "Serve",
+    "minutes": 3,
+    "actions": [
+     {
+      "verb": "Slice",
+      "body": "{amt:tomato_fresh|tomato|tomatoes} and {amt:avocado|avocado|avocados}."
+     },
+     {
+      "verb": "Build",
+      "body": "the burgers on the toasted buns with {amt:lettuce_romaine} of romaine leaves, the tomato and avocado."
+     }
     ]
-  },
-  {
-    "key": "classic-lemon-chicken-orzo-soup",
-    "title": "Lemon Chicken Orzo Soup",
-    "cuisine": "Greek",
-    "anchor": "chicken_breast",
-    "serves": 4,
+   }
+  ]
+ },
+ {
+  "key": "classic-sesame-chicken",
+  "title": "Sesame Chicken with Rice",
+  "cuisine": "Chinese",
+  "anchor": "chicken_thigh_boneless",
+  "serves": 4,
+  "minutes": 40,
+  "difficulty": "Medium",
+  "equipment": "stove",
+  "format": "skillet",
+  "cleanup": 4,
+  "ingredients": [
+   [
+    "rice_long_grain",
+    1.25,
+    "cup"
+   ],
+   [
+    "chicken_thigh_boneless",
+    1.5,
+    "lb"
+   ],
+   [
+    "salt_kosher",
+    0.5,
+    "tsp"
+   ],
+   [
+    "pepper_black",
+    0.25,
+    "tsp"
+   ],
+   [
+    "egg_large",
+    1,
+    "count"
+   ],
+   [
+    "cornstarch",
+    6,
+    "tbsp"
+   ],
+   [
+    "soy_sauce",
+    0.25,
+    "cup"
+   ],
+   [
+    "honey",
+    3,
+    "tbsp"
+   ],
+   [
+    "sugar_brown",
+    2,
+    "tbsp"
+   ],
+   [
+    "vinegar_rice",
+    1,
+    "tbsp"
+   ],
+   [
+    "sesame_oil",
+    2,
+    "tsp"
+   ],
+   [
+    "garlic_head",
+    3,
+    "clove"
+   ],
+   [
+    "ginger_fresh",
+    1,
+    "tsp"
+   ],
+   [
+    "oil_neutral",
+    3,
+    "tbsp"
+   ],
+   [
+    "broccoli",
+    3,
+    "cup"
+   ],
+   [
+    "sesame_seed",
+    1,
+    "tbsp"
+   ],
+   [
+    "scallion",
+    3,
+    "count"
+   ]
+  ],
+  "steps": [
+   {
+    "phase": "Prep",
+    "minutes": 12,
+    "actions": [
+     {
+      "verb": "Start",
+      "body": "the rice: rinse {amt:rice_long_grain} of rice and simmer it, covered, in 2 cups of salted water over low heat, then let it steam off the heat.",
+      "duration": "18 min"
+     },
+     {
+      "verb": "Cut",
+      "body": "{amt:chicken_thigh_boneless} of chicken thighs into 1-inch pieces and season with {amt:salt_kosher} of salt and {amt:pepper_black} of pepper."
+     },
+     {
+      "verb": "Coat",
+      "body": "the chicken: toss it with {amt:egg_large|beaten egg|beaten eggs}, then with {amt:cornstarch:0.8333} of cornstarch until every piece is dusted."
+     },
+     {
+      "verb": "Whisk",
+      "body": "the sauce: {amt:soy_sauce} of soy sauce, {amt:honey} of honey, {amt:sugar_brown} of brown sugar, {amt:vinegar_rice} of rice vinegar, {amt:sesame_oil} of sesame oil, ¼ cup of water and the remaining {amt:cornstarch:0.1667} of cornstarch."
+     },
+     {
+      "verb": "Mince",
+      "body": "{amt:garlic_head} of garlic, grate {amt:ginger_fresh} of ginger and slice {amt:scallion|scallion|scallions}."
+     }
+    ]
+   },
+   {
+    "phase": "Fry",
+    "minutes": 14,
+    "actions": [
+     {
+      "verb": "Fry",
+      "body": "the chicken in two batches in {amt:oil_neutral:0.67} of oil in a large skillet over medium-high heat, turning, until golden and crisp and it reads 165°F. Move to a plate.",
+      "duration": "6 min"
+     },
+     {
+      "verb": "Steam",
+      "body": "{amt:broccoli} of broccoli florets in a covered saucepan with ½ inch of boiling water until bright green and just tender.",
+      "duration": "4 min"
+     }
+    ]
+   },
+   {
+    "phase": "Sauce",
+    "minutes": 6,
+    "actions": [
+     {
+      "verb": "Sizzle",
+      "body": "the garlic and ginger in the remaining {amt:oil_neutral:0.33} of oil for 30 seconds."
+     },
+     {
+      "verb": "Pour in",
+      "body": "the sauce (whisk it again first) and simmer, stirring, until glossy and thick.",
+      "duration": "2 min"
+     },
+     {
+      "verb": "Toss",
+      "body": "the crispy chicken in the sauce until coated."
+     }
+    ]
+   },
+   {
+    "phase": "Serve",
+    "minutes": 3,
+    "actions": [
+     {
+      "verb": "Serve",
+      "body": "over the rice with the broccoli, scattered with {amt:sesame_seed} of sesame seeds and the scallions."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "key": "classic-cashew-chicken",
+  "title": "Cashew Chicken with Rice",
+  "cuisine": "Chinese",
+  "anchor": "chicken_breast",
+  "serves": 4,
+  "minutes": 35,
+  "difficulty": "Easy",
+  "equipment": "stove",
+  "format": "skillet",
+  "cleanup": 3,
+  "ingredients": [
+   [
+    "rice_long_grain",
+    1.5,
+    "cup"
+   ],
+   [
+    "chicken_breast",
+    1.5,
+    "lb"
+   ],
+   [
+    "soy_sauce",
+    4,
+    "tbsp"
+   ],
+   [
+    "cornstarch",
+    2,
+    "tbsp"
+   ],
+   [
+    "cashew_raw",
+    0.75,
+    "cup"
+   ],
+   [
+    "broth_chicken",
+    0.5,
+    "cup"
+   ],
+   [
+    "stirfry_sauce_veg",
+    2,
+    "tbsp"
+   ],
+   [
+    "hoisin_sauce",
+    1,
+    "tbsp"
+   ],
+   [
+    "vinegar_rice",
+    1,
+    "tbsp"
+   ],
+   [
+    "sugar_brown",
+    1,
+    "tbsp"
+   ],
+   [
+    "sesame_oil",
+    1,
+    "tsp"
+   ],
+   [
+    "oil_neutral",
+    3,
+    "tbsp"
+   ],
+   [
+    "bell_pepper",
+    1,
+    "count"
+   ],
+   [
+    "onion_yellow",
+    0.5,
+    "count"
+   ],
+   [
+    "garlic_head",
+    3,
+    "clove"
+   ],
+   [
+    "ginger_fresh",
+    1,
+    "tsp"
+   ],
+   [
+    "scallion",
+    3,
+    "count"
+   ]
+  ],
+  "steps": [
+   {
+    "phase": "Prep",
+    "minutes": 12,
+    "actions": [
+     {
+      "verb": "Start",
+      "body": "the rice: rinse {amt:rice_long_grain} of rice and simmer it, covered, in 2¼ cups of salted water over low heat, then let it steam off the heat.",
+      "duration": "18 min"
+     },
+     {
+      "verb": "Cut",
+      "body": "{amt:chicken_breast} of chicken breast into ¾-inch cubes and toss with {amt:soy_sauce:0.25} of soy sauce and {amt:cornstarch:0.5} of cornstarch."
+     },
+     {
+      "verb": "Whisk",
+      "body": "the sauce: {amt:broth_chicken} of chicken broth, the remaining {amt:soy_sauce:0.75} of soy sauce, {amt:stirfry_sauce_veg} of vegetarian stir-fry sauce, {amt:hoisin_sauce} of hoisin, {amt:vinegar_rice} of rice vinegar, {amt:sugar_brown} of brown sugar, {amt:sesame_oil} of sesame oil and the remaining {amt:cornstarch:0.5} of cornstarch."
+     },
+     {
+      "verb": "Chop",
+      "body": "{amt:bell_pepper|bell pepper|bell peppers} and {amt:onion_yellow|onion|onions} into 1-inch pieces, mince {amt:garlic_head} of garlic, grate {amt:ginger_fresh} of ginger and slice {amt:scallion|scallion|scallions}."
+     }
+    ]
+   },
+   {
+    "phase": "Stir-fry",
+    "minutes": 16,
+    "actions": [
+     {
+      "verb": "Toast",
+      "body": "{amt:cashew_raw} of cashews in a dry large skillet or wok over medium heat, stirring, until golden. Tip them out.",
+      "duration": "4 min"
+     },
+     {
+      "verb": "Sear",
+      "body": "the chicken in {amt:oil_neutral:0.67} of oil over high heat in a single layer, turning once, until browned and it reads 165°F. Move to a plate.",
+      "duration": "6 min"
+     },
+     {
+      "verb": "Stir-fry",
+      "body": "the pepper and onion in the remaining {amt:oil_neutral:0.33} of oil until crisp-tender, adding the garlic and ginger for the last 30 seconds.",
+      "duration": "3 min"
+     },
+     {
+      "verb": "Add",
+      "body": "the chicken back with the sauce (whisk it first) and toss until it bubbles and turns glossy, about 1 minute, then fold in the cashews."
+     }
+    ]
+   },
+   {
+    "phase": "Serve",
+    "minutes": 4,
+    "actions": [
+     {
+      "verb": "Serve",
+      "body": "over the rice, topped with the scallions."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "key": "classic-chicken-lettuce-wraps",
+  "title": "Chicken Lettuce Wraps with Rice",
+  "cuisine": "Chinese",
+  "anchor": "chicken_thigh_boneless",
+  "serves": 4,
+  "minutes": 35,
+  "difficulty": "Easy",
+  "equipment": "stove",
+  "format": "skillet",
+  "cleanup": 2,
+  "ingredients": [
+   [
+    "rice_long_grain",
+    1.25,
+    "cup"
+   ],
+   [
+    "chicken_thigh_boneless",
+    1.5,
+    "lb"
+   ],
+   [
+    "oil_neutral",
+    1,
+    "tbsp"
+   ],
+   [
+    "onion_yellow",
+    0.5,
+    "count"
+   ],
+   [
+    "mushroom_cremini",
+    8,
+    "oz"
+   ],
+   [
+    "garlic_head",
+    3,
+    "clove"
+   ],
+   [
+    "ginger_fresh",
+    1,
+    "tbsp"
+   ],
+   [
+    "hoisin_sauce",
+    0.25,
+    "cup"
+   ],
+   [
+    "soy_sauce",
+    2,
+    "tbsp"
+   ],
+   [
+    "vinegar_rice",
+    1,
+    "tbsp"
+   ],
+   [
+    "sesame_oil",
+    1,
+    "tsp"
+   ],
+   [
+    "carrot",
+    1,
+    "count"
+   ],
+   [
+    "scallion",
+    4,
+    "count"
+   ],
+   [
+    "lettuce_romaine",
+    12,
+    "oz"
+   ]
+  ],
+  "steps": [
+   {
+    "phase": "Prep",
+    "minutes": 15,
+    "actions": [
+     {
+      "verb": "Start",
+      "body": "the rice: rinse {amt:rice_long_grain} of rice and simmer it, covered, in 2 cups of salted water over low heat, then let it steam off the heat.",
+      "duration": "18 min"
+     },
+     {
+      "verb": "Chop",
+      "body": "{amt:chicken_thigh_boneless} of chicken thighs into ¼-inch bits (or pulse in a food processor in short bursts until coarsely minced, not pasty). Chop {amt:onion_yellow|onion|onions} and {amt:mushroom_cremini} of mushrooms very finely, mince {amt:garlic_head} of garlic and grate {amt:ginger_fresh} of ginger."
+     },
+     {
+      "verb": "Stir",
+      "body": "together {amt:hoisin_sauce} of hoisin, {amt:soy_sauce} of soy sauce, {amt:vinegar_rice} of rice vinegar and {amt:sesame_oil} of sesame oil."
+     },
+     {
+      "verb": "Shred",
+      "body": "{amt:carrot|carrot|carrots}, slice {amt:scallion|scallion|scallions} and separate {amt:lettuce_romaine} of romaine hearts into cup-shaped leaves."
+     }
+    ]
+   },
+   {
+    "phase": "Cook",
+    "minutes": 15,
+    "actions": [
+     {
+      "verb": "Brown",
+      "body": "the chicken in {amt:oil_neutral} of oil in a large skillet over medium-high heat, stirring and breaking up clumps, until no pink remains and it reads 165°F.",
+      "duration": "6 min"
+     },
+     {
+      "verb": "Add",
+      "body": "the onion and mushrooms and cook until the mushrooms release their liquid and it evaporates.",
+      "duration": "5 min"
+     },
+     {
+      "verb": "Stir in",
+      "body": "the garlic and ginger for 30 seconds, then the sauce and half the scallions; cook until the filling is glossy, about 1 minute."
+     }
+    ]
+   },
+   {
+    "phase": "Serve",
+    "minutes": 5,
+    "actions": [
+     {
+      "verb": "Serve",
+      "body": "family style: spoon a little rice and filling into each lettuce cup and top with shredded carrot and the remaining scallions."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "key": "classic-chicken-korma",
+  "title": "Chicken Korma with Basmati Rice",
+  "cuisine": "Indian",
+  "anchor": "chicken_thigh_boneless",
+  "serves": 4,
+  "minutes": 55,
+  "difficulty": "Medium",
+  "equipment": "stove",
+  "format": "pot",
+  "cleanup": 4,
+  "ingredients": [
+   [
+    "chicken_thigh_boneless",
+    1.5,
+    "lb"
+   ],
+   [
+    "yogurt_greek",
+    0.5,
+    "cup"
+   ],
+   [
+    "salt_kosher",
+    1.5,
+    "tsp"
+   ],
+   [
+    "cashew_raw",
+    0.33,
+    "cup"
+   ],
+   [
+    "butter_unsalted",
+    2,
+    "tbsp"
+   ],
+   [
+    "oil_neutral",
+    1,
+    "tbsp"
+   ],
+   [
+    "onion_yellow",
+    1,
+    "count"
+   ],
+   [
+    "garlic_head",
+    4,
+    "clove"
+   ],
+   [
+    "ginger_fresh",
+    1,
+    "tbsp"
+   ],
+   [
+    "garam_masala",
+    2,
+    "tsp"
+   ],
+   [
+    "coriander_ground",
+    2,
+    "tsp"
+   ],
+   [
+    "cumin_ground",
+    1,
+    "tsp"
+   ],
+   [
+    "turmeric",
+    0.5,
+    "tsp"
+   ],
+   [
+    "cinnamon_ground",
+    0.25,
+    "tsp"
+   ],
+   [
+    "cayenne",
+    0.125,
+    "tsp"
+   ],
+   [
+    "tomato_paste",
+    1,
+    "tbsp"
+   ],
+   [
+    "broth_chicken",
+    1,
+    "cup"
+   ],
+   [
+    "sugar_white",
+    1,
+    "tsp"
+   ],
+   [
+    "cream_heavy",
+    0.5,
+    "cup"
+   ],
+   [
+    "rice_basmati",
+    1.25,
+    "cup"
+   ],
+   [
+    "cilantro",
+    0.25,
+    "cup"
+   ]
+  ],
+  "steps": [
+   {
+    "phase": "Prep",
+    "minutes": 15,
+    "actions": [
+     {
+      "verb": "Cut",
+      "body": "{amt:chicken_thigh_boneless} of chicken thighs into 1½-inch pieces and coat with {amt:yogurt_greek} of Greek yogurt and {amt:salt_kosher:0.5} of salt. Let it sit while you prep.",
+      "duration": "15 min"
+     },
+     {
+      "verb": "Soak",
+      "body": "{amt:cashew_raw} of cashews in ½ cup of boiling water, then blend them with the water into a smooth paste.",
+      "duration": "10 min"
+     },
+     {
+      "verb": "Dice",
+      "body": "{amt:onion_yellow|onion|onions} finely, mince {amt:garlic_head} of garlic and grate {amt:ginger_fresh} of ginger."
+     }
+    ]
+   },
+   {
+    "phase": "Base",
+    "minutes": 15,
+    "actions": [
+     {
+      "verb": "Cook",
+      "body": "the onion in {amt:butter_unsalted} of butter and {amt:oil_neutral} of oil in a heavy pot over medium heat, stirring often, until soft and golden.",
+      "duration": "10 min"
+     },
+     {
+      "verb": "Stir in",
+      "body": "the garlic and ginger for 1 minute, then {amt:garam_masala:0.5} of garam masala, {amt:coriander_ground} of coriander, {amt:cumin_ground} of cumin, {amt:turmeric} of turmeric, {amt:cinnamon_ground} of cinnamon and {amt:cayenne} of cayenne for 30 seconds until fragrant."
+     },
+     {
+      "verb": "Add",
+      "body": "{amt:tomato_paste} of tomato paste and cook, stirring, for 1 minute."
+     }
+    ]
+   },
+   {
+    "phase": "Simmer",
+    "minutes": 20,
+    "actions": [
+     {
+      "verb": "Start",
+      "body": "the rice: rinse {amt:rice_basmati} of basmati and simmer it, covered, in 2 cups of salted water over low heat, then rest it off the heat for 5 minutes.",
+      "duration": "15 min"
+     },
+     {
+      "verb": "Add",
+      "body": "the chicken with its yogurt, {amt:broth_chicken} of chicken broth, the cashew paste, {amt:sugar_white} of sugar and the remaining {amt:salt_kosher:0.5} of salt. Simmer, partly covered and stirring now and then, until the chicken reads 165°F and the sauce has thickened.",
+      "duration": "15 min"
+     },
+     {
+      "verb": "Stir in",
+      "body": "{amt:cream_heavy} of heavy cream and the rest of the garam masala and warm through for 2 minutes without boiling."
+     }
+    ]
+   },
+   {
+    "phase": "Serve",
+    "minutes": 5,
+    "actions": [
+     {
+      "verb": "Serve",
+      "body": "over the basmati rice, scattered with {amt:cilantro} of chopped cilantro."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "key": "classic-lemon-chicken-orzo-soup",
+  "title": "Lemon Chicken Orzo Soup",
+  "cuisine": "Greek",
+  "anchor": "chicken_breast",
+  "serves": 4,
+  "minutes": 50,
+  "difficulty": "Easy",
+  "equipment": "stove",
+  "format": "pot",
+  "cleanup": 2,
+  "ingredients": [
+   [
+    "olive_oil_evoo",
+    2,
+    "tbsp"
+   ],
+   [
+    "onion_yellow",
+    1,
+    "count"
+   ],
+   [
+    "carrot",
+    2,
+    "count"
+   ],
+   [
+    "celery",
+    2,
+    "stalk"
+   ],
+   [
+    "garlic_head",
+    3,
+    "clove"
+   ],
+   [
+    "thyme_dried",
+    1,
+    "tsp"
+   ],
+   [
+    "oregano_dried",
+    0.5,
+    "tsp"
+   ],
+   [
+    "bay_leaf",
+    1,
+    "count"
+   ],
+   [
+    "broth_chicken",
+    8,
+    "cup"
+   ],
+   [
+    "chicken_breast",
+    1.25,
+    "lb"
+   ],
+   [
+    "salt_kosher",
+    1,
+    "tsp"
+   ],
+   [
+    "pepper_black",
+    0.5,
+    "tsp"
+   ],
+   [
+    "pasta_orzo",
+    1,
+    "cup"
+   ],
+   [
+    "spinach_fresh",
+    3,
+    "cup"
+   ],
+   [
+    "lemon",
+    2,
+    "count"
+   ],
+   [
+    "dill_fresh",
+    2,
+    "tbsp"
+   ],
+   [
+    "parmesan",
+    0.5,
+    "cup"
+   ]
+  ],
+  "steps": [
+   {
+    "phase": "Prep",
+    "minutes": 10,
+    "actions": [
+     {
+      "verb": "Dice",
+      "body": "{amt:onion_yellow|onion|onions}, {amt:carrot|carrot|carrots} and {amt:celery} of celery, and mince {amt:garlic_head} of garlic."
+     },
+     {
+      "verb": "Zest",
+      "body": "and juice {amt:lemon|lemon|lemons}; you want about ⅓ cup of juice."
+     }
+    ]
+   },
+   {
+    "phase": "Soup base",
+    "minutes": 10,
+    "actions": [
+     {
+      "verb": "Sauté",
+      "body": "the onion, carrot and celery in {amt:olive_oil_evoo} of olive oil in a large pot over medium heat until softened.",
+      "duration": "6 min"
+     },
+     {
+      "verb": "Stir in",
+      "body": "the garlic, {amt:thyme_dried} of thyme and {amt:oregano_dried} of oregano for 1 minute."
+     }
+    ]
+   },
+   {
+    "phase": "Simmer",
+    "minutes": 25,
+    "actions": [
+     {
+      "verb": "Add",
+      "body": "{amt:broth_chicken} of chicken broth, {amt:bay_leaf|bay leaf|bay leaves}, {amt:salt_kosher} of salt and {amt:pepper_black} of pepper and bring to a boil."
+     },
+     {
+      "verb": "Poach",
+      "body": "{amt:chicken_breast} of whole chicken breasts in the gently simmering broth until they read 165°F. Lift them out and shred with two forks.",
+      "duration": "15 min"
+     },
+     {
+      "verb": "Cook",
+      "body": "{amt:pasta_orzo} of orzo in the simmering soup, stirring now and then so it doesn't stick, until tender.",
+      "duration": "9 min"
+     }
+    ]
+   },
+   {
+    "phase": "Finish",
+    "minutes": 5,
+    "actions": [
+     {
+      "verb": "Stir in",
+      "body": "the shredded chicken, {amt:spinach_fresh} of baby spinach, the lemon zest and juice and {amt:dill_fresh} of chopped dill, and cook until the spinach wilts. Remove the bay leaf and season to taste."
+     },
+     {
+      "verb": "Serve",
+      "body": "hot with {amt:parmesan} of grated parmesan on top. The orzo keeps soaking up broth, so thin leftovers with a little extra broth or water."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "key": "classic-unstuffed-cabbage-skillet",
+  "title": "Unstuffed Cabbage Roll Skillet",
+  "cuisine": "American",
+  "anchor": "ground_beef",
+  "serves": 4,
+  "minutes": 50,
+  "difficulty": "Easy",
+  "equipment": "stove",
+  "format": "skillet",
+  "cleanup": 1,
+  "ingredients": [
+   [
+    "olive_oil_evoo",
+    1,
+    "tbsp"
+   ],
+   [
+    "ground_beef",
+    1.25,
+    "lb"
+   ],
+   [
+    "onion_yellow",
+    1,
+    "count"
+   ],
+   [
+    "garlic_head",
+    3,
+    "clove"
+   ],
+   [
+    "paprika_sweet",
+    1,
+    "tsp"
+   ],
+   [
+    "salt_kosher",
+    1.5,
+    "tsp"
+   ],
+   [
+    "pepper_black",
+    0.5,
+    "tsp"
+   ],
+   [
+    "cabbage_green",
+    8,
+    "cup"
+   ],
+   [
+    "rice_long_grain",
+    0.75,
+    "cup"
+   ],
+   [
+    "tomato_canned_diced",
+    1,
+    "count"
+   ],
+   [
+    "tomato_sauce",
+    1,
+    "count"
+   ],
+   [
+    "broth_beef",
+    1.5,
+    "cup"
+   ],
+   [
+    "worcestershire_vegan",
+    1,
+    "tbsp"
+   ],
+   [
+    "sugar_brown",
+    1,
+    "tbsp"
+   ],
+   [
+    "vinegar_apple_cider",
+    1,
+    "tbsp"
+   ],
+   [
+    "parsley_fresh",
+    2,
+    "tbsp"
+   ],
+   [
+    "sour_cream",
+    0.5,
+    "cup"
+   ]
+  ],
+  "steps": [
+   {
+    "phase": "Prep",
+    "minutes": 10,
+    "actions": [
+     {
+      "verb": "Dice",
+      "body": "{amt:onion_yellow|onion|onions}, mince {amt:garlic_head} of garlic and chop {amt:cabbage_green} of green cabbage (about half a medium head) into 1-inch pieces."
+     }
+    ]
+   },
+   {
+    "phase": "Brown",
+    "minutes": 10,
+    "actions": [
+     {
+      "verb": "Brown",
+      "body": "{amt:ground_beef} of ground beef with the onion in {amt:olive_oil_evoo} of olive oil in a large, deep lidded skillet or Dutch oven over medium-high heat until no pink remains and it reads 160°F. Spoon off excess fat.",
+      "duration": "8 min"
+     },
+     {
+      "verb": "Stir in",
+      "body": "the garlic, {amt:paprika_sweet} of paprika, {amt:salt_kosher} of salt and {amt:pepper_black} of pepper for 1 minute."
+     }
+    ]
+   },
+   {
+    "phase": "Simmer",
+    "minutes": 27,
+    "actions": [
+     {
+      "verb": "Add",
+      "body": "the cabbage in handfuls, stirring until it starts to wilt and fits in the pan, about 3 minutes."
+     },
+     {
+      "verb": "Stir in",
+      "body": "{amt:rice_long_grain} of uncooked rice, {amt:tomato_canned_diced} of diced tomatoes with their juice, {amt:tomato_sauce} of tomato sauce, {amt:broth_beef} of beef broth, {amt:worcestershire_vegan} of Worcestershire, {amt:sugar_brown} of brown sugar and {amt:vinegar_apple_cider} of cider vinegar."
+     },
+     {
+      "verb": "Simmer",
+      "body": "covered over medium-low heat, stirring every 5 minutes so the rice doesn't catch, until the rice and cabbage are tender. Add a splash of water if it gets dry.",
+      "duration": "22 min"
+     }
+    ]
+   },
+   {
+    "phase": "Serve",
+    "minutes": 3,
+    "actions": [
+     {
+      "verb": "Serve",
+      "body": "topped with {amt:sour_cream} of sour cream and {amt:parsley_fresh} of chopped parsley."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "key": "classic-vegetable-lasagna",
+  "title": "Vegetable Lasagna",
+  "cuisine": "Italian",
+  "anchor": "ricotta",
+  "serves": 6,
+  "minutes": 115,
+  "difficulty": "Medium",
+  "equipment": "oven",
+  "format": "oven",
+  "cleanup": 5,
+  "ingredients": [
+   [
+    "pasta_lasagna",
+    10,
+    "oz"
+   ],
+   [
+    "olive_oil_evoo",
+    2,
+    "tbsp"
+   ],
+   [
+    "onion_yellow",
+    1,
+    "count"
+   ],
+   [
+    "zucchini",
+    2,
+    "count"
+   ],
+   [
+    "bell_pepper",
+    1,
+    "count"
+   ],
+   [
+    "mushroom_cremini",
+    8,
+    "oz"
+   ],
+   [
+    "garlic_head",
+    4,
+    "clove"
+   ],
+   [
+    "spinach_fresh",
+    5,
+    "oz"
+   ],
+   [
+    "italian_seasoning",
+    2,
+    "tsp"
+   ],
+   [
+    "salt_kosher",
+    1.5,
+    "tsp"
+   ],
+   [
+    "pepper_black",
+    0.5,
+    "tsp"
+   ],
+   [
+    "ricotta",
+    15,
+    "oz"
+   ],
+   [
+    "egg_large",
+    1,
+    "count"
+   ],
+   [
+    "parmesan",
+    1,
+    "cup"
+   ],
+   [
+    "basil_fresh",
+    0.25,
+    "cup"
+   ],
+   [
+    "marinara",
+    36,
+    "oz"
+   ],
+   [
+    "mozzarella_low_moisture",
+    3,
+    "cup"
+   ]
+  ],
+  "steps": [
+   {
+    "phase": "Prep",
+    "minutes": 15,
+    "actions": [
+     {
+      "verb": "Heat",
+      "body": "the oven to 375°F with a rack in the middle."
+     },
+     {
+      "verb": "Dice",
+      "body": "{amt:onion_yellow|onion|onions}, {amt:zucchini|zucchini|zucchini} and {amt:bell_pepper|bell pepper|bell peppers}, slice {amt:mushroom_cremini} of mushrooms and mince {amt:garlic_head} of garlic."
+     },
+     {
+      "verb": "Boil",
+      "body": "{amt:pasta_lasagna} of lasagna noodles (about 12) in a big pot of salted water until just shy of al dente, then drain and lay them flat on an oiled sheet so they don't stick.",
+      "duration": "9 min"
+     }
+    ]
+   },
+   {
+    "phase": "Vegetables",
+    "minutes": 20,
+    "actions": [
+     {
+      "verb": "Sauté",
+      "body": "the onion, zucchini, pepper and mushrooms in {amt:olive_oil_evoo} of olive oil in a large skillet over medium-high heat until browned and their liquid has cooked off — this keeps the lasagna from going watery.",
+      "duration": "12 min"
+     },
+     {
+      "verb": "Stir in",
+      "body": "the garlic, {amt:italian_seasoning} of Italian seasoning, {amt:salt_kosher:0.67} of salt and {amt:pepper_black:0.5} of pepper for 1 minute, then add {amt:spinach_fresh} of baby spinach and cook until wilted.",
+      "duration": "2 min"
+     },
+     {
+      "verb": "Mix",
+      "body": "{amt:ricotta} of ricotta with {amt:egg_large|egg|eggs}, {amt:parmesan:0.5} of parmesan, {amt:basil_fresh} of chopped basil, the remaining {amt:salt_kosher:0.33} of salt and {amt:pepper_black:0.5} of pepper."
+     }
+    ]
+   },
+   {
+    "phase": "Assemble",
+    "minutes": 15,
+    "actions": [
+     {
+      "verb": "Spread",
+      "body": "{amt:marinara:0.25} of marinara over the bottom of a 9×13-inch baking dish and cover with a layer of noodles."
+     },
+     {
+      "verb": "Layer",
+      "body": "half the ricotta mixture, half the vegetables, {amt:mozzarella_low_moisture:0.33} of mozzarella and {amt:marinara:0.25} of marinara, then noodles. Repeat with the rest of the ricotta and vegetables, another {amt:mozzarella_low_moisture:0.33} of mozzarella and {amt:marinara:0.25} of marinara."
+     },
+     {
+      "verb": "Finish",
+      "body": "with a last layer of noodles, the remaining {amt:marinara:0.25} of marinara, the remaining {amt:mozzarella_low_moisture:0.33} of mozzarella and the remaining {amt:parmesan:0.5} of parmesan."
+     }
+    ]
+   },
+   {
+    "phase": "Bake",
     "minutes": 50,
-    "difficulty": "Easy",
-    "equipment": "stove",
-    "format": "pot",
-    "cleanup": 2,
-    "ingredients": [
-      ["olive_oil_evoo", 2, "tbsp"],
-      ["onion_yellow", 1, "count"],
-      ["carrot", 2, "count"],
-      ["celery", 2, "stalk"],
-      ["garlic_head", 3, "clove"],
-      ["thyme_dried", 1, "tsp"],
-      ["oregano_dried", 0.5, "tsp"],
-      ["bay_leaf", 1, "count"],
-      ["broth_chicken", 8, "cup"],
-      ["chicken_breast", 1.25, "lb"],
-      ["salt_kosher", 1, "tsp"],
-      ["pepper_black", 0.5, "tsp"],
-      ["pasta_orzo", 1, "cup"],
-      ["spinach_fresh", 3, "cup"],
-      ["lemon", 2, "count"],
-      ["dill_fresh", 2, "tbsp"],
-      ["parmesan", 0.5, "cup"]
-    ],
-    "steps": [
-      {"phase": "Prep", "minutes": 10, "actions": [
-        {"verb": "Dice", "body": "{amt:onion_yellow|onion|onions}, {amt:carrot|carrot|carrots} and {amt:celery} of celery, and mince {amt:garlic_head} of garlic."},
-        {"verb": "Zest", "body": "and juice {amt:lemon|lemon|lemons}; you want about ⅓ cup of juice."}
-      ]},
-      {"phase": "Soup base", "minutes": 10, "actions": [
-        {"verb": "Sauté", "body": "the onion, carrot and celery in {amt:olive_oil_evoo} of olive oil in a large pot over medium heat until softened.", "duration": "6 min"},
-        {"verb": "Stir in", "body": "the garlic, {amt:thyme_dried} of thyme and {amt:oregano_dried} of oregano for 1 minute."}
-      ]},
-      {"phase": "Simmer", "minutes": 25, "actions": [
-        {"verb": "Add", "body": "{amt:broth_chicken} of chicken broth, {amt:bay_leaf|bay leaf|bay leaves}, {amt:salt_kosher} of salt and {amt:pepper_black} of pepper and bring to a boil."},
-        {"verb": "Poach", "body": "{amt:chicken_breast} of whole chicken breasts in the gently simmering broth until they read 165°F. Lift them out and shred with two forks.", "duration": "15 min"},
-        {"verb": "Cook", "body": "{amt:pasta_orzo} of orzo in the simmering soup, stirring now and then so it doesn't stick, until tender.", "duration": "9 min"}
-      ]},
-      {"phase": "Finish", "minutes": 5, "actions": [
-        {"verb": "Stir in", "body": "the shredded chicken, {amt:spinach_fresh} of baby spinach, the lemon zest and juice and {amt:dill_fresh} of chopped dill, and cook until the spinach wilts. Remove the bay leaf and season to taste."},
-        {"verb": "Serve", "body": "hot with {amt:parmesan} of grated parmesan on top. The orzo keeps soaking up broth, so thin leftovers with a little extra broth or water."}
-      ]}
+    "actions": [
+     {
+      "verb": "Bake",
+      "body": "covered with foil (tented so it doesn't touch the cheese).",
+      "duration": "25 min"
+     },
+     {
+      "verb": "Uncover",
+      "body": "and bake until the edges bubble and the top is spotty brown.",
+      "duration": "25 min"
+     }
     ]
-  },
-  {
-    "key": "classic-unstuffed-cabbage-skillet",
-    "title": "Unstuffed Cabbage Roll Skillet",
-    "cuisine": "American",
-    "anchor": "ground_beef",
-    "serves": 4,
-    "minutes": 50,
-    "difficulty": "Easy",
-    "equipment": "stove",
-    "format": "skillet",
-    "cleanup": 1,
-    "ingredients": [
-      ["olive_oil_evoo", 1, "tbsp"],
-      ["ground_beef", 1.25, "lb"],
-      ["onion_yellow", 1, "count"],
-      ["garlic_head", 3, "clove"],
-      ["paprika_sweet", 1, "tsp"],
-      ["salt_kosher", 1.5, "tsp"],
-      ["pepper_black", 0.5, "tsp"],
-      ["cabbage_green", 8, "cup"],
-      ["rice_long_grain", 0.75, "cup"],
-      ["tomato_canned_diced", 1, "count"],
-      ["tomato_sauce", 1, "count"],
-      ["broth_beef", 1.5, "cup"],
-      ["worcestershire", 1, "tbsp"],
-      ["sugar_brown", 1, "tbsp"],
-      ["vinegar_apple_cider", 1, "tbsp"],
-      ["parsley_fresh", 2, "tbsp"],
-      ["sour_cream", 0.5, "cup"]
-    ],
-    "steps": [
-      {"phase": "Prep", "minutes": 10, "actions": [
-        {"verb": "Dice", "body": "{amt:onion_yellow|onion|onions}, mince {amt:garlic_head} of garlic and chop {amt:cabbage_green} of green cabbage (about half a medium head) into 1-inch pieces."}
-      ]},
-      {"phase": "Brown", "minutes": 10, "actions": [
-        {"verb": "Brown", "body": "{amt:ground_beef} of ground beef with the onion in {amt:olive_oil_evoo} of olive oil in a large, deep lidded skillet or Dutch oven over medium-high heat until no pink remains and it reads 160°F. Spoon off excess fat.", "duration": "8 min"},
-        {"verb": "Stir in", "body": "the garlic, {amt:paprika_sweet} of paprika, {amt:salt_kosher} of salt and {amt:pepper_black} of pepper for 1 minute."}
-      ]},
-      {"phase": "Simmer", "minutes": 27, "actions": [
-        {"verb": "Add", "body": "the cabbage in handfuls, stirring until it starts to wilt and fits in the pan, about 3 minutes."},
-        {"verb": "Stir in", "body": "{amt:rice_long_grain} of uncooked rice, {amt:tomato_canned_diced} of diced tomatoes with their juice, {amt:tomato_sauce} of tomato sauce, {amt:broth_beef} of beef broth, {amt:worcestershire} of Worcestershire, {amt:sugar_brown} of brown sugar and {amt:vinegar_apple_cider} of cider vinegar."},
-        {"verb": "Simmer", "body": "covered over medium-low heat, stirring every 5 minutes so the rice doesn't catch, until the rice and cabbage are tender. Add a splash of water if it gets dry.", "duration": "22 min"}
-      ]},
-      {"phase": "Serve", "minutes": 3, "actions": [
-        {"verb": "Serve", "body": "topped with {amt:sour_cream} of sour cream and {amt:parsley_fresh} of chopped parsley."}
-      ]}
+   },
+   {
+    "phase": "Rest",
+    "minutes": 15,
+    "actions": [
+     {
+      "verb": "Rest",
+      "body": "the lasagna before cutting so the layers set and slice cleanly.",
+      "duration": "15 min"
+     }
     ]
-  },
-  {
-    "key": "classic-vegetable-lasagna",
-    "title": "Vegetable Lasagna",
-    "cuisine": "Italian",
-    "anchor": "ricotta",
-    "serves": 6,
-    "minutes": 115,
-    "difficulty": "Medium",
-    "equipment": "oven",
-    "format": "oven",
-    "cleanup": 5,
-    "ingredients": [
-      ["pasta_lasagna", 10, "oz"],
-      ["olive_oil_evoo", 2, "tbsp"],
-      ["onion_yellow", 1, "count"],
-      ["zucchini", 2, "count"],
-      ["bell_pepper", 1, "count"],
-      ["mushroom_cremini", 8, "oz"],
-      ["garlic_head", 4, "clove"],
-      ["spinach_fresh", 5, "oz"],
-      ["italian_seasoning", 2, "tsp"],
-      ["salt_kosher", 1.5, "tsp"],
-      ["pepper_black", 0.5, "tsp"],
-      ["ricotta", 15, "oz"],
-      ["egg_large", 1, "count"],
-      ["parmesan", 1, "cup"],
-      ["basil_fresh", 0.25, "cup"],
-      ["marinara", 36, "oz"],
-      ["mozzarella_low_moisture", 3, "cup"]
-    ],
-    "steps": [
-      {"phase": "Prep", "minutes": 15, "actions": [
-        {"verb": "Heat", "body": "the oven to 375°F with a rack in the middle."},
-        {"verb": "Dice", "body": "{amt:onion_yellow|onion|onions}, {amt:zucchini|zucchini|zucchini} and {amt:bell_pepper|bell pepper|bell peppers}, slice {amt:mushroom_cremini} of mushrooms and mince {amt:garlic_head} of garlic."},
-        {"verb": "Boil", "body": "{amt:pasta_lasagna} of lasagna noodles (about 12) in a big pot of salted water until just shy of al dente, then drain and lay them flat on an oiled sheet so they don't stick.", "duration": "9 min"}
-      ]},
-      {"phase": "Vegetables", "minutes": 20, "actions": [
-        {"verb": "Sauté", "body": "the onion, zucchini, pepper and mushrooms in {amt:olive_oil_evoo} of olive oil in a large skillet over medium-high heat until browned and their liquid has cooked off — this keeps the lasagna from going watery.", "duration": "12 min"},
-        {"verb": "Stir in", "body": "the garlic, {amt:italian_seasoning} of Italian seasoning, {amt:salt_kosher:0.67} of salt and {amt:pepper_black:0.5} of pepper for 1 minute, then add {amt:spinach_fresh} of baby spinach and cook until wilted.", "duration": "2 min"},
-        {"verb": "Mix", "body": "{amt:ricotta} of ricotta with {amt:egg_large|egg|eggs}, {amt:parmesan:0.5} of parmesan, {amt:basil_fresh} of chopped basil, the remaining {amt:salt_kosher:0.33} of salt and {amt:pepper_black:0.5} of pepper."}
-      ]},
-      {"phase": "Assemble", "minutes": 15, "actions": [
-        {"verb": "Spread", "body": "{amt:marinara:0.25} of marinara over the bottom of a 9×13-inch baking dish and cover with a layer of noodles."},
-        {"verb": "Layer", "body": "half the ricotta mixture, half the vegetables, {amt:mozzarella_low_moisture:0.33} of mozzarella and {amt:marinara:0.25} of marinara, then noodles. Repeat with the rest of the ricotta and vegetables, another {amt:mozzarella_low_moisture:0.33} of mozzarella and {amt:marinara:0.25} of marinara."},
-        {"verb": "Finish", "body": "with a last layer of noodles, the remaining {amt:marinara:0.25} of marinara, the remaining {amt:mozzarella_low_moisture:0.33} of mozzarella and the remaining {amt:parmesan:0.5} of parmesan."}
-      ]},
-      {"phase": "Bake", "minutes": 50, "actions": [
-        {"verb": "Bake", "body": "covered with foil (tented so it doesn't touch the cheese).", "duration": "25 min"},
-        {"verb": "Uncover", "body": "and bake until the edges bubble and the top is spotty brown.", "duration": "25 min"}
-      ]},
-      {"phase": "Rest", "minutes": 15, "actions": [
-        {"verb": "Rest", "body": "the lasagna before cutting so the layers set and slice cleanly.", "duration": "15 min"}
-      ]}
+   }
+  ]
+ },
+ {
+  "key": "classic-mushroom-risotto",
+  "title": "Mushroom Risotto",
+  "cuisine": "Italian",
+  "anchor": "arborio_rice",
+  "serves": 4,
+  "minutes": 45,
+  "difficulty": "Medium",
+  "equipment": "stove",
+  "format": "pot",
+  "cleanup": 2,
+  "ingredients": [
+   [
+    "broth_vegetable",
+    6,
+    "cup"
+   ],
+   [
+    "mushroom_cremini",
+    1,
+    "lb"
+   ],
+   [
+    "olive_oil_evoo",
+    2,
+    "tbsp"
+   ],
+   [
+    "butter_unsalted",
+    4,
+    "tbsp"
+   ],
+   [
+    "thyme_fresh",
+    2,
+    "tsp"
+   ],
+   [
+    "salt_kosher",
+    1,
+    "tsp"
+   ],
+   [
+    "pepper_black",
+    0.5,
+    "tsp"
+   ],
+   [
+    "shallot",
+    2,
+    "count"
+   ],
+   [
+    "garlic_head",
+    3,
+    "clove"
+   ],
+   [
+    "arborio_rice",
+    1.5,
+    "cup"
+   ],
+   [
+    "wine_white_dry",
+    0.5,
+    "cup"
+   ],
+   [
+    "parmesan",
+    1,
+    "cup"
+   ],
+   [
+    "parsley_fresh",
+    2,
+    "tbsp"
+   ]
+  ],
+  "steps": [
+   {
+    "phase": "Prep",
+    "minutes": 8,
+    "actions": [
+     {
+      "verb": "Warm",
+      "body": "{amt:broth_vegetable} of vegetable broth in a saucepan and keep it at a bare simmer."
+     },
+     {
+      "verb": "Slice",
+      "body": "{amt:mushroom_cremini} of mushrooms, mince {amt:shallot|shallot|shallots} and {amt:garlic_head} of garlic and strip {amt:thyme_fresh} of thyme leaves."
+     }
     ]
-  },
-  {
-    "key": "classic-mushroom-risotto",
-    "title": "Mushroom Risotto",
-    "cuisine": "Italian",
-    "anchor": "arborio_rice",
-    "serves": 4,
-    "minutes": 45,
-    "difficulty": "Medium",
-    "equipment": "stove",
-    "format": "pot",
-    "cleanup": 2,
-    "ingredients": [
-      ["broth_vegetable", 6, "cup"],
-      ["mushroom_cremini", 1, "lb"],
-      ["olive_oil_evoo", 2, "tbsp"],
-      ["butter_unsalted", 4, "tbsp"],
-      ["thyme_fresh", 2, "tsp"],
-      ["salt_kosher", 1, "tsp"],
-      ["pepper_black", 0.5, "tsp"],
-      ["shallot", 2, "count"],
-      ["garlic_head", 3, "clove"],
-      ["arborio_rice", 1.5, "cup"],
-      ["wine_white_dry", 0.5, "cup"],
-      ["parmesan", 1, "cup"],
-      ["parsley_fresh", 2, "tbsp"]
-    ],
-    "steps": [
-      {"phase": "Prep", "minutes": 8, "actions": [
-        {"verb": "Warm", "body": "{amt:broth_vegetable} of vegetable broth in a saucepan and keep it at a bare simmer."},
-        {"verb": "Slice", "body": "{amt:mushroom_cremini} of mushrooms, mince {amt:shallot|shallot|shallots} and {amt:garlic_head} of garlic and strip {amt:thyme_fresh} of thyme leaves."}
-      ]},
-      {"phase": "Mushrooms", "minutes": 9, "actions": [
-        {"verb": "Brown", "body": "the mushrooms in {amt:olive_oil_evoo} of olive oil and {amt:butter_unsalted:0.25} of butter in a wide heavy pot over medium-high heat, without stirring too often, until golden. Add the thyme, {amt:salt_kosher:0.5} of salt and {amt:pepper_black} of pepper, then spoon out half for topping.", "duration": "8 min"}
-      ]},
-      {"phase": "Risotto", "minutes": 24, "actions": [
-        {"verb": "Soften", "body": "the shallot in another {amt:butter_unsalted:0.25} of butter over medium heat, then add the garlic for 30 seconds.", "duration": "3 min"},
-        {"verb": "Toast", "body": "{amt:arborio_rice} of arborio rice, stirring, until the edges of the grains turn translucent.", "duration": "2 min"},
-        {"verb": "Pour in", "body": "{amt:wine_white_dry} of dry white wine and stir until it's absorbed."},
-        {"verb": "Add", "body": "the hot broth a ladle at a time, stirring often and waiting until each addition is nearly absorbed before the next, until the rice is creamy and tender with a slight bite. You may not need all the broth.", "duration": "18-20 min"}
-      ]},
-      {"phase": "Finish", "minutes": 4, "actions": [
-        {"verb": "Stir in", "body": "off the heat the remaining {amt:butter_unsalted:0.5} of butter, {amt:parmesan} of grated parmesan, the remaining {amt:salt_kosher:0.5} of salt and a final splash of broth so it flows loosely."},
-        {"verb": "Serve", "body": "at once, topped with the reserved mushrooms and {amt:parsley_fresh} of chopped parsley."}
-      ]}
+   },
+   {
+    "phase": "Mushrooms",
+    "minutes": 9,
+    "actions": [
+     {
+      "verb": "Brown",
+      "body": "the mushrooms in {amt:olive_oil_evoo} of olive oil and {amt:butter_unsalted:0.25} of butter in a wide heavy pot over medium-high heat, without stirring too often, until golden. Add the thyme, {amt:salt_kosher:0.5} of salt and {amt:pepper_black} of pepper, then spoon out half for topping.",
+      "duration": "8 min"
+     }
     ]
-  },
-  {
-    "key": "classic-pasta-primavera",
-    "title": "Pasta Primavera",
-    "cuisine": "Italian",
-    "anchor": "pasta_short",
-    "serves": 4,
-    "minutes": 35,
-    "difficulty": "Easy",
-    "equipment": "stove",
-    "format": "skillet",
-    "cleanup": 3,
-    "ingredients": [
-      ["pasta_short", 1, "lb"],
-      ["broccoli", 2, "cup"],
-      ["carrot", 1, "count"],
-      ["zucchini", 1, "count"],
-      ["bell_pepper", 1, "count"],
-      ["garlic_head", 4, "clove"],
-      ["tomato_cherry", 1.5, "cup"],
-      ["peas_frozen", 0.5, "cup"],
-      ["olive_oil_evoo", 3, "tbsp"],
-      ["butter_unsalted", 2, "tbsp"],
-      ["chili_flake", 0.25, "tsp"],
-      ["salt_kosher", 1, "tsp"],
-      ["pepper_black", 0.5, "tsp"],
-      ["lemon", 1, "count"],
-      ["parmesan", 1, "cup"],
-      ["basil_fresh", 0.25, "cup"]
-    ],
-    "steps": [
-      {"phase": "Prep", "minutes": 10, "actions": [
-        {"verb": "Cut", "body": "{amt:broccoli} of broccoli into small florets, slice {amt:carrot|carrot|carrots} into thin coins, and cut {amt:zucchini|zucchini|zucchini} and {amt:bell_pepper|bell pepper|bell peppers} into bite-size pieces."},
-        {"verb": "Mince", "body": "{amt:garlic_head} of garlic, halve {amt:tomato_cherry} of cherry tomatoes and zest and juice {amt:lemon|lemon|lemons}."}
-      ]},
-      {"phase": "Pasta", "minutes": 12, "actions": [
-        {"verb": "Boil", "body": "{amt:pasta_short} of penne in well-salted water. For the last 3 minutes, add the broccoli and carrot to the pot. Save 1 cup of the pasta water and drain.", "duration": "11 min"},
-        {"verb": "Meanwhile, sauté", "body": "the zucchini and bell pepper in {amt:olive_oil_evoo} of olive oil in a large skillet over medium-high heat until lightly browned but still crisp.", "duration": "5 min"},
-        {"verb": "Add", "body": "the garlic, {amt:chili_flake} of red pepper flakes, the tomatoes and {amt:peas_frozen} of frozen peas and cook until the tomatoes just start to soften.", "duration": "2 min"}
-      ]},
-      {"phase": "Toss", "minutes": 8, "actions": [
-        {"verb": "Toss", "body": "the pasta, broccoli and carrot into the skillet with {amt:butter_unsalted} of butter, ½ cup of the pasta water, {amt:salt_kosher} of salt and {amt:pepper_black} of pepper."},
-        {"verb": "Stir in", "body": "{amt:parmesan:0.75} of grated parmesan and the lemon zest and juice, adding more pasta water until the pasta is glossy and lightly coated."}
-      ]},
-      {"phase": "Serve", "minutes": 3, "actions": [
-        {"verb": "Serve", "body": "topped with {amt:basil_fresh} of torn basil and the remaining {amt:parmesan:0.25} of parmesan."}
-      ]}
+   },
+   {
+    "phase": "Risotto",
+    "minutes": 24,
+    "actions": [
+     {
+      "verb": "Soften",
+      "body": "the shallot in another {amt:butter_unsalted:0.25} of butter over medium heat, then add the garlic for 30 seconds.",
+      "duration": "3 min"
+     },
+     {
+      "verb": "Toast",
+      "body": "{amt:arborio_rice} of arborio rice, stirring, until the edges of the grains turn translucent.",
+      "duration": "2 min"
+     },
+     {
+      "verb": "Pour in",
+      "body": "{amt:wine_white_dry} of dry white wine and stir until it's absorbed."
+     },
+     {
+      "verb": "Add",
+      "body": "the hot broth a ladle at a time, stirring often and waiting until each addition is nearly absorbed before the next, until the rice is creamy and tender with a slight bite. You may not need all the broth.",
+      "duration": "18-20 min"
+     }
     ]
-  },
-  {
-    "key": "classic-chicken-vegetable-stir-fry",
-    "title": "Chicken and Vegetable Stir-Fry with Rice",
-    "cuisine": "Chinese",
-    "anchor": "chicken_breast",
-    "serves": 4,
-    "minutes": 35,
-    "difficulty": "Easy",
-    "equipment": "stove",
-    "format": "skillet",
-    "cleanup": 3,
-    "ingredients": [
-      ["rice_long_grain", 1.5, "cup"],
-      ["chicken_breast", 1.25, "lb"],
-      ["soy_sauce", 4, "tbsp"],
-      ["cornstarch", 2, "tbsp"],
-      ["broth_chicken", 0.5, "cup"],
-      ["oyster_sauce", 2, "tbsp"],
-      ["honey", 1, "tbsp"],
-      ["sesame_oil", 1, "tsp"],
-      ["broccoli", 3, "cup"],
-      ["carrot", 2, "count"],
-      ["bell_pepper", 1, "count"],
-      ["mushroom_cremini", 6, "oz"],
-      ["garlic_head", 3, "clove"],
-      ["ginger_fresh", 1, "tbsp"],
-      ["oil_neutral", 3, "tbsp"],
-      ["scallion", 2, "count"]
-    ],
-    "steps": [
-      {"phase": "Prep", "minutes": 15, "actions": [
-        {"verb": "Start", "body": "the rice: rinse {amt:rice_long_grain} of rice and simmer it, covered, in 2¼ cups of salted water over low heat, then let it steam off the heat.", "duration": "18 min"},
-        {"verb": "Slice", "body": "{amt:chicken_breast} of chicken breast thinly across the grain and toss with {amt:soy_sauce:0.25} of soy sauce and {amt:cornstarch:0.5} of cornstarch."},
-        {"verb": "Whisk", "body": "the sauce: {amt:broth_chicken} of chicken broth, the remaining {amt:soy_sauce:0.75} of soy sauce, {amt:oyster_sauce} of oyster sauce, {amt:honey} of honey, {amt:sesame_oil} of sesame oil and the remaining {amt:cornstarch:0.5} of cornstarch."},
-        {"verb": "Cut", "body": "{amt:broccoli} of broccoli into florets, slice {amt:carrot|carrot|carrots} on the diagonal, {amt:bell_pepper|bell pepper|bell peppers} into strips and {amt:mushroom_cremini} of mushrooms. Mince {amt:garlic_head} of garlic, grate {amt:ginger_fresh} of ginger and slice {amt:scallion|scallion|scallions}."}
-      ]},
-      {"phase": "Stir-fry", "minutes": 14, "actions": [
-        {"verb": "Sear", "body": "the chicken in {amt:oil_neutral:0.5} of oil in a wok or large skillet over high heat, in one layer, until browned and it reads 165°F. Move to a plate.", "duration": "5 min"},
-        {"verb": "Stir-fry", "body": "the broccoli and carrots in the remaining {amt:oil_neutral:0.5} of oil for 2 minutes, then add 2 tablespoons of water and cover until the broccoli is bright green.", "duration": "2 min"},
-        {"verb": "Add", "body": "the pepper and mushrooms and stir-fry until crisp-tender, adding the garlic and ginger for the last 30 seconds.", "duration": "3 min"},
-        {"verb": "Return", "body": "the chicken, pour in the sauce (whisk it first) and toss until it bubbles and coats everything, about 1 minute."}
-      ]},
-      {"phase": "Serve", "minutes": 3, "actions": [
-        {"verb": "Serve", "body": "over the rice, topped with the scallions."}
-      ]}
+   },
+   {
+    "phase": "Finish",
+    "minutes": 4,
+    "actions": [
+     {
+      "verb": "Stir in",
+      "body": "off the heat the remaining {amt:butter_unsalted:0.5} of butter, {amt:parmesan} of grated parmesan, the remaining {amt:salt_kosher:0.5} of salt and a final splash of broth so it flows loosely."
+     },
+     {
+      "verb": "Serve",
+      "body": "at once, topped with the reserved mushrooms and {amt:parsley_fresh} of chopped parsley."
+     }
     ]
-  },
-  {
-    "key": "classic-lemon-butter-baked-cod",
-    "title": "Lemon Butter Baked Cod with Green Beans and Rice",
-    "cuisine": "American",
-    "anchor": "cod_fillet",
-    "serves": 4,
-    "minutes": 40,
-    "difficulty": "Easy",
-    "equipment": "oven",
-    "format": "oven",
-    "cleanup": 2,
-    "ingredients": [
-      ["rice_long_grain", 1.25, "cup"],
-      ["green_bean", 1, "lb"],
-      ["olive_oil_evoo", 1, "tbsp"],
-      ["salt_kosher", 1, "tsp"],
-      ["pepper_black", 0.5, "tsp"],
-      ["cod_fillet", 4, "count"],
-      ["butter_unsalted", 4, "tbsp"],
-      ["garlic_head", 3, "clove"],
-      ["lemon", 1, "count"],
-      ["paprika_sweet", 0.5, "tsp"],
-      ["parsley_fresh", 2, "tbsp"]
-    ],
-    "steps": [
-      {"phase": "Prep", "minutes": 10, "actions": [
-        {"verb": "Heat", "body": "the oven to 400°F with a rack in the middle."},
-        {"verb": "Start", "body": "the rice: rinse {amt:rice_long_grain} of rice and simmer it, covered, in 2 cups of salted water over low heat, then let it steam off the heat.", "duration": "18 min"},
-        {"verb": "Toss", "body": "{amt:green_bean} of trimmed green beans with {amt:olive_oil_evoo} of olive oil, {amt:salt_kosher:0.25} of salt and {amt:pepper_black:0.5} of pepper on a rimmed sheet pan."},
-        {"verb": "Melt", "body": "{amt:butter_unsalted} of butter and stir in {amt:garlic_head} of minced garlic, the zest of {amt:lemon|lemon|lemons} and 2 tablespoons of its juice; cut the rest into wedges."}
-      ]},
-      {"phase": "Roast", "minutes": 25, "actions": [
-        {"verb": "Roast", "body": "the green beans on their own first.", "duration": "10 min"},
-        {"verb": "Pat", "body": "{amt:cod_fillet|cod fillet|cod fillets} (about 6 oz each) dry and season with the remaining {amt:salt_kosher:0.75} of salt, {amt:pepper_black:0.5} of pepper and {amt:paprika_sweet} of paprika."},
-        {"verb": "Push", "body": "the beans to the sides, lay the cod in the middle of the pan and spoon the lemon-garlic butter over the fish."},
-        {"verb": "Bake", "body": "until the cod flakes easily and reads 145°F in the thickest part and the beans are tender and blistered.", "duration": "12-15 min"}
-      ]},
-      {"phase": "Serve", "minutes": 5, "actions": [
-        {"verb": "Serve", "body": "the cod over the rice with the green beans, spooning the buttery pan juices on top. Finish with {amt:parsley_fresh} of chopped parsley and the lemon wedges."}
-      ]}
+   }
+  ]
+ },
+ {
+  "key": "classic-pasta-primavera",
+  "title": "Pasta Primavera",
+  "cuisine": "Italian",
+  "anchor": "pasta_short",
+  "serves": 4,
+  "minutes": 35,
+  "difficulty": "Easy",
+  "equipment": "stove",
+  "format": "skillet",
+  "cleanup": 3,
+  "ingredients": [
+   [
+    "pasta_short",
+    1,
+    "lb"
+   ],
+   [
+    "broccoli",
+    2,
+    "cup"
+   ],
+   [
+    "carrot",
+    1,
+    "count"
+   ],
+   [
+    "zucchini",
+    1,
+    "count"
+   ],
+   [
+    "bell_pepper",
+    1,
+    "count"
+   ],
+   [
+    "garlic_head",
+    4,
+    "clove"
+   ],
+   [
+    "tomato_cherry",
+    1.5,
+    "cup"
+   ],
+   [
+    "peas_frozen",
+    0.5,
+    "cup"
+   ],
+   [
+    "olive_oil_evoo",
+    3,
+    "tbsp"
+   ],
+   [
+    "butter_unsalted",
+    2,
+    "tbsp"
+   ],
+   [
+    "chili_flake",
+    0.25,
+    "tsp"
+   ],
+   [
+    "salt_kosher",
+    1,
+    "tsp"
+   ],
+   [
+    "pepper_black",
+    0.5,
+    "tsp"
+   ],
+   [
+    "lemon",
+    1,
+    "count"
+   ],
+   [
+    "parmesan",
+    1,
+    "cup"
+   ],
+   [
+    "basil_fresh",
+    0.25,
+    "cup"
+   ]
+  ],
+  "steps": [
+   {
+    "phase": "Prep",
+    "minutes": 10,
+    "actions": [
+     {
+      "verb": "Cut",
+      "body": "{amt:broccoli} of broccoli into small florets, slice {amt:carrot|carrot|carrots} into thin coins, and cut {amt:zucchini|zucchini|zucchini} and {amt:bell_pepper|bell pepper|bell peppers} into bite-size pieces."
+     },
+     {
+      "verb": "Mince",
+      "body": "{amt:garlic_head} of garlic, halve {amt:tomato_cherry} of cherry tomatoes and zest and juice {amt:lemon|lemon|lemons}."
+     }
     ]
-  },
-  {
-    "key": "classic-honey-mustard-pork-tenderloin",
-    "title": "Honey Mustard Pork Tenderloin with Roasted Potatoes",
-    "cuisine": "American",
-    "anchor": "pork_tenderloin",
-    "serves": 4,
-    "minutes": 60,
-    "difficulty": "Easy",
-    "equipment": "oven",
-    "format": "oven",
-    "cleanup": 3,
-    "ingredients": [
-      ["potato_yukon", 2, "lb"],
-      ["olive_oil_evoo", 3, "tbsp"],
-      ["salt_kosher", 2, "tsp"],
-      ["pepper_black", 0.5, "tsp"],
-      ["garlic_powder", 1, "tsp"],
-      ["rosemary_fresh", 1, "tbsp"],
-      ["pork_tenderloin", 1.5, "lb"],
-      ["mustard_dijon", 3, "tbsp"],
-      ["honey", 3, "tbsp"],
-      ["garlic_head", 2, "clove"],
-      ["thyme_dried", 0.5, "tsp"],
-      ["parsley_fresh", 1, "tbsp"]
-    ],
-    "steps": [
-      {"phase": "Potatoes", "minutes": 25, "actions": [
-        {"verb": "Heat", "body": "the oven to 425°F with a rack in the middle."},
-        {"verb": "Cut", "body": "{amt:potato_yukon} of Yukon gold potatoes into 1-inch chunks and toss on a rimmed sheet pan with {amt:olive_oil_evoo:0.67} of olive oil, {amt:salt_kosher:0.5} of salt, {amt:pepper_black:0.5} of pepper, {amt:garlic_powder} of garlic powder and {amt:rosemary_fresh} of chopped rosemary."},
-        {"verb": "Roast", "body": "the potatoes, spread in one layer, until they start to brown underneath.", "duration": "20 min"}
-      ]},
-      {"phase": "Sear", "minutes": 10, "actions": [
-        {"verb": "Trim", "body": "the silverskin from {amt:pork_tenderloin} of pork tenderloin (1 large or 2 small), pat dry and season with the remaining {amt:salt_kosher:0.5} of salt and {amt:pepper_black:0.5} of pepper."},
-        {"verb": "Whisk", "body": "the glaze: {amt:mustard_dijon} of Dijon mustard, {amt:honey} of honey, {amt:garlic_head} of minced garlic and {amt:thyme_dried} of thyme."},
-        {"verb": "Sear", "body": "the pork in the remaining {amt:olive_oil_evoo:0.33} of oil in a large skillet over medium-high heat, turning, until browned on all sides.", "duration": "6 min"}
-      ]},
-      {"phase": "Roast", "minutes": 20, "actions": [
-        {"verb": "Flip", "body": "the potatoes, push them to the edges and set the pork in the middle of the pan. Brush it with half the glaze."},
-        {"verb": "Roast", "body": "until the pork reads 145°F in the center, brushing with the rest of the glaze halfway through.", "duration": "15-20 min"}
-      ]},
-      {"phase": "Rest", "minutes": 5, "actions": [
-        {"verb": "Rest", "body": "the pork on a board for at least 3 minutes, then slice ½ inch thick.", "duration": "5 min"},
-        {"verb": "Serve", "body": "with the potatoes, spooning any pan juices over the slices and sprinkling with {amt:parsley_fresh} of chopped parsley."}
-      ]}
+   },
+   {
+    "phase": "Pasta",
+    "minutes": 12,
+    "actions": [
+     {
+      "verb": "Boil",
+      "body": "{amt:pasta_short} of penne in well-salted water. For the last 3 minutes, add the broccoli and carrot to the pot. Save 1 cup of the pasta water and drain.",
+      "duration": "11 min"
+     },
+     {
+      "verb": "Meanwhile, sauté",
+      "body": "the zucchini and bell pepper in {amt:olive_oil_evoo} of olive oil in a large skillet over medium-high heat until lightly browned but still crisp.",
+      "duration": "5 min"
+     },
+     {
+      "verb": "Add",
+      "body": "the garlic, {amt:chili_flake} of red pepper flakes, the tomatoes and {amt:peas_frozen} of frozen peas and cook until the tomatoes just start to soften.",
+      "duration": "2 min"
+     }
     ]
-  },
-  {
-    "key": "classic-loaded-baked-potato-soup",
-    "title": "Loaded Baked Potato Soup",
-    "cuisine": "American",
-    "anchor": "potato_russet",
-    "serves": 4,
-    "minutes": 50,
-    "difficulty": "Easy",
-    "equipment": "stove",
-    "format": "pot",
-    "cleanup": 2,
-    "ingredients": [
-      ["bacon", 6, "count"],
-      ["butter_unsalted", 2, "tbsp"],
-      ["onion_yellow", 1, "count"],
-      ["garlic_head", 3, "clove"],
-      ["flour_ap", 0.25, "cup"],
-      ["broth_chicken", 4, "cup"],
-      ["milk_whole", 2, "cup"],
-      ["potato_russet", 2.5, "lb"],
-      ["salt_kosher", 1, "tsp"],
-      ["pepper_black", 0.5, "tsp"],
-      ["sour_cream", 0.5, "cup"],
-      ["cheddar", 1, "cup"],
-      ["scallion", 4, "count"]
-    ],
-    "steps": [
-      {"phase": "Prep", "minutes": 10, "actions": [
-        {"verb": "Peel", "body": "{amt:potato_russet} of russet potatoes and cut them into ¾-inch cubes."},
-        {"verb": "Dice", "body": "{amt:onion_yellow|onion|onions}, mince {amt:garlic_head} of garlic and slice {amt:scallion|scallion|scallions}."}
-      ]},
-      {"phase": "Bacon", "minutes": 8, "actions": [
-        {"verb": "Cook", "body": "{amt:bacon|slice of bacon|slices of bacon}, chopped, in a Dutch oven over medium heat until crisp. Scoop onto paper towels and pour off all but 1 tablespoon of the fat.", "duration": "7 min"}
-      ]},
-      {"phase": "Soup base", "minutes": 8, "actions": [
-        {"verb": "Soften", "body": "the onion in the bacon fat with {amt:butter_unsalted} of butter.", "duration": "5 min"},
-        {"verb": "Stir in", "body": "the garlic, then {amt:flour_ap} of flour, and cook for 1 minute."},
-        {"verb": "Whisk", "body": "in {amt:broth_chicken} of chicken broth a little at a time so no lumps form, then {amt:milk_whole} of whole milk."}
-      ]},
-      {"phase": "Simmer", "minutes": 20, "actions": [
-        {"verb": "Add", "body": "the potatoes, {amt:salt_kosher} of salt and {amt:pepper_black} of pepper and simmer gently, stirring now and then so the bottom doesn't scorch, until the potatoes are completely tender.", "duration": "15-18 min"},
-        {"verb": "Mash", "body": "about half the potatoes right in the pot with a potato masher for a thick, chunky soup."}
-      ]},
-      {"phase": "Finish", "minutes": 4, "actions": [
-        {"verb": "Stir in", "body": "off the heat {amt:sour_cream} of sour cream and {amt:cheddar:0.67} of shredded cheddar until melted. Thin with a splash of milk or broth if needed."},
-        {"verb": "Serve", "body": "loaded up with the bacon, the remaining {amt:cheddar:0.33} of cheddar and the scallions."}
-      ]}
+   },
+   {
+    "phase": "Toss",
+    "minutes": 8,
+    "actions": [
+     {
+      "verb": "Toss",
+      "body": "the pasta, broccoli and carrot into the skillet with {amt:butter_unsalted} of butter, ½ cup of the pasta water, {amt:salt_kosher} of salt and {amt:pepper_black} of pepper."
+     },
+     {
+      "verb": "Stir in",
+      "body": "{amt:parmesan:0.75} of grated parmesan and the lemon zest and juice, adding more pasta water until the pasta is glossy and lightly coated."
+     }
     ]
-  }
+   },
+   {
+    "phase": "Serve",
+    "minutes": 3,
+    "actions": [
+     {
+      "verb": "Serve",
+      "body": "topped with {amt:basil_fresh} of torn basil and the remaining {amt:parmesan:0.25} of parmesan."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "key": "classic-chicken-vegetable-stir-fry",
+  "title": "Chicken and Vegetable Stir-Fry with Rice",
+  "cuisine": "Chinese",
+  "anchor": "chicken_breast",
+  "serves": 4,
+  "minutes": 35,
+  "difficulty": "Easy",
+  "equipment": "stove",
+  "format": "skillet",
+  "cleanup": 3,
+  "ingredients": [
+   [
+    "rice_long_grain",
+    1.5,
+    "cup"
+   ],
+   [
+    "chicken_breast",
+    1.25,
+    "lb"
+   ],
+   [
+    "soy_sauce",
+    4,
+    "tbsp"
+   ],
+   [
+    "cornstarch",
+    2,
+    "tbsp"
+   ],
+   [
+    "broth_chicken",
+    0.5,
+    "cup"
+   ],
+   [
+    "stirfry_sauce_veg",
+    2,
+    "tbsp"
+   ],
+   [
+    "honey",
+    1,
+    "tbsp"
+   ],
+   [
+    "sesame_oil",
+    1,
+    "tsp"
+   ],
+   [
+    "broccoli",
+    3,
+    "cup"
+   ],
+   [
+    "carrot",
+    2,
+    "count"
+   ],
+   [
+    "bell_pepper",
+    1,
+    "count"
+   ],
+   [
+    "mushroom_cremini",
+    6,
+    "oz"
+   ],
+   [
+    "garlic_head",
+    3,
+    "clove"
+   ],
+   [
+    "ginger_fresh",
+    1,
+    "tbsp"
+   ],
+   [
+    "oil_neutral",
+    3,
+    "tbsp"
+   ],
+   [
+    "scallion",
+    2,
+    "count"
+   ]
+  ],
+  "steps": [
+   {
+    "phase": "Prep",
+    "minutes": 15,
+    "actions": [
+     {
+      "verb": "Start",
+      "body": "the rice: rinse {amt:rice_long_grain} of rice and simmer it, covered, in 2¼ cups of salted water over low heat, then let it steam off the heat.",
+      "duration": "18 min"
+     },
+     {
+      "verb": "Slice",
+      "body": "{amt:chicken_breast} of chicken breast thinly across the grain and toss with {amt:soy_sauce:0.25} of soy sauce and {amt:cornstarch:0.5} of cornstarch."
+     },
+     {
+      "verb": "Whisk",
+      "body": "the sauce: {amt:broth_chicken} of chicken broth, the remaining {amt:soy_sauce:0.75} of soy sauce, {amt:stirfry_sauce_veg} of vegetarian stir-fry sauce, {amt:honey} of honey, {amt:sesame_oil} of sesame oil and the remaining {amt:cornstarch:0.5} of cornstarch."
+     },
+     {
+      "verb": "Cut",
+      "body": "{amt:broccoli} of broccoli into florets, slice {amt:carrot|carrot|carrots} on the diagonal, {amt:bell_pepper|bell pepper|bell peppers} into strips and {amt:mushroom_cremini} of mushrooms. Mince {amt:garlic_head} of garlic, grate {amt:ginger_fresh} of ginger and slice {amt:scallion|scallion|scallions}."
+     }
+    ]
+   },
+   {
+    "phase": "Stir-fry",
+    "minutes": 14,
+    "actions": [
+     {
+      "verb": "Sear",
+      "body": "the chicken in {amt:oil_neutral:0.5} of oil in a wok or large skillet over high heat, in one layer, until browned and it reads 165°F. Move to a plate.",
+      "duration": "5 min"
+     },
+     {
+      "verb": "Stir-fry",
+      "body": "the broccoli and carrots in the remaining {amt:oil_neutral:0.5} of oil for 2 minutes, then add 2 tablespoons of water and cover until the broccoli is bright green.",
+      "duration": "2 min"
+     },
+     {
+      "verb": "Add",
+      "body": "the pepper and mushrooms and stir-fry until crisp-tender, adding the garlic and ginger for the last 30 seconds.",
+      "duration": "3 min"
+     },
+     {
+      "verb": "Return",
+      "body": "the chicken, pour in the sauce (whisk it first) and toss until it bubbles and coats everything, about 1 minute."
+     }
+    ]
+   },
+   {
+    "phase": "Serve",
+    "minutes": 3,
+    "actions": [
+     {
+      "verb": "Serve",
+      "body": "over the rice, topped with the scallions."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "key": "classic-honey-mustard-pork-tenderloin",
+  "title": "Honey Mustard Pork Tenderloin with Roasted Potatoes",
+  "cuisine": "American",
+  "anchor": "pork_tenderloin",
+  "serves": 4,
+  "minutes": 60,
+  "difficulty": "Easy",
+  "equipment": "oven",
+  "format": "oven",
+  "cleanup": 3,
+  "ingredients": [
+   [
+    "potato_yukon",
+    2,
+    "lb"
+   ],
+   [
+    "olive_oil_evoo",
+    3,
+    "tbsp"
+   ],
+   [
+    "salt_kosher",
+    2,
+    "tsp"
+   ],
+   [
+    "pepper_black",
+    0.5,
+    "tsp"
+   ],
+   [
+    "garlic_powder",
+    1,
+    "tsp"
+   ],
+   [
+    "rosemary_fresh",
+    1,
+    "tbsp"
+   ],
+   [
+    "pork_tenderloin",
+    1.5,
+    "lb"
+   ],
+   [
+    "mustard_dijon",
+    3,
+    "tbsp"
+   ],
+   [
+    "honey",
+    3,
+    "tbsp"
+   ],
+   [
+    "garlic_head",
+    2,
+    "clove"
+   ],
+   [
+    "thyme_dried",
+    0.5,
+    "tsp"
+   ],
+   [
+    "parsley_fresh",
+    1,
+    "tbsp"
+   ]
+  ],
+  "steps": [
+   {
+    "phase": "Potatoes",
+    "minutes": 25,
+    "actions": [
+     {
+      "verb": "Heat",
+      "body": "the oven to 425°F with a rack in the middle."
+     },
+     {
+      "verb": "Cut",
+      "body": "{amt:potato_yukon} of Yukon gold potatoes into 1-inch chunks and toss on a rimmed sheet pan with {amt:olive_oil_evoo:0.67} of olive oil, {amt:salt_kosher:0.5} of salt, {amt:pepper_black:0.5} of pepper, {amt:garlic_powder} of garlic powder and {amt:rosemary_fresh} of chopped rosemary."
+     },
+     {
+      "verb": "Roast",
+      "body": "the potatoes, spread in one layer, until they start to brown underneath.",
+      "duration": "20 min"
+     }
+    ]
+   },
+   {
+    "phase": "Sear",
+    "minutes": 10,
+    "actions": [
+     {
+      "verb": "Trim",
+      "body": "the silverskin from {amt:pork_tenderloin} of pork tenderloin (1 large or 2 small), pat dry and season with the remaining {amt:salt_kosher:0.5} of salt and {amt:pepper_black:0.5} of pepper."
+     },
+     {
+      "verb": "Whisk",
+      "body": "the glaze: {amt:mustard_dijon} of Dijon mustard, {amt:honey} of honey, {amt:garlic_head} of minced garlic and {amt:thyme_dried} of thyme."
+     },
+     {
+      "verb": "Sear",
+      "body": "the pork in the remaining {amt:olive_oil_evoo:0.33} of oil in a large skillet over medium-high heat, turning, until browned on all sides.",
+      "duration": "6 min"
+     }
+    ]
+   },
+   {
+    "phase": "Roast",
+    "minutes": 20,
+    "actions": [
+     {
+      "verb": "Flip",
+      "body": "the potatoes, push them to the edges and set the pork in the middle of the pan. Brush it with half the glaze."
+     },
+     {
+      "verb": "Roast",
+      "body": "until the pork reads 145°F in the center, brushing with the rest of the glaze halfway through.",
+      "duration": "15-20 min"
+     }
+    ]
+   },
+   {
+    "phase": "Rest",
+    "minutes": 5,
+    "actions": [
+     {
+      "verb": "Rest",
+      "body": "the pork on a board for at least 3 minutes, then slice ½ inch thick.",
+      "duration": "5 min"
+     },
+     {
+      "verb": "Serve",
+      "body": "with the potatoes, spooning any pan juices over the slices and sprinkling with {amt:parsley_fresh} of chopped parsley."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "key": "classic-loaded-baked-potato-soup",
+  "title": "Loaded Baked Potato Soup",
+  "cuisine": "American",
+  "anchor": "potato_russet",
+  "serves": 4,
+  "minutes": 50,
+  "difficulty": "Easy",
+  "equipment": "stove",
+  "format": "pot",
+  "cleanup": 2,
+  "ingredients": [
+   [
+    "bacon",
+    6,
+    "count"
+   ],
+   [
+    "butter_unsalted",
+    2,
+    "tbsp"
+   ],
+   [
+    "onion_yellow",
+    1,
+    "count"
+   ],
+   [
+    "garlic_head",
+    3,
+    "clove"
+   ],
+   [
+    "flour_ap",
+    0.25,
+    "cup"
+   ],
+   [
+    "broth_chicken",
+    4,
+    "cup"
+   ],
+   [
+    "milk_whole",
+    2,
+    "cup"
+   ],
+   [
+    "potato_russet",
+    2.5,
+    "lb"
+   ],
+   [
+    "salt_kosher",
+    1,
+    "tsp"
+   ],
+   [
+    "pepper_black",
+    0.5,
+    "tsp"
+   ],
+   [
+    "sour_cream",
+    0.5,
+    "cup"
+   ],
+   [
+    "cheddar",
+    1,
+    "cup"
+   ],
+   [
+    "scallion",
+    4,
+    "count"
+   ]
+  ],
+  "steps": [
+   {
+    "phase": "Prep",
+    "minutes": 10,
+    "actions": [
+     {
+      "verb": "Peel",
+      "body": "{amt:potato_russet} of russet potatoes and cut them into ¾-inch cubes."
+     },
+     {
+      "verb": "Dice",
+      "body": "{amt:onion_yellow|onion|onions}, mince {amt:garlic_head} of garlic and slice {amt:scallion|scallion|scallions}."
+     }
+    ]
+   },
+   {
+    "phase": "Bacon",
+    "minutes": 8,
+    "actions": [
+     {
+      "verb": "Cook",
+      "body": "{amt:bacon|slice of bacon|slices of bacon}, chopped, in a Dutch oven over medium heat until crisp. Scoop onto paper towels and pour off all but 1 tablespoon of the fat.",
+      "duration": "7 min"
+     }
+    ]
+   },
+   {
+    "phase": "Soup base",
+    "minutes": 8,
+    "actions": [
+     {
+      "verb": "Soften",
+      "body": "the onion in the bacon fat with {amt:butter_unsalted} of butter.",
+      "duration": "5 min"
+     },
+     {
+      "verb": "Stir in",
+      "body": "the garlic, then {amt:flour_ap} of flour, and cook for 1 minute."
+     },
+     {
+      "verb": "Whisk",
+      "body": "in {amt:broth_chicken} of chicken broth a little at a time so no lumps form, then {amt:milk_whole} of whole milk."
+     }
+    ]
+   },
+   {
+    "phase": "Simmer",
+    "minutes": 20,
+    "actions": [
+     {
+      "verb": "Add",
+      "body": "the potatoes, {amt:salt_kosher} of salt and {amt:pepper_black} of pepper and simmer gently, stirring now and then so the bottom doesn't scorch, until the potatoes are completely tender.",
+      "duration": "15-18 min"
+     },
+     {
+      "verb": "Mash",
+      "body": "about half the potatoes right in the pot with a potato masher for a thick, chunky soup."
+     }
+    ]
+   },
+   {
+    "phase": "Finish",
+    "minutes": 4,
+    "actions": [
+     {
+      "verb": "Stir in",
+      "body": "off the heat {amt:sour_cream} of sour cream and {amt:cheddar:0.67} of shredded cheddar until melted. Thin with a splash of milk or broth if needed."
+     },
+     {
+      "verb": "Serve",
+      "body": "loaded up with the bacon, the remaining {amt:cheddar:0.33} of cheddar and the scallions."
+     }
+    ]
+   }
+  ]
+ }
 ]

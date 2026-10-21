@@ -17,20 +17,20 @@ Future<void> main() async {
   runApp(
     ChangeNotifierProvider(
       create: (_) => AppState(persistence)..init(),
-      child: const TapCookApp(),
+      child: const OkulaCookerApp(),
     ),
   );
 }
 
-class TapCookApp extends StatelessWidget {
-  const TapCookApp({super.key});
+class OkulaCookerApp extends StatelessWidget {
+  const OkulaCookerApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Consumer<AppState>(
       builder: (context, state, _) {
         return MaterialApp(
-          title: 'TapCook',
+          title: 'OkulaCooker',
           debugShowCheckedModeBanner: false,
           theme: AppThemes.of(state.settings.theme),
           home: state.onboarded ? const HomeShell() : const OnboardingScreen(),

@@ -1,6 +1,6 @@
 /// A US grocery chain with a chain-level price multiplier applied to national
 /// reference prices. Multipliers are rough positioning estimates, not real
-/// retail pricing, and TapCook is not affiliated with any retailer.
+/// retail pricing, and OkulaCooker is not affiliated with any retailer.
 class Store {
   final String id;
   final String name;

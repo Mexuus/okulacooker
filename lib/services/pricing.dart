@@ -78,7 +78,7 @@ class PriceQuote {
 /// price = national reference price (recipe database, per pack)
 ///       × regional ratio (BLS Average Price Data, or USDA food-group ratios)
 ///       × metro-area adjustment (USDA ERS F-MAP, 10 large metros)
-///       × chain price positioning (TapCook estimate)
+///       × chain price positioning (OkulaCooker estimate)
 ///
 /// These are estimates, not live shelf prices from any retailer.
 class PricingEngine {

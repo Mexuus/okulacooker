@@ -1,6 +1,6 @@
-# Working on TapCook
+# Working on OkulaCooker
 
-TapCook is a Flutter app (iOS + web) that plans a week of dinners and prices the
+OkulaCooker is a Flutter app (iOS + web) that plans a week of dinners and prices the
 grocery list at a real nearby store. Everything runs on-device: no backend, no
 accounts, no subscriptions. `main` is the source of truth — this repo is the
 canonical copy of the project.

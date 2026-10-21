@@ -1,7 +1,7 @@
 """Builds assets/data/recipe_db.json, the recipe database the app bundles.
 
 Inputs (all under tool/sources/):
-  mealplan.json          the original ReelChef/TapCook database (recipes + ingredients)
+  mealplan.json          the original ReelChef/OkulaCooker database (recipes + ingredients)
   curation.json          editorial decisions: recipes to drop, titles/servings to fix
   extra_ingredients.json ingredients added after the original app
   recipes/*.json         new recipes in the authoring format (see recipes/README.md)
@@ -47,7 +47,18 @@ BUNCH_GRAMS = {"cilantro": 60, "parsley_fresh": 60, "kale": 280, "scallion": 100
 # "count" means a whole head for garlic (g_per_count in the source is per clove).
 COUNT_GRAMS = {"garlic_head": 30}
 
-SEAFOOD = {"salmon_fillet", "shrimp_frozen", "tilapia_fillet", "cod_fillet"}
+# This app has no seafood in it. Fish and shellfish dinners are dropped in
+# curation.json, the ingredients below are deleted from the database once
+# nothing is left using them, and the three fish-derived condiments are swapped
+# for the fish-free bottles sold beside them so the meat and poultry dinners
+# that only needed a splash of one survive.
+SEAFOOD = {"salmon_fillet", "shrimp_frozen", "tilapia_fillet", "cod_fillet", "tuna_canned",
+           "fish_sauce", "oyster_sauce", "worcestershire"}
+# old id -> (replacement id, wording in the steps to rewrite)
+SUBSTITUTE = {
+    "fish_sauce": ("soy_sauce", "fish sauce", "soy sauce"),
+    "worcestershire": ("worcestershire_vegan", None, None),
+}
 AISLE_BY_CATEGORY = {
     "produce": "produce", "herb": "produce", "canned": "canned", "pantry": "pantry",
     "spice": "spices", "grain": "grains", "dairy": "dairy", "bakery": "bakery",
@@ -68,9 +79,6 @@ FLAGS = {
                 "chicken_whole", "chicken_drumstick", "chicken_wings", "ground_turkey",
                 "broth_chicken", "cream_of_chicken_canned"},
     "lamb": {"lamb_ground"},
-    "fish": {"salmon_fillet", "tilapia_fillet", "cod_fillet", "tuna_canned", "fish_sauce",
-             "worcestershire"},  # worcestershire contains anchovy
-    "shellfish": {"shrimp_frozen", "oyster_sauce"},
     "dairy": {"butter_unsalted", "cheddar", "cream_cheese", "cream_heavy", "feta", "goat_cheese",
               "milk_whole", "mozzarella_low_moisture", "parmesan", "ricotta", "sour_cream",
               "yogurt_greek", "alfredo_sauce", "cream_of_chicken_canned",
@@ -79,7 +87,7 @@ FLAGS = {
     "gluten": {"pasta_long", "pasta_short", "pasta_lasagna", "pasta_orzo", "noodle_egg",
                "tortellini", "gnocchi", "couscous", "flour_ap", "breadcrumb_panko",
                "bread_crusty", "bread_sandwich", "bun_burger", "pie_crust", "pita_bread",
-               "tortilla_flour", "soy_sauce", "hoisin_sauce", "oyster_sauce",
+               "tortilla_flour", "soy_sauce", "hoisin_sauce", "stirfry_sauce_veg",
                "cream_of_chicken_canned", "cream_of_mushroom_canned", "gochujang",
                "miso_white", "au_jus_mix", "onion_soup_mix"},
     "nuts": {"peanut_butter", "peanut_raw", "cashew_raw", "pesto"},
@@ -166,8 +174,6 @@ def unit_grams(ing):
 def aisle(ing):
     cid, cat = ing["canonical_id"], ing["category"]
     if cat == "protein":
-        if cid in SEAFOOD:
-            return "seafood"
         if cid == "egg_large":
             return "dairy"
         if cid in ("tofu_firm", "tempeh"):
@@ -359,6 +365,36 @@ def add_light_side(recipe, by_id):
     return side
 
 
+def swap_condiments(recipes, by_id):
+    """Replaces the fish-derived condiments in the source data with their
+    fish-free equivalents, in the ingredient lines and in the wording of the
+    steps. Returns how many lines were swapped."""
+    swapped = 0
+    for r in recipes:
+        listed = {ri["canonical_id"] for ri in r["ingredients"]}
+        for ri in r["ingredients"]:
+            sub = SUBSTITUTE.get(ri["canonical_id"])
+            if not sub:
+                continue
+            new, old_text, new_text = sub
+            if new not in by_id:
+                sys.exit(f"substitute ingredient '{new}' is not in the database")
+            if new in listed:
+                sys.exit(f"recipe {r['id']} lists both {ri['canonical_id']} and {new}; "
+                         f"the amounts would need merging by hand")
+            ri["canonical_id"] = new
+            swapped += 1
+            if not old_text:
+                continue
+            pattern = re.compile(old_text, re.I)
+            for ph in r["directions"]:
+                for a in ph["actions"]:
+                    a["body"] = pattern.sub(new_text, a["body"])
+                    for am in a.get("amounts", []):
+                        am["b"] = pattern.sub(new_text, am["b"])
+    return swapped
+
+
 def apply_curation(recipes, curation, by_id):
     drop = {int(k): v for k, v in curation.get("drop", {}).items()}
     patch = {int(k): v for k, v in curation.get("patch", {}).items()}
@@ -400,6 +436,8 @@ def convert_new(src, rid, by_id, ctx):
     lines, ingredients = {}, []
     for entry in src["ingredients"]:
         cid, amount, unit = entry
+        if cid in SEAFOOD:
+            raise ValueError(f"{ctx}: this app has no seafood in it — {cid} can't be used")
         if cid not in by_id:
             raise ValueError(f"{ctx}: unknown ingredient {cid}")
         if unit not in by_id[cid]["unit_grams"]:
@@ -564,6 +602,7 @@ def build(src_path, check_paths=None):
 
     original = len(db["recipes"])
     recipes, dropped = apply_curation(db["recipes"], read_json(CURATION, {}), by_id)
+    swap_condiments(recipes, by_id)
     tidy_amount_text(recipes)
     sides = {"rice": 0, "bread": 0}
     for r in recipes:
@@ -588,6 +627,10 @@ def build(src_path, check_paths=None):
     all_recipes = recipes + new
     errs, warns = check(all_recipes, by_id, new)
     errors += errs
+    left = sorted({ri["canonical_id"] for r in all_recipes for ri in r["ingredients"]} & SEAFOOD)
+    if left:
+        sys.exit(f"recipes still use seafood ingredients: {left}")
+    db["ingredients"] = [i for i in db["ingredients"] if i["canonical_id"] not in SEAFOOD]
     photos = attach_photos(all_recipes) if not check_paths else 0
     return db, all_recipes, new, ids, errors, warns, dict(
         original=original, dropped=dropped, sides=sides, photos=photos)

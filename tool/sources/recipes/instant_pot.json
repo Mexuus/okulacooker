@@ -68,7 +68,7 @@
       ["tomato_paste", 2, "tbsp"],
       ["wine_red_dry", 0.5, "cup"],
       ["broth_beef", 2.5, "cup"],
-      ["worcestershire", 1, "tbsp"],
+      ["worcestershire_vegan", 1, "tbsp"],
       ["thyme_dried", 1, "tsp"],
       ["bay_leaf", 2, "count"],
       ["potato_yukon", 1.5, "lb"],
@@ -87,7 +87,7 @@
         {"verb": "Heat", "body": "{amt:oil_neutral:0.5} of oil on Sauté (High) until shimmering. Brown half the beef in a single layer without moving it much, about 4 minutes per batch, then set it aside. Repeat with the rest of the oil and beef.", "duration": "8 min"},
         {"verb": "Cook", "body": "the onion and celery in the drippings until softened, about 3 minutes, then stir in the garlic and {amt:tomato_paste} of tomato paste for 1 minute.", "duration": "3 min"},
         {"verb": "Deglaze", "body": "with {amt:wine_red_dry} of red wine, scraping every browned bit off the bottom so the pot doesn't throw a burn warning, and let it bubble for 1 minute."},
-        {"verb": "Pour in", "body": "{amt:broth_beef} of beef broth and {amt:worcestershire} of Worcestershire sauce."}
+        {"verb": "Pour in", "body": "{amt:broth_beef} of beef broth and {amt:worcestershire_vegan} of Worcestershire sauce."}
       ]},
       {"phase": "Pressure cook", "minutes": 55, "actions": [
         {"verb": "Add", "body": "the beef with its juices, {amt:thyme_dried} of dried thyme, {amt:bay_leaf|bay leaf|bay leaves} and the remaining salt. Pile the potatoes and carrots on top without stirring."},
@@ -171,7 +171,7 @@
       ["tomato_paste", 1, "tbsp"],
       ["wine_red_dry", 0.5, "cup"],
       ["broth_beef", 1.5, "cup"],
-      ["worcestershire", 1, "tbsp"],
+      ["worcestershire_vegan", 1, "tbsp"],
       ["thyme_dried", 1, "tsp"],
       ["bay_leaf", 2, "count"],
       ["potato_yukon", 2, "lb"],
@@ -187,7 +187,7 @@
       {"phase": "Sauté", "minutes": 15, "actions": [
         {"verb": "Sear", "body": "the beef in {amt:oil_neutral} of oil on Sauté (High), two pieces at a time, until deeply browned, about 4 minutes per side. Set aside.", "duration": "8 min"},
         {"verb": "Cook", "body": "the onion in the drippings for 3 minutes, then stir in the garlic and {amt:tomato_paste} of tomato paste for 1 minute.", "duration": "3 min"},
-        {"verb": "Deglaze", "body": "with {amt:wine_red_dry} of red wine, scraping up all the browned bits so the pot doesn't throw a burn warning. Add {amt:broth_beef} of beef broth and {amt:worcestershire} of Worcestershire sauce."}
+        {"verb": "Deglaze", "body": "with {amt:wine_red_dry} of red wine, scraping up all the browned bits so the pot doesn't throw a burn warning. Add {amt:broth_beef} of beef broth and {amt:worcestershire_vegan} of Worcestershire sauce."}
       ]},
       {"phase": "Pressure cook", "minutes": 90, "actions": [
         {"verb": "Return", "body": "the beef and its juices to the pot with {amt:thyme_dried} of dried thyme and {amt:bay_leaf|bay leaf|bay leaves}."},
@@ -721,7 +721,7 @@
       ["broth_beef", 0.75, "cup"],
       ["soy_sauce", 0.33, "cup"],
       ["sugar_brown", 0.25, "cup"],
-      ["oyster_sauce", 2, "tbsp"],
+      ["stirfry_sauce_veg", 2, "tbsp"],
       ["cornstarch", 3, "tbsp"],
       ["broccoli", 1, "lb"],
       ["sesame_oil", 1, "tsp"],
@@ -736,7 +736,7 @@
       {"phase": "Sauté", "minutes": 10, "actions": [
         {"verb": "Brown", "body": "the beef in {amt:oil_neutral} of oil on Sauté (High) in two batches, about 2 minutes per batch, and set it aside.", "duration": "4 min"},
         {"verb": "Stir in", "body": "the garlic and ginger for 30 seconds."},
-        {"verb": "Deglaze", "body": "with {amt:broth_beef} of beef broth, scraping the bottom clean, then stir in {amt:soy_sauce} of low-sodium soy sauce, {amt:sugar_brown} of brown sugar and {amt:oyster_sauce} of oyster sauce."}
+        {"verb": "Deglaze", "body": "with {amt:broth_beef} of beef broth, scraping the bottom clean, then stir in {amt:soy_sauce} of low-sodium soy sauce, {amt:sugar_brown} of brown sugar and {amt:stirfry_sauce_veg} of vegetarian stir-fry sauce."}
       ]},
       {"phase": "Pressure cook", "minutes": 32, "actions": [
         {"verb": "Return", "body": "the beef and its juices to the pot. Lock the lid, set the valve to Sealing and cook on High Pressure for 12 minutes.", "duration": "12 min"},
