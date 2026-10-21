@@ -270,6 +270,39 @@ class SettingsScreen extends StatelessWidget {
                   ],
                 ),
               ),
+              _section(context, 'Exports'),
+              Card(
+                child: Column(
+                  children: [
+                    ListTile(
+                      leading: const Icon(Icons.webhook_outlined),
+                      title: const Text('Grocery list webhook'),
+                      subtitle: Text(
+                        s.exportWebhookUrl.isEmpty
+                            ? 'Not set. Point this at a Home Assistant, n8n or '
+                                'Node-RED webhook to push the list onto an Alexa '
+                                'shopping list.'
+                            : s.exportWebhookUrl,
+                      ),
+                      isThreeLine: s.exportWebhookUrl.isEmpty,
+                      trailing: const Icon(Icons.chevron_right),
+                      onTap: () => _editWebhook(context, state),
+                    ),
+                    ListTile(
+                      leading: const Icon(Icons.checklist_rtl),
+                      title: const Text('Apple Shortcut name'),
+                      subtitle: Text(
+                        s.appleShortcutName.isEmpty
+                            ? 'Not set'
+                            : '“${s.appleShortcutName}” — create a Shortcut with '
+                                'this name that adds its text input to Reminders.',
+                      ),
+                      trailing: const Icon(Icons.chevron_right),
+                      onTap: () => _editShortcutName(context, state),
+                    ),
+                  ],
+                ),
+              ),
               _section(context, 'About'),
               Card(
                 child: ListTile(
@@ -361,6 +394,80 @@ class SettingsScreen extends StatelessWidget {
                 .titleMedium
                 ?.copyWith(fontWeight: FontWeight.w800)),
       );
+
+  Future<void> _editWebhook(BuildContext context, AppState state) async {
+    final value = await _promptText(
+      context,
+      title: 'Grocery list webhook',
+      help: 'OkulaCooker POSTs the list as JSON to this address. Use a Home '
+          'Assistant, n8n or Node-RED webhook on your own network — that is '
+          'how the list reaches an Alexa shopping list, since Amazon has no '
+          'public API a web app can call. Leave it blank to hide the button.',
+      label: 'https://…',
+      initial: state.settings.exportWebhookUrl,
+      keyboardType: TextInputType.url,
+    );
+    if (value == null) return;
+    await state.updateSettings(
+        state.settings.copyWith(exportWebhookUrl: value.trim()));
+  }
+
+  Future<void> _editShortcutName(BuildContext context, AppState state) async {
+    final value = await _promptText(
+      context,
+      title: 'Apple Shortcut name',
+      help: 'On an iPhone, iPad or Mac, create a Shortcut that takes text '
+          'input and adds it to Reminders, then type its exact name here. '
+          '“Add to Apple Reminders” in the export sheet will run it.',
+      label: 'Shortcut name',
+      initial: state.settings.appleShortcutName,
+    );
+    if (value == null) return;
+    await state.updateSettings(
+        state.settings.copyWith(appleShortcutName: value.trim()));
+  }
+
+  Future<String?> _promptText(
+    BuildContext context, {
+    required String title,
+    required String help,
+    required String label,
+    required String initial,
+    TextInputType? keyboardType,
+  }) {
+    final controller = TextEditingController(text: initial);
+    return showDialog<String>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text(title),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(help, style: Theme.of(ctx).textTheme.bodySmall),
+            const SizedBox(height: 12),
+            TextField(
+              controller: controller,
+              autofocus: true,
+              keyboardType: keyboardType,
+              decoration: InputDecoration(
+                labelText: label,
+                border: const OutlineInputBorder(),
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+              onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
+          FilledButton(
+            onPressed: () => Navigator.pop(ctx, controller.text),
+            child: const Text('Save'),
+          ),
+        ],
+      ),
+    );
+  }
 
   void _confirmResetHistory(BuildContext context, AppState state) {
     showDialog<void>(

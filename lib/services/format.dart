@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import '../data/recipe_db.dart';
+import '../models/grocery.dart';
 import '../models/ingredient.dart';
 import '../models/recipe.dart';
 
@@ -231,3 +232,13 @@ String describePack(PackOption p) {
       return '${formatQty(p.size)} ${p.unit}';
   }
 }
+
+/// The packs to put in the trolley for one grocery line:
+/// "1 × 3.75 lb (family)", "2 × 12-count", "3".
+String buyText(GroceryLine line) => line.buy.map((p) {
+      final label = p.pack.label.isEmpty ? '' : ' (${p.pack.label})';
+      return p.pack.unit == 'count' && p.pack.size == 1
+          ? '${p.count}'
+          : '${p.count} × ${describePack(p.pack)}$label';
+    }).join(' + ');
+

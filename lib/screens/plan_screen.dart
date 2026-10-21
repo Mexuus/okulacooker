@@ -3,9 +3,11 @@ import 'package:provider/provider.dart';
 
 import '../data/recipe_db.dart';
 import '../models/plan.dart';
+import '../services/export_docs.dart';
 import '../services/grocery_builder.dart';
 import '../state/app_state.dart';
 import '../widgets/budget_bar.dart';
+import '../widgets/export_sheet.dart';
 import '../widgets/money_text.dart';
 import '../widgets/recipe_image.dart';
 import '../widgets/slot_picker.dart';
@@ -37,6 +39,16 @@ class PlanScreen extends StatelessWidget {
           appBar: AppBar(
             title: const Text('This week'),
             actions: [
+              IconButton(
+                tooltip: 'Export or print this week',
+                icon: const Icon(Icons.ios_share),
+                onPressed: plan == null
+                    ? null
+                    : () {
+                        final doc = planExportDoc(state);
+                        if (doc != null) showExportSheet(context, state, doc);
+                      },
+              ),
               IconButton(
                 tooltip: 'Browse recipes',
                 onPressed: () => Navigator.of(context)

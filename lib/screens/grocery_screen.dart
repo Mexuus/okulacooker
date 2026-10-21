@@ -3,10 +3,12 @@ import 'package:provider/provider.dart';
 
 import '../models/grocery.dart';
 import '../models/ingredient.dart';
+import '../services/export_docs.dart';
 import '../services/format.dart';
 import '../services/price_book.dart';
 import '../state/app_state.dart';
 import '../widgets/budget_bar.dart';
+import '../widgets/export_sheet.dart';
 import '../widgets/ingredient_icon.dart';
 import '../widgets/money_text.dart';
 import '../widgets/price_breakdown.dart';
@@ -27,7 +29,21 @@ class GroceryScreen extends StatelessWidget {
         final storeName = loc != null && loc.storeId == store.id ? loc.label : store.name;
 
         return Scaffold(
-          appBar: AppBar(title: const Text('Grocery list')),
+          appBar: AppBar(
+            title: const Text('Grocery list'),
+            actions: [
+              IconButton(
+                tooltip: 'Export or print',
+                icon: const Icon(Icons.ios_share),
+                onPressed: grocery == null
+                    ? null
+                    : () {
+                        final doc = groceryExportDoc(state);
+                        if (doc != null) showExportSheet(context, state, doc);
+                      },
+              ),
+            ],
+          ),
           body: grocery == null
               ? const Center(child: Text('No plan yet.'))
               : ListView(
@@ -84,6 +100,20 @@ class GroceryScreen extends StatelessWidget {
                                 onPressed: () => showStoreComparison(context, state),
                                 icon: const Icon(Icons.compare_arrows),
                                 label: const Text('Compare nearby stores'),
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            SizedBox(
+                              width: double.infinity,
+                              child: FilledButton.tonalIcon(
+                                onPressed: () {
+                                  final doc = groceryExportDoc(state);
+                                  if (doc != null) {
+                                    showExportSheet(context, state, doc);
+                                  }
+                                },
+                                icon: const Icon(Icons.ios_share),
+                                label: const Text('Export, print or share'),
                               ),
                             ),
                           ],
@@ -180,14 +210,6 @@ class GroceryScreen extends StatelessWidget {
     return widgets;
   }
 }
-
-/// "1 × 3.75 lb (family)", "2 × 12-count", "3 each".
-String buyText(GroceryLine line) => line.buy.map((p) {
-      final label = p.pack.label.isEmpty ? '' : ' (${p.pack.label})';
-      return p.pack.unit == 'count' && p.pack.size == 1
-          ? '${p.count}'
-          : '${p.count} × ${describePack(p.pack)}$label';
-    }).join(' + ');
 
 class _GroceryTile extends StatelessWidget {
   final GroceryLine line;

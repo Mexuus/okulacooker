@@ -31,9 +31,83 @@ iOS builds need macOS: use the CI workflows below, or a Mac with Xcode
 | Price estimates | `lib/services/pricing.dart`, `price_book.dart` | Per item: the database's national pack price × regional ratio (BLS average prices, or USDA food-group ratios) × USDA metro-area adjustment (10 large metros) × chain price level. Priced at the **specific store location** you pick. Estimates, not live shelf prices; tap any grocery item to see the breakdown. |
 | Location | `lib/services/location_service.dart` | Device GPS via `geolocator`, reverse-geocoded **offline** to a ZIP using bundled U.S. Census ZCTA data (`assets/data/zcta.csv`). |
 | Nearby stores | `lib/services/store_locator.dart`, `store_directory.dart` | Offline directory of ~24k US store locations (`assets/data/stores.csv`). Falls back to a live OpenStreetMap (Overpass) query only when nothing is found nearby. |
+| Export & print | `lib/services/export_formats.dart`, `export_service.dart`, `export_io_*.dart` | The grocery list, the week's dinners and any recipe can be printed, copied, shared to the OS share sheet, downloaded as CSV, emailed, handed to an Apple Shortcut, or POSTed to a webhook. See [Sending the list somewhere else](#sending-the-list-somewhere-else). |
 
 Privacy: GPS is used once to find the ZIP and is never stored. The optional
 online store lookup sends only the ZIP's center point.
+
+## Sending the list somewhere else
+
+Every export is offline and needs no account. Open the grocery list and tap
+**Export, print or share** (the plan and recipe screens have the same button in
+their app bar).
+
+Three switches decide what goes out. Turning **Group by aisle** and **Include
+prices** off gives one plain item per line, which is what list apps and voice
+assistants want.
+
+| Destination | What happens |
+|---|---|
+| Print | Builds a tick-box HTML list and opens the browser's print dialog. On the web this uses an offscreen iframe rather than a PDF, so it is not blocked by popup or gesture rules. |
+| Copy as text | Plain text on the clipboard — paste into the Alexa app, AnyList, Notes, anything. |
+| Share… | The OS share sheet, so on an iPhone the list can go straight to Reminders, Notes or Messages. Desktop browsers mostly have no share sheet; the button is disabled there and says so. |
+| Add to Apple Reminders | Runs an Apple Shortcut by name (see below). |
+| Download CSV | A spreadsheet of aisle, item, amount, packs and price. |
+| Email it | Opens the mail app with the list in the body. |
+| Send to webhook | POSTs the list as JSON to your own automation. |
+
+### Apple Reminders on an iPhone
+
+Amazon and Apple both lock their list APIs to first-party apps, so the route in
+is a Shortcut you own:
+
+1. In the Shortcuts app, make a new shortcut that **Receives text input**.
+2. Add *Split Text* (by New Lines), then *Repeat with Each* → *Add New Reminder*
+   with the repeat item as the title.
+3. Name it exactly what Settings → Exports → **Apple Shortcut name** says
+   (default `Add to Reminders`).
+
+Then "Add to Apple Reminders" in the export sheet fills your list in one tap.
+
+### Alexa, via your own automation
+
+There is no public Amazon API a web app can call to write to an Alexa shopping
+list — it needs a published skill with account linking. The practical route is
+the webhook, handed to something already on your network:
+
+1. Create a webhook in Home Assistant (`automation` → *Webhook* trigger), n8n or
+   Node-RED.
+2. Paste its URL into Settings → Exports → **Grocery list webhook**.
+3. Have the automation read `itemNames` (a bare array of strings) and add each
+   one to a list. In Home Assistant that is `todo.add_item`, or
+   `alexa_media_player` for Alexa's own list.
+
+The webhook must allow cross-origin POSTs from wherever OkulaCooker is hosted.
+The payload looks like this:
+
+```json
+{
+  "app": "OkulaCooker",
+  "schema": 1,
+  "generatedAt": "2026-10-21T10:40:00.000Z",
+  "weekStart": "2026-10-19",
+  "store": { "name": "Kroger", "area": "Midwest region" },
+  "currency": "USD",
+  "total": 100.04,
+  "itemNames": ["Carrots", "Cilantro", "Garlic"],
+  "items": [
+    {
+      "id": "carrot", "name": "Carrots", "aisle": "Produce",
+      "need": "½ lb", "needGrams": 244, "buy": "1 × 2 lb",
+      "packs": 1, "estCost": 2.54, "inPantry": false
+    }
+  ],
+  "laterItems": [],
+  "meals": [{ "night": "Mon", "title": "Red Lentil Dal", "servings": 4 }],
+  "text": "the same list as plain text"
+}
+```
+
 
 ## Data refresh
 

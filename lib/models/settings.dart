@@ -66,6 +66,19 @@ class UserSettings {
   /// Skip recipes with chiles, hot sauce and other heat.
   bool mildOnly;
 
+  /// Where "Send to webhook" posts the grocery list. Points at the user's own
+  /// automation (n8n, Home Assistant, Node-RED …), which is how the list can
+  /// reach an Alexa shopping list.
+  String exportWebhookUrl;
+
+  /// Name of the Apple Shortcut that "Add to Reminders" runs.
+  String appleShortcutName;
+
+  /// Last export layout the user chose, reused as the default next time.
+  bool exportGroupByAisle;
+  bool exportIncludePrices;
+  bool exportIncludeOwned;
+
   UserSettings({
     this.zip = '',
     this.storeId = 'kroger',
@@ -86,6 +99,11 @@ class UserSettings {
     this.maxMinutes = 60,
     this.easyOnly = false,
     this.mildOnly = false,
+    this.exportWebhookUrl = '',
+    this.appleShortcutName = 'Add to Reminders',
+    this.exportGroupByAisle = true,
+    this.exportIncludePrices = true,
+    this.exportIncludeOwned = false,
   })  : equipment = equipment ?? {'oven'},
         diets = diets ?? <Diet>{},
         excludedIngredients = excludedIngredients ?? <String>{},
@@ -125,6 +143,11 @@ class UserSettings {
     bool clearMaxMinutes = false,
     bool? easyOnly,
     bool? mildOnly,
+    String? exportWebhookUrl,
+    String? appleShortcutName,
+    bool? exportGroupByAisle,
+    bool? exportIncludePrices,
+    bool? exportIncludeOwned,
   }) {
     final zipChanged = zip != null && zip != this.zip;
     final newStoreId = storeId ?? this.storeId;
@@ -153,6 +176,11 @@ class UserSettings {
       maxMinutes: clearMaxMinutes ? null : (maxMinutes ?? this.maxMinutes),
       easyOnly: easyOnly ?? this.easyOnly,
       mildOnly: mildOnly ?? this.mildOnly,
+      exportWebhookUrl: exportWebhookUrl ?? this.exportWebhookUrl,
+      appleShortcutName: appleShortcutName ?? this.appleShortcutName,
+      exportGroupByAisle: exportGroupByAisle ?? this.exportGroupByAisle,
+      exportIncludePrices: exportIncludePrices ?? this.exportIncludePrices,
+      exportIncludeOwned: exportIncludeOwned ?? this.exportIncludeOwned,
     );
   }
 
@@ -177,6 +205,11 @@ class UserSettings {
         'maxMinutes': maxMinutes,
         'easyOnly': easyOnly,
         'mildOnly': mildOnly,
+        'exportWebhookUrl': exportWebhookUrl,
+        'appleShortcutName': appleShortcutName,
+        'exportGroupByAisle': exportGroupByAisle,
+        'exportIncludePrices': exportIncludePrices,
+        'exportIncludeOwned': exportIncludeOwned,
       };
 
   factory UserSettings.fromJson(Map<String, dynamic> j) => UserSettings(
@@ -213,5 +246,11 @@ class UserSettings {
         maxMinutes: j.containsKey('maxMinutes') ? j['maxMinutes'] as int? : 60,
         easyOnly: (j['easyOnly'] as bool?) ?? false,
         mildOnly: (j['mildOnly'] as bool?) ?? false,
+        exportWebhookUrl: (j['exportWebhookUrl'] as String?) ?? '',
+        appleShortcutName:
+            (j['appleShortcutName'] as String?) ?? 'Add to Reminders',
+        exportGroupByAisle: (j['exportGroupByAisle'] as bool?) ?? true,
+        exportIncludePrices: (j['exportIncludePrices'] as bool?) ?? true,
+        exportIncludeOwned: (j['exportIncludeOwned'] as bool?) ?? false,
       );
 }

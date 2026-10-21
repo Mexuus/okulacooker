@@ -3,10 +3,11 @@ import 'package:provider/provider.dart';
 
 import '../models/plan.dart';
 import '../models/recipe.dart';
+import '../services/export_docs.dart';
 import '../services/format.dart';
 import '../services/grocery_builder.dart';
-import '../services/recipe_export.dart';
 import '../state/app_state.dart';
+import '../widgets/export_sheet.dart';
 import '../widgets/ingredient_icon.dart';
 import '../widgets/money_text.dart';
 import '../widgets/recipe_image.dart';
@@ -136,14 +137,13 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
             onPressed: () => _thumbsDown(state),
           ),
           IconButton(
-            tooltip: 'Print',
-            icon: const Icon(Icons.print_outlined),
-            onPressed: () => printRecipe(r, _servings),
-          ),
-          IconButton(
-            tooltip: 'Share',
+            tooltip: 'Export, print or share',
             icon: const Icon(Icons.ios_share),
-            onPressed: () => shareRecipe(r, _servings),
+            onPressed: () => showExportSheet(
+              context,
+              state,
+              recipeExportDoc(r, _servings),
+            ),
           ),
         ],
       ),
