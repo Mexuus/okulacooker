@@ -104,6 +104,9 @@ jobs:
           curl -fs http://localhost:8080/assets/assets/data/recipe_db.json | head -c 40 | grep -q '"version"'
           curl -fsI -H 'Accept-Encoding: gzip' http://localhost:8080/main.dart.js | grep -qi 'content-encoding: gzip'
           curl -fsI http://localhost:8080/ | grep -qi 'x-content-type-options: nosniff'
+          # Images are cached and missing ones 404 rather than falling back to the app shell.
+          curl -fsI http://localhost:8080/assets/assets/icons/food/avocado.webp | grep -qi 'cache-control: max-age=604800'
+          test "$(curl -s -o /dev/null -w '%{http_code}' http://localhost:8080/assets/assets/icons/food/nope.webp)" = 404
           # Runtime config: injection attempt is neutralised into valid JSON.
           curl -fs http://localhost:8080/config.json | tee /dev/stderr | python3 -c \
             'import json,sys; d=json.load(sys.stdin); assert d=={"secureUrl":"https://example.com/x,y:"}, d'
