@@ -9,7 +9,7 @@ canonical copy of the project.
 
 - **Every change is committed and pushed to `main` in the same sitting.** Nothing
   stays only on a local machine; a local checkout is disposable scratch space.
-- Before pushing, run `flutter analyze` and `flutter test` (65 tests) locally.
+- Before pushing, run `flutter analyze` and `flutter test` locally.
   CI re-runs them, builds the web app, builds an unsigned iOS app and publishes
   the Docker image, so a push must leave CI green.
 - After pushing, confirm the local commit matches `origin/main`.
@@ -40,13 +40,21 @@ The scripts write into `assets/data/`; their large downloads land in `build/`
 the BLS limit of 25 queries per day.
 
 ```sh
-python tool/import_recipe_db.py path/to/app.ipa   # recipe_db.json
+python tool/import_recipe_db.py                   # recipe_db.json (from tool/sources/)
+python tool/import_recipe_db.py --check FILE      # validate new recipes only
 python tool/build_price_data.py                   # prices.json  (BLS + USDA)
 python tool/build_store_directory.py              # stores.csv   (All The Places + OSM)
+python tool/build_icons.py                        # assets/icons/food (Fluent Emoji)
+python tool/build_photos.py                       # assets/photos (Wikimedia Commons)
 ```
 
-`import_recipe_db.py` reads the original app's `mealplan.json`, which is only
-available inside the original `.ipa` — keep a copy of that file somewhere safe.
+New recipes go in `tool/sources/recipes/*.json`; the format and quality bar
+are in `tool/sources/recipes/README.md`. Editorial drops and fixes to the
+original recipes go in `tool/sources/curation.json`, never in the generated
+`assets/data/recipe_db.json`.
+
+`import_recipe_db.py` reads the original app's database from
+`tool/sources/mealplan.json` (committed; it originally came from the app's `.ipa`).
 
 ## Tests
 

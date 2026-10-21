@@ -37,6 +37,7 @@ flutter:
   assets:
     - assets/data/
     - assets/icons/food/
+    - assets/photos/
 
   fonts:
     - family: SchibstedGrotesk

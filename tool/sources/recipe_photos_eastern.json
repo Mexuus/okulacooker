@@ -1,0 +1,538 @@
+{
+ "photos": {
+  "e_adobo": {
+   "file": "e_adobo.webp",
+   "credit": "Dandy1022",
+   "license": "CC BY-SA 3.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AAdobo_Filipino_sa_%27gata%27.jpg"
+  },
+  "e_alfredo": {
+   "file": "e_alfredo.webp",
+   "credit": "Missvain",
+   "license": "CC BY 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ACasa_Del_Sol_-_November_2022_-_Sarah_Stierch_04.jpg"
+  },
+  "e_arrabbiata": {
+   "file": "e_arrabbiata.webp",
+   "credit": "Petar Milošević",
+   "license": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3APenne_Arrabbiata.jpg"
+  },
+  "e_baingan_bharta": {
+   "file": "e_baingan_bharta.webp",
+   "credit": "Voltmetro",
+   "license": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3A2025-04-07_-_Baingan_bharta.jpg"
+  },
+  "e_baked_feta_pasta": {
+   "file": "e_baked_feta_pasta.webp",
+   "credit": "Delicious Adventures",
+   "license": "CC BY 3.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ABaked_feta_pasta.jpg"
+  },
+  "e_baked_fish_tomato": {
+   "file": "e_baked_fish_tomato.webp",
+   "credit": "HaJunkiyada",
+   "license": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ALiat_Portal_for_Foodie_Disorder_-_Raw_Tilapia_Prepared_for_Baking.jpg"
+  },
+  "e_baked_ziti": {
+   "file": "e_baked_ziti.webp",
+   "credit": "SpencerWMartin",
+   "license": "CC0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ABakedZiti_2025-12-04.jpg"
+  },
+  "e_beef_broccoli": {
+   "file": "e_beef_broccoli.webp",
+   "credit": "jules",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ABeef_%26_broccoli-2.jpg"
+  },
+  "e_bulgogi": {
+   "file": "e_bulgogi.webp",
+   "credit": "Andy Li",
+   "license": "CC0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ABulgogi_%28Marinated_beef._Served_with_rice%29_-_Kogi_2023-09-11.jpg"
+  },
+  "e_butter_chicken": {
+   "file": "e_butter_chicken.webp",
+   "credit": "Vis M",
+   "license": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AButter_Chicken%2C_City_Grill_Kottayam.jpg"
+  },
+  "e_cacio_e_pepe": {
+   "file": "e_cacio_e_pepe.webp",
+   "credit": "Popo le Chien",
+   "license": "CC BY-SA 3.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ACacio_e_pepe.jpg"
+  },
+  "e_carbonara": {
+   "file": "e_carbonara.webp",
+   "credit": "Javier Somoza",
+   "license": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AEspaguetis_carbonara.jpg"
+  },
+  "e_cashew_chicken": {
+   "file": "e_cashew_chicken.webp",
+   "credit": "Taste with tublu",
+   "license": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ACashew_Butter_Chicken.jpg"
+  },
+  "e_cauliflower_curry": {
+   "file": "e_cauliflower_curry.webp",
+   "credit": "Jim Reynolds from Cleveland, USA",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ACurried_cauliflower_and_chickpea_stew.jpg"
+  },
+  "e_chana_masala": {
+   "file": "e_chana_masala.webp",
+   "credit": "Gaurav Dhwaj Khadka",
+   "license": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AChana_Ko_Tarkari.jpg"
+  },
+  "e_chicken_cacciatore": {
+   "file": "e_chicken_cacciatore.webp",
+   "credit": "Burkhard Mücke",
+   "license": "CC BY 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3A2024-07-13_Chicken_Cacciatore_1.jpg"
+  },
+  "e_chicken_piccata": {
+   "file": "e_chicken_piccata.webp",
+   "credit": "MattCC716",
+   "license": "CC BY-SA 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AChicken_Piccata_-_52060244637.png"
+  },
+  "e_coconut_curry": {
+   "file": "e_coconut_curry.webp",
+   "credit": "Alpha from Melbourne, Australia",
+   "license": "CC BY-SA 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AChicken_curry_served_in_an_Indonesian_restaurant%3B_February_2010.jpg"
+  },
+  "e_coconut_shrimp_curry": {
+   "file": "e_coconut_shrimp_curry.webp",
+   "credit": "Daderot",
+   "license": "CC0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AThai_prawn_salad_with_white_fish%2C_prawn%2C_roasted_peanuts%2C_coconut_curry%2C_nuoc_cham%2C_and_ginger_-_Wellington%2C_New_Zealand.jpg"
+  },
+  "e_crispy_tofu": {
+   "file": "e_crispy_tofu.webp",
+   "credit": "PattayaPatrol",
+   "license": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ADFC_0765_Colorful_stir-fry_with_baby_corn_cashews_and_fresh_greens_garnished_with_an_edible_purple_orchid.jpg"
+  },
+  "e_dal": {
+   "file": "e_dal.webp",
+   "credit": "rovingI",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ACreamy_Lentils_%28Dal_Makhani%29_%282239000538%29.jpg"
+  },
+  "e_egg_curry": {
+   "file": "e_egg_curry.webp",
+   "credit": "SnapMeUp",
+   "license": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AChicken_%26_Egg_Curry_Rice_%284%29.jpg"
+  },
+  "e_eggplant_parmesan": {
+   "file": "e_eggplant_parmesan.webp",
+   "credit": "Joy",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AMaking_melanzane_alla_parmigiana_-_14913594479.jpg"
+  },
+  "e_falafel": {
+   "file": "e_falafel.webp",
+   "credit": "Israel_photo_gallery",
+   "license": "CC BY-SA 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AFalafel_in_a_pita.jpg"
+  },
+  "e_fish_curry": {
+   "file": "e_fish_curry.webp",
+   "credit": "Draupadigamy9305",
+   "license": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AAkki_rotti_fish_fry_and_fish_curry_homemade_by_Sujatha_aunty_karnataka.jpg_01.jpg"
+  },
+  "e_fried_rice": {
+   "file": "e_fried_rice.webp",
+   "credit": "Alpha from Melbourne, Australia",
+   "license": "CC BY-SA 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AChar_kway_teow_-_Old_Town_Kopitiam.jpg"
+  },
+  "e_frittata": {
+   "file": "e_frittata.webp",
+   "credit": "Dedda 71",
+   "license": "CC BY 3.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AFrittata2.jpg"
+  },
+  "e_general_tso": {
+   "file": "e_general_tso.webp",
+   "credit": "Evan Joshua Swigart (TheCulinaryGeek) from Chicago, Illinois, USA; hometown of Ames, Iowa, USA",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AFlickr_preppybyday_4665999863--General_Tso%27s_Chicken.jpg"
+  },
+  "e_gigantes": {
+   "file": "e_gigantes.webp",
+   "credit": "Hevesli",
+   "license": "Public domain",
+   "source": "https://commons.wikimedia.org/wiki/File%3AGigandes_plaki.jpg"
+  },
+  "e_ginger_scallion_noodles": {
+   "file": "e_ginger_scallion_noodles.webp",
+   "credit": "Jun",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AChineseNoodles.jpg"
+  },
+  "e_glazed_pork": {
+   "file": "e_glazed_pork.webp",
+   "credit": "Alpha from Melbourne, Australia",
+   "license": "CC BY-SA 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3A%E7%83%A7%E9%B8%AD_%E7%83%A7%E8%82%89_%E9%A5%AD_Roast_duck_and_roast_pork_on_rice_-_Pacific_BBQ_Cafe_%282418785280%29.jpg"
+  },
+  "e_gochujang_chicken": {
+   "file": "e_gochujang_chicken.webp",
+   "credit": "User:Piotrus",
+   "license": "CC BY-SA 3.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AKorean_food_in_Korea_43.jpg"
+  },
+  "e_gochujang_pork": {
+   "file": "e_gochujang_pork.webp",
+   "credit": "Guilhem Vellut from Paris, France",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ASpicy_Pork_Bulgogi%2C_L%27Arbre_de_Sel%2C_Montparnasse%2C_Paris_001.jpg"
+  },
+  "e_greek_salad": {
+   "file": "e_greek_salad.webp",
+   "credit": "cyclonebill",
+   "license": "CC BY-SA 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AFlickr_-_cyclonebill_-_Gr%C3%A6sk_salat.jpg"
+  },
+  "e_harissa_chicken": {
+   "file": "e_harissa_chicken.webp",
+   "credit": "Alpha from Melbourne, Australia",
+   "license": "CC BY-SA 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ALemon_and_saffron_roasted_chicken_on_pilaf_rice_with_sesame_yoghurt_and_peach_relish_-_Cafe_Mint_AUD24.90_main_%283697197879%29.jpg"
+  },
+  "e_italian_beef_sandwich": {
+   "file": "e_italian_beef_sandwich.webp",
+   "credit": "The Buona Companies",
+   "license": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ABuona_Chicago%27s_Original_Italian_Beef.jpg"
+  },
+  "e_katsu": {
+   "file": "e_katsu.webp",
+   "credit": "ノボホショコロトソ",
+   "license": "CC BY 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AAwa-odori_Chicken_Katsu_Curry_01.jpg"
+  },
+  "e_lasagna": {
+   "file": "e_lasagna.webp",
+   "credit": "jeffreyw",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ALasagna_%281%29.jpg"
+  },
+  "e_lemon_chicken_potatoes": {
+   "file": "e_lemon_chicken_potatoes.webp",
+   "credit": "Ewan Munro from London, UK",
+   "license": "CC BY-SA 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ARed_Lion_and_Sun%2C_Highgate%2C_London_%285560981816%29.jpg"
+  },
+  "e_lentil_soup": {
+   "file": "e_lentil_soup.webp",
+   "credit": "Mx. Granger",
+   "license": "CC0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AAmy%27s_lentil_vegetable_soup.jpg"
+  },
+  "e_lo_mein": {
+   "file": "e_lo_mein.webp",
+   "credit": "Peachyeung316",
+   "license": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AA_Lo_mein_with_shrimp_roe_at_Ho_To_Tai_Chinese_Noodle_Shop.jpg"
+  },
+  "e_mapo_tofu": {
+   "file": "e_mapo_tofu.webp",
+   "credit": "Archon6812",
+   "license": "CC BY-SA 3.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ABillyfoodmabodofu3.jpg"
+  },
+  "e_minestrone": {
+   "file": "e_minestrone.webp",
+   "credit": "HaJunkiyada",
+   "license": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ALiat_Portal_for_Foodie_Disorder_-_Homemade_minestrone_soup.jpg"
+  },
+  "e_miso_soup": {
+   "file": "e_miso_soup.webp",
+   "credit": "Douglas Perkins",
+   "license": "CC0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AA_bowl_of_miso_soup.jpg"
+  },
+  "e_mongolian_beef": {
+   "file": "e_mongolian_beef.webp",
+   "credit": "Craig Dugas from Bozeman, Montana, USA",
+   "license": "CC BY-SA 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AMongolian_Beef_with_rice_and_noodles.jpg"
+  },
+  "e_nasi_goreng": {
+   "file": "e_nasi_goreng.webp",
+   "credit": "Vyacheslav Argenberg",
+   "license": "CC BY 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AGili_Meno_Island%2C_Nasi_goreng%2C_Fried_rice_with_juice%2C_Indonesia.jpg"
+  },
+  "e_orange_chicken": {
+   "file": "e_orange_chicken.webp",
+   "credit": "Lillottama",
+   "license": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AChicken_in_hot_garlic_sauce.jpg"
+  },
+  "e_pad_see_ew": {
+   "file": "e_pad_see_ew.webp",
+   "credit": "Ser Amantio di Nicolao",
+   "license": "CC0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AChicken_pad_see_ew_at_Rice_and_Noodles_Restaurant_in_Franconia.jpg"
+  },
+  "e_pad_thai": {
+   "file": "e_pad_thai.webp",
+   "credit": "Chainwit.",
+   "license": "CC BY 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AAng_Thong_-_Chaiyo_%282024%29_-_%22ancient%22_award_winning_pad_thai_%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B9%84%E0%B8%97%E0%B8%A2_01.jpg"
+  },
+  "e_pasta_e_fagioli": {
+   "file": "e_pasta_e_fagioli.webp",
+   "credit": "valtercirillo",
+   "license": "CC0",
+   "source": "https://commons.wikimedia.org/wiki/File%3APasta_e_fagioli_-_minestra.jpg"
+  },
+  "e_pesto_pasta": {
+   "file": "e_pesto_pasta.webp",
+   "credit": "slgckgc",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3APasta_al_Pesto_in_Florence%2C_Italy_%2847909905101%29.jpg"
+  },
+  "e_pita_pizza": {
+   "file": "e_pita_pizza.webp",
+   "credit": "Afshin Darian",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ABuffalo_slice_and_margherita_slice.jpg"
+  },
+  "e_polenta_mushroom": {
+   "file": "e_polenta_mushroom.webp",
+   "credit": "Andy Li",
+   "license": "CC0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ACrispy_Cep_Polenta_-_Food_for_Friends_2026-03-09.jpg"
+  },
+  "e_pork_cutlet": {
+   "file": "e_pork_cutlet.webp",
+   "credit": "Silar",
+   "license": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3A02021_1164_Schweineschnitzel.jpg"
+  },
+  "e_puttanesca": {
+   "file": "e_puttanesca.webp",
+   "credit": "Popo le Chien",
+   "license": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3APasta_Puttanesca.jpg"
+  },
+  "e_rajma": {
+   "file": "e_rajma.webp",
+   "credit": "rovingI",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ACreamy_Lentils_%28Dal_Makhani%29_%282239000538%29.jpg"
+  },
+  "e_salmon_greens": {
+   "file": "e_salmon_greens.webp",
+   "credit": "PattayaPatrol",
+   "license": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ADZ6_1891_Seared_salmon_in_a_rich_brown_sauce_with_grilled_potatoes_fresh_greens_and_toasted_bread_garnished_with_dill.jpg"
+  },
+  "e_satay": {
+   "file": "e_satay.webp",
+   "credit": "PattayaPatrol",
+   "license": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ADFC_0330_Grilled_meat_skewers_topped_with_sliced_red_onion_chopped_herbs_and_a_sprinkle_of_seasoning_served_alongside_fresh_lettuce.jpg"
+  },
+  "e_shakshuka": {
+   "file": "e_shakshuka.webp",
+   "credit": "Soumendrak",
+   "license": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ABreakfast_of_bread_and_shakshuka_at_Artjuna_cafe%2C_Goa.jpg"
+  },
+  "e_shrimp_scampi": {
+   "file": "e_shrimp_scampi.webp",
+   "credit": "Prayitno / Thank you for (12 millions +) view from Los Angeles, USA",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AShrimp_Scampi_Linguine_%2818893300233%29.jpg"
+  },
+  "e_singapore_noodles": {
+   "file": "e_singapore_noodles.webp",
+   "credit": "Darifengm 092 Shtiah",
+   "license": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AHK_%E4%B8%AD%E7%92%B0_Central_Wellington_Street_%E5%A3%AB%E4%BB%96%E8%8A%B1%E5%88%A9%E8%A1%97_Staveley_Street_%E8%8F%AF%E8%A8%98%E9%A3%9F%E5%BA%97_Wa_Kee_Food_shop_%E6%98%9F%E6%B4%B2%E7%82%92%E7%B1%B3_curry_rice_noodle_July_2022_Px3_01.jpg"
+  },
+  "e_souvlaki": {
+   "file": "e_souvlaki.webp",
+   "credit": "PattayaPatrol",
+   "license": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ADFC_4715_Sizzling_skewers_of_grilled_pork_served_with_crispy_fries_and_a_cool_tzatziki_dip_-_comfort_food_done_right.jpg"
+  },
+  "e_spaghetti_meatballs": {
+   "file": "e_spaghetti_meatballs.webp",
+   "credit": "jeffreyw",
+   "license": "CC BY 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ASpaghetti_and_meatballs_1.jpg"
+  },
+  "e_tandoori_chicken": {
+   "file": "e_tandoori_chicken.webp",
+   "credit": "Rajeeb Dutta",
+   "license": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AGrilled_Tandoori_chicken.jpg"
+  },
+  "e_teriyaki": {
+   "file": "e_teriyaki.webp",
+   "credit": "CNEcija12345",
+   "license": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ABowl_of_Teriyaki_chicken_and_beef_YakinikuCNE.jpg"
+  },
+  "e_thai_basil": {
+   "file": "e_thai_basil.webp",
+   "credit": "Alpha from Melbourne, Australia",
+   "license": "CC BY-SA 2.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AGai_Pad_Krapow_-_Thai_Saffron%2C_Malvern_East_AUD10_%284588491826%29.jpg"
+  },
+  "e_thai_red_curry": {
+   "file": "e_thai_red_curry.webp",
+   "credit": "Takeaway",
+   "license": "CC BY-SA 3.0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ALanna_cuisine_starters.JPG"
+  },
+  "e_tikka_masala": {
+   "file": "e_tikka_masala.webp",
+   "credit": "Andy Li",
+   "license": "CC0",
+   "source": "https://commons.wikimedia.org/wiki/File%3AChicken_Tikka_Masala_-_Mohammed_-_Spice_Of_Life.jpg"
+  },
+  "e_tuna_rice_bowl": {
+   "file": "e_tuna_rice_bowl.webp",
+   "credit": "Andy Li",
+   "license": "CC0",
+   "source": "https://commons.wikimedia.org/wiki/File%3ASalmon_%26_Tuna_Poke_Bowl_%28M%29_with_Spicy_Mayo_sauce_-_Kitokito_2025-04-25.jpg"
+  }
+ },
+ "recipes": {
+  "Air Fryer Breaded Pork Cutlets": "e_pork_cutlet",
+  "Air Fryer Crispy Tofu with Rice": "e_crispy_tofu",
+  "Air Fryer Falafel Pitas with Tahini Sauce": "e_falafel",
+  "Air Fryer Gochujang Chicken Drumsticks & Rice": "e_gochujang_chicken",
+  "Air Fryer Meatballs with Marinara": "e_spaghetti_meatballs",
+  "Bacon & Kimchi Fried Rice": "e_fried_rice",
+  "Baingan Bharta with Basmati": "e_baingan_bharta",
+  "Baked Feta & Tomato Pasta": "e_baked_feta_pasta",
+  "Baked Feta and Shrimp with Cherry Tomatoes": "e_baked_feta_pasta",
+  "Baked Tilapia with Olives and Tomatoes": "e_baked_fish_tomato",
+  "Baked Ziti with Sausage": "e_baked_ziti",
+  "Breaded Pork Cutlets with Lemon": "e_pork_cutlet",
+  "Butter Chicken with Rice": "e_butter_chicken",
+  "Cacio e Pepe with Peas": "e_cacio_e_pepe",
+  "Cashew Chicken with Rice": "e_cashew_chicken",
+  "Cauliflower & Chickpea Curry Traybake": "e_cauliflower_curry",
+  "Chana Masala with Basmati & Cilantro": "e_chana_masala",
+  "Chana Saag with Basmati": "e_chana_masala",
+  "Chicken Alfredo Bake": "e_alfredo",
+  "Chicken Cacciatore": "e_chicken_cacciatore",
+  "Chicken Drumstick Adobo with Rice": "e_adobo",
+  "Chicken Fried Rice": "e_fried_rice",
+  "Chicken Katsu with Rice and Cabbage": "e_katsu",
+  "Chicken Lo Mein": "e_lo_mein",
+  "Chicken Pad Thai": "e_pad_thai",
+  "Chicken Pesto Pasta with Sun-Dried Tomatoes": "e_pesto_pasta",
+  "Chicken Piccata with Angel Hair": "e_chicken_piccata",
+  "Chicken Souvlaki with Lemon Oregano": "e_souvlaki",
+  "Chicken Tikka Masala": "e_tikka_masala",
+  "Chickpea Coconut Curry": "e_coconut_curry",
+  "Classic Beef Lasagna": "e_lasagna",
+  "Coconut Curry Chicken Thighs": "e_coconut_curry",
+  "Coconut Laksa Noodles with Tofu": "e_crispy_tofu",
+  "Coconut Lime Tilapia with Bok Choy": "e_coconut_shrimp_curry",
+  "Coconut Spinach Lentils with Warm Pita": "e_coconut_curry",
+  "Crispy Gochujang Tofu with Broccoli": "e_crispy_tofu",
+  "Crispy Sesame Tofu with Broccoli & Rice": "e_crispy_tofu",
+  "Crispy Tofu with Sweet Chili Rice & Broccoli": "e_crispy_tofu",
+  "Crock Pot Chicken Alfredo": "e_alfredo",
+  "Egg Curry with Tomato and Onion Masala": "e_egg_curry",
+  "Egg Fried Rice with Peas & Scallions": "e_fried_rice",
+  "Eggplant Parmesan with Spaghetti": "e_eggplant_parmesan",
+  "Garlic Butter Shrimp Scampi with Linguine": "e_shrimp_scampi",
+  "General Tso's Chicken": "e_general_tso",
+  "Gigantes — Greek Baked Beans in Tomato": "e_gigantes",
+  "Ginger Scallion Noodles with Fried Eggs": "e_ginger_scallion_noodles",
+  "Ginger Scallion Salmon with Charred Greens": "e_salmon_greens",
+  "Gochujang Glazed Pork with Sesame Bok Choy": "e_gochujang_pork",
+  "Gochujang Tofu Bibimbap Bowls": "e_crispy_tofu",
+  "Greek Salad Bowls with Warm Pita": "e_greek_salad",
+  "Grilled Lemon-Oregano Pork Chops with Greek Salad": "e_greek_salad",
+  "Grilled Tandoori-Style Chicken with Cucumber Yogurt and Rice": "e_tandoori_chicken",
+  "Harissa Yogurt Chicken with Chickpeas": "e_harissa_chicken",
+  "Honey Garlic Beef and Broccoli Bowls": "e_beef_broccoli",
+  "Instant Pot Beef and Broccoli": "e_beef_broccoli",
+  "Instant Pot Butter Chicken": "e_butter_chicken",
+  "Instant Pot Korean Beef": "e_bulgogi",
+  "Instant Pot Lentil Soup": "e_lentil_soup",
+  "Italian Shrimp Pasta with Zucchini & Orzo": "e_shrimp_scampi",
+  "Japanese Beef Yakisoba Noodles with Bok Choy": "e_lo_mein",
+  "Kofta Meatballs with Yogurt and Cucumber": "e_spaghetti_meatballs",
+  "Korean Beef Rice Bowl": "e_bulgogi",
+  "Korean Tuna Mayo Rice Bowls": "e_tuna_rice_bowl",
+  "Lamb Meatballs with Whipped Feta & Couscous": "e_spaghetti_meatballs",
+  "Lemon Garlic Chicken with Rice": "e_lemon_chicken_potatoes",
+  "Mapo-Style Tofu with Rice": "e_mapo_tofu",
+  "Minestrone with White Beans": "e_minestrone",
+  "Miso Butternut Squash Soup with Crusty Bread": "e_miso_soup",
+  "Miso Mushroom Noodle Bowl": "e_miso_soup",
+  "Mongolian Beef": "e_mongolian_beef",
+  "Nasi Goreng with Tempeh": "e_nasi_goreng",
+  "One-Pan Curry Chicken and Rice": "e_coconut_curry",
+  "Orange Chicken with Rice": "e_orange_chicken",
+  "Pad See Ew with Egg and Broccoli": "e_pad_see_ew",
+  "Pasta Puttanesca with Olives & Capers": "e_puttanesca",
+  "Pasta e Ceci": "e_pasta_e_fagioli",
+  "Pasta e Fagioli": "e_pasta_e_fagioli",
+  "Peanut Noodles with Crispy Tofu": "e_crispy_tofu",
+  "Peanut Sauce Chicken with Crunchy Cabbage": "e_satay",
+  "Penne Arrabbiata with Garlic Breadcrumbs": "e_arrabbiata",
+  "Pepperoni Pita Pizzas": "e_pita_pizza",
+  "Pesto Turkey Meatballs with Blistered Tomatoes": "e_spaghetti_meatballs",
+  "Polenta with Mushroom Ragu": "e_polenta_mushroom",
+  "Pork Fried Rice": "e_fried_rice",
+  "Rajma — Kidney Bean Curry with Rice": "e_rajma",
+  "Red Curry Lentils with Coconut & Rice": "e_thai_red_curry",
+  "Red Lentil Dal with Rice & Cilantro": "e_dal",
+  "Saag Tofu with Ginger and Cream": "e_crispy_tofu",
+  "Salmon Piccata with Garlic Rice & Broccoli": "e_chicken_piccata",
+  "Shakshuka with Feta & Crusty Bread": "e_shakshuka",
+  "Sheet-Pan Lemon Chicken & Potatoes": "e_lemon_chicken_potatoes",
+  "Shrimp Fra Diavolo with Linguine": "e_shrimp_scampi",
+  "Shrimp Fried Rice": "e_fried_rice",
+  "Singapore-Style Curry Noodles": "e_singapore_noodles",
+  "Slow Cooker Chicken Tikka Masala": "e_tikka_masala",
+  "Slow Cooker Italian Beef Sandwiches": "e_italian_beef_sandwich",
+  "Slow Cooker Korean Beef with Rice": "e_bulgogi",
+  "Slow Cooker Lasagna Soup": "e_lasagna",
+  "Slow Cooker Teriyaki Chicken with Rice": "e_teriyaki",
+  "South Indian Coconut Fish Curry": "e_fish_curry",
+  "Soy-Glazed Pork Chops with Rice": "e_glazed_pork",
+  "Spaghetti Carbonara": "e_carbonara",
+  "Spaghetti and Meatballs": "e_spaghetti_meatballs",
+  "Spiced Cauliflower & Chickpea Traybake with Tahini": "e_cauliflower_curry",
+  "Spinach and Feta Frittata": "e_frittata",
+  "Sticky Ginger Tofu with Rice & Cabbage": "e_crispy_tofu",
+  "Sweet Chili Shrimp with Coconut Rice": "e_coconut_shrimp_curry",
+  "Teriyaki Chicken Rice Bowl": "e_teriyaki",
+  "Teriyaki Tofu Donburi with Edamame": "e_crispy_tofu",
+  "Thai Basil Chicken with Blistered Green Beans": "e_thai_basil",
+  "Thai Basil Tofu with Jasmine Rice": "e_crispy_tofu",
+  "Thai Coconut Curry Shrimp with Bok Choy": "e_coconut_curry",
+  "Thai Coconut Vegetable Curry with Cashews": "e_thai_red_curry",
+  "Three Cheese Baked Pasta with Basil": "e_baked_ziti",
+  "Tofu Adobo with Rice": "e_crispy_tofu",
+  "Tofu Satay with Cucumber Salad": "e_crispy_tofu",
+  "Turkey Meatball Spaghetti": "e_spaghetti_meatballs",
+  "Vegetable Lasagna": "e_lasagna"
+ }
+}

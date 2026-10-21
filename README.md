@@ -24,8 +24,9 @@ iOS builds need macOS: use the CI workflows below, or a Mac with Xcode
 
 | Area | Where | Notes |
 |---|---|---|
-| Recipes | `assets/data/recipe_db.json`, `lib/data/recipe_db.dart` | The original app's database: 494 dinners and 202 ingredients with pack sizes, prices, shelf life, nutrition, and phase-by-phase directions whose amounts scale with servings. |
-| Meal planning | `lib/services/plan_generator.dart` | Suggested meals **never repeat**: every planned recipe is logged, and only after the whole library has been used do the longest-ago recipes return. Each week varies the main ingredient and cuisine and respects diet, won't-eat, and kitchen-gear settings (`lib/services/diet.dart`). Users can still pick any recipe (Browse, favorites, history) — chosen meals may repeat. |
+| Recipes | `assets/data/recipe_db.json`, `lib/data/recipe_db.dart` | Built by `tool/import_recipe_db.py` from the original app's database, curated (`tool/sources/curation.json` drops side dishes, odd combinations and near-duplicates and fixes portions), plus new popular recipes for the Instant Pot, grill, air fryer and slow cooker (`tool/sources/recipes/`). Every recipe is a full dinner (about 450–950 kcal per serving) with directions whose amounts scale with servings and round to kitchen measures. |
+| Meal planning | `lib/services/plan_generator.dart` | Suggested meals **never repeat**: every planned recipe is logged, and only after the whole library has been used do the longest-ago recipes return. Each week varies the main ingredient and cuisine and respects diet, won't-eat, gear, time-limit, easy-only and mild settings (`lib/services/diet.dart`), and plans the chosen number of nights for special gear. Thumbs up/down nudge which new recipes come first; thumbed-down recipes are never suggested. Users can still pick any recipe — chosen meals may repeat. |
+| Pictures | `assets/photos/`, `assets/icons/food/` | Free-licensed dish photos from Wikimedia Commons (credited in-app, rebuilt by `tool/build_photos.py`); recipes without one show an illustrated plate of their main ingredients using Microsoft Fluent Emoji 3D icons (MIT, `tool/build_icons.py`). |
 | Grocery list | `lib/services/grocery_builder.dart` | Totals grams across the week, buys the cheapest combination of whole packs, leaves owned pantry staples off the bill, and separates fresh items when shopping two weeks at once. |
 | Price estimates | `lib/services/pricing.dart`, `price_book.dart` | Per item: the database's national pack price × regional ratio (BLS average prices, or USDA food-group ratios) × USDA metro-area adjustment (10 large metros) × chain price level. Priced at the **specific store location** you pick. Estimates, not live shelf prices; tap any grocery item to see the breakdown. |
 | Location | `lib/services/location_service.dart` | Device GPS via `geolocator`, reverse-geocoded **offline** to a ZIP using bundled U.S. Census ZCTA data (`assets/data/zcta.csv`). |
@@ -40,13 +41,17 @@ online store lookup sends only the ZIP's center point.
 |---|---|---|---|
 | `assets/data/zcta.csv` | U.S. Census Bureau ZCTA Gazetteer | Public domain | Yearly; download `*_Gaz_zcta_national.zip` and keep `GEOID,INTPTLAT,INTPTLONG` |
 | `assets/data/stores.csv` | [All The Places](https://alltheplaces.xyz) + OpenStreetMap | CC0 / ODbL (attribution shown in-app) | `python tool/build_store_directory.py` |
-| `assets/data/recipe_db.json` | Original app's `mealplan.json` | Your own data | `python tool/import_recipe_db.py <path to .ipa or mealplan.json>` |
+| `assets/data/recipe_db.json` | `tool/sources/` (original database, curation, new recipes, extra ingredients) | Your own data | `python tool/import_recipe_db.py` — see `tool/sources/recipes/README.md` to add recipes |
 | `assets/data/prices.json` | BLS CPI Average Price Data + USDA ERS F-MAP | Public domain | Monthly via the **Refresh prices** workflow, or `python tool/build_price_data.py --refresh` |
+| `assets/photos/` | Wikimedia Commons | CC0 / PD / CC BY / CC BY-SA (credited in-app) | `python tool/build_photos.py` from `tool/sources/recipe_photos_*.json` |
+| `assets/icons/food/` | Microsoft Fluent Emoji (3D) | MIT (`assets/icons/LICENSE.txt`) | `python tool/build_icons.py` from `tool/sources/ingredient_icons.json` |
 
 The price script classifies each database ingredient with the regex `RULES`
 table (BLS item code + USDA food group); anything unmatched falls back to its
 category's food group. The importer validates that every recipe ingredient
-converts to grams and packs.
+converts to grams and packs, tags ingredients with diet flags (`FLAGS`) and
+recipes with the gear they need, spiciness and per-serving nutrition, and
+rejects new recipes whose portions fall outside 380–1100 kcal.
 
 When adding a chain, add it to `lib/data/stores.dart` **and** to the `BRANDS`
 map in `tool/build_store_directory.py`. A test fails if the directory contains
