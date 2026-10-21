@@ -6,6 +6,8 @@ import 'package:tapcook/models/ingredient.dart';
 import 'package:tapcook/models/plan.dart';
 import 'package:tapcook/models/recipe.dart';
 import 'package:tapcook/models/settings.dart';
+import 'package:tapcook/screens/cook_mode_screen.dart';
+import 'package:tapcook/services/diet.dart';
 import 'package:tapcook/services/format.dart';
 import 'package:tapcook/services/grocery_builder.dart';
 import 'package:tapcook/services/location_service.dart';
@@ -15,6 +17,7 @@ import 'package:tapcook/services/price_book.dart';
 import 'package:tapcook/services/pricing.dart';
 import 'package:tapcook/services/zip_locator.dart';
 import 'package:tapcook/state/app_state.dart';
+import 'package:tapcook/widgets/recipe_image.dart';
 
 import 'test_helpers.dart';
 
@@ -26,10 +29,42 @@ void main() {
   setUpAll(loadTestData);
 
   group('recipe database', () {
-    test('contains the original library', () {
-      expect(kRecipes.length, 494);
-      expect(kIngredients.length, 202);
+    test('is the curated original library plus the new recipes', () {
+      expect(kRecipes.length, greaterThanOrEqualTo(420));
+      expect(kIngredients.length, 211);
       expect(kRecipes.map((r) => r.id).toSet().length, kRecipes.length);
+      final titles = kRecipes.map((r) => r.title).toSet();
+      // Dropped side dishes, odd combinations and near-duplicates stay out.
+      for (final gone in ['Miso Butter Mushrooms with Bok Choy', 'Fettuccine Pesto Bolognese',
+          'Halloumi-Style Feta with Charred Peppers', 'Shakshuka Verde with Feta']) {
+        expect(titles, isNot(contains(gone)));
+      }
+      for (final added in ['Instant Pot Butter Chicken', 'Classic Grilled Cheeseburgers with Potato Wedges',
+          'Air Fryer Fish and Chips', 'Slow Cooker Chicken Tikka Masala', 'Classic Stuffed Bell Peppers']) {
+        expect(titles, contains(added));
+      }
+      expect(titles, contains('Miso Butter Tilapia with Blistered Broccoli')); // renamed: it was never cod
+    });
+
+    test('every recipe is a full dinner portion', () {
+      final kcal = [for (final r in kRecipes) r.nutrition.kcal]..sort();
+      expect(kcal.first, greaterThanOrEqualTo(400), reason: 'lightest dinner');
+      expect(kcal.last, lessThanOrEqualTo(1250), reason: 'heaviest dinner');
+      expect(kcal[kcal.length ~/ 2], inInclusiveRange(600, 800));
+      for (final r in kRecipes) {
+        expect(r.nutrition.protein, greaterThanOrEqualTo(10), reason: r.title);
+      }
+    });
+
+    test('gear needs, spice and diet flags come from the database', () {
+      expect(byTitle('Instant Pot Butter Chicken').needs, {'pressure_cooker'});
+      expect(byTitle('Classic Stuffed Bell Peppers').needs, contains('oven'));
+      expect(byTitle('Nashville Hot Chicken Sandwiches').spicy, isTrue);
+      expect(kIngredients['soy_sauce']!.flags, contains('gluten'));
+      expect(kIngredients['honey']!.flags, contains('honey'));
+      expect(kIngredients['shrimp_frozen']!.flags, contains('shellfish'));
+      expect(kIngredients['worcestershire']!.flags, contains('fish'));
+      expect(kIngredients.values.where((i) => i.icon != null).length, kIngredients.length);
     });
 
     test('every recipe ingredient exists and converts to grams', () {
@@ -72,6 +107,51 @@ void main() {
   });
 
   group('formatting and scaling', () {
+    test('settings from older versions keep their oven and split "no seafood"', () {
+      final old = UserSettings.fromJson({
+        'zip': '10001',
+        'diets': ['noSeafood', 'vegetarian'],
+        'equipment': ['slow_cooker'],
+      });
+      expect(old.equipment, {'slow_cooker', 'oven'});
+      expect(old.diets, {Diet.noFish, Diet.noShellfish, Diet.vegetarian});
+      expect(old.gearNights, 2);
+      expect(old.maxMinutes, 60, reason: 'weeknight default for older settings');
+      final saved = UserSettings.fromJson(
+          old.copyWith(equipment: {'grill'}, maxMinutes: 45, mildOnly: true).toJson());
+      expect(saved.equipment, {'grill'}, reason: 'a saved "no oven" choice sticks');
+      expect(saved.maxMinutes, 45);
+      expect(saved.mildOnly, isTrue);
+      expect(UserSettings.fromJson(saved.copyWith(clearMaxMinutes: true).toJson()).maxMinutes, isNull);
+    });
+
+    test('diets rule out the right ingredients', () {
+      bool ok(Recipe r, Diet d) => recipeAllowed(r, diets: {d}, excluded: const {});
+      bool uses(Recipe r, String id) => r.ingredients.any((i) => i.ingredientId == id);
+      final vegan = kRecipes.where((r) => ok(r, Diet.vegan)).toList();
+      expect(vegan, isNotEmpty);
+      for (final r in vegan) {
+        for (final id in ['honey', 'butter_unsalted', 'egg_large', 'cheddar', 'chicken_breast']) {
+          expect(uses(r, id), isFalse, reason: '${r.title} uses $id');
+        }
+      }
+      final gf = kRecipes.where((r) => ok(r, Diet.glutenFree));
+      expect(gf.any((r) => uses(r, 'pasta_long') || uses(r, 'soy_sauce')), isFalse);
+      final chicken = kRecipes.firstWhere((r) => uses(r, 'chicken_breast'));
+      expect(kRecipes.where((r) => uses(r, 'salmon_fillet') && ok(r, Diet.pescatarian)), isNotEmpty);
+      expect(ok(chicken, Diet.pescatarian), isFalse);
+      expect(kRecipes.where((r) => ok(r, Diet.nutFree)).any((r) => uses(r, 'peanut_butter')), isFalse);
+    });
+
+    test('cook-mode timers come from step durations or text', () {
+      const explicit = RecipeAction(verb: 'Cook', body: 'until done.', duration: '7-8 hr');
+      expect(stepTimer(explicit, 'until done.'), const Duration(hours: 7));
+      const inText = RecipeAction(verb: 'Simmer', body: 'x');
+      expect(stepTimer(inText, 'covered for 10–12 minutes, stirring once.'), const Duration(minutes: 10));
+      expect(stepTimer(inText, 'until golden.'), isNull);
+      expect(stepTimer(inText, 'for 20 seconds.'), isNull);
+    });
+
     test('recipe amounts read naturally', () {
       final tacos = byTitle('Crispy Chicken Thigh Tacos');
       final lines = tacos.ingredients.map((ri) => formatRecipeAmount(ri, 1)).toList();
@@ -102,12 +182,54 @@ void main() {
       expect(formatQty(0.3333), '⅓');
     });
 
-    test('dish emoji match whole words', () {
-      Recipe? find(String t) => kRecipes.where((r) => r.title.startsWith(t)).firstOrNull;
-      expect(find('Bacon-Wrapped Pork')?.emoji, isNot('🌯'));
-      expect(find('Baingan Bharta')?.emoji, '🍆');
-      expect(find('Baja Fish Lettuce Wraps')?.emoji, '🌯');
-      expect(find('Crispy Chicken Thigh Tacos')?.emoji, '🌮');
+    test('scaled amounts are rounded the way a cook measures', () {
+      ({double qty, String unit}) k(double q, String u, [String? c]) =>
+          kitchenAmount(q, u, category: c);
+      expect(k(0.2, 'tsp'), (qty: 0.25, unit: 'tsp'));
+      expect(k(2.9, 'tsp'), (qty: 1.0, unit: 'tbsp'));
+      expect(k(0.99, 'tbsp'), (qty: 1.0, unit: 'tbsp')); // used to loop forever
+      expect(k(0.6, 'tbsp'), (qty: 1.75, unit: 'tsp'));
+      expect(k(4, 'tbsp'), (qty: 0.25, unit: 'cup'));
+      expect(k(5, 'tbsp').qty, closeTo(1 / 3, 1e-9)); // 0.3125 cup is closest to ⅓
+      expect(k(0.62, 'cup').qty, closeTo(2 / 3, 1e-9));
+      expect(k(0.15, 'cup'), (qty: 2.5, unit: 'tbsp'));
+      expect(k(0.3, 'lb'), (qty: 5.0, unit: 'oz'));
+      expect(k(0.9, 'lb'), (qty: 1.0, unit: 'lb'));
+      expect(k(0.8, 'count', 'produce'), (qty: 1.0, unit: 'count'));
+      expect(k(0.3, 'count', 'canned'), (qty: 0.5, unit: 'count'));
+      expect(k(1.5, 'count', 'protein'), (qty: 2.0, unit: 'count'));
+      expect(k(0.4, 'clove'), (qty: 1.0, unit: 'clove'));
+    });
+
+    test('scaled ingredient lines never show decimals', () {
+      final decimal = RegExp(r'\d\.\d');
+      for (final r in kRecipes) {
+        for (final people in [1, 2, 3, 5, 6, 8]) {
+          final scale = people / r.baseServings;
+          for (final ri in r.ingredients) {
+            final line = formatRecipeAmount(ri, scale);
+            expect(decimal.hasMatch(line), isFalse, reason: '${r.title} for $people: $line');
+          }
+          for (final p in r.phases) {
+            for (final a in p.actions) {
+              final text = renderActionBody(a, scale);
+              final amounts = a.amounts.map((x) => renderStepAmount(x, scale));
+              for (final s in amounts) {
+                expect(decimal.hasMatch(s), isFalse, reason: '${r.title} for $people: $text');
+              }
+            }
+          }
+        }
+      }
+    });
+
+    test('illustrations picture the main ingredient plus distinct companions', () {
+      for (final r in kRecipes) {
+        final companions = companionIngredients(r);
+        expect(companions, isNot(contains(r.anchor)), reason: r.title);
+        final icons = [kIngredients[r.anchor]!.icon, ...companions.map((c) => kIngredients[c]!.icon)];
+        expect(icons.toSet().length, icons.length, reason: '${r.title}: $icons');
+      }
     });
   });
 
@@ -193,11 +315,61 @@ void main() {
       }
     });
 
-    test('slow-cooker and air-fryer recipes need the equipment', () {
-      final none = allowedRecipes(settings);
-      expect(none.any((r) => r.equipment == 'slow_cooker' || r.equipment == 'air_fryer'), isFalse);
-      final withGear = allowedRecipes(settings.copyWith(equipment: {'slow_cooker', 'air_fryer'}));
-      expect(withGear.length, kRecipes.length);
+    test('gear decides which recipes can be planned', () {
+      final ovenOnly = allowedRecipes(settings);
+      expect(ovenOnly.any(usesSpecialGear), isFalse);
+      final everything = allowedRecipes(
+          settings.copyWith(equipment: kGear.keys.toSet(), clearMaxMinutes: true));
+      expect(everything.length, kRecipes.length);
+      final noOven = allowedRecipes(settings.copyWith(equipment: {}));
+      expect(noOven, isNotEmpty);
+      expect(noOven.any((r) => r.needs.contains('oven')), isFalse);
+      expect(noOven.length, lessThan(ovenOnly.length));
+    });
+
+    test('plans use owned gear the chosen number of nights', () {
+      final gear = settings.copyWith(equipment: kGear.keys.toSet());
+      for (final nights in [0, 1, 3]) {
+        for (var seed = 0; seed < 10; seed++) {
+          final plan = PlanGenerator(
+            pricing: national(),
+            ownedStaples: {},
+            pool: allowedRecipes(gear),
+            gearNights: nights,
+            seed: seed,
+          ).generate(gear);
+          final special = plan.meals.where((m) => usesSpecialGear(recipeById(m.recipeId))).length;
+          expect(special, nights, reason: 'gearNights $nights, seed $seed');
+        }
+      }
+    });
+
+    test('time, difficulty and spice filters', () {
+      final quick = allowedRecipes(settings.copyWith(
+          maxMinutes: 30, equipment: {'oven', 'slow_cooker'}));
+      for (final r in quick) {
+        expect(r.handsOff || r.totalMinutes <= 30, isTrue, reason: r.title);
+      }
+      expect(quick.any((r) => r.handsOff), isTrue, reason: 'slow cooker is exempt');
+      expect(allowedRecipes(settings.copyWith(easyOnly: true)).every((r) => r.difficulty == 'Easy'),
+          isTrue);
+      final mild = allowedRecipes(settings.copyWith(mildOnly: true));
+      expect(mild.any((r) => r.spicy), isFalse);
+      expect(mild.length, lessThan(allowedRecipes(settings).length));
+    });
+
+    test('thumbs down removes a recipe; ratings steer new suggestions', () {
+      final r = allowedRecipes(settings).first;
+      expect(allowedRecipes(settings, disliked: {r.id}).map((x) => x.id), isNot(contains(r.id)));
+      final liked = kRecipes.where((x) => x.cuisine == 'Thai').take(3).map((x) => x.id).toSet();
+      final gen = PlanGenerator(
+          pricing: national(), ownedStaples: {}, pool: allowedRecipes(settings), liked: liked, seed: 4);
+      final thai = kRecipes.firstWhere((x) => x.cuisine == 'Thai' && !liked.contains(x.id));
+      final other = kRecipes.firstWhere((x) => x.cuisine == 'British');
+      expect(gen.preference(thai), greaterThan(gen.preference(other)));
+      final hated = PlanGenerator(
+          pricing: national(), ownedStaples: {}, disliked: liked, seed: 4);
+      expect(hated.preference(thai), lessThan(0));
     });
 
     test('once everything has been had, the longest-ago recipes come back first', () {
@@ -264,6 +436,25 @@ void main() {
       expect(state.isFavorite(kRecipes[7].id), isTrue);
       await state.toggleFavorite(kRecipes[7].id);
       expect(state.favorites, isEmpty);
+    });
+
+    test('thumbs down reports plan slots and keeps the recipe out of new plans', () async {
+      final state = await makeState();
+      await state.completeOnboarding(UserSettings(zip: '10001', weeklyBudget: 0));
+      final victim = state.plan!.meals[1].recipeId;
+      await state.toggleFavorite(victim);
+      final slots = await state.toggleDislike(victim);
+      expect(slots, [(1, false)]);
+      expect(state.isDisliked(victim), isTrue);
+      expect(state.isFavorite(victim), isFalse, reason: 'thumbs down replaces thumbs up');
+      expect(state.allowedRecipeList.map((r) => r.id), isNot(contains(victim)));
+      await state.resetRecipeHistory();
+      for (var i = 0; i < 5; i++) {
+        await state.generatePlan();
+        expect(state.plan!.meals.map((m) => m.recipeId), isNot(contains(victim)));
+      }
+      expect(await state.toggleDislike(victim), isEmpty);
+      expect(state.isDisliked(victim), isFalse);
     });
 
     test('plans saved by older versions are replaced', () async {

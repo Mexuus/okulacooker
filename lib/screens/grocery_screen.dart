@@ -7,6 +7,7 @@ import '../services/format.dart';
 import '../services/price_book.dart';
 import '../state/app_state.dart';
 import '../widgets/budget_bar.dart';
+import '../widgets/ingredient_icon.dart';
 import '../widgets/money_text.dart';
 import '../widgets/price_breakdown.dart';
 import '../widgets/store_compare_sheet.dart';
@@ -204,12 +205,18 @@ class _GroceryTile extends StatelessWidget {
 
     return ListTile(
       dense: true,
-      leading: ing.staple
-          ? Checkbox(
-              value: owned,
-              onChanged: (_) => state.togglePantryStaple(ing.id),
-            )
-          : const SizedBox(width: 24),
+      leading: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ing.staple
+              ? Checkbox(
+                  value: owned,
+                  onChanged: (_) => state.togglePantryStaple(ing.id),
+                )
+              : const SizedBox(width: 48),
+          Opacity(opacity: owned ? 0.45 : 1, child: IngredientIcon(ing.id, size: 30)),
+        ],
+      ),
       title: Text(ing.name, style: struck),
       subtitle: Text(
         owned

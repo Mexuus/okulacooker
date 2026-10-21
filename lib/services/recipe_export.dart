@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart' show Color;
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
@@ -24,18 +25,41 @@ String _pdfText(String s) => s
     .replaceAll('—', ' - ')
     .replaceAll('×', 'x');
 
-/// Builds a printable / shareable recipe PDF, including a generated "photo"
-/// header, serving-scaled ingredients, and steps.
+/// Builds a printable / shareable recipe PDF: a header with the dish photo
+/// (or a coloured banner), serving-scaled ingredients, and steps.
 Future<Uint8List> buildRecipePdf(Recipe recipe, int servings) async {
   final doc = pw.Document();
   final scale = servings / recipe.baseServings;
-  final colors = gradientForRecipe(recipe.id);
+  final colors = gradientForRecipe(recipe);
+  pw.ImageProvider? photo;
+  final p = recipe.photo;
+  if (p != null) {
+    try {
+      final bytes = await rootBundle.load(p.asset);
+      photo = pw.MemoryImage(bytes.buffer.asUint8List());
+    } catch (_) {
+      photo = null;
+    }
+  }
 
   doc.addPage(
     pw.MultiPage(
       pageFormat: PdfPageFormat.letter,
       margin: const pw.EdgeInsets.all(32),
       build: (context) => [
+        if (photo != null) ...[
+          pw.ClipRRect(
+            horizontalRadius: 16,
+            verticalRadius: 16,
+            child: pw.Image(photo, height: 220, width: double.infinity, fit: pw.BoxFit.cover),
+          ),
+          pw.SizedBox(height: 4),
+          pw.Text(_pdfText(p!.attribution),
+              style: const pw.TextStyle(fontSize: 8, color: PdfColors.grey600)),
+          pw.SizedBox(height: 10),
+          pw.Text(_pdfText(recipe.title),
+              style: pw.TextStyle(fontSize: 26, fontWeight: pw.FontWeight.bold)),
+        ] else
         // Photo-style gradient banner.
         pw.Container(
           height: 150,

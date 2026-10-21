@@ -313,7 +313,9 @@ void main() {
           recipeAllowed(r, diets: d, excluded: x);
       expect(ok(firstUsing('ground_beef'), d: {Diet.vegetarian}), isFalse);
       expect(ok(firstUsing('ground_beef'), d: {Diet.noBeef}), isFalse);
-      expect(ok(firstUsing('shrimp_frozen'), d: {Diet.noSeafood}), isFalse);
+      expect(ok(firstUsing('shrimp_frozen'), d: {Diet.noShellfish}), isFalse);
+      expect(ok(firstUsing('salmon_fillet'), d: {Diet.noFish}), isFalse);
+      expect(ok(firstUsing('salmon_fillet'), d: {Diet.noShellfish}), isTrue);
       expect(ok(firstUsing('cheddar'), d: {Diet.dairyFree}), isFalse);
       expect(ok(firstUsing('bacon'), d: {Diet.noPork}), isFalse);
       expect(ok(firstUsing('chicken_breast'), d: {Diet.noPoultry}), isFalse);

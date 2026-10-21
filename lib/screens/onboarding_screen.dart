@@ -5,11 +5,10 @@ import '../data/regions.dart';
 import '../models/settings.dart';
 import '../models/store_location.dart';
 import '../services/diet.dart';
-import '../services/plan_generator.dart';
 import '../state/app_state.dart';
-import '../widgets/diet_editor.dart';
 import '../widgets/location_store_picker.dart';
 import '../widgets/money_text.dart';
+import '../widgets/preference_editors.dart';
 
 const _weekdayNames = {
   DateTime.monday: 'Mon',
@@ -43,7 +42,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   };
   double _budget = 100;
   Set<Diet> _diets = {};
-  final Set<String> _equipment = {};
+  Set<String> _excluded = {};
+  Set<String> _equipment = {'oven'};
+  int _gearNights = 2;
+  int? _maxMinutes = 60;
+  bool _easyOnly = false;
+  bool _mildOnly = false;
   bool _stockBasics = true;
   bool _zipTouched = false;
 
@@ -60,7 +64,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       cookNights: _nights.toList()..sort(),
       weeklyBudget: _budget,
       diets: _diets,
+      excludedIngredients: _excluded,
       equipment: _equipment,
+      gearNights: _gearNights,
+      maxMinutes: _maxMinutes,
+      easyOnly: _easyOnly,
+      mildOnly: _mildOnly,
     );
     context.read<AppState>().completeOnboarding(settings, stockBasics: _stockBasics);
   }
@@ -149,30 +158,63 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       child: Text('Pick at least one night',
                           style: TextStyle(color: theme.colorScheme.error)),
                     ),
-                  const SizedBox(height: 16),
-                  Text('Anything you don’t eat? (optional)',
-                      style: theme.textTheme.titleMedium),
+                ],
+              ),
+            ),
+
+            // Step 3 — what you eat
+            _StepCard(
+              step: 3,
+              title: 'What do you eat?',
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Diet (optional)', style: theme.textTheme.titleMedium),
                   const SizedBox(height: 8),
                   DietChips(
                     selected: _diets,
                     onChanged: (d) => setState(() => _diets = d),
                   ),
                   const SizedBox(height: 16),
-                  Text('Kitchen gear', style: theme.textTheme.titleMedium),
+                  Text('Tap anything you won’t eat', style: theme.textTheme.titleMedium),
                   const SizedBox(height: 8),
-                  Wrap(
-                    spacing: 8,
-                    children: [
-                      for (final e in kOptionalEquipment.entries)
-                        FilterChip(
-                          label: Text(e.value),
-                          selected: _equipment.contains(e.key),
-                          onSelected: (on) => setState(() =>
-                              on ? _equipment.add(e.key) : _equipment.remove(e.key)),
-                        ),
-                    ],
+                  DislikeGrid(
+                    excluded: _excluded,
+                    onChanged: (e) => setState(() => _excluded = e),
                   ),
+                  const SizedBox(height: 12),
+                  WontEatEditor(
+                    excluded: _excluded,
+                    onChanged: (e) => setState(() => _excluded = e),
+                  ),
+                ],
+              ),
+            ),
+
+            // Step 4 — kitchen
+            _StepCard(
+              step: 4,
+              title: 'Your kitchen',
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Gear you have', style: theme.textTheme.titleMedium),
                   const SizedBox(height: 8),
+                  GearPicker(
+                    owned: _equipment,
+                    gearNights: _gearNights,
+                    onOwnedChanged: (g) => setState(() => _equipment = g),
+                    onGearNightsChanged: (n) => setState(() => _gearNights = n),
+                  ),
+                  const SizedBox(height: 12),
+                  CookingPrefs(
+                    maxMinutes: _maxMinutes,
+                    easyOnly: _easyOnly,
+                    mildOnly: _mildOnly,
+                    onMaxMinutesChanged: (m) => setState(() => _maxMinutes = m),
+                    onEasyOnlyChanged: (v) => setState(() => _easyOnly = v),
+                    onMildOnlyChanged: (v) => setState(() => _mildOnly = v),
+                  ),
                   SwitchListTile(
                     contentPadding: EdgeInsets.zero,
                     title: const Text('I have the basics'),
@@ -185,9 +227,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
             ),
 
-            // Step 3 — budget
+            // Step 5 — budget
             _StepCard(
-              step: 3,
+              step: 5,
               title: 'Weekly budget',
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

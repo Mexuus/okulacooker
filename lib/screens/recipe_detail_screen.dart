@@ -7,9 +7,11 @@ import '../services/format.dart';
 import '../services/grocery_builder.dart';
 import '../services/recipe_export.dart';
 import '../state/app_state.dart';
+import '../widgets/ingredient_icon.dart';
 import '../widgets/money_text.dart';
 import '../widgets/recipe_image.dart';
 import '../widgets/slot_picker.dart';
+import 'cook_mode_screen.dart';
 
 /// "Week of Oct 6" style label for a yyyy-MM-dd date.
 String weekLabel(String isoDate) {
@@ -45,7 +47,37 @@ class RecipeDetailScreen extends StatefulWidget {
 class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
   late int _servings = widget.initialServings;
 
+  /// Ingredient lines ticked off while gathering them.
+  final Set<int> _gathered = {};
+
   double get _scale => _servings / widget.recipe.baseServings;
+
+  Future<void> _thumbsDown(AppState state) async {
+    final r = widget.recipe;
+    final slots = await state.toggleDislike(r.id);
+    if (!mounted) return;
+    final messenger = ScaffoldMessenger.of(context);
+    messenger.hideCurrentSnackBar();
+    if (!state.isDisliked(r.id)) {
+      messenger.showSnackBar(const SnackBar(content: Text('Thumbs down removed')));
+      return;
+    }
+    messenger.showSnackBar(SnackBar(
+      content: Text(slots.isEmpty
+          ? 'Got it — TapCook won’t suggest this again, or dishes too much like it as often.'
+          : 'Got it — it won’t be suggested again. Swap it out of this week?'),
+      action: slots.isEmpty
+          ? null
+          : SnackBarAction(
+              label: 'Swap',
+              onPressed: () async {
+                for (final (slot, weekTwo) in slots) {
+                  await state.swapMeal(slot, weekTwo: weekTwo);
+                }
+              },
+            ),
+    ));
+  }
 
   Future<void> _addToWeek(AppState state) async {
     if (widget.onChoose != null) {
@@ -67,6 +99,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
     final theme = Theme.of(context);
     final state = context.watch<AppState>();
     final fav = state.isFavorite(r.id);
+    final disliked = state.isDisliked(r.id);
     final last = state.lastPlanned(r.id);
     final plan = state.plan;
     final onPlan = plan != null &&
@@ -89,10 +122,18 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
         title: Text(r.title, overflow: TextOverflow.ellipsis),
         actions: [
           IconButton(
-            tooltip: fav ? 'Remove from favorites' : 'Add to favorites',
-            icon: Icon(fav ? Icons.favorite : Icons.favorite_border,
-                color: fav ? Colors.red.shade400 : null),
+            tooltip: fav ? 'Remove thumbs up' : 'Thumbs up — love it',
+            isSelected: fav,
+            icon: const Icon(Icons.thumb_up_outlined),
+            selectedIcon: Icon(Icons.thumb_up, color: theme.colorScheme.primary),
             onPressed: () => state.toggleFavorite(r.id),
+          ),
+          IconButton(
+            tooltip: disliked ? 'Remove thumbs down' : 'Thumbs down — don’t suggest it',
+            isSelected: disliked,
+            icon: const Icon(Icons.thumb_down_outlined),
+            selectedIcon: Icon(Icons.thumb_down, color: theme.colorScheme.error),
+            onPressed: () => _thumbsDown(state),
           ),
           IconButton(
             tooltip: 'Print',
@@ -120,7 +161,16 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
             ),
       body: ListView(
         children: [
-          RecipeImage(recipe: r, height: 200, emojiSize: 90),
+          RecipeImage(recipe: r, height: 240),
+          if (r.photo != null)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 4, 20, 0),
+              child: Text(r.photo!.attribution,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: theme.textTheme.labelSmall
+                      ?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
+            ),
           Padding(
             padding: const EdgeInsets.all(20),
             child: Column(
@@ -144,10 +194,12 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                   spacing: 16,
                   runSpacing: 6,
                   children: [
-                    meta(Icons.schedule, '${r.totalMinutes} min'),
+                    meta(Icons.schedule, r.handsOff ? '${r.totalMinutes} min · hands-off' : '${r.totalMinutes} min'),
                     meta(Icons.public, r.cuisine),
                     meta(Icons.signal_cellular_alt, r.difficulty),
                     meta(Icons.soup_kitchen_outlined, r.formatLabel),
+                    meta(Icons.local_fire_department_outlined, '${nutrition.kcal.round()} kcal'),
+                    if (r.spicy) meta(Icons.whatshot, 'Spicy'),
                     meta(Icons.cleaning_services_outlined, 'Cleanup ${r.cleanupScore}/8'),
                   ],
                 ),
@@ -187,23 +239,47 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                Text('Ingredients',
-                    style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700)),
-                const SizedBox(height: 8),
-                for (final ri in r.ingredients)
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 4),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text('•  '),
-                        Expanded(
-                          child: Text(formatRecipeAmount(ri, _scale),
-                              style: theme.textTheme.bodyLarge),
-                        ),
-                      ],
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text('Ingredients',
+                          style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700)),
+                    ),
+                    if (_gathered.isNotEmpty)
+                      TextButton(
+                        onPressed: () => setState(_gathered.clear),
+                        child: Text('${_gathered.length}/${r.ingredients.length} · Clear'),
+                      ),
+                  ],
+                ),
+                const SizedBox(height: 4),
+                for (final (i, ri) in r.ingredients.indexed)
+                  CheckboxListTile(
+                    contentPadding: EdgeInsets.zero,
+                    dense: true,
+                    controlAffinity: ListTileControlAffinity.trailing,
+                    value: _gathered.contains(i),
+                    onChanged: (on) =>
+                        setState(() => on == true ? _gathered.add(i) : _gathered.remove(i)),
+                    secondary: IngredientIcon(ri.ingredientId, size: 32),
+                    title: Text(
+                      formatRecipeAmount(ri, _scale),
+                      style: theme.textTheme.bodyLarge?.copyWith(
+                        decoration: _gathered.contains(i) ? TextDecoration.lineThrough : null,
+                        color: _gathered.contains(i) ? theme.colorScheme.onSurfaceVariant : null,
+                      ),
                     ),
                   ),
+                const SizedBox(height: 16),
+                SizedBox(
+                  width: double.infinity,
+                  child: FilledButton.tonalIcon(
+                    onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                        builder: (_) => CookModeScreen(recipe: r, servings: _servings))),
+                    icon: const Icon(Icons.play_circle_outline),
+                    label: const Text('Start cooking — step by step with timers'),
+                  ),
+                ),
                 const SizedBox(height: 20),
                 Text('Directions',
                     style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700)),

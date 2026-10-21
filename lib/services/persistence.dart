@@ -16,6 +16,7 @@ class Persistence {
   static const _kFreezer = 'freezer';
   static const _kRecipeLog = 'recipeLog';
   static const _kFavorites = 'favorites';
+  static const _kDisliked = 'disliked';
 
   final SharedPreferences prefs;
   Persistence(this.prefs);
@@ -99,4 +100,11 @@ class Persistence {
 
   Future<void> saveFavorites(Set<String> ids) =>
       prefs.setStringList(_kFavorites, ids.toList());
+
+  // ---- Thumbs down: recipes never to suggest again ----
+  Set<String> loadDisliked() =>
+      (prefs.getStringList(_kDisliked) ?? const []).toSet();
+
+  Future<void> saveDisliked(Set<String> ids) =>
+      prefs.setStringList(_kDisliked, ids.toList());
 }

@@ -42,7 +42,13 @@ class AppState extends ChangeNotifier {
   /// Every recipe ever put in a plan -> date (yyyy-MM-dd) it was last planned.
   /// The planner never reuses these until the whole library has been used.
   Map<String, String> _recipeLog;
+
+  /// Thumbs up: recipes the user loves. They can be picked any time, and new
+  /// suggestions lean towards similar dishes.
   Set<String> _favorites;
+
+  /// Thumbs down: never suggested again (the user can still pick them).
+  Set<String> _disliked;
 
   /// Device location + offline ZIP lookup.
   final LocationService location;
@@ -62,7 +68,8 @@ class AppState extends ChangeNotifier {
         _pantry = _store.loadPantry(),
         _freezer = _store.loadFreezer(),
         _recipeLog = _store.loadRecipeLog(),
-        _favorites = _store.loadFavorites() {
+        _favorites = _store.loadFavorites(),
+        _disliked = _store.loadDisliked() {
     _dropUnknownRecipes();
   }
 
@@ -86,6 +93,7 @@ class AppState extends ChangeNotifier {
     }
     _recipeLog.removeWhere((id, _) => !isKnownRecipe(id));
     _favorites.removeWhere((id) => !isKnownRecipe(id));
+    _disliked.removeWhere((id) => !isKnownRecipe(id));
     _migratePantry();
   }
 
@@ -127,12 +135,15 @@ class AppState extends ChangeNotifier {
   bool get onboarded => _settings.onboarded;
   Set<String> get favorites => Set.unmodifiable(_favorites);
   bool isFavorite(String recipeId) => _favorites.contains(recipeId);
+  Set<String> get disliked => Set.unmodifiable(_disliked);
+  bool isDisliked(String recipeId) => _disliked.contains(recipeId);
 
   /// Date (yyyy-MM-dd) the recipe was last planned, or null if never.
   String? lastPlanned(String recipeId) => _recipeLog[recipeId];
 
-  /// Recipes compatible with diet, won't-eat, and equipment settings.
-  List<Recipe> get allowedRecipeList => allowedRecipes(_settings);
+  /// Recipes compatible with gear, diet, won't-eat, time, difficulty and
+  /// spice settings, minus thumbed-down ones.
+  List<Recipe> get allowedRecipeList => allowedRecipes(_settings, disliked: _disliked);
 
   /// Allowed recipes never planned yet.
   int get newRecipeCount =>
@@ -213,8 +224,11 @@ class AppState extends ChangeNotifier {
   PlanGenerator _generator() => PlanGenerator(
         pricing: pricing,
         ownedStaples: _pantry.ownedStapleIds,
-        pool: allowedRecipes(_settings),
+        pool: allowedRecipes(_settings, disliked: _disliked),
         history: _recipeLog,
+        gearNights: _settings.gearNights,
+        liked: _favorites,
+        disliked: _disliked,
       );
 
   // ---- Location ----
@@ -246,7 +260,11 @@ class AppState extends ChangeNotifier {
         s.twoWeekMode != _settings.twoWeekMode ||
         !setEquals(s.diets, _settings.diets) ||
         !setEquals(s.excludedIngredients, _settings.excludedIngredients) ||
-        !setEquals(s.equipment, _settings.equipment);
+        !setEquals(s.equipment, _settings.equipment) ||
+        s.gearNights != _settings.gearNights ||
+        s.maxMinutes != _settings.maxMinutes ||
+        s.easyOnly != _settings.easyOnly ||
+        s.mildOnly != _settings.mildOnly;
     _settings = s;
     await _store.saveSettings(_settings);
     if (planAffecting && _plan != null) {
@@ -299,9 +317,31 @@ class AppState extends ChangeNotifier {
   }
 
   Future<void> toggleFavorite(String recipeId) async {
-    if (!_favorites.remove(recipeId)) _favorites.add(recipeId);
+    if (!_favorites.remove(recipeId)) {
+      _favorites.add(recipeId);
+      if (_disliked.remove(recipeId)) await _store.saveDisliked(_disliked);
+    }
     await _store.saveFavorites(_favorites);
     notifyListeners();
+  }
+
+  /// Thumbs down (or undo it). Returns the plan slots, as (slot, weekTwo),
+  /// that currently use the recipe so the UI can offer to swap them.
+  Future<List<(int, bool)>> toggleDislike(String recipeId) async {
+    if (!_disliked.remove(recipeId)) {
+      _disliked.add(recipeId);
+      if (_favorites.remove(recipeId)) await _store.saveFavorites(_favorites);
+    }
+    await _store.saveDisliked(_disliked);
+    notifyListeners();
+    final p = _plan;
+    if (p == null || !_disliked.contains(recipeId)) return const [];
+    return [
+      for (final m in p.meals)
+        if (m.recipeId == recipeId) (m.slot, false),
+      for (final m in p.weekTwoMeals)
+        if (m.recipeId == recipeId) (m.slot, true),
+    ];
   }
 
   // ---- Plan actions ----
@@ -416,6 +456,7 @@ class AppState extends ChangeNotifier {
     _freezer = [];
     _recipeLog = {};
     _favorites = {};
+    _disliked = {};
     await _store.saveSettings(_settings);
     await _store.saveCurrentPlan(null);
     await _store.saveHistory(_history);
@@ -423,6 +464,7 @@ class AppState extends ChangeNotifier {
     await _store.saveFreezer(_freezer);
     await _store.saveRecipeLog(_recipeLog);
     await _store.saveFavorites(_favorites);
+    await _store.saveDisliked(_disliked);
     notifyListeners();
   }
 }

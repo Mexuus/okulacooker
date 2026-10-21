@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import '../data/recipe_db.dart';
 import '../models/ingredient.dart';
 import '../state/app_state.dart';
+import '../widgets/ingredient_icon.dart';
+import '../widgets/recipe_image.dart';
 
 class PantryScreen extends StatefulWidget {
   const PantryScreen({super.key});
@@ -75,6 +77,7 @@ class _PantryScreenState extends State<PantryScreen> {
                               dense: true,
                               value: owned.contains(ing.id),
                               onChanged: (_) => state.togglePantryStaple(ing.id),
+                              secondary: IngredientIcon(ing.id, size: 28),
                               title: Text(ing.name),
                             ),
                         ],
@@ -112,8 +115,15 @@ class _PantryScreenState extends State<PantryScreen> {
                     children: [
                       for (final f in freezer)
                         ListTile(
-                          leading: Text(recipeById(f.recipeId).emoji,
-                              style: const TextStyle(fontSize: 24)),
+                          leading: ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: SizedBox(
+                              width: 44,
+                              height: 44,
+                              child: RecipeImage(
+                                  recipe: recipeById(f.recipeId), height: 44, compact: true),
+                            ),
+                          ),
                           title: Text(recipeById(f.recipeId).title),
                           subtitle: Text('${f.servings} servings • frozen ${f.frozenOn}'),
                           trailing: IconButton(

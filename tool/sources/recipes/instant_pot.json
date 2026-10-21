@@ -1,0 +1,753 @@
+[
+  {
+    "key": "ip-butter-chicken",
+    "title": "Instant Pot Butter Chicken",
+    "cuisine": "Indian",
+    "anchor": "chicken_thigh_boneless",
+    "serves": 4,
+    "minutes": 45,
+    "difficulty": "Easy",
+    "equipment": "pressure_cooker",
+    "format": "pressure",
+    "cleanup": 2,
+    "ingredients": [
+      ["chicken_thigh_boneless", 2, "lb"],
+      ["butter_unsalted", 3, "tbsp"],
+      ["onion_yellow", 1, "count"],
+      ["garlic_head", 5, "clove"],
+      ["ginger_fresh", 1, "tbsp"],
+      ["garam_masala", 2, "tsp"],
+      ["curry_powder", 1, "tsp"],
+      ["paprika_smoked", 1, "tsp"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["tomato_sauce", 1, "count"],
+      ["cream_heavy", 0.5, "cup"],
+      ["rice_basmati", 1.25, "cup"],
+      ["cilantro", 0.25, "cup"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Cut", "body": "{amt:chicken_thigh_boneless} of chicken thighs into 1½-inch pieces and toss with {amt:salt_kosher:0.5} of salt."},
+        {"verb": "Dice", "body": "{amt:onion_yellow|onion|onions}, mince {amt:garlic_head} of garlic and grate {amt:ginger_fresh} of ginger."}
+      ]},
+      {"phase": "Sauté", "minutes": 8, "actions": [
+        {"verb": "Melt", "body": "{amt:butter_unsalted:0.5} of butter on Sauté and cook the onion until soft, about 5 minutes.", "duration": "5 min"},
+        {"verb": "Stir in", "body": "the garlic, ginger, {amt:garam_masala:0.5} of garam masala, {amt:curry_powder} of curry powder and {amt:paprika_smoked} of smoked paprika for 1 minute."},
+        {"verb": "Pour in", "body": "{amt:tomato_sauce} of tomato sauce and scrape up anything stuck to the bottom so the pot doesn't show a burn warning."}
+      ]},
+      {"phase": "Pressure cook", "minutes": 20, "actions": [
+        {"verb": "Add", "body": "the chicken and the rest of the salt and stir once. Lock the lid, set the valve to Sealing and cook on High Pressure for 8 minutes.", "duration": "8 min"},
+        {"verb": "Cook", "body": "the rice meanwhile: rinse {amt:rice_basmati} of basmati and simmer it, covered, in 1½ times its volume of water for 15 minutes.", "duration": "15 min"},
+        {"verb": "Release", "body": "the pressure naturally for 5 minutes, then quick-release the rest.", "duration": "5 min"}
+      ]},
+      {"phase": "Finish", "minutes": 5, "actions": [
+        {"verb": "Stir in", "body": "{amt:cream_heavy} of heavy cream, the remaining {amt:butter_unsalted:0.5} of butter and the rest of the garam masala. Check the chicken reads 165°F."},
+        {"verb": "Serve", "body": "over the rice, topped with {amt:cilantro} of chopped cilantro."}
+      ]}
+    ]
+  },
+  {
+    "key": "ip-beef-stew",
+    "title": "Instant Pot Beef Stew",
+    "cuisine": "American",
+    "anchor": "beef_chuck",
+    "serves": 6,
+    "minutes": 95,
+    "difficulty": "Easy",
+    "equipment": "pressure_cooker",
+    "format": "pressure",
+    "cleanup": 2,
+    "ingredients": [
+      ["beef_chuck", 2.5, "lb"],
+      ["salt_kosher", 2, "tsp"],
+      ["pepper_black", 1, "tsp"],
+      ["oil_neutral", 2, "tbsp"],
+      ["onion_yellow", 1, "count"],
+      ["celery", 2, "stalk"],
+      ["garlic_head", 4, "clove"],
+      ["tomato_paste", 2, "tbsp"],
+      ["wine_red_dry", 0.5, "cup"],
+      ["broth_beef", 2.5, "cup"],
+      ["worcestershire", 1, "tbsp"],
+      ["thyme_dried", 1, "tsp"],
+      ["bay_leaf", 2, "count"],
+      ["potato_yukon", 1.5, "lb"],
+      ["carrot", 4, "count"],
+      ["cornstarch", 2, "tbsp"],
+      ["peas_frozen", 1, "cup"],
+      ["parsley_fresh", 2, "tbsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 15, "actions": [
+        {"verb": "Pat", "body": "{amt:beef_chuck} of beef chuck dry, trim any thick pieces of fat and cut it into 1½-inch cubes. Season with {amt:salt_kosher:0.5} of salt and {amt:pepper_black} of black pepper."},
+        {"verb": "Cut", "body": "{amt:potato_yukon} of Yukon gold potatoes into 2-inch chunks and {amt:carrot|carrot|carrots} into 1-inch pieces. Big pieces hold their shape under pressure."},
+        {"verb": "Dice", "body": "{amt:onion_yellow|onion|onions} and {amt:celery} of celery, and mince {amt:garlic_head} of garlic."}
+      ]},
+      {"phase": "Sauté", "minutes": 20, "actions": [
+        {"verb": "Heat", "body": "{amt:oil_neutral:0.5} of oil on Sauté (High) until shimmering. Brown half the beef in a single layer without moving it much, about 4 minutes per batch, then set it aside. Repeat with the rest of the oil and beef.", "duration": "8 min"},
+        {"verb": "Cook", "body": "the onion and celery in the drippings until softened, about 3 minutes, then stir in the garlic and {amt:tomato_paste} of tomato paste for 1 minute.", "duration": "3 min"},
+        {"verb": "Deglaze", "body": "with {amt:wine_red_dry} of red wine, scraping every browned bit off the bottom so the pot doesn't throw a burn warning, and let it bubble for 1 minute."},
+        {"verb": "Pour in", "body": "{amt:broth_beef} of beef broth and {amt:worcestershire} of Worcestershire sauce."}
+      ]},
+      {"phase": "Pressure cook", "minutes": 55, "actions": [
+        {"verb": "Add", "body": "the beef with its juices, {amt:thyme_dried} of dried thyme, {amt:bay_leaf|bay leaf|bay leaves} and the remaining salt. Pile the potatoes and carrots on top without stirring."},
+        {"verb": "Pressure cook", "body": "with the lid locked and the valve set to Sealing on High Pressure for 35 minutes (the pot takes about 10 minutes to come up to pressure).", "duration": "35 min"},
+        {"verb": "Release", "body": "the pressure naturally for 10 minutes, then quick-release the rest.", "duration": "10 min"}
+      ]},
+      {"phase": "Finish", "minutes": 5, "actions": [
+        {"verb": "Thicken", "body": "the stew: discard the bay leaves, switch to Sauté, stir {amt:cornstarch} of cornstarch into 3 tbsp of cold water and stir it in. Simmer until the gravy thickens, 1–2 minutes.", "duration": "2 min"},
+        {"verb": "Stir in", "body": "{amt:peas_frozen} of frozen peas and let them heat through for 1 minute. Taste for salt and pepper."},
+        {"verb": "Serve", "body": "in bowls, sprinkled with {amt:parsley_fresh} of chopped parsley."}
+      ]}
+    ]
+  },
+  {
+    "key": "ip-chicken-noodle-soup",
+    "title": "Instant Pot Chicken Noodle Soup",
+    "cuisine": "American",
+    "anchor": "chicken_thigh_boneless",
+    "serves": 4,
+    "minutes": 60,
+    "difficulty": "Easy",
+    "equipment": "pressure_cooker",
+    "format": "pressure",
+    "cleanup": 2,
+    "ingredients": [
+      ["chicken_thigh_boneless", 1.5, "lb"],
+      ["butter_unsalted", 2, "tbsp"],
+      ["onion_yellow", 1, "count"],
+      ["carrot", 3, "count"],
+      ["celery", 3, "stalk"],
+      ["garlic_head", 3, "clove"],
+      ["thyme_dried", 1, "tsp"],
+      ["bay_leaf", 1, "count"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 0.5, "tsp"],
+      ["broth_chicken", 8, "cup"],
+      ["noodle_egg", 6, "oz"],
+      ["parsley_fresh", 2, "tbsp"],
+      ["lemon", 0.5, "count"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Dice", "body": "{amt:onion_yellow|onion|onions}, slice {amt:carrot|carrot|carrots} and {amt:celery} of celery into ¼-inch pieces, and mince {amt:garlic_head} of garlic."},
+        {"verb": "Trim", "body": "{amt:chicken_thigh_boneless} of boneless chicken thighs of excess fat and leave them whole."}
+      ]},
+      {"phase": "Sauté", "minutes": 7, "actions": [
+        {"verb": "Melt", "body": "{amt:butter_unsalted} of butter on Sauté and cook the onion, carrots and celery until the onion softens, about 5 minutes.", "duration": "5 min"},
+        {"verb": "Stir in", "body": "the garlic and {amt:thyme_dried} of dried thyme for 30 seconds."},
+        {"verb": "Deglaze", "body": "with {amt:broth_chicken:0.125} of the chicken broth, scraping the bottom clean so nothing scorches."}
+      ]},
+      {"phase": "Pressure cook", "minutes": 33, "actions": [
+        {"verb": "Add", "body": "the remaining {amt:broth_chicken:0.875} of broth, the chicken thighs, {amt:bay_leaf|bay leaf|bay leaves} and {amt:salt_kosher} of salt."},
+        {"verb": "Pressure cook", "body": "with the lid locked and the valve set to Sealing on High Pressure for 8 minutes. A full pot of broth takes about 15 minutes to come up to pressure.", "duration": "8 min"},
+        {"verb": "Release", "body": "the pressure naturally for 10 minutes, then quick-release the rest.", "duration": "10 min"}
+      ]},
+      {"phase": "Finish", "minutes": 10, "actions": [
+        {"verb": "Shred", "body": "the chicken: lift it onto a board, check it reads at least 165°F and pull it apart with two forks. Discard the bay leaf."},
+        {"verb": "Simmer", "body": "{amt:noodle_egg} of egg noodles in the soup on Sauté, uncovered, until tender, about 6 minutes.", "duration": "6 min"},
+        {"verb": "Stir in", "body": "the shredded chicken, {amt:parsley_fresh} of chopped parsley, {amt:pepper_black} of black pepper and the juice of {amt:lemon|lemon|lemons}. Taste for salt and serve."}
+      ]}
+    ]
+  },
+  {
+    "key": "ip-pot-roast",
+    "title": "Instant Pot Pot Roast with Potatoes and Carrots",
+    "cuisine": "American",
+    "anchor": "beef_chuck",
+    "serves": 6,
+    "minutes": 135,
+    "difficulty": "Easy",
+    "equipment": "pressure_cooker",
+    "format": "pressure",
+    "cleanup": 2,
+    "ingredients": [
+      ["beef_chuck", 3, "lb"],
+      ["salt_kosher", 2, "tsp"],
+      ["pepper_black", 1, "tsp"],
+      ["oil_neutral", 2, "tbsp"],
+      ["onion_yellow", 1, "count"],
+      ["garlic_head", 4, "clove"],
+      ["tomato_paste", 1, "tbsp"],
+      ["wine_red_dry", 0.5, "cup"],
+      ["broth_beef", 1.5, "cup"],
+      ["worcestershire", 1, "tbsp"],
+      ["thyme_dried", 1, "tsp"],
+      ["bay_leaf", 2, "count"],
+      ["potato_yukon", 2, "lb"],
+      ["carrot", 1, "lb"],
+      ["cornstarch", 2, "tbsp"],
+      ["parsley_fresh", 2, "tbsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Cut", "body": "a {amt:beef_chuck} chuck roast into 3 large pieces so it cooks evenly, pat dry and season all over with {amt:salt_kosher:0.75} of salt and {amt:pepper_black} of black pepper."},
+        {"verb": "Slice", "body": "{amt:onion_yellow|onion|onions} and smash {amt:garlic_head} of garlic."}
+      ]},
+      {"phase": "Sauté", "minutes": 15, "actions": [
+        {"verb": "Sear", "body": "the beef in {amt:oil_neutral} of oil on Sauté (High), two pieces at a time, until deeply browned, about 4 minutes per side. Set aside.", "duration": "8 min"},
+        {"verb": "Cook", "body": "the onion in the drippings for 3 minutes, then stir in the garlic and {amt:tomato_paste} of tomato paste for 1 minute.", "duration": "3 min"},
+        {"verb": "Deglaze", "body": "with {amt:wine_red_dry} of red wine, scraping up all the browned bits so the pot doesn't throw a burn warning. Add {amt:broth_beef} of beef broth and {amt:worcestershire} of Worcestershire sauce."}
+      ]},
+      {"phase": "Pressure cook", "minutes": 90, "actions": [
+        {"verb": "Return", "body": "the beef and its juices to the pot with {amt:thyme_dried} of dried thyme and {amt:bay_leaf|bay leaf|bay leaves}."},
+        {"verb": "Pressure cook", "body": "with the lid locked and the valve set to Sealing on High Pressure for 60 minutes.", "duration": "60 min"},
+        {"verb": "Release", "body": "the pressure naturally for 15 minutes, then quick-release the rest. The beef should pull apart easily with a fork.", "duration": "15 min"}
+      ]},
+      {"phase": "Vegetables", "minutes": 12, "actions": [
+        {"verb": "Cut", "body": "{amt:potato_yukon} of Yukon gold potatoes into 2-inch chunks and {amt:carrot} of carrots into 2-inch lengths while the beef cooks."},
+        {"verb": "Transfer", "body": "the beef to a platter and cover it with foil. Add the potatoes, carrots and the remaining salt to the cooking liquid."},
+        {"verb": "Pressure cook", "body": "on High Pressure for 4 minutes, then quick-release. Lift the vegetables onto the platter.", "duration": "4 min"}
+      ]},
+      {"phase": "Finish", "minutes": 8, "actions": [
+        {"verb": "Make", "body": "the gravy: discard the bay leaves, skim the fat off the liquid and switch to Sauté. Stir {amt:cornstarch} of cornstarch into 3 tbsp of cold water, whisk it in and simmer until thickened, about 2 minutes.", "duration": "2 min"},
+        {"verb": "Serve", "body": "the beef in chunks with the vegetables, spoon the gravy over and scatter with {amt:parsley_fresh} of chopped parsley."}
+      ]}
+    ]
+  },
+  {
+    "key": "ip-beef-bean-chili",
+    "title": "Instant Pot Beef and Bean Chili",
+    "cuisine": "Tex-Mex",
+    "anchor": "ground_beef",
+    "serves": 4,
+    "minutes": 55,
+    "difficulty": "Easy",
+    "equipment": "pressure_cooker",
+    "format": "pressure",
+    "cleanup": 2,
+    "ingredients": [
+      ["ground_beef", 1.5, "lb"],
+      ["onion_yellow", 1, "count"],
+      ["bell_pepper", 1, "count"],
+      ["garlic_head", 3, "clove"],
+      ["chili_powder", 3, "tbsp"],
+      ["cumin_ground", 2, "tsp"],
+      ["oregano_dried", 1, "tsp"],
+      ["paprika_smoked", 1, "tsp"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["tomato_paste", 2, "tbsp"],
+      ["broth_beef", 1, "cup"],
+      ["bean_pinto_canned", 1, "count"],
+      ["bean_black_canned", 1, "count"],
+      ["tomato_canned_diced", 1, "count"],
+      ["tomato_sauce", 1, "count"],
+      ["cheddar", 0.75, "cup"],
+      ["sour_cream", 0.5, "cup"],
+      ["scallion", 3, "count"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Dice", "body": "{amt:onion_yellow|onion|onions} and {amt:bell_pepper|bell pepper|bell peppers}, and mince {amt:garlic_head} of garlic."},
+        {"verb": "Drain", "body": "and rinse {amt:bean_pinto_canned} of pinto beans and {amt:bean_black_canned} of black beans."}
+      ]},
+      {"phase": "Sauté", "minutes": 12, "actions": [
+        {"verb": "Brown", "body": "{amt:ground_beef} of ground beef on Sauté, breaking it up, until no pink remains (160°F), about 6 minutes. Spoon off all but 1 tbsp of the fat.", "duration": "6 min"},
+        {"verb": "Cook", "body": "the onion and pepper with the beef until softened, about 4 minutes.", "duration": "4 min"},
+        {"verb": "Stir in", "body": "the garlic, {amt:chili_powder} of chili powder, {amt:cumin_ground} of cumin, {amt:oregano_dried} of oregano, {amt:paprika_smoked} of smoked paprika, {amt:salt_kosher} of salt and {amt:tomato_paste} of tomato paste for 1 minute."},
+        {"verb": "Deglaze", "body": "with {amt:broth_beef} of beef broth, scraping the bottom thoroughly so the pot doesn't show a burn warning."}
+      ]},
+      {"phase": "Pressure cook", "minutes": 28, "actions": [
+        {"verb": "Add", "body": "the beans, then pour {amt:tomato_canned_diced} of diced tomatoes and {amt:tomato_sauce} of tomato sauce over the top. Don't stir — keeping the thick tomatoes off the bottom prevents scorching."},
+        {"verb": "Pressure cook", "body": "with the lid locked and the valve set to Sealing on High Pressure for 10 minutes.", "duration": "10 min"},
+        {"verb": "Release", "body": "the pressure naturally for 10 minutes, then quick-release the rest.", "duration": "10 min"}
+      ]},
+      {"phase": "Finish", "minutes": 5, "actions": [
+        {"verb": "Stir", "body": "the chili well. For a thicker chili, simmer it on Sauté for a few minutes, stirring. Taste for salt."},
+        {"verb": "Serve", "body": "topped with {amt:cheddar} of shredded cheddar, {amt:sour_cream} of sour cream and {amt:scallion|scallion|scallions}, sliced."}
+      ]}
+    ]
+  },
+  {
+    "key": "ip-bbq-pulled-pork-sandwiches",
+    "title": "Instant Pot BBQ Pulled Pork Sandwiches",
+    "cuisine": "American",
+    "anchor": "pork_shoulder",
+    "serves": 6,
+    "minutes": 125,
+    "difficulty": "Easy",
+    "equipment": "pressure_cooker",
+    "format": "pressure",
+    "cleanup": 3,
+    "ingredients": [
+      ["pork_shoulder", 3, "lb"],
+      ["sugar_brown", 2, "tbsp"],
+      ["paprika_smoked", 1, "tbsp"],
+      ["chili_powder", 1, "tsp"],
+      ["garlic_powder", 1, "tsp"],
+      ["onion_powder", 1, "tsp"],
+      ["salt_kosher", 2, "tsp"],
+      ["pepper_black", 1, "tsp"],
+      ["oil_neutral", 1, "tbsp"],
+      ["onion_yellow", 1, "count"],
+      ["broth_chicken", 1, "cup"],
+      ["vinegar_apple_cider", 3, "tbsp"],
+      ["bbq_sauce", 1, "cup"],
+      ["cabbage_green", 3, "cup"],
+      ["mayo", 0.25, "cup"],
+      ["bun_burger", 6, "count"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 15, "actions": [
+        {"verb": "Trim", "body": "the thickest fat from {amt:pork_shoulder} of boneless pork shoulder and cut it into 4 even chunks."},
+        {"verb": "Mix", "body": "{amt:sugar_brown} of brown sugar, {amt:paprika_smoked} of smoked paprika, {amt:chili_powder} of chili powder, {amt:garlic_powder} of garlic powder, {amt:onion_powder} of onion powder, {amt:salt_kosher:0.875} of salt and {amt:pepper_black} of pepper, and rub it all over the pork."},
+        {"verb": "Slice", "body": "{amt:onion_yellow|onion|onions}."}
+      ]},
+      {"phase": "Sauté", "minutes": 12, "actions": [
+        {"verb": "Sear", "body": "the pork in {amt:oil_neutral} of oil on Sauté, two chunks at a time, about 3 minutes per side. Set aside.", "duration": "6 min"},
+        {"verb": "Deglaze", "body": "with {amt:broth_chicken} of chicken broth and {amt:vinegar_apple_cider:0.667} of cider vinegar, scraping up every browned bit so the pot doesn't throw a burn warning. Stir in the onion."}
+      ]},
+      {"phase": "Pressure cook", "minutes": 88, "actions": [
+        {"verb": "Return", "body": "the pork and its juices to the pot. Lock the lid, set the valve to Sealing and cook on High Pressure for 60 minutes.", "duration": "60 min"},
+        {"verb": "Make", "body": "the slaw meanwhile: toss {amt:cabbage_green} of shredded cabbage with {amt:mayo} of mayonnaise, the remaining {amt:vinegar_apple_cider:0.333} of vinegar and the rest of the salt. Chill until serving."},
+        {"verb": "Release", "body": "the pressure naturally for 15 minutes, then quick-release the rest.", "duration": "15 min"}
+      ]},
+      {"phase": "Finish", "minutes": 10, "actions": [
+        {"verb": "Shred", "body": "the pork with two forks on a board. It should be falling apart, well past the 145°F safe point; if it resists, cook it 10 minutes more on High Pressure."},
+        {"verb": "Reduce", "body": "the liquid: skim off the fat, then simmer on Sauté until about 1 cup remains, about 5 minutes.", "duration": "5 min"},
+        {"verb": "Stir in", "body": "the shredded pork and {amt:bbq_sauce} of BBQ sauce until coated."},
+        {"verb": "Serve", "body": "piled on {amt:bun_burger|bun|buns}, topped with the slaw."}
+      ]}
+    ]
+  },
+  {
+    "key": "ip-bbq-baby-back-ribs",
+    "title": "Instant Pot BBQ Baby Back Ribs",
+    "cuisine": "American",
+    "anchor": "pork_ribs",
+    "serves": 4,
+    "minutes": 65,
+    "difficulty": "Easy",
+    "equipment": "pressure_cooker",
+    "format": "pressure",
+    "cleanup": 2,
+    "ingredients": [
+      ["pork_ribs", 3, "lb"],
+      ["sugar_brown", 2, "tbsp"],
+      ["paprika_smoked", 1, "tbsp"],
+      ["chili_powder", 1, "tsp"],
+      ["garlic_powder", 1, "tsp"],
+      ["onion_powder", 1, "tsp"],
+      ["salt_kosher", 2, "tsp"],
+      ["pepper_black", 1, "tsp"],
+      ["vinegar_apple_cider", 0.25, "cup"],
+      ["bbq_sauce", 1, "cup"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Peel", "body": "the thin membrane off the bone side of {amt:pork_ribs} of baby back ribs (grip it with a paper towel), then cut the racks into 3- or 4-bone sections."},
+        {"verb": "Rub", "body": "the ribs all over with a mix of {amt:sugar_brown} of brown sugar, {amt:paprika_smoked} of smoked paprika, {amt:chili_powder} of chili powder, {amt:garlic_powder} of garlic powder, {amt:onion_powder} of onion powder, {amt:salt_kosher} of salt and {amt:pepper_black} of pepper."}
+      ]},
+      {"phase": "Pressure cook", "minutes": 45, "actions": [
+        {"verb": "Pour", "body": "1 cup of water and {amt:vinegar_apple_cider} of cider vinegar into the pot and set the trivet in it."},
+        {"verb": "Stand", "body": "the ribs on their edges on the trivet, meaty side facing out, curling them around the pot so steam can circulate."},
+        {"verb": "Pressure cook", "body": "with the lid locked and the valve set to Sealing on High Pressure for 25 minutes (add 5 minutes if you want them falling off the bone).", "duration": "25 min"},
+        {"verb": "Release", "body": "the pressure naturally for 10 minutes, then quick-release the rest.", "duration": "10 min"}
+      ]},
+      {"phase": "Sauce", "minutes": 10, "actions": [
+        {"verb": "Lift", "body": "the ribs onto a platter and take out the trivet. The meat should be tender and pulling back from the bone ends, well past the 145°F safe point."},
+        {"verb": "Reduce", "body": "the sauce: pour off all but ½ cup of the cooking liquid, stir in {amt:bbq_sauce} of BBQ sauce and simmer on Sauté, stirring often, until thick and glossy, about 6 minutes.", "duration": "6 min"},
+        {"verb": "Toss", "body": "the ribs gently in the reduced sauce, or brush it over them, and serve with the extra sauce on the side."}
+      ]}
+    ]
+  },
+  {
+    "key": "ip-mac-and-cheese",
+    "title": "Instant Pot Mac and Cheese",
+    "cuisine": "American",
+    "anchor": "pasta_short",
+    "serves": 4,
+    "minutes": 35,
+    "difficulty": "Easy",
+    "equipment": "pressure_cooker",
+    "format": "pressure",
+    "cleanup": 1,
+    "ingredients": [
+      ["bacon", 6, "count"],
+      ["broth_chicken", 3, "cup"],
+      ["pasta_short", 12, "oz"],
+      ["butter_unsalted", 1, "tbsp"],
+      ["mustard_dijon", 1, "tsp"],
+      ["garlic_powder", 0.5, "tsp"],
+      ["salt_kosher", 0.5, "tsp"],
+      ["milk_whole", 0.75, "cup"],
+      ["cheddar", 2, "cup"],
+      ["parmesan", 0.25, "cup"],
+      ["peas_frozen", 1, "cup"],
+      ["pepper_black", 0.5, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 5, "actions": [
+        {"verb": "Cut", "body": "{amt:bacon|slice of bacon|slices of bacon} into ½-inch pieces and shred {amt:cheddar} of sharp cheddar."}
+      ]},
+      {"phase": "Sauté", "minutes": 10, "actions": [
+        {"verb": "Cook", "body": "the bacon on Sauté, stirring, until crisp, about 7 minutes. Lift it out onto paper towels and pour off all but 1 tbsp of the fat.", "duration": "7 min"},
+        {"verb": "Deglaze", "body": "with {amt:broth_chicken} of chicken broth, scraping the bottom clean so the pasta starch doesn't trigger a burn warning."}
+      ]},
+      {"phase": "Pressure cook", "minutes": 14, "actions": [
+        {"verb": "Stir in", "body": "{amt:pasta_short} of elbow macaroni (or other short pasta), {amt:butter_unsalted} of butter, {amt:mustard_dijon} of Dijon mustard, {amt:garlic_powder} of garlic powder and {amt:salt_kosher} of salt, pressing the pasta under the liquid."},
+        {"verb": "Pressure cook", "body": "with the lid locked and the valve set to Sealing on High Pressure for 4 minutes.", "duration": "4 min"},
+        {"verb": "Quick-release", "body": "the pressure right away, with a kitchen towel draped over the valve to catch any starchy spray."}
+      ]},
+      {"phase": "Finish", "minutes": 5, "actions": [
+        {"verb": "Stir", "body": "the pasta, then stir in {amt:milk_whole} of milk and add the cheddar and {amt:parmesan} of grated Parmesan a handful at a time until smooth and creamy."},
+        {"verb": "Fold in", "body": "{amt:peas_frozen} of frozen peas and let the heat of the pasta warm them for 2 minutes."},
+        {"verb": "Serve", "body": "topped with the crispy bacon and {amt:pepper_black} of black pepper."}
+      ]}
+    ]
+  },
+  {
+    "key": "ip-chicken-tortilla-soup",
+    "title": "Instant Pot Chicken Tortilla Soup",
+    "cuisine": "Mexican",
+    "anchor": "chicken_breast",
+    "serves": 4,
+    "minutes": 60,
+    "difficulty": "Easy",
+    "equipment": "pressure_cooker",
+    "format": "pressure",
+    "cleanup": 3,
+    "ingredients": [
+      ["chicken_breast", 1.5, "lb"],
+      ["oil_neutral", 3, "tbsp"],
+      ["onion_yellow", 1, "count"],
+      ["jalapeno", 1, "count"],
+      ["garlic_head", 3, "clove"],
+      ["chili_powder", 1, "tbsp"],
+      ["cumin_ground", 2, "tsp"],
+      ["oregano_dried", 1, "tsp"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["broth_chicken", 4, "cup"],
+      ["tomato_canned_diced", 1, "count"],
+      ["green_chile_canned", 1, "count"],
+      ["bean_black_canned", 1, "count"],
+      ["corn_frozen", 1, "cup"],
+      ["tortilla_corn", 6, "count"],
+      ["lime", 1, "count"],
+      ["avocado", 1, "count"],
+      ["cheddar", 0.5, "cup"],
+      ["cilantro", 0.25, "cup"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Dice", "body": "{amt:onion_yellow|onion|onions}, seed and mince {amt:jalapeno|jalapeño|jalapeños} and mince {amt:garlic_head} of garlic."},
+        {"verb": "Drain", "body": "and rinse {amt:bean_black_canned} of black beans, and cut {amt:tortilla_corn|corn tortilla|corn tortillas} into ½-inch strips."}
+      ]},
+      {"phase": "Sauté", "minutes": 8, "actions": [
+        {"verb": "Cook", "body": "the onion and jalapeño in {amt:oil_neutral:0.333} of oil on Sauté until soft, about 4 minutes.", "duration": "4 min"},
+        {"verb": "Stir in", "body": "the garlic, {amt:chili_powder} of chili powder, {amt:cumin_ground} of cumin and {amt:oregano_dried} of oregano for 1 minute."},
+        {"verb": "Deglaze", "body": "with {amt:broth_chicken} of chicken broth, scraping up anything stuck to the bottom."}
+      ]},
+      {"phase": "Pressure cook", "minutes": 32, "actions": [
+        {"verb": "Add", "body": "{amt:tomato_canned_diced} of diced tomatoes, {amt:green_chile_canned} of green chiles, the black beans, {amt:salt_kosher} of salt and {amt:chicken_breast} of whole chicken breasts, nestled into the liquid."},
+        {"verb": "Pressure cook", "body": "with the lid locked and the valve set to Sealing on High Pressure for 10 minutes.", "duration": "10 min"},
+        {"verb": "Fry", "body": "the tortilla strips meanwhile in the remaining {amt:oil_neutral:0.667} of oil in a skillet over medium-high heat until crisp and golden, 3–4 minutes. Drain on paper towels and salt lightly.", "duration": "4 min"},
+        {"verb": "Release", "body": "the pressure naturally for 10 minutes, then quick-release the rest.", "duration": "10 min"}
+      ]},
+      {"phase": "Finish", "minutes": 10, "actions": [
+        {"verb": "Shred", "body": "the chicken on a board after checking it reads 165°F, then return it to the pot."},
+        {"verb": "Simmer", "body": "{amt:corn_frozen} of frozen corn in the soup on Sauté for 2 minutes, then stir in the juice of {amt:lime|lime|limes}.", "duration": "2 min"},
+        {"verb": "Serve", "body": "topped with the tortilla strips, {amt:avocado|avocado|avocados}, diced, {amt:cheddar} of shredded cheddar and {amt:cilantro} of chopped cilantro."}
+      ]}
+    ]
+  },
+  {
+    "key": "ip-red-beans-and-rice",
+    "title": "Instant Pot Red Beans and Rice with Sausage",
+    "cuisine": "Cajun",
+    "anchor": "bean_dried",
+    "serves": 6,
+    "minutes": 115,
+    "difficulty": "Easy",
+    "equipment": "pressure_cooker",
+    "format": "pressure",
+    "cleanup": 2,
+    "ingredients": [
+      ["bean_dried", 1, "lb"],
+      ["sausage_chorizo", 12, "oz"],
+      ["oil_neutral", 1, "tbsp"],
+      ["onion_yellow", 1, "count"],
+      ["bell_pepper", 1, "count"],
+      ["celery", 2, "stalk"],
+      ["garlic_head", 4, "clove"],
+      ["paprika_smoked", 1, "tsp"],
+      ["thyme_dried", 1, "tsp"],
+      ["oregano_dried", 1, "tsp"],
+      ["cayenne", 0.25, "tsp"],
+      ["bay_leaf", 2, "count"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 1, "tsp"],
+      ["broth_chicken", 6, "cup"],
+      ["rice_long_grain", 2, "cup"],
+      ["scallion", 4, "count"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Rinse", "body": "{amt:bean_dried} of dried red kidney beans and pick out any stones. No soaking needed."},
+        {"verb": "Slice", "body": "{amt:sausage_chorizo} of smoked chorizo into ¼-inch coins. Dice {amt:onion_yellow|onion|onions}, {amt:bell_pepper|bell pepper|bell peppers} and {amt:celery} of celery, and mince {amt:garlic_head} of garlic."}
+      ]},
+      {"phase": "Sauté", "minutes": 10, "actions": [
+        {"verb": "Brown", "body": "the sausage in {amt:oil_neutral} of oil on Sauté until the edges crisp, about 4 minutes. Lift it out with a slotted spoon.", "duration": "4 min"},
+        {"verb": "Cook", "body": "the onion, pepper and celery in the drippings until soft, about 4 minutes, then stir in the garlic, {amt:paprika_smoked} of smoked paprika, {amt:thyme_dried} of thyme, {amt:oregano_dried} of oregano, {amt:cayenne} of cayenne and {amt:pepper_black} of black pepper for 1 minute.", "duration": "4 min"},
+        {"verb": "Deglaze", "body": "with {amt:broth_chicken:0.1666} of the chicken broth, scraping the bottom clean, then add the remaining {amt:broth_chicken:0.8333}."}
+      ]},
+      {"phase": "Pressure cook", "minutes": 85, "actions": [
+        {"verb": "Add", "body": "the beans, half the sausage, {amt:bay_leaf|bay leaf|bay leaves} and {amt:salt_kosher:0.5} of salt. Make sure the pot is no more than half full — beans foam and expand."},
+        {"verb": "Pressure cook", "body": "with the lid locked and the valve set to Sealing on High Pressure for 40 minutes. It takes about 20 minutes to come up to pressure.", "duration": "40 min"},
+        {"verb": "Cook", "body": "the rice meanwhile: simmer {amt:rice_long_grain} of white rice, covered, in 3 cups of salted water for 18 minutes, then rest it off the heat.", "duration": "18 min"},
+        {"verb": "Release", "body": "the pressure naturally, about 25 minutes. Quick-releasing beans makes them sputter and split.", "duration": "25 min"}
+      ]},
+      {"phase": "Finish", "minutes": 10, "actions": [
+        {"verb": "Mash", "body": "about a cup of the beans against the side of the pot and simmer on Sauté, stirring, until creamy and thick, about 5 minutes. If the beans aren't fully tender, cook them 5–10 minutes more on High Pressure first.", "duration": "5 min"},
+        {"verb": "Stir in", "body": "the rest of the sausage, discard the bay leaves and add the remaining salt to taste."},
+        {"verb": "Serve", "body": "over the rice, scattered with {amt:scallion|scallion|scallions}, sliced."}
+      ]}
+    ]
+  },
+  {
+    "key": "ip-chicken-burrito-bowls",
+    "title": "Instant Pot Chicken Burrito Bowls",
+    "cuisine": "Tex-Mex",
+    "anchor": "chicken_breast",
+    "serves": 4,
+    "minutes": 55,
+    "difficulty": "Easy",
+    "equipment": "pressure_cooker",
+    "format": "pressure",
+    "cleanup": 1,
+    "ingredients": [
+      ["chicken_breast", 1.5, "lb"],
+      ["oil_neutral", 1, "tbsp"],
+      ["onion_yellow", 1, "count"],
+      ["chili_powder", 1, "tbsp"],
+      ["cumin_ground", 2, "tsp"],
+      ["garlic_powder", 1, "tsp"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["broth_chicken", 1.5, "cup"],
+      ["rice_long_grain", 1.5, "cup"],
+      ["bean_black_canned", 1, "count"],
+      ["corn_frozen", 1, "cup"],
+      ["salsa", 1, "cup"],
+      ["cheddar", 0.75, "cup"],
+      ["avocado", 1, "count"],
+      ["sour_cream", 0.25, "cup"],
+      ["lime", 1, "count"],
+      ["cilantro", 0.25, "cup"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Cut", "body": "{amt:chicken_breast} of chicken breasts into 1-inch pieces and dice {amt:onion_yellow|onion|onions}."},
+        {"verb": "Rinse", "body": "{amt:rice_long_grain} of long-grain white rice until the water runs clear, and drain and rinse {amt:bean_black_canned} of black beans."}
+      ]},
+      {"phase": "Sauté", "minutes": 6, "actions": [
+        {"verb": "Cook", "body": "the onion in {amt:oil_neutral} of oil on Sauté for 3 minutes, then add the chicken, {amt:chili_powder} of chili powder, {amt:cumin_ground} of cumin, {amt:garlic_powder} of garlic powder and {amt:salt_kosher} of salt and stir for 2 minutes (it won't be cooked through).", "duration": "5 min"},
+        {"verb": "Deglaze", "body": "with {amt:broth_chicken} of chicken broth, scraping the bottom clean so nothing scorches."}
+      ]},
+      {"phase": "Pressure cook", "minutes": 30, "actions": [
+        {"verb": "Layer", "body": "in the rice, pressing it under the liquid, then the beans and {amt:corn_frozen} of frozen corn. Spoon {amt:salsa} of salsa over the top and don't stir — thick salsa on the bottom can trigger a burn warning."},
+        {"verb": "Pressure cook", "body": "with the lid locked and the valve set to Sealing on High Pressure for 10 minutes.", "duration": "10 min"},
+        {"verb": "Release", "body": "the pressure naturally for 10 minutes, then quick-release the rest.", "duration": "10 min"}
+      ]},
+      {"phase": "Finish", "minutes": 8, "actions": [
+        {"verb": "Fluff", "body": "everything together with a fork and check the chicken reads 165°F. Squeeze in the juice of {amt:lime:0.5|lime|limes}."},
+                {"verb": "Serve", "body": "in bowls topped with {amt:cheddar} of shredded cheddar, {amt:avocado|avocado|avocados}, sliced, {amt:sour_cream} of sour cream, {amt:cilantro} of chopped cilantro and {amt:lime:0.5|lime|limes}, cut into wedges."}
+      ]}
+    ]
+  },
+  {
+    "key": "ip-korean-beef",
+    "title": "Instant Pot Korean Beef",
+    "cuisine": "Korean",
+    "anchor": "beef_chuck",
+    "serves": 4,
+    "minutes": 85,
+    "difficulty": "Easy",
+    "equipment": "pressure_cooker",
+    "format": "pressure",
+    "cleanup": 2,
+    "ingredients": [
+      ["beef_chuck", 2, "lb"],
+      ["oil_neutral", 1, "tbsp"],
+      ["garlic_head", 5, "clove"],
+      ["ginger_fresh", 1, "tbsp"],
+      ["broth_beef", 0.75, "cup"],
+      ["soy_sauce", 0.5, "cup"],
+      ["sugar_brown", 0.25, "cup"],
+      ["vinegar_rice", 1, "tbsp"],
+      ["gochujang", 1, "tbsp"],
+      ["cornstarch", 2, "tbsp"],
+      ["sesame_oil", 2, "tsp"],
+      ["rice_long_grain", 1.5, "cup"],
+      ["scallion", 3, "count"],
+      ["sesame_seed", 1, "tbsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Cut", "body": "{amt:beef_chuck} of beef chuck into 1½-inch cubes, trimming off any large pieces of fat."},
+        {"verb": "Mince", "body": "{amt:garlic_head} of garlic and grate {amt:ginger_fresh} of ginger. Slice {amt:scallion|scallion|scallions}, keeping the greens separate."}
+      ]},
+      {"phase": "Sauté", "minutes": 5, "actions": [
+        {"verb": "Sizzle", "body": "the garlic, ginger and scallion whites in {amt:oil_neutral} of oil on Sauté for 1 minute."},
+        {"verb": "Deglaze", "body": "with {amt:broth_beef} of beef broth, scraping the bottom clean, then stir in {amt:soy_sauce} of low-sodium soy sauce, {amt:sugar_brown} of brown sugar, {amt:vinegar_rice} of rice vinegar and {amt:gochujang} of gochujang until dissolved."}
+      ]},
+      {"phase": "Pressure cook", "minutes": 60, "actions": [
+        {"verb": "Add", "body": "the beef and stir to coat. Lock the lid, set the valve to Sealing and cook on High Pressure for 35 minutes.", "duration": "35 min"},
+        {"verb": "Cook", "body": "the rice meanwhile: rinse {amt:rice_long_grain} of white rice and simmer it, covered, in 2¼ cups of water for 18 minutes.", "duration": "18 min"},
+        {"verb": "Release", "body": "the pressure naturally for 10 minutes, then quick-release the rest. The beef should be fork-tender.", "duration": "10 min"}
+      ]},
+      {"phase": "Finish", "minutes": 8, "actions": [
+        {"verb": "Thicken", "body": "the sauce on Sauté: stir {amt:cornstarch} of cornstarch into 3 tbsp of cold water, add it and simmer until glossy and thick, about 2 minutes.", "duration": "2 min"},
+        {"verb": "Stir in", "body": "{amt:sesame_oil} of toasted sesame oil."},
+        {"verb": "Serve", "body": "over the rice, sprinkled with the scallion greens and {amt:sesame_seed} of sesame seeds."}
+      ]}
+    ]
+  },
+  {
+    "key": "ip-honey-garlic-chicken",
+    "title": "Instant Pot Honey Garlic Chicken",
+    "cuisine": "Asian",
+    "anchor": "chicken_thigh_boneless",
+    "serves": 4,
+    "minutes": 45,
+    "difficulty": "Easy",
+    "equipment": "pressure_cooker",
+    "format": "pressure",
+    "cleanup": 2,
+    "ingredients": [
+      ["chicken_thigh_boneless", 2, "lb"],
+      ["oil_neutral", 1, "tbsp"],
+      ["garlic_head", 6, "clove"],
+      ["ginger_fresh", 1, "tsp"],
+      ["broth_chicken", 0.75, "cup"],
+      ["soy_sauce", 0.33, "cup"],
+      ["honey", 0.33, "cup"],
+      ["ketchup", 2, "tbsp"],
+      ["vinegar_rice", 1, "tbsp"],
+      ["chili_flake", 0.25, "tsp"],
+      ["cornstarch", 2, "tbsp"],
+      ["rice_long_grain", 1.5, "cup"],
+      ["scallion", 2, "count"],
+      ["sesame_seed", 1, "tbsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 8, "actions": [
+        {"verb": "Trim", "body": "{amt:chicken_thigh_boneless} of boneless chicken thighs of excess fat and pat them dry."},
+        {"verb": "Mince", "body": "{amt:garlic_head} of garlic, grate {amt:ginger_fresh} of ginger and slice {amt:scallion|scallion|scallions}."}
+      ]},
+      {"phase": "Sauté", "minutes": 4, "actions": [
+        {"verb": "Sizzle", "body": "the garlic and ginger in {amt:oil_neutral} of oil on Sauté until fragrant, about 1 minute."},
+        {"verb": "Deglaze", "body": "with {amt:broth_chicken} of chicken broth, scraping the bottom, then whisk in {amt:soy_sauce} of low-sodium soy sauce, {amt:honey} of honey, {amt:ketchup} of ketchup, {amt:vinegar_rice} of rice vinegar and {amt:chili_flake} of red pepper flakes until the honey dissolves."}
+      ]},
+      {"phase": "Pressure cook", "minutes": 25, "actions": [
+        {"verb": "Add", "body": "the chicken and turn it to coat. Lock the lid, set the valve to Sealing and cook on High Pressure for 8 minutes.", "duration": "8 min"},
+        {"verb": "Cook", "body": "the rice meanwhile: rinse {amt:rice_long_grain} of white rice and simmer it, covered, in 2¼ cups of water for 18 minutes.", "duration": "18 min"},
+        {"verb": "Release", "body": "the pressure naturally for 5 minutes, then quick-release the rest.", "duration": "5 min"}
+      ]},
+      {"phase": "Finish", "minutes": 8, "actions": [
+        {"verb": "Check", "body": "the chicken reads 165°F, then move it to a board and cut it into bite-size pieces."},
+        {"verb": "Thicken", "body": "the sauce on Sauté: stir {amt:cornstarch} of cornstarch into 3 tbsp of cold water, add it and simmer until sticky and glossy, 2–3 minutes.", "duration": "3 min"},
+        {"verb": "Serve", "body": "the chicken tossed in the sauce over the rice, topped with the scallions and {amt:sesame_seed} of sesame seeds."}
+      ]}
+    ]
+  },
+  {
+    "key": "ip-lentil-soup",
+    "title": "Instant Pot Lentil Soup",
+    "cuisine": "Mediterranean",
+    "anchor": "lentil_dried",
+    "serves": 4,
+    "minutes": 60,
+    "difficulty": "Easy",
+    "equipment": "pressure_cooker",
+    "format": "pressure",
+    "cleanup": 1,
+    "ingredients": [
+      ["lentil_dried", 1.5, "cup"],
+      ["olive_oil_evoo", 2, "tbsp"],
+      ["onion_yellow", 1, "count"],
+      ["carrot", 2, "count"],
+      ["celery", 2, "stalk"],
+      ["garlic_head", 4, "clove"],
+      ["potato_yukon", 2, "count"],
+      ["cumin_ground", 1, "tsp"],
+      ["paprika_smoked", 1, "tsp"],
+      ["thyme_dried", 1, "tsp"],
+      ["bay_leaf", 1, "count"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 0.5, "tsp"],
+      ["tomato_canned_diced", 1, "count"],
+      ["broth_vegetable", 6, "cup"],
+      ["spinach_fresh", 4, "cup"],
+      ["lemon", 1, "count"],
+      ["bread_crusty", 0.5, "lb"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Rinse", "body": "{amt:lentil_dried} of brown or green lentils and pick out any stones."},
+        {"verb": "Dice", "body": "{amt:onion_yellow|onion|onions}, {amt:carrot|carrot|carrots}, {amt:celery} of celery and {amt:potato_yukon|Yukon gold potato|Yukon gold potatoes} into ½-inch pieces, and mince {amt:garlic_head} of garlic."}
+      ]},
+      {"phase": "Sauté", "minutes": 7, "actions": [
+        {"verb": "Cook", "body": "the onion, carrots and celery in {amt:olive_oil_evoo} of olive oil on Sauté until softened, about 5 minutes.", "duration": "5 min"},
+        {"verb": "Stir in", "body": "the garlic, {amt:cumin_ground} of cumin, {amt:paprika_smoked} of smoked paprika and {amt:thyme_dried} of thyme for 30 seconds."},
+        {"verb": "Deglaze", "body": "with {amt:broth_vegetable:0.1666} of the vegetable broth, scraping the bottom clean, then pour in the remaining {amt:broth_vegetable:0.8333}."}
+      ]},
+      {"phase": "Pressure cook", "minutes": 35, "actions": [
+        {"verb": "Add", "body": "the lentils, potatoes, {amt:bay_leaf|bay leaf|bay leaves}, {amt:salt_kosher} of salt and {amt:pepper_black} of pepper. Pour {amt:tomato_canned_diced} of diced tomatoes on top without stirring."},
+        {"verb": "Pressure cook", "body": "with the lid locked and the valve set to Sealing on High Pressure for 12 minutes.", "duration": "12 min"},
+        {"verb": "Release", "body": "the pressure naturally for 10 minutes, then quick-release the rest.", "duration": "10 min"}
+      ]},
+      {"phase": "Finish", "minutes": 5, "actions": [
+        {"verb": "Stir in", "body": "{amt:spinach_fresh} of baby spinach until wilted, discard the bay leaf and add the juice of {amt:lemon|lemon|lemons}. Taste for salt."},
+        {"verb": "Serve", "body": "with {amt:bread_crusty} of crusty bread, sliced, for dunking."}
+      ]}
+    ]
+  },
+  {
+    "key": "ip-beef-and-broccoli",
+    "title": "Instant Pot Beef and Broccoli",
+    "cuisine": "Chinese",
+    "anchor": "beef_chuck",
+    "serves": 4,
+    "minutes": 65,
+    "difficulty": "Easy",
+    "equipment": "pressure_cooker",
+    "format": "pressure",
+    "cleanup": 2,
+    "ingredients": [
+      ["beef_chuck", 1.5, "lb"],
+      ["oil_neutral", 2, "tbsp"],
+      ["garlic_head", 4, "clove"],
+      ["ginger_fresh", 1, "tbsp"],
+      ["broth_beef", 0.75, "cup"],
+      ["soy_sauce", 0.33, "cup"],
+      ["sugar_brown", 0.25, "cup"],
+      ["oyster_sauce", 2, "tbsp"],
+      ["cornstarch", 3, "tbsp"],
+      ["broccoli", 1, "lb"],
+      ["sesame_oil", 1, "tsp"],
+      ["rice_long_grain", 1.5, "cup"],
+      ["sesame_seed", 1, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 15, "actions": [
+        {"verb": "Slice", "body": "{amt:beef_chuck} of beef chuck against the grain into thin strips about ¼ inch thick (15 minutes in the freezer makes this easier)."},
+        {"verb": "Mince", "body": "{amt:garlic_head} of garlic, grate {amt:ginger_fresh} of ginger and cut {amt:broccoli} of broccoli into bite-size florets."}
+      ]},
+      {"phase": "Sauté", "minutes": 10, "actions": [
+        {"verb": "Brown", "body": "the beef in {amt:oil_neutral} of oil on Sauté (High) in two batches, about 2 minutes per batch, and set it aside.", "duration": "4 min"},
+        {"verb": "Stir in", "body": "the garlic and ginger for 30 seconds."},
+        {"verb": "Deglaze", "body": "with {amt:broth_beef} of beef broth, scraping the bottom clean, then stir in {amt:soy_sauce} of low-sodium soy sauce, {amt:sugar_brown} of brown sugar and {amt:oyster_sauce} of oyster sauce."}
+      ]},
+      {"phase": "Pressure cook", "minutes": 32, "actions": [
+        {"verb": "Return", "body": "the beef and its juices to the pot. Lock the lid, set the valve to Sealing and cook on High Pressure for 12 minutes.", "duration": "12 min"},
+        {"verb": "Cook", "body": "the rice meanwhile: rinse {amt:rice_long_grain} of white rice and simmer it, covered, in 2¼ cups of water for 18 minutes.", "duration": "18 min"},
+        {"verb": "Release", "body": "the pressure naturally for 10 minutes, then quick-release the rest.", "duration": "10 min"}
+      ]},
+      {"phase": "Finish", "minutes": 8, "actions": [
+        {"verb": "Thicken", "body": "the sauce on Sauté: stir {amt:cornstarch} of cornstarch into ¼ cup of cold water, add it and simmer until glossy, about 2 minutes.", "duration": "2 min"},
+        {"verb": "Steam", "body": "the broccoli: scatter the florets over the beef, cover with the lid (not sealed) and let them steam on Sauté until bright green and crisp-tender, 3–4 minutes.", "duration": "4 min"},
+        {"verb": "Serve", "body": "over the rice, drizzled with {amt:sesame_oil} of sesame oil and sprinkled with {amt:sesame_seed} of sesame seeds."}
+      ]}
+    ]
+  }
+]

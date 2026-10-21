@@ -23,6 +23,7 @@ dependencies:
   geolocator: ^14.0.2
   http: ^1.6.0
   web: ^1.1.1
+  wakelock_plus: ^1.5.2
 
 dev_dependencies:
   flutter_test:
@@ -35,6 +36,7 @@ flutter:
 
   assets:
     - assets/data/
+    - assets/icons/food/
 
   fonts:
     - family: SchibstedGrotesk

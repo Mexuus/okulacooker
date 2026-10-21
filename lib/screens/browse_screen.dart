@@ -5,21 +5,22 @@ import '../data/recipe_db.dart';
 import '../models/plan.dart';
 import '../models/recipe.dart';
 import '../services/grocery_builder.dart';
-import '../services/plan_generator.dart';
 import '../state/app_state.dart';
 import '../widgets/money_text.dart';
 import '../widgets/recipe_image.dart';
 import '../widgets/slot_picker.dart';
 import 'recipe_detail_screen.dart';
 
-enum _Show { all, fresh, favorites, had }
+enum _Show { all, fresh, favorites, had, disliked }
 
 /// Searchable recipe library. With [slot] set, picking a recipe puts it on
-/// that night of the plan ("Choose a meal").
+/// that night of the plan ("Choose a meal"). [dislikedOnly] opens it on the
+/// recipes the user thumbed down.
 class BrowseScreen extends StatefulWidget {
   final int? slot;
   final bool weekTwo;
-  const BrowseScreen({super.key, this.slot, this.weekTwo = false});
+  final bool dislikedOnly;
+  const BrowseScreen({super.key, this.slot, this.weekTwo = false, this.dislikedOnly = false});
 
   @override
   State<BrowseScreen> createState() => _BrowseScreenState();
@@ -27,13 +28,15 @@ class BrowseScreen extends StatefulWidget {
 
 class _BrowseScreenState extends State<BrowseScreen> {
   String _query = '';
-  _Show _show = _Show.all;
+  late _Show _show = widget.dislikedOnly ? _Show.disliked : _Show.all;
   String? _cuisine;
   int? _maxMinutes;
-  bool _fitsSettings = true;
+  late bool _fitsSettings = !widget.dislikedOnly;
 
   List<Recipe> _filter(AppState state) {
-    final base = _fitsSettings ? allowedRecipes(state.settings) : kRecipes;
+    final base = _fitsSettings && _show != _Show.disliked
+        ? state.allowedRecipeList
+        : kRecipes;
     final q = _query.trim().toLowerCase();
     final out = base.where((r) {
       if (_cuisine != null && r.cuisine != _cuisine) return false;
@@ -45,6 +48,8 @@ class _BrowseScreenState extends State<BrowseScreen> {
           if (!state.isFavorite(r.id)) return false;
         case _Show.had:
           if (state.lastPlanned(r.id) == null) return false;
+        case _Show.disliked:
+          if (!state.isDisliked(r.id)) return false;
         case _Show.all:
           break;
       }
@@ -115,11 +120,13 @@ class _BrowseScreenState extends State<BrowseScreen> {
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: 12),
               children: [
-                for (final (s, label) in const [
+                for (final (s, label) in [
                   (_Show.all, 'All'),
                   (_Show.fresh, 'New to you'),
-                  (_Show.favorites, 'Favorites'),
+                  (_Show.favorites, 'Loved'),
                   (_Show.had, 'Had before'),
+                  if (state.disliked.isNotEmpty || _show == _Show.disliked)
+                    (_Show.disliked, 'Thumbs down'),
                 ])
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 4),
@@ -204,9 +211,9 @@ class _BrowseScreenState extends State<BrowseScreen> {
                         leading: ClipRRect(
                           borderRadius: BorderRadius.circular(10),
                           child: SizedBox(
-                            width: 48,
-                            height: 48,
-                            child: RecipeImage(recipe: r, height: 48, emojiSize: 24),
+                            width: 56,
+                            height: 56,
+                            child: RecipeImage(recipe: r, height: 56, compact: true),
                           ),
                         ),
                         title: Text(r.title, maxLines: 2, overflow: TextOverflow.ellipsis),
@@ -221,7 +228,9 @@ class _BrowseScreenState extends State<BrowseScreen> {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             if (state.isFavorite(r.id))
-                              Icon(Icons.favorite, size: 16, color: Colors.red.shade400),
+                              Icon(Icons.thumb_up, size: 16, color: theme.colorScheme.primary),
+                            if (state.isDisliked(r.id))
+                              Icon(Icons.thumb_down, size: 16, color: theme.colorScheme.error),
                             _Badge(last: last),
                           ],
                         ),

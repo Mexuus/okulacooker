@@ -48,9 +48,23 @@ class UserSettings {
   double? zipLat;
   double? zipLng;
 
-  /// Optional kitchen equipment owned ('slow_cooker', 'air_fryer'); recipes
-  /// needing equipment the user lacks are never planned.
+  /// Kitchen gear owned: 'oven', 'slow_cooker', 'air_fryer', 'pressure_cooker',
+  /// 'grill'. Recipes needing gear the user lacks are never planned. The stove
+  /// is assumed.
   Set<String> equipment;
+
+  /// How many nights a week to plan meals for the special gear (slow cooker,
+  /// air fryer, Instant Pot, grill) when the user owns some.
+  int gearNights;
+
+  /// Longest hands-on recipe to plan, in minutes (null = any). Slow-cooker
+  /// meals cook unattended and are exempt.
+  int? maxMinutes;
+
+  bool easyOnly;
+
+  /// Skip recipes with chiles, hot sauce and other heat.
+  bool mildOnly;
 
   UserSettings({
     this.zip = '',
@@ -68,7 +82,11 @@ class UserSettings {
     this.zipLat,
     this.zipLng,
     Set<String>? equipment,
-  })  : equipment = equipment ?? <String>{},
+    this.gearNights = 2,
+    this.maxMinutes = 60,
+    this.easyOnly = false,
+    this.mildOnly = false,
+  })  : equipment = equipment ?? {'oven'},
         diets = diets ?? <Diet>{},
         excludedIngredients = excludedIngredients ?? <String>{},
         cookNights = cookNights ??
@@ -102,6 +120,11 @@ class UserSettings {
     double? zipLat,
     double? zipLng,
     Set<String>? equipment,
+    int? gearNights,
+    int? maxMinutes,
+    bool clearMaxMinutes = false,
+    bool? easyOnly,
+    bool? mildOnly,
   }) {
     final zipChanged = zip != null && zip != this.zip;
     final newStoreId = storeId ?? this.storeId;
@@ -126,6 +149,10 @@ class UserSettings {
       zipLat: zipLat ?? (zipChanged ? null : this.zipLat),
       zipLng: zipLng ?? (zipChanged ? null : this.zipLng),
       equipment: equipment ?? Set<String>.from(this.equipment),
+      gearNights: gearNights ?? this.gearNights,
+      maxMinutes: clearMaxMinutes ? null : (maxMinutes ?? this.maxMinutes),
+      easyOnly: easyOnly ?? this.easyOnly,
+      mildOnly: mildOnly ?? this.mildOnly,
     );
   }
 
@@ -145,6 +172,11 @@ class UserSettings {
         'zipLat': zipLat,
         'zipLng': zipLng,
         'equipment': equipment.toList(),
+        'gearVersion': 2,
+        'gearNights': gearNights,
+        'maxMinutes': maxMinutes,
+        'easyOnly': easyOnly,
+        'mildOnly': mildOnly,
       };
 
   factory UserSettings.fromJson(Map<String, dynamic> j) => UserSettings(
@@ -161,10 +193,7 @@ class UserSettings {
           orElse: () => AppTheme.fresh,
         ),
         onboarded: (j['onboarded'] as bool?) ?? false,
-        diets: ((j['diets'] as List?) ?? [])
-            .map((e) => Diet.values.where((d) => d.name == e))
-            .expand((x) => x)
-            .toSet(),
+        diets: dietsFromNames((j['diets'] as List?) ?? const []),
         excludedIngredients: ((j['excludedIngredients'] as List?) ?? [])
             .map((e) => e as String)
             .toSet(),
@@ -173,6 +202,16 @@ class UserSettings {
             : StoreLocationRef.fromJson(j['storeLocation'] as Map<String, dynamic>),
         zipLat: (j['zipLat'] as num?)?.toDouble(),
         zipLng: (j['zipLng'] as num?)?.toDouble(),
-        equipment: ((j['equipment'] as List?) ?? []).map((e) => e as String).toSet(),
+        equipment: {
+          ...((j['equipment'] as List?) ?? []).map((e) => e as String),
+          // Before gear version 2 every kitchen was assumed to have an oven.
+          if (j['gearVersion'] != 2) 'oven',
+        },
+        gearNights: (j['gearNights'] as int?) ?? 2,
+        // Absent in older versions: default to weeknight-friendly 60 minutes.
+        // A saved null means the user chose "Any".
+        maxMinutes: j.containsKey('maxMinutes') ? j['maxMinutes'] as int? : 60,
+        easyOnly: (j['easyOnly'] as bool?) ?? false,
+        mildOnly: (j['mildOnly'] as bool?) ?? false,
       );
 }

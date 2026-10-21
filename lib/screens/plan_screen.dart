@@ -193,9 +193,9 @@ class _MealCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   SizedBox(
-                    width: 96,
+                    width: 112,
                     child: RecipeImage(
-                        recipe: recipe, height: 96, emojiSize: 40),
+                        recipe: recipe, height: 112, compact: true),
                   ),
                   Expanded(
                     child: Padding(

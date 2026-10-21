@@ -96,6 +96,56 @@ class RecipePhase {
       );
 }
 
+/// Per-serving nutrition computed from the ingredient database.
+class Nutrition {
+  final int kcal;
+  final int protein;
+  final int carbs;
+  final int fat;
+  const Nutrition({this.kcal = 0, this.protein = 0, this.carbs = 0, this.fat = 0});
+
+  factory Nutrition.fromJson(Map<String, dynamic>? j) => j == null
+      ? const Nutrition()
+      : Nutrition(
+          kcal: (j['kcal'] as num?)?.toInt() ?? 0,
+          protein: (j['protein'] as num?)?.toInt() ?? 0,
+          carbs: (j['carbs'] as num?)?.toInt() ?? 0,
+          fat: (j['fat'] as num?)?.toInt() ?? 0,
+        );
+}
+
+/// A credited photo of the dish (free-licensed), bundled under assets/photos.
+class RecipePhoto {
+  final String file;
+  final String credit;
+  final String license;
+
+  /// Page the photo came from (for attribution).
+  final String source;
+  const RecipePhoto({
+    required this.file,
+    required this.credit,
+    this.license = '',
+    this.source = '',
+  });
+
+  String get asset => 'assets/photos/$file';
+
+  /// "Photo: Jane Doe, CC BY-SA 4.0".
+  String get attribution =>
+      'Photo: ${credit.isEmpty ? 'unknown author' : credit}${license.isEmpty ? '' : ', $license'}';
+
+  static RecipePhoto? fromJson(Object? j) {
+    if (j is! Map<String, dynamic>) return null;
+    return RecipePhoto(
+      file: j['file'] as String,
+      credit: j['credit'] as String? ?? '',
+      license: j['license'] as String? ?? '',
+      source: j['source'] as String? ?? '',
+    );
+  }
+}
+
 /// A dinner recipe from the recipe database.
 class Recipe {
   final String id;
@@ -106,8 +156,8 @@ class Recipe {
   final String anchor;
   final int baseServings;
   final int totalMinutes;
-  final String format; // skillet, oven, pot, slow, air
-  final String equipment; // stove, oven, slow_cooker, air_fryer
+  final String format; // skillet, oven, pot, slow, air, pressure, grill
+  final String equipment; // stove, oven, slow_cooker, air_fryer, pressure_cooker, grill
   final List<RecipeIngredient> ingredients;
   final double costPerServing; // reference cost from the database
   final List<RecipePhase> phases;
@@ -116,6 +166,16 @@ class Recipe {
 
   /// App version the recipe was added in (null = original set).
   final String? addedIn;
+
+  /// Gear the recipe can't be made without (oven, slow_cooker, air_fryer,
+  /// pressure_cooker, grill). The stove is assumed.
+  final Set<String> needs;
+
+  /// Noticeably hot (chiles, hot sauce, gochujang …).
+  final bool spicy;
+
+  final Nutrition nutrition;
+  final RecipePhoto? photo;
 
   const Recipe({
     required this.id,
@@ -132,6 +192,10 @@ class Recipe {
     required this.difficulty,
     required this.cleanupScore,
     this.addedIn,
+    this.needs = const {},
+    this.spicy = false,
+    this.nutrition = const Nutrition(),
+    this.photo,
   });
 
   factory Recipe.fromJson(Map<String, dynamic> j) => Recipe(
@@ -153,7 +217,14 @@ class Recipe {
         difficulty: j['difficulty'] as String,
         cleanupScore: (j['cleanup_score'] as num).toInt(),
         addedIn: j['added'] as String?,
+        needs: ((j['needs'] as List?) ?? const []).map((e) => e as String).toSet(),
+        spicy: j['spicy'] as bool? ?? false,
+        nutrition: Nutrition.fromJson(j['nutrition'] as Map<String, dynamic>?),
+        photo: RecipePhoto.fromJson(j['photo']),
       );
+
+  /// Cooks unattended for hours, so weeknight time limits don't apply.
+  bool get handsOff => equipment == 'slow_cooker';
 
   String get formatLabel => const {
         'skillet': 'Skillet',
@@ -161,46 +232,10 @@ class Recipe {
         'pot': 'One pot',
         'slow': 'Slow cooker',
         'air': 'Air fryer',
+        'pressure': 'Instant Pot',
+        'grill': 'Grill',
       }[format] ??
       format;
 
   List<String> get tags => [cuisine, difficulty, formatLabel];
-
-  /// Emoji "photo" for the dish, from its title, then main ingredient, then cuisine.
-  String get emoji {
-    final t = title.toLowerCase();
-    const byTitle = [
-      ('taco', '🌮'), ('burrito', '🌯'), ('wrap', '🌯'), ('quesadilla', '🫓'),
-      ('burger', '🍔'), ('pizza', '🍕'), ('flatbread', '🍕'), ('sandwich', '🥪'),
-      ('curry', '🍛'), ('masala', '🍛'), ('dal', '🍛'), ('soup', '🍲'), ('stew', '🍲'),
-      ('chili', '🌶️'), ('salad', '🥗'), ('ramen', '🍜'), ('noodle', '🍜'), ('pho', '🍜'),
-      ('lo mein', '🍜'), ('pad thai', '🍜'), ('fried rice', '🍚'), ('bowl', '🍚'),
-      ('risotto', '🍚'), ('lasagna', '🍝'), ('spaghetti', '🍝'), ('pasta', '🍝'),
-      ('gnocchi', '🍝'), ('orzo', '🍝'), ('frittata', '🍳'), ('shakshuka', '🍳'),
-      ('omelet', '🍳'), ('dumpling', '🥟'), ('skewer', '🍢'), ('kebab', '🍢'),
-      ('pie', '🥧'), ('hash', '🥔'),
-    ];
-    for (final (k, e) in byTitle) {
-      if (RegExp('\\b${RegExp.escape(k)}(s|es)?\\b').hasMatch(t)) return e;
-    }
-    final a = anchor;
-    const byAnchor = [
-      ('chicken', '🍗'), ('turkey', '🦃'), ('beef', '🥩'), ('steak', '🥩'),
-      ('lamb', '🍖'), ('pork', '🍖'), ('bacon', '🥓'), ('pancetta', '🥓'),
-      ('sausage', '🌭'), ('salmon', '🐟'), ('tilapia', '🐟'), ('shrimp', '🍤'),
-      ('tofu', '🥢'), ('tempeh', '🥢'), ('eggplant', '🍆'), ('egg', '🍳'), ('bean', '🫘'),
-      ('lentil', '🫘'), ('chickpea', '🫘'), ('mushroom', '🍄'), ('potato', '🥔'),
-      ('cauliflower', '🥦'), ('squash', '🎃'), ('pasta', '🍝'), ('gnocchi', '🍝'),
-      ('noodle', '🍜'),
-    ];
-    for (final (k, e) in byAnchor) {
-      if (a.contains(k)) return e;
-    }
-    return const {
-          'Mexican': '🌮', 'Tex-Mex': '🌮', 'Italian': '🍝', 'Chinese': '🥡',
-          'Japanese': '🍱', 'Indian': '🍛', 'Thai': '🍜', 'Korean': '🍲',
-          'Greek': '🥙', 'Mediterranean': '🥙', 'Middle Eastern': '🥙',
-        }[cuisine] ??
-        '🍽️';
-  }
 }

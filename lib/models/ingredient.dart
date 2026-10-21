@@ -132,6 +132,13 @@ class Ingredient {
   final double carbsPer100g;
   final double fatPer100g;
 
+  /// Diet flags from the database: beef, pork, poultry, lamb, fish, shellfish,
+  /// dairy, egg, gluten, nuts, honey.
+  final Set<String> flags;
+
+  /// File name (without extension) of the 3D food icon in assets/icons/food.
+  final String? icon;
+
   const Ingredient({
     required this.id,
     required this.name,
@@ -149,6 +156,8 @@ class Ingredient {
     this.proteinPer100g = 0,
     this.carbsPer100g = 0,
     this.fatPer100g = 0,
+    this.flags = const {},
+    this.icon,
   });
 
   factory Ingredient.fromJson(Map<String, dynamic> j) {
@@ -173,8 +182,13 @@ class Ingredient {
       proteinPer100g: n('protein_100g'),
       carbsPer100g: n('carbs_100g'),
       fatPer100g: n('fat_100g'),
+      flags: ((j['flags'] as List?) ?? const []).map((e) => e as String).toSet(),
+      icon: j['icon'] as String?,
     );
   }
+
+  /// Asset path of the ingredient's 3D icon, or null when it has none.
+  String? get iconAsset => icon == null ? null : 'assets/icons/food/$icon.webp';
 
   /// National reference price per gram (default pack).
   double get pricePerGram => gramsPerPack > 0 ? packPrice / gramsPerPack : 0;

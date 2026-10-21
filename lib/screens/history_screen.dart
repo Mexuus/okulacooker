@@ -73,7 +73,7 @@ class _WeekSection extends StatelessWidget {
                         width: 44,
                         height: 44,
                         child: RecipeImage(
-                            recipe: r, height: 44, emojiSize: 22),
+                            recipe: r, height: 44, compact: true),
                       ),
                     ),
                     title: Text(r.title),

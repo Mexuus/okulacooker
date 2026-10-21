@@ -1,0 +1,545 @@
+[
+  {
+    "key": "grill-classic-cheeseburgers-wedges",
+    "title": "Classic Grilled Cheeseburgers with Potato Wedges",
+    "cuisine": "American",
+    "anchor": "ground_beef",
+    "serves": 4,
+    "minutes": 55,
+    "difficulty": "Easy",
+    "equipment": "grill",
+    "format": "grill",
+    "cleanup": 3,
+    "ingredients": [
+      ["ground_beef", 1.5, "lb"],
+      ["salt_kosher", 2, "tsp"],
+      ["pepper_black", 1, "tsp"],
+      ["cheddar", 4, "oz"],
+      ["bun_burger", 4, "count"],
+      ["lettuce_romaine", 3, "oz"],
+      ["tomato_fresh", 1, "count"],
+      ["onion_red", 0.5, "count"],
+      ["pickle_dill", 0.25, "cup"],
+      ["ketchup", 0.25, "cup"],
+      ["mustard_dijon", 2, "tbsp"],
+      ["potato_russet", 1.5, "lb"],
+      ["oil_neutral", 2, "tbsp"],
+      ["garlic_powder", 1, "tsp"],
+      ["paprika_smoked", 1, "tsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Cut", "body": "{amt:potato_russet} of russet potatoes (skin on) into 8 wedges each and toss them with {amt:oil_neutral:0.75} of oil, {amt:garlic_powder} of garlic powder, {amt:paprika_smoked} of smoked paprika, {amt:salt_kosher:0.25} of salt and {amt:pepper_black:0.25} of pepper."},
+        {"verb": "Wrap", "body": "the wedges in a single layer on a double sheet of heavy-duty foil and crimp the edges into a tightly sealed packet."},
+        {"verb": "Shape", "body": "{amt:ground_beef} of ground beef into 4 loose patties about ¾ inch thick and a little wider than the buns, without overworking the meat. Press a shallow dimple into the centre of each so they stay flat as they cook, then keep them chilled."},
+        {"verb": "Slice", "body": "{amt:tomato_fresh|tomato|tomatoes} and {amt:onion_red|red onion|red onions} into thin rounds, slice {amt:pickle_dill} of dill pickles and separate {amt:lettuce_romaine} of romaine into leaves."}
+      ]},
+      {"phase": "Grill wedges", "minutes": 28, "actions": [
+        {"verb": "Preheat", "body": "the grill for two-zone cooking at medium-high, 400–450°F: on charcoal, bank the lit coals on one side; on gas, run one side on medium-high and the other on low. Brush the grates clean, then wipe them with a folded paper towel dipped in the remaining oil.", "duration": "10-15 min"},
+        {"verb": "Grill", "body": "the foil packet on the cooler side with the lid closed until the potatoes are fork-tender, giving it a careful shake halfway.", "duration": "20-25 min"},
+        {"verb": "Crisp", "body": "the wedges: open the packet (watch the steam) and tip them straight onto the grates over the hot side for 2–3 minutes per side until charred and crisp, then move them back to the cooler side to stay warm.", "duration": "5 min"}
+      ]},
+      {"phase": "Grill burgers", "minutes": 12, "actions": [
+        {"verb": "Season", "body": "the patties on both sides with the remaining {amt:salt_kosher:0.75} of salt and {amt:pepper_black:0.75} of pepper right before they go on."},
+        {"verb": "Grill", "body": "the patties over the hot side with the lid closed until well browned and they release easily, then flip once. Don't press them with the spatula.", "duration": "4-5 min"},
+        {"verb": "Melt", "body": "{amt:cheddar} of sliced cheddar over the patties after another 3 minutes, close the lid and cook until the cheese melts and the burgers read 160°F in the centre.", "duration": "1-2 min"},
+        {"verb": "Toast", "body": "{amt:bun_burger|bun|buns}, cut side down, over the cooler side for 30–60 seconds while the burgers rest for a couple of minutes."}
+      ]},
+      {"phase": "Serve", "minutes": 3, "actions": [
+        {"verb": "Build", "body": "the burgers: spread the buns with {amt:ketchup} of ketchup and {amt:mustard_dijon} of mustard, then layer lettuce, a cheeseburger, tomato, onion and pickles. Serve with the potato wedges."}
+      ]}
+    ]
+  },
+  {
+    "key": "grill-bbq-chicken-thighs-corn-salad",
+    "title": "Grilled BBQ Chicken Thighs with Corn Salad",
+    "cuisine": "American",
+    "anchor": "chicken_thigh_boneless",
+    "serves": 4,
+    "minutes": 45,
+    "difficulty": "Easy",
+    "equipment": "grill",
+    "format": "grill",
+    "cleanup": 3,
+    "ingredients": [
+      ["chicken_thigh_boneless", 2, "lb"],
+      ["sugar_brown", 1, "tbsp"],
+      ["paprika_smoked", 2, "tsp"],
+      ["chili_powder", 1, "tsp"],
+      ["garlic_powder", 1, "tsp"],
+      ["salt_kosher", 2, "tsp"],
+      ["pepper_black", 1, "tsp"],
+      ["oil_neutral", 1.5, "tbsp"],
+      ["bbq_sauce", 0.75, "cup"],
+      ["corn_frozen", 3, "cup"],
+      ["olive_oil_evoo", 3, "tbsp"],
+      ["tomato_cherry", 1, "cup"],
+      ["onion_red", 0.5, "count"],
+      ["cilantro", 0.25, "cup"],
+      ["lime", 1, "count"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Mix", "body": "the rub: {amt:sugar_brown} of brown sugar, {amt:paprika_smoked} of smoked paprika, {amt:chili_powder} of chili powder, {amt:garlic_powder} of garlic powder, {amt:salt_kosher:0.75} of salt and {amt:pepper_black:0.75} of pepper."},
+        {"verb": "Coat", "body": "{amt:chicken_thigh_boneless} of chicken thighs, patted dry, with {amt:oil_neutral:0.666} of oil, then the rub on all sides. Let them sit while you make the salad and heat the grill."}
+      ]},
+      {"phase": "Corn salad", "minutes": 10, "actions": [
+        {"verb": "Thaw", "body": "{amt:corn_frozen} of frozen corn under warm running water, drain well and pat dry."},
+        {"verb": "Char", "body": "the corn in {amt:olive_oil_evoo:0.333} of olive oil in a large skillet over high heat, leaving it undisturbed for a few minutes at a time, until browned in spots. Spread it on a plate to cool.", "duration": "6-8 min"},
+        {"verb": "Toss", "body": "the corn with {amt:tomato_cherry} of halved cherry tomatoes, {amt:onion_red|red onion|red onions}, finely diced, {amt:cilantro} of chopped cilantro, the juice of {amt:lime|lime|limes}, the remaining {amt:olive_oil_evoo:0.666} of olive oil, {amt:salt_kosher:0.25} of salt and {amt:pepper_black:0.25} of pepper."}
+      ]},
+      {"phase": "Grill", "minutes": 20, "actions": [
+        {"verb": "Preheat", "body": "the grill for two-zone cooking at medium-high, 400–450°F (coals banked to one side, or one gas burner turned to low). Brush the grates clean and wipe them with a paper towel dipped in the remaining {amt:oil_neutral:0.333} of oil.", "duration": "10-15 min"},
+        {"verb": "Grill", "body": "the thighs smooth side down over direct heat with the lid closed until well marked and they release easily, then flip once and cook the second side.", "duration": "5-6 min"},
+        {"verb": "Glaze", "body": "the chicken with {amt:bbq_sauce:0.666} of BBQ sauce during the last few minutes, moving it to the cooler side so the sugary sauce caramelises without burning. Turn the pieces once more to set the sauce on both sides.", "duration": "3-4 min"},
+        {"verb": "Check", "body": "that the thickest piece reads at least 165°F; thighs stay juicy right up to 175°F. Rest them for 5 minutes.", "duration": "5 min"}
+      ]},
+      {"phase": "Serve", "minutes": 5, "actions": [
+        {"verb": "Serve", "body": "the chicken with the corn salad and the remaining {amt:bbq_sauce:0.333} of BBQ sauce for dipping."}
+      ]}
+    ]
+  },
+  {
+    "key": "grill-sirloin-garlic-herb-butter-potatoes",
+    "title": "Grilled Sirloin with Garlic Herb Butter and Potatoes",
+    "cuisine": "American",
+    "anchor": "beef_steak_sirloin",
+    "serves": 4,
+    "minutes": 55,
+    "difficulty": "Medium",
+    "equipment": "grill",
+    "format": "grill",
+    "cleanup": 3,
+    "ingredients": [
+      ["beef_steak_sirloin", 2, "lb"],
+      ["salt_kosher", 2.5, "tsp"],
+      ["pepper_black", 1, "tsp"],
+      ["butter_unsalted", 4, "tbsp"],
+      ["garlic_head", 3, "clove"],
+      ["parsley_fresh", 2, "tbsp"],
+      ["thyme_fresh", 1, "tsp"],
+      ["potato_yukon", 1.5, "lb"],
+      ["olive_oil_evoo", 2, "tbsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 12, "actions": [
+        {"verb": "Season", "body": "{amt:beef_steak_sirloin} of 1-inch-thick sirloin steak, patted dry, with {amt:salt_kosher:0.6} of salt and {amt:pepper_black:0.5} of pepper on all sides. Leave it on the counter while the potatoes cook."},
+        {"verb": "Mash", "body": "{amt:butter_unsalted} of softened butter with {amt:garlic_head} of finely minced garlic, {amt:parsley_fresh} of chopped parsley, {amt:thyme_fresh} of thyme leaves and {amt:salt_kosher:0.1} of salt."}
+      ]},
+      {"phase": "Parboil", "minutes": 15, "actions": [
+        {"verb": "Simmer", "body": "{amt:potato_yukon} of small Yukon gold potatoes, halved (quartered if large), in a pot of cold water with {amt:salt_kosher:0.3} of salt until a knife slides in with a little resistance.", "duration": "8-10 min"},
+        {"verb": "Drain", "body": "the potatoes, let them steam dry for a few minutes, then toss with {amt:olive_oil_evoo:0.75} of olive oil and {amt:pepper_black:0.5} of pepper."}
+      ]},
+      {"phase": "Grill", "minutes": 20, "actions": [
+        {"verb": "Preheat", "body": "the grill to high, 450–500°F, with one cooler zone (coals banked to one side, or one gas burner on medium). Brush the grates clean and oil them with a paper towel dipped in the remaining {amt:olive_oil_evoo:0.25} of oil.", "duration": "10-15 min"},
+        {"verb": "Grill", "body": "the potatoes cut side down over medium heat (use a grill basket or skewers so none fall through) until charred and tender, turning once.", "duration": "8-10 min"},
+        {"verb": "Sear", "body": "the steak over the hottest part with the lid closed until deeply browned, then flip once and cook the second side until it reads 130–135°F for medium-rare (140–145°F for medium).", "duration": "4-5 min"}
+      ]},
+      {"phase": "Rest & serve", "minutes": 8, "actions": [
+        {"verb": "Rest", "body": "the steak on a board topped with half the herb butter so it melts over the meat.", "duration": "5-8 min"},
+        {"verb": "Slice", "body": "the steak thinly against the grain, toss the hot potatoes with the rest of the butter and serve together."}
+      ]}
+    ]
+  },
+  {
+    "key": "grill-hawaiian-teriyaki-chicken-pineapple",
+    "title": "Hawaiian Grilled Teriyaki Chicken with Pineapple and Rice",
+    "cuisine": "American",
+    "anchor": "chicken_thigh_boneless",
+    "serves": 4,
+    "minutes": 55,
+    "difficulty": "Easy",
+    "equipment": "grill",
+    "format": "grill",
+    "cleanup": 4,
+    "ingredients": [
+      ["chicken_thigh_boneless", 2, "lb"],
+      ["pineapple_canned", 1, "count"],
+      ["soy_sauce", 0.5, "cup"],
+      ["sugar_brown", 0.333, "cup"],
+      ["vinegar_rice", 1, "tbsp"],
+      ["sesame_oil", 1, "tbsp"],
+      ["garlic_head", 3, "clove"],
+      ["ginger_fresh", 1, "tbsp"],
+      ["cornstarch", 1, "tbsp"],
+      ["rice_long_grain", 1.25, "cup"],
+      ["oil_neutral", 1, "tbsp"],
+      ["scallion", 3, "count"],
+      ["sesame_seed", 1, "tbsp"]
+    ],
+    "steps": [
+      {"phase": "Marinate", "minutes": 30, "actions": [
+        {"verb": "Drain", "body": "{amt:pineapple_canned} of pineapple chunks, saving ½ cup of the juice."},
+        {"verb": "Whisk", "body": "the teriyaki sauce: the pineapple juice, {amt:soy_sauce} of soy sauce, {amt:sugar_brown} of brown sugar, {amt:vinegar_rice} of rice vinegar, {amt:sesame_oil} of sesame oil, {amt:garlic_head} of minced garlic and {amt:ginger_fresh} of grated ginger."},
+        {"verb": "Marinate", "body": "{amt:chicken_thigh_boneless} of chicken thighs in half the sauce in a zip-top bag in the fridge. Pour the other half into a small saucepan for the glaze — it never touches raw chicken.", "duration": "30 min"},
+        {"verb": "Cook", "body": "the rice meanwhile: rinse {amt:rice_long_grain} of white rice and simmer it, covered, in 2 cups of water over low heat, then let it steam off the heat.", "duration": "15 min"},
+        {"verb": "Thicken", "body": "the glaze: stir {amt:cornstarch} of cornstarch into 1 tbsp of cold water, bring the reserved sauce to a simmer, whisk in the slurry and bubble until glossy and thick.", "duration": "2 min"}
+      ]},
+      {"phase": "Grill", "minutes": 20, "actions": [
+        {"verb": "Preheat", "body": "the grill to medium-high, 400–450°F. Brush the grates clean and oil them with a paper towel dipped in {amt:oil_neutral:0.5} of oil.", "duration": "10-15 min"},
+        {"verb": "Thread", "body": "the pineapple onto skewers (soak wooden ones first) and brush with the remaining {amt:oil_neutral:0.5} of oil."},
+        {"verb": "Grill", "body": "the chicken over direct heat, shaking off the marinade (discard it), with the lid closed until well marked, then flip once and cook the second side until it reads 165°F (up to 175°F is fine for thighs). Brush with a few spoonfuls of the glaze in the last 2 minutes.", "duration": "5-6 min"},
+        {"verb": "Char", "body": "the pineapple skewers alongside until caramelised grill marks appear, turning once.", "duration": "2-3 min"}
+      ]},
+      {"phase": "Serve", "minutes": 5, "actions": [
+        {"verb": "Rest", "body": "the chicken for 5 minutes, then slice it.", "duration": "5 min"},
+        {"verb": "Serve", "body": "over the rice with the pineapple, the rest of the glaze, {amt:scallion|scallion|scallions}, thinly sliced, and {amt:sesame_seed} of sesame seeds."}
+      ]}
+    ]
+  },
+  {
+    "key": "grill-lemon-herb-salmon-asparagus",
+    "title": "Grilled Lemon-Herb Salmon with Asparagus",
+    "cuisine": "American",
+    "anchor": "salmon_fillet",
+    "serves": 4,
+    "minutes": 40,
+    "difficulty": "Medium",
+    "equipment": "grill",
+    "format": "grill",
+    "cleanup": 2,
+    "ingredients": [
+      ["salmon_fillet", 4, "count"],
+      ["olive_oil_evoo", 4, "tbsp"],
+      ["lemon", 2, "count"],
+      ["garlic_head", 3, "clove"],
+      ["dill_fresh", 2, "tbsp"],
+      ["parsley_fresh", 2, "tbsp"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 0.5, "tsp"],
+      ["asparagus", 1.5, "lb"]
+    ],
+    "steps": [
+      {"phase": "Marinate", "minutes": 20, "actions": [
+        {"verb": "Whisk", "body": "{amt:olive_oil_evoo:0.625} of olive oil with the zest and juice of {amt:lemon:0.5|lemon|lemons}, {amt:garlic_head} of minced garlic, {amt:dill_fresh:0.5} of chopped dill, {amt:parsley_fresh:0.5} of chopped parsley, {amt:salt_kosher:0.5} of salt and {amt:pepper_black} of pepper. Set 2 tbsp aside for serving."},
+        {"verb": "Marinate", "body": "{amt:salmon_fillet|skin-on salmon fillet|skin-on salmon fillets} (about 6 oz each), patted dry, in the rest of the mixture. Keep it short — the lemon starts to firm the fish after half an hour.", "duration": "15 min"},
+        {"verb": "Trim", "body": "{amt:asparagus} of asparagus by snapping off the woody ends, then toss the spears with {amt:olive_oil_evoo:0.25} of olive oil and {amt:salt_kosher:0.333} of salt."}
+      ]},
+      {"phase": "Grill", "minutes": 15, "actions": [
+        {"verb": "Preheat", "body": "the grill to medium-high, 400–450°F. Scrub the grates very clean and oil them well with a paper towel dipped in the remaining {amt:olive_oil_evoo:0.125} of oil so the fish won't stick.", "duration": "10-15 min"},
+        {"verb": "Grill", "body": "the asparagus crosswise to the grates over direct heat, rolling the spears now and then, until crisp-tender and charred in spots.", "duration": "6-8 min"},
+        {"verb": "Grill", "body": "the salmon flesh side down over direct heat with the lid closed, without moving it, until it releases easily from the grate.", "duration": "3-4 min"},
+        {"verb": "Flip", "body": "the fillets once with a thin spatula and cook skin side down until the fish flakes and reads 145°F in the thickest part.", "duration": "3-5 min"}
+      ]},
+      {"phase": "Serve", "minutes": 5, "actions": [
+        {"verb": "Serve", "body": "the salmon on the asparagus, spooned with the reserved lemon-herb oil, scattered with the rest of the dill and parsley and with {amt:lemon:0.5|lemon|lemons}, cut into wedges, for squeezing."}
+      ]}
+    ]
+  },
+  {
+    "key": "grill-garlic-lime-shrimp-skewers-rice",
+    "title": "Garlic-Lime Grilled Shrimp Skewers with Rice",
+    "cuisine": "Mexican",
+    "anchor": "shrimp_frozen",
+    "serves": 4,
+    "minutes": 40,
+    "difficulty": "Easy",
+    "equipment": "grill",
+    "format": "grill",
+    "cleanup": 3,
+    "ingredients": [
+      ["shrimp_frozen", 1.5, "lb"],
+      ["olive_oil_evoo", 3, "tbsp"],
+      ["garlic_head", 4, "clove"],
+      ["lime", 3, "count"],
+      ["honey", 1, "tbsp"],
+      ["cumin_ground", 0.5, "tsp"],
+      ["chili_flake", 0.25, "tsp"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 0.5, "tsp"],
+      ["rice_long_grain", 1.5, "cup"],
+      ["butter_unsalted", 1, "tbsp"],
+      ["cilantro", 0.5, "cup"]
+    ],
+    "steps": [
+      {"phase": "Prep & marinate", "minutes": 22, "actions": [
+        {"verb": "Thaw", "body": "{amt:shrimp_frozen} of large peeled, deveined shrimp in a bowl of cold water, then drain and pat very dry. Soak wooden skewers in water at the same time.", "duration": "10 min"},
+        {"verb": "Start", "body": "the rice: rinse {amt:rice_long_grain} of white rice and bring it to a boil with 2¼ cups of water, {amt:butter_unsalted} of butter and {amt:salt_kosher:0.333} of salt, then cover and simmer on low before letting it steam off the heat for 5 minutes.", "duration": "15 min"},
+        {"verb": "Whisk", "body": "{amt:olive_oil_evoo:0.666} of olive oil with {amt:garlic_head} of minced garlic, the zest and juice of {amt:lime:0.666|lime|limes}, {amt:honey} of honey, {amt:cumin_ground} of cumin, {amt:chili_flake} of red pepper flakes, {amt:salt_kosher:0.5} of salt and {amt:pepper_black} of pepper."},
+        {"verb": "Marinate", "body": "the shrimp in the garlic-lime mixture. Don't go past 30 minutes or the lime juice turns them mushy.", "duration": "15 min"}
+      ]},
+      {"phase": "Grill", "minutes": 12, "actions": [
+        {"verb": "Preheat", "body": "the grill to medium-high, 400–450°F. Brush the grates clean and oil them with a paper towel dipped in the remaining {amt:olive_oil_evoo:0.333} of oil.", "duration": "10 min"},
+        {"verb": "Thread", "body": "the shrimp onto the skewers through both the head and tail ends (two parallel skewers stop them spinning when you flip)."},
+        {"verb": "Grill", "body": "the skewers over direct heat until pink with grill marks, then flip once and cook until the shrimp are opaque all the way through and curled into a loose C.", "duration": "2-3 min"}
+      ]},
+      {"phase": "Serve", "minutes": 5, "actions": [
+        {"verb": "Fluff", "body": "the rice with half of {amt:cilantro} of chopped cilantro and the juice of {amt:lime:0.334|lime|limes}."},
+        {"verb": "Serve", "body": "the skewers over the cilantro-lime rice, scattered with the rest of the cilantro."}
+      ]}
+    ]
+  },
+  {
+    "key": "grill-honey-garlic-pork-tenderloin-sweet-potatoes",
+    "title": "Grilled Pork Tenderloin with Honey-Garlic Glaze and Sweet Potatoes",
+    "cuisine": "American",
+    "anchor": "pork_tenderloin",
+    "serves": 4,
+    "minutes": 45,
+    "difficulty": "Medium",
+    "equipment": "grill",
+    "format": "grill",
+    "cleanup": 3,
+    "ingredients": [
+      ["pork_tenderloin", 2, "lb"],
+      ["olive_oil_evoo", 3, "tbsp"],
+      ["salt_kosher", 2, "tsp"],
+      ["pepper_black", 1, "tsp"],
+      ["paprika_smoked", 1, "tsp"],
+      ["butter_unsalted", 1, "tbsp"],
+      ["garlic_head", 4, "clove"],
+      ["honey", 0.333, "cup"],
+      ["soy_sauce", 3, "tbsp"],
+      ["mustard_dijon", 2, "tsp"],
+      ["sweet_potato", 2, "lb"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 12, "actions": [
+        {"verb": "Trim", "body": "the silver skin from {amt:pork_tenderloin} of pork tenderloin (usually two), pat dry and rub with {amt:olive_oil_evoo:0.333} of olive oil, {amt:salt_kosher:0.5} of salt, {amt:pepper_black:0.5} of pepper and {amt:paprika_smoked} of smoked paprika."},
+        {"verb": "Make", "body": "the glaze: melt {amt:butter_unsalted} of butter in a small saucepan, cook {amt:garlic_head} of minced garlic for 30 seconds, then stir in {amt:honey} of honey, {amt:soy_sauce} of soy sauce and {amt:mustard_dijon} of Dijon mustard and simmer until slightly syrupy. Pour half into a separate bowl for serving.", "duration": "3 min"},
+        {"verb": "Slice", "body": "{amt:sweet_potato} of sweet potatoes, scrubbed, into ½-inch rounds and toss with {amt:olive_oil_evoo:0.5} of olive oil and the remaining {amt:salt_kosher:0.5} of salt and {amt:pepper_black:0.5} of pepper."}
+      ]},
+      {"phase": "Grill", "minutes": 28, "actions": [
+        {"verb": "Preheat", "body": "the grill for two-zone cooking at medium-high, 400–450°F (coals banked to one side, or one gas burner on low). Brush the grates clean and oil them with a paper towel dipped in the remaining {amt:olive_oil_evoo:0.167} of oil.", "duration": "10-15 min"},
+        {"verb": "Grill", "body": "the sweet potato rounds over the cooler side with the lid closed until nearly tender, flipping once; they finish over direct heat later.", "duration": "10 min"},
+        {"verb": "Grill", "body": "the tenderloins over direct heat with the lid closed, giving them a quarter turn every 3–4 minutes so all sides brown.", "duration": "15-18 min"},
+        {"verb": "Char", "body": "the sweet potatoes over direct heat for 2–3 minutes per side until marked and soft in the middle."},
+        {"verb": "Glaze", "body": "the pork with the brushing half of the glaze during the last 4–5 minutes, turning it so the honey caramelises; slide it to the cooler side if it starts to scorch. Take it off at 145°F in the thickest part.", "duration": "4-5 min"}
+      ]},
+      {"phase": "Rest & serve", "minutes": 5, "actions": [
+        {"verb": "Rest", "body": "the pork for at least 3 minutes, then slice it into ½-inch medallions.", "duration": "5 min"},
+        {"verb": "Serve", "body": "with the sweet potatoes, drizzling the reserved clean glaze over the pork."}
+      ]}
+    ]
+  },
+  {
+    "key": "grill-chicken-caesar-salad",
+    "title": "Grilled Chicken Caesar Salad",
+    "cuisine": "American",
+    "anchor": "chicken_breast",
+    "serves": 4,
+    "minutes": 45,
+    "difficulty": "Easy",
+    "equipment": "grill",
+    "format": "grill",
+    "cleanup": 3,
+    "ingredients": [
+      ["chicken_breast", 1.5, "lb"],
+      ["olive_oil_evoo", 5, "tbsp"],
+      ["lemon", 2, "count"],
+      ["garlic_head", 3, "clove"],
+      ["italian_seasoning", 1, "tsp"],
+      ["salt_kosher", 1, "tsp"],
+      ["pepper_black", 1, "tsp"],
+      ["mayo", 0.5, "cup"],
+      ["parmesan", 1, "cup"],
+      ["mustard_dijon", 1, "tsp"],
+      ["worcestershire", 1, "tsp"],
+      ["bread_crusty", 6, "oz"],
+      ["lettuce_romaine", 1.25, "lb"]
+    ],
+    "steps": [
+      {"phase": "Marinate", "minutes": 20, "actions": [
+        {"verb": "Pound", "body": "{amt:chicken_breast} of chicken breasts to an even ¾-inch thickness so they grill evenly."},
+        {"verb": "Marinate", "body": "the chicken in {amt:olive_oil_evoo:0.3} of olive oil, the juice of {amt:lemon:0.5|lemon|lemons}, {amt:garlic_head:0.333} of minced garlic, {amt:italian_seasoning} of Italian seasoning, {amt:salt_kosher} of salt and {amt:pepper_black:0.5} of pepper.", "duration": "15-30 min"},
+        {"verb": "Whisk", "body": "the dressing: {amt:mayo} of mayonnaise, {amt:parmesan:0.5} of finely grated parmesan, the juice of {amt:lemon:0.5|lemon|lemons}, {amt:mustard_dijon} of Dijon mustard, {amt:worcestershire} of Worcestershire sauce, {amt:garlic_head:0.333} of grated garlic and {amt:pepper_black:0.5} of pepper. Thin with 1–2 tbsp of water until pourable and chill."},
+        {"verb": "Slice", "body": "{amt:bread_crusty} of crusty bread into 1-inch-thick slices and brush both sides with {amt:olive_oil_evoo:0.5} of olive oil. Chop {amt:lettuce_romaine} of romaine into bite-size pieces."}
+      ]},
+      {"phase": "Grill", "minutes": 15, "actions": [
+        {"verb": "Preheat", "body": "the grill to medium-high, 400–450°F. Brush the grates clean and oil them with a paper towel dipped in the remaining {amt:olive_oil_evoo:0.2} of oil.", "duration": "10-15 min"},
+        {"verb": "Grill", "body": "the chicken over direct heat with the lid closed until well marked, then flip once and cook until it reads 165°F in the thickest part. Rest it for 5 minutes.", "duration": "5-6 min"},
+        {"verb": "Toast", "body": "the bread slices over direct heat until crisp and striped, about 1 minute per side, then rub them with the cut side of the remaining {amt:garlic_head:0.333} of garlic, halved, and cut into cubes for croutons.", "duration": "2 min"}
+      ]},
+      {"phase": "Assemble", "minutes": 8, "actions": [
+        {"verb": "Toss", "body": "the romaine with most of the dressing and the croutons."},
+        {"verb": "Serve", "body": "topped with the sliced chicken, the rest of the dressing and the remaining {amt:parmesan:0.5} of shaved or grated parmesan."}
+      ]}
+    ]
+  },
+  {
+    "key": "grill-jerk-chicken-rice-beans",
+    "title": "Grilled Jerk Chicken with Rice and Beans",
+    "cuisine": "Caribbean",
+    "anchor": "chicken_thigh_boneless",
+    "serves": 4,
+    "minutes": 60,
+    "difficulty": "Medium",
+    "equipment": "grill",
+    "format": "grill",
+    "cleanup": 4,
+    "ingredients": [
+      ["chicken_thigh_boneless", 1.5, "lb"],
+      ["scallion", 6, "count"],
+      ["jalapeno", 2, "count"],
+      ["garlic_head", 5, "clove"],
+      ["ginger_fresh", 1, "tbsp"],
+      ["thyme_dried", 1.5, "tsp"],
+      ["cinnamon_ground", 0.5, "tsp"],
+      ["nutmeg_ground", 0.25, "tsp"],
+      ["pepper_black", 1, "tsp"],
+      ["sugar_brown", 1, "tbsp"],
+      ["soy_sauce", 2, "tbsp"],
+      ["lime", 2, "count"],
+      ["oil_neutral", 2, "tbsp"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["rice_long_grain", 1.25, "cup"],
+      ["coconut_milk", 1, "count"],
+      ["bean_black_canned", 1, "count"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Blend", "body": "the jerk marinade in a blender or mini food processor until fairly smooth: {amt:scallion:0.666|scallion|scallions}, roughly chopped, {amt:jalapeno|jalapeño|jalapeños} (keep the seeds for more heat), {amt:garlic_head:0.8} of garlic, {amt:ginger_fresh} of ginger, {amt:thyme_dried:0.666} of dried thyme, {amt:cinnamon_ground} of cinnamon, {amt:nutmeg_ground} of nutmeg, {amt:pepper_black} of pepper, {amt:sugar_brown} of brown sugar, {amt:soy_sauce} of soy sauce, the juice of {amt:lime:0.5|lime|limes}, {amt:oil_neutral:0.75} of oil and {amt:salt_kosher:0.666} of salt."},
+        {"verb": "Coat", "body": "{amt:chicken_thigh_boneless} of chicken thighs all over with the marinade. Wear gloves or wash your hands well afterwards — the chile oils linger."}
+      ]},
+      {"phase": "Marinate", "minutes": 30, "actions": [
+        {"verb": "Marinate", "body": "the chicken in the fridge for at least 30 minutes, or up to overnight for deeper flavour.", "duration": "30 min"},
+        {"verb": "Simmer", "body": "the rice and beans meanwhile: in a saucepan bring {amt:coconut_milk} of coconut milk, ¾ cup of water, {amt:bean_black_canned} of black beans, drained and rinsed, the remaining garlic clove (smashed), the rest of the thyme and the remaining {amt:salt_kosher:0.334} of salt to a boil. Stir in {amt:rice_long_grain} of rinsed white rice, cover and cook on the lowest heat without lifting the lid.", "duration": "18-20 min"},
+        {"verb": "Rest", "body": "the rice off the heat, still covered, then fluff with a fork.", "duration": "5 min"}
+      ]},
+      {"phase": "Grill", "minutes": 15, "actions": [
+        {"verb": "Preheat", "body": "the grill for two-zone cooking at medium-high, 400–450°F. Brush the grates clean and oil them with a paper towel dipped in the remaining {amt:oil_neutral:0.25} of oil.", "duration": "10-15 min"},
+        {"verb": "Grill", "body": "the thighs over direct heat with the lid closed until charred in spots, then flip once and cook the second side until they read at least 165°F (175°F is ideal for thighs). If the sugar flares or blackens too fast, finish them on the cooler side.", "duration": "5-6 min"}
+      ]},
+      {"phase": "Serve", "minutes": 5, "actions": [
+        {"verb": "Rest", "body": "the chicken for 5 minutes.", "duration": "5 min"},
+        {"verb": "Serve", "body": "with the coconut rice and beans, the remaining {amt:scallion:0.334|scallion|scallions}, thinly sliced, and {amt:lime:0.5|lime|limes}, cut into wedges."}
+      ]}
+    ]
+  },
+  {
+    "key": "grill-tandoori-chicken-cucumber-yogurt-rice",
+    "title": "Grilled Tandoori-Style Chicken with Cucumber Yogurt and Rice",
+    "cuisine": "Indian",
+    "anchor": "chicken_thigh_boneless",
+    "serves": 4,
+    "minutes": 55,
+    "difficulty": "Easy",
+    "equipment": "grill",
+    "format": "grill",
+    "cleanup": 3,
+    "ingredients": [
+      ["chicken_thigh_boneless", 2, "lb"],
+      ["yogurt_greek", 1.75, "cup"],
+      ["lemon", 2, "count"],
+      ["garlic_head", 4, "clove"],
+      ["ginger_fresh", 1, "tbsp"],
+      ["garam_masala", 2, "tsp"],
+      ["cumin_ground", 1.5, "tsp"],
+      ["paprika_sweet", 1, "tbsp"],
+      ["cayenne", 0.5, "tsp"],
+      ["turmeric", 0.5, "tsp"],
+      ["salt_kosher", 2, "tsp"],
+      ["oil_neutral", 1.5, "tbsp"],
+      ["cucumber", 1, "count"],
+      ["cilantro", 0.25, "cup"],
+      ["rice_basmati", 1.25, "cup"],
+      ["onion_red", 0.5, "count"]
+    ],
+    "steps": [
+      {"phase": "Marinate", "minutes": 35, "actions": [
+        {"verb": "Stir", "body": "together {amt:yogurt_greek:0.4286} of Greek yogurt, the juice of {amt:lemon:0.5|lemon|lemons}, {amt:garlic_head:0.75} of grated garlic, {amt:ginger_fresh} of grated ginger, {amt:garam_masala} of garam masala, {amt:cumin_ground:0.666} of cumin, {amt:paprika_sweet} of paprika, {amt:cayenne} of cayenne, {amt:turmeric} of turmeric, {amt:salt_kosher:0.75} of salt and {amt:oil_neutral:0.666} of oil."},
+        {"verb": "Marinate", "body": "{amt:chicken_thigh_boneless} of chicken thighs, slashed a few times on each side, in the yogurt mixture in the fridge for at least 30 minutes (up to 12 hours makes it even more tender).", "duration": "30 min"},
+        {"verb": "Cook", "body": "the rice meanwhile: rinse {amt:rice_basmati} of basmati until the water runs clear and simmer it, covered, in 1¾ cups of water, then let it steam off the heat for 5 minutes.", "duration": "15 min"},
+        {"verb": "Make", "body": "the cucumber yogurt: coarsely grate {amt:cucumber|cucumber|cucumbers}, squeeze out the liquid and stir it into {amt:yogurt_greek:0.5714} of Greek yogurt with {amt:garlic_head:0.25} of grated garlic, {amt:cumin_ground:0.334} of cumin, {amt:salt_kosher:0.25} of salt and half of {amt:cilantro} of chopped cilantro. Chill."}
+      ]},
+      {"phase": "Grill", "minutes": 15, "actions": [
+        {"verb": "Preheat", "body": "the grill to medium-high, 400–450°F. Brush the grates clean and oil them well with a paper towel dipped in the remaining {amt:oil_neutral:0.334} of oil.", "duration": "10-15 min"},
+        {"verb": "Grill", "body": "the chicken over direct heat, letting excess marinade drip off, with the lid closed until charred at the edges, then flip once and cook the second side until it reads at least 165°F (thighs are best at 175°F).", "duration": "5-7 min"}
+      ]},
+      {"phase": "Serve", "minutes": 5, "actions": [
+        {"verb": "Rest", "body": "the chicken for 5 minutes.", "duration": "5 min"},
+        {"verb": "Serve", "body": "over the rice with the cucumber yogurt, {amt:onion_red|red onion|red onions}, thinly sliced, the rest of the cilantro and {amt:lemon:0.5|lemon|lemons}, cut into wedges."}
+      ]}
+    ]
+  },
+  {
+    "key": "grill-buffalo-wings-celery-ranch",
+    "title": "Grilled Buffalo Chicken Wings with Celery and Ranch",
+    "cuisine": "American",
+    "anchor": "chicken_wings",
+    "serves": 4,
+    "minutes": 50,
+    "difficulty": "Easy",
+    "equipment": "grill",
+    "format": "grill",
+    "cleanup": 3,
+    "ingredients": [
+      ["chicken_wings", 3, "lb"],
+      ["oil_neutral", 1.5, "tbsp"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 1, "tsp"],
+      ["garlic_powder", 1, "tsp"],
+      ["buffalo_sauce", 0.5, "cup"],
+      ["butter_unsalted", 4, "tbsp"],
+      ["sour_cream", 0.5, "cup"],
+      ["mayo", 0.25, "cup"],
+      ["milk_whole", 0.25, "cup"],
+      ["ranch_seasoning", 0.5, "packet"],
+      ["celery", 6, "stalk"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Dry", "body": "{amt:chicken_wings} of chicken wings very well with paper towels — dry skin crisps far better."},
+        {"verb": "Toss", "body": "the wings with {amt:oil_neutral:0.666} of oil, {amt:salt_kosher} of salt, {amt:pepper_black} of pepper and {amt:garlic_powder} of garlic powder."},
+        {"verb": "Whisk", "body": "the ranch dip: {amt:sour_cream} of sour cream, {amt:mayo} of mayonnaise, {amt:milk_whole} of milk and {amt:ranch_seasoning} of ranch seasoning. Chill until serving."},
+        {"verb": "Cut", "body": "{amt:celery} of celery into sticks."}
+      ]},
+      {"phase": "Grill", "minutes": 35, "actions": [
+        {"verb": "Preheat", "body": "the grill for two-zone cooking at medium-high, 400–450°F (coals banked to one side, or one gas burner off). Brush the grates clean and oil them with a paper towel dipped in the remaining {amt:oil_neutral:0.334} of oil.", "duration": "10-15 min"},
+        {"verb": "Grill", "body": "the wings on the cooler side with the lid closed, flipping them halfway, until the skin is golden and the fat has rendered.", "duration": "25-30 min"},
+        {"verb": "Crisp", "body": "the wings over direct heat, turning often and watching for flare-ups, until crisp and lightly charred and they read 175°F or higher (wings are tender well past 165°F).", "duration": "3-5 min"},
+        {"verb": "Melt", "body": "{amt:butter_unsalted} of butter with {amt:buffalo_sauce} of buffalo sauce in a small saucepan over low heat and whisk until smooth.", "duration": "2 min"}
+      ]},
+      {"phase": "Sauce & serve", "minutes": 5, "actions": [
+        {"verb": "Toss", "body": "the hot wings in the buffalo butter in a large bowl until coated."},
+        {"verb": "Serve", "body": "straight away with the celery sticks and ranch dip."}
+      ]}
+    ]
+  },
+  {
+    "key": "grill-lemon-oregano-pork-chops-greek-salad",
+    "title": "Grilled Lemon-Oregano Pork Chops with Greek Salad",
+    "cuisine": "Greek",
+    "anchor": "pork_chop_bone_in",
+    "serves": 4,
+    "minutes": 50,
+    "difficulty": "Easy",
+    "equipment": "grill",
+    "format": "grill",
+    "cleanup": 3,
+    "ingredients": [
+      ["pork_chop_bone_in", 4, "count"],
+      ["olive_oil_evoo", 8, "tbsp"],
+      ["lemon", 1, "count"],
+      ["garlic_head", 3, "clove"],
+      ["oregano_dried", 1, "tbsp"],
+      ["salt_kosher", 2, "tsp"],
+      ["pepper_black", 1, "tsp"],
+      ["tomato_fresh", 3, "count"],
+      ["cucumber", 1, "count"],
+      ["bell_pepper", 1, "count"],
+      ["onion_red", 0.5, "count"],
+      ["olive_kalamata", 0.5, "cup"],
+      ["feta", 4, "oz"],
+      ["vinegar_red_wine", 2, "tbsp"],
+      ["pita_bread", 4, "count"]
+    ],
+    "steps": [
+      {"phase": "Marinate", "minutes": 30, "actions": [
+        {"verb": "Whisk", "body": "{amt:olive_oil_evoo:0.375} of olive oil with the zest and juice of {amt:lemon|lemon|lemons}, {amt:garlic_head} of minced garlic, {amt:oregano_dried:0.666} of dried oregano, {amt:salt_kosher:0.5} of salt and {amt:pepper_black:0.5} of pepper."},
+        {"verb": "Marinate", "body": "{amt:pork_chop_bone_in|bone-in pork chop|bone-in pork chops} (about 1 inch thick), patted dry, in the lemon-oregano mixture. Half an hour is plenty; don't go beyond 4 hours or the lemon makes the meat mealy.", "duration": "30 min"},
+        {"verb": "Chop", "body": "the salad: {amt:tomato_fresh|tomato|tomatoes} into wedges, {amt:cucumber|cucumber|cucumbers} into thick half-moons, {amt:bell_pepper|green bell pepper|green bell peppers} into strips and {amt:onion_red|red onion|red onions} into thin slices. Add {amt:olive_kalamata} of kalamata olives."},
+        {"verb": "Dress", "body": "the vegetables with {amt:olive_oil_evoo:0.375} of olive oil, {amt:vinegar_red_wine} of red wine vinegar, {amt:salt_kosher:0.25} of salt and {amt:pepper_black:0.5} of pepper, then lay {amt:feta} of feta on top in a slab or thick slices and sprinkle with the remaining {amt:oregano_dried:0.334} of oregano."}
+      ]},
+      {"phase": "Grill", "minutes": 15, "actions": [
+        {"verb": "Preheat", "body": "the grill to medium-high, 400–450°F. Brush the grates clean and oil them with a paper towel dipped in {amt:olive_oil_evoo:0.125} of olive oil.", "duration": "10-15 min"},
+        {"verb": "Grill", "body": "the chops over direct heat with the lid closed until well marked and they release easily, then flip once and cook the second side until they read 145°F next to the bone.", "duration": "4-6 min"},
+        {"verb": "Warm", "body": "{amt:pita_bread|pita|pitas}, brushed with the remaining {amt:olive_oil_evoo:0.125} of olive oil, over direct heat for about 30 seconds per side."}
+      ]},
+      {"phase": "Rest & serve", "minutes": 5, "actions": [
+        {"verb": "Rest", "body": "the chops for 3–5 minutes so the juices settle.", "duration": "3-5 min"},
+        {"verb": "Serve", "body": "the chops with the Greek salad and warm pita, sprinkled with the remaining {amt:salt_kosher:0.25} of salt."}
+      ]}
+    ]
+  }
+]

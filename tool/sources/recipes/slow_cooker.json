@@ -1,0 +1,413 @@
+[
+  {
+    "key": "sc-chicken-tikka-masala",
+    "title": "Slow Cooker Chicken Tikka Masala",
+    "cuisine": "Indian",
+    "anchor": "chicken_thigh_boneless",
+    "serves": 4,
+    "minutes": 455,
+    "difficulty": "Easy",
+    "equipment": "slow_cooker",
+    "format": "slow",
+    "cleanup": 2,
+    "ingredients": [
+      ["chicken_thigh_boneless", 2, "lb"],
+      ["yogurt_greek", 0.5, "cup"],
+      ["onion_yellow", 1, "count"],
+      ["garlic_head", 5, "clove"],
+      ["ginger_fresh", 1, "tbsp"],
+      ["garam_masala", 1, "tbsp"],
+      ["cumin_ground", 2, "tsp"],
+      ["paprika_sweet", 2, "tsp"],
+      ["turmeric", 1, "tsp"],
+      ["cayenne", 0.25, "tsp"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["tomato_paste", 2, "tbsp"],
+      ["tomato_canned_crushed", 1, "count"],
+      ["cream_heavy", 0.5, "cup"],
+      ["rice_basmati", 1.25, "cup"],
+      ["cilantro", 0.25, "cup"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 15, "actions": [
+        {"verb": "Cut", "body": "{amt:chicken_thigh_boneless} of chicken thighs into 1½-inch chunks."},
+        {"verb": "Toss", "body": "the chicken in a bowl with {amt:yogurt_greek} of Greek yogurt, {amt:garam_masala:0.5} of garam masala, {amt:cumin_ground:0.5} of cumin and {amt:salt_kosher:0.5} of salt until every piece is coated."},
+        {"verb": "Dice", "body": "{amt:onion_yellow|onion|onions}, mince {amt:garlic_head} of garlic and grate {amt:ginger_fresh} of ginger."}
+      ]},
+      {"phase": "Load", "minutes": 5, "actions": [
+        {"verb": "Stir", "body": "{amt:tomato_canned_crushed} of crushed tomatoes, {amt:tomato_paste} of tomato paste, the onion, garlic and ginger together in a 6-quart slow cooker with {amt:paprika_sweet} of paprika, {amt:turmeric} of turmeric, {amt:cayenne} of cayenne, the remaining cumin and the rest of the salt."},
+        {"verb": "Add", "body": "the chicken with all of its yogurt coating and fold it into the sauce so it's submerged."}
+      ]},
+      {"phase": "Slow cook", "minutes": 420, "actions": [
+        {"verb": "Cook", "body": "covered on LOW 6–7 hours or HIGH 3–4 hours, until the chicken is tender and reads 165°F. Keep the lid on so the heat stays steady.", "duration": "6-7 hr"},
+        {"verb": "Cook", "body": "the rice in the last 30 minutes: rinse {amt:rice_basmati} of basmati until the water runs clear, then simmer it covered in 1½ times its volume of salted water for 15 minutes and let it steam off the heat for 5 minutes.", "duration": "15 min"}
+      ]},
+      {"phase": "Finish", "minutes": 15, "actions": [
+        {"verb": "Stir in", "body": "{amt:cream_heavy} of heavy cream and the remaining garam masala. Leave the lid off on HIGH for 10–15 minutes if you'd like the sauce a little thicker.", "duration": "10 min"},
+        {"verb": "Serve", "body": "the tikka masala over the rice, scattered with {amt:cilantro} of chopped cilantro."}
+      ]}
+    ]
+  },
+  {
+    "key": "sc-beef-stroganoff",
+    "title": "Slow Cooker Beef Stroganoff",
+    "cuisine": "Russian",
+    "anchor": "beef_chuck",
+    "serves": 6,
+    "minutes": 525,
+    "difficulty": "Easy",
+    "equipment": "slow_cooker",
+    "format": "slow",
+    "cleanup": 3,
+    "ingredients": [
+      ["beef_chuck", 2.5, "lb"],
+      ["flour_ap", 3, "tbsp"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["pepper_black", 1, "tsp"],
+      ["oil_neutral", 1, "tbsp"],
+      ["onion_yellow", 1, "count"],
+      ["garlic_head", 4, "clove"],
+      ["mushroom_cremini", 16, "oz"],
+      ["broth_beef", 1.5, "cup"],
+      ["worcestershire", 2, "tbsp"],
+      ["mustard_dijon", 1, "tbsp"],
+      ["cornstarch", 2, "tbsp"],
+      ["sour_cream", 1, "cup"],
+      ["noodle_egg", 12, "oz"],
+      ["butter_unsalted", 1, "tbsp"],
+      ["parsley_fresh", 2, "tbsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 20, "actions": [
+        {"verb": "Trim", "body": "{amt:beef_chuck} of beef chuck of any thick fat and cut it into 1-inch pieces. Toss with {amt:flour_ap} of flour, {amt:salt_kosher} of salt and {amt:pepper_black} of pepper."},
+        {"verb": "Brown", "body": "the beef in {amt:oil_neutral} of oil in a large skillet over medium-high heat, in two batches so it sears instead of steaming, about 4 minutes per batch. This step is optional but gives a much richer sauce.", "duration": "8 min"},
+        {"verb": "Slice", "body": "{amt:mushroom_cremini} of cremini mushrooms, dice {amt:onion_yellow|onion|onions} and mince {amt:garlic_head} of garlic."}
+      ]},
+      {"phase": "Load", "minutes": 5, "actions": [
+        {"verb": "Layer", "body": "the onion, mushrooms and garlic in a 6-quart slow cooker and put the beef on top."},
+        {"verb": "Whisk", "body": "{amt:broth_beef} of beef broth with {amt:worcestershire} of Worcestershire and {amt:mustard_dijon} of Dijon, using a splash to loosen the browned bits in the skillet, and pour it all over the beef."}
+      ]},
+      {"phase": "Slow cook", "minutes": 480, "actions": [
+        {"verb": "Cook", "body": "covered on LOW 7–8 hours or HIGH 4–5 hours, until the beef is fork-tender. Resist lifting the lid while it cooks.", "duration": "7-8 hr"}
+      ]},
+      {"phase": "Finish", "minutes": 20, "actions": [
+        {"verb": "Thicken", "body": "the sauce: stir {amt:cornstarch} of cornstarch into 3 tablespoons of cold water, stir the slurry into the cooker, switch to HIGH and cook uncovered for 15–20 minutes until glossy.", "duration": "15-20 min"},
+        {"verb": "Boil", "body": "{amt:noodle_egg} of egg noodles in salted water meanwhile until tender, about 7 minutes, then drain and toss with {amt:butter_unsalted} of butter.", "duration": "7 min"},
+        {"verb": "Turn off", "body": "the slow cooker. Stir a ladle of the hot sauce into {amt:sour_cream} of sour cream to warm it, then stir it into the beef so it stays smooth instead of splitting."},
+        {"verb": "Serve", "body": "the stroganoff over the noodles with {amt:parsley_fresh} of chopped parsley."}
+      ]}
+    ]
+  },
+  {
+    "key": "sc-korean-beef-rice",
+    "title": "Slow Cooker Korean Beef with Rice",
+    "cuisine": "Korean",
+    "anchor": "beef_chuck",
+    "serves": 6,
+    "minutes": 470,
+    "difficulty": "Easy",
+    "equipment": "slow_cooker",
+    "format": "slow",
+    "cleanup": 2,
+    "ingredients": [
+      ["beef_chuck", 3, "lb"],
+      ["broth_beef", 1, "cup"],
+      ["soy_sauce", 0.5, "cup"],
+      ["sugar_brown", 0.5, "cup"],
+      ["garlic_head", 5, "clove"],
+      ["ginger_fresh", 1, "tbsp"],
+      ["sesame_oil", 1, "tbsp"],
+      ["vinegar_rice", 1, "tbsp"],
+      ["gochujang", 1, "tbsp"],
+      ["cornstarch", 3, "tbsp"],
+      ["rice_long_grain", 2, "cup"],
+      ["scallion", 4, "count"],
+      ["sesame_seed", 1, "tbsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 15, "actions": [
+        {"verb": "Cut", "body": "{amt:beef_chuck} of beef chuck into 1-inch cubes, trimming off thick pieces of fat, and put it in a 6-quart slow cooker."},
+        {"verb": "Mince", "body": "{amt:garlic_head} of garlic and grate {amt:ginger_fresh} of ginger."},
+        {"verb": "Whisk", "body": "{amt:broth_beef} of beef broth, {amt:soy_sauce} of soy sauce, {amt:sugar_brown} of brown sugar, {amt:sesame_oil} of sesame oil, {amt:vinegar_rice} of rice vinegar, {amt:gochujang} of gochujang, the garlic and the ginger until the sugar dissolves. Pour it over the beef and stir."}
+      ]},
+      {"phase": "Slow cook", "minutes": 420, "actions": [
+        {"verb": "Cook", "body": "covered on LOW 7 hours or HIGH 4 hours, until the beef falls apart when pressed with a fork. Keep the lid closed the whole time.", "duration": "7 hr"}
+      ]},
+      {"phase": "Finish", "minutes": 35, "actions": [
+        {"verb": "Cook", "body": "the rice: simmer {amt:rice_long_grain} of white rice, covered, in 2 times its volume of salted water for 18 minutes, then let it rest off the heat for 5 minutes.", "duration": "18 min"},
+        {"verb": "Thicken", "body": "the sauce while the rice cooks: stir {amt:cornstarch} of cornstarch into ¼ cup of cold water, stir it into the cooker, switch to HIGH and cook uncovered for 15–20 minutes until the sauce clings to the beef.", "duration": "15-20 min"},
+        {"verb": "Slice", "body": "{amt:scallion|scallion|scallions} thinly."},
+        {"verb": "Serve", "body": "the beef and sauce over the rice, topped with the scallions and {amt:sesame_seed} of sesame seeds."}
+      ]}
+    ]
+  },
+  {
+    "key": "sc-lasagna-soup",
+    "title": "Slow Cooker Lasagna Soup",
+    "cuisine": "Italian",
+    "anchor": "sausage_italian",
+    "serves": 6,
+    "minutes": 455,
+    "difficulty": "Easy",
+    "equipment": "slow_cooker",
+    "format": "slow",
+    "cleanup": 3,
+    "ingredients": [
+      ["sausage_italian", 1, "lb"],
+      ["onion_yellow", 1, "count"],
+      ["garlic_head", 4, "clove"],
+      ["tomato_canned_crushed", 1, "count"],
+      ["tomato_canned_diced", 1, "count"],
+      ["tomato_paste", 2, "tbsp"],
+      ["broth_chicken", 4, "cup"],
+      ["italian_seasoning", 2, "tsp"],
+      ["salt_kosher", 0.5, "tsp"],
+      ["bay_leaf", 1, "count"],
+      ["pasta_lasagna", 8, "oz"],
+      ["spinach_fresh", 2, "cup"],
+      ["ricotta", 1, "cup"],
+      ["mozzarella_low_moisture", 1, "cup"],
+      ["parmesan", 0.5, "cup"],
+      ["basil_fresh", 0.25, "cup"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 15, "actions": [
+        {"verb": "Dice", "body": "{amt:onion_yellow|onion|onions} and mince {amt:garlic_head} of garlic."},
+        {"verb": "Brown", "body": "{amt:sausage_italian} of Italian sausage, casings removed, in a skillet over medium-high heat with the onion, breaking it up, until no pink remains, about 8 minutes. Stir in the garlic for the last minute, then spoon off the excess fat.", "duration": "8 min"}
+      ]},
+      {"phase": "Load", "minutes": 5, "actions": [
+        {"verb": "Combine", "body": "the sausage mixture in a 6-quart slow cooker with {amt:tomato_canned_crushed} of crushed tomatoes, {amt:tomato_canned_diced} of diced tomatoes, {amt:tomato_paste} of tomato paste, {amt:broth_chicken} of chicken broth, {amt:italian_seasoning} of Italian seasoning, {amt:salt_kosher} of salt and {amt:bay_leaf|bay leaf|bay leaves}."}
+      ]},
+      {"phase": "Slow cook", "minutes": 360, "actions": [
+        {"verb": "Cook", "body": "covered on LOW 6 hours or HIGH 3 hours. No need to stir or peek.", "duration": "6 hr"}
+      ]},
+      {"phase": "Noodles", "minutes": 40, "actions": [
+        {"verb": "Break", "body": "{amt:pasta_lasagna} of lasagna noodles into 2-inch pieces and stir them into the soup, pushing them under the liquid. Fish out the bay leaf."},
+        {"verb": "Cook", "body": "on HIGH, covered, for 30–40 minutes, stirring once halfway so the pieces don't stick together, until the noodles are tender.", "duration": "30-40 min"},
+        {"verb": "Stir in", "body": "{amt:spinach_fresh} of baby spinach until it wilts, about 2 minutes."}
+      ]},
+      {"phase": "Serve", "minutes": 5, "actions": [
+        {"verb": "Mix", "body": "{amt:ricotta} of ricotta with {amt:mozzarella_low_moisture} of shredded mozzarella and {amt:parmesan} of grated Parmesan."},
+        {"verb": "Ladle", "body": "the soup into bowls and top each with a big spoonful of the cheese mixture, then scatter {amt:basil_fresh} of torn basil over the bowls."}
+      ]}
+    ]
+  },
+  {
+    "key": "sc-italian-beef-sandwiches",
+    "title": "Slow Cooker Italian Beef Sandwiches",
+    "cuisine": "Italian",
+    "anchor": "beef_chuck",
+    "serves": 6,
+    "minutes": 515,
+    "difficulty": "Easy",
+    "equipment": "slow_cooker",
+    "format": "slow",
+    "cleanup": 2,
+    "ingredients": [
+      ["beef_chuck", 3, "lb"],
+      ["salt_kosher", 1, "tsp"],
+      ["pepper_black", 1, "tsp"],
+      ["garlic_head", 4, "clove"],
+      ["broth_beef", 1, "cup"],
+      ["au_jus_mix", 1, "packet"],
+      ["italian_seasoning", 1, "tbsp"],
+      ["oregano_dried", 1, "tsp"],
+      ["chili_flake", 0.5, "tsp"],
+      ["pepperoncini", 1, "cup"],
+      ["bread_crusty", 20, "oz"],
+      ["mozzarella_low_moisture", 1, "cup"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Season", "body": "{amt:beef_chuck} of beef chuck roast all over with {amt:salt_kosher} of salt and {amt:pepper_black} of pepper and set it in a 6-quart slow cooker."},
+        {"verb": "Whisk", "body": "{amt:broth_beef} of beef broth with {amt:au_jus_mix} of au jus mix, {amt:italian_seasoning} of Italian seasoning, {amt:oregano_dried} of oregano, {amt:chili_flake} of red pepper flakes and {amt:garlic_head} of minced garlic. Pour it over the roast."},
+        {"verb": "Scatter", "body": "{amt:pepperoncini} of pepperoncini over the beef along with about ¼ cup of the brine from the jar."}
+      ]},
+      {"phase": "Slow cook", "minutes": 480, "actions": [
+        {"verb": "Cook", "body": "covered on LOW 8 hours or HIGH 5 hours, until the beef is fork-tender and shreds easily. Keep the lid closed so the liquid doesn't cook off.", "duration": "8 hr"}
+      ]},
+      {"phase": "Build", "minutes": 15, "actions": [
+        {"verb": "Shred", "body": "the beef with two forks right in the cooker, discard any large pieces of fat and stir it back into the juices with the pepperoncini. Let it soak on WARM for 10 minutes.", "duration": "10 min"},
+        {"verb": "Split", "body": "{amt:bread_crusty} of crusty Italian rolls lengthwise and toast the cut sides in a dry skillet over medium heat until golden, about 2 minutes.", "duration": "2 min"},
+        {"verb": "Pile", "body": "the juicy beef and peppers onto the rolls and top with {amt:mozzarella_low_moisture} of shredded mozzarella so the heat of the meat melts it."},
+        {"verb": "Serve", "body": "with small bowls of the cooking juices for dipping."}
+      ]}
+    ]
+  },
+  {
+    "key": "sc-pork-chile-verde",
+    "title": "Slow Cooker Pork Chile Verde",
+    "cuisine": "Mexican",
+    "anchor": "pork_shoulder",
+    "serves": 6,
+    "minutes": 525,
+    "difficulty": "Easy",
+    "equipment": "slow_cooker",
+    "format": "slow",
+    "cleanup": 3,
+    "ingredients": [
+      ["pork_shoulder", 3, "lb"],
+      ["salt_kosher", 1.5, "tsp"],
+      ["cumin_ground", 2, "tsp"],
+      ["oregano_dried", 1, "tsp"],
+      ["oil_neutral", 1, "tbsp"],
+      ["onion_yellow", 1, "count"],
+      ["garlic_head", 4, "clove"],
+      ["jalapeno", 1, "count"],
+      ["salsa", 2, "cup"],
+      ["green_chile_canned", 2, "count"],
+      ["broth_chicken", 0.5, "cup"],
+      ["cornstarch", 2, "tbsp"],
+      ["lime", 1, "count"],
+      ["cilantro", 0.5, "cup"],
+      ["rice_long_grain", 2, "cup"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 20, "actions": [
+        {"verb": "Cut", "body": "{amt:pork_shoulder} of pork shoulder into 1½-inch chunks, trimming the thickest fat, and toss with {amt:salt_kosher} of salt, {amt:cumin_ground} of cumin and {amt:oregano_dried} of oregano."},
+        {"verb": "Brown", "body": "the pork in {amt:oil_neutral} of oil in a large skillet over medium-high heat, in batches, about 4 minutes per batch. It's optional, but the browned edges deepen the sauce.", "duration": "8 min"},
+        {"verb": "Dice", "body": "{amt:onion_yellow|onion|onions}, mince {amt:garlic_head} of garlic and seed and chop {amt:jalapeno|jalapeño|jalapeños}."}
+      ]},
+      {"phase": "Load", "minutes": 5, "actions": [
+        {"verb": "Combine", "body": "the pork, onion, garlic and jalapeño in a 6-quart slow cooker with {amt:salsa} of green salsa (salsa verde), {amt:green_chile_canned} of diced green chiles and {amt:broth_chicken} of chicken broth. Stir so the pork is mostly covered."}
+      ]},
+      {"phase": "Slow cook", "minutes": 480, "actions": [
+        {"verb": "Cook", "body": "covered on LOW 8 hours or HIGH 4–5 hours, until the pork is fork-tender and starting to fall apart. Leave the lid alone while it cooks.", "duration": "8 hr"}
+      ]},
+      {"phase": "Finish", "minutes": 25, "actions": [
+        {"verb": "Cook", "body": "the rice: simmer {amt:rice_long_grain} of white rice, covered, in 2 times its volume of salted water for 18 minutes, then let it rest off the heat for 5 minutes.", "duration": "18 min"},
+        {"verb": "Thicken", "body": "the stew meanwhile: skim the fat from the surface, stir {amt:cornstarch} of cornstarch into 3 tablespoons of cold water, stir it in and cook uncovered on HIGH for 15 minutes.", "duration": "15 min"},
+        {"verb": "Stir in", "body": "the juice of {amt:lime|lime|limes} and half of {amt:cilantro} of chopped cilantro, breaking some of the pork into shreds with a spoon. Taste for salt."},
+        {"verb": "Serve", "body": "the chile verde over the rice with the rest of the cilantro on top."}
+      ]}
+    ]
+  },
+  {
+    "key": "sc-teriyaki-chicken-rice",
+    "title": "Slow Cooker Teriyaki Chicken with Rice",
+    "cuisine": "Japanese",
+    "anchor": "chicken_thigh_boneless",
+    "serves": 4,
+    "minutes": 340,
+    "difficulty": "Easy",
+    "equipment": "slow_cooker",
+    "format": "slow",
+    "cleanup": 2,
+    "ingredients": [
+      ["chicken_thigh_boneless", 2, "lb"],
+      ["soy_sauce", 0.5, "cup"],
+      ["honey", 0.25, "cup"],
+      ["sugar_brown", 0.25, "cup"],
+      ["vinegar_rice", 2, "tbsp"],
+      ["garlic_head", 4, "clove"],
+      ["ginger_fresh", 1, "tbsp"],
+      ["cornstarch", 2, "tbsp"],
+      ["rice_long_grain", 1.25, "cup"],
+      ["broccoli", 12, "oz"],
+      ["scallion", 3, "count"],
+      ["sesame_seed", 1, "tbsp"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Lay", "body": "{amt:chicken_thigh_boneless} of chicken thighs in a 6-quart slow cooker."},
+        {"verb": "Whisk", "body": "{amt:soy_sauce} of soy sauce, ½ cup of water, {amt:honey} of honey, {amt:sugar_brown} of brown sugar, {amt:vinegar_rice} of rice vinegar, {amt:garlic_head} of minced garlic and {amt:ginger_fresh} of grated ginger, then pour it over the chicken."}
+      ]},
+      {"phase": "Slow cook", "minutes": 300, "actions": [
+        {"verb": "Cook", "body": "covered on LOW 4–5 hours or HIGH 2–3 hours, until the chicken reads 165°F and is very tender. Don't open the lid early.", "duration": "4-5 hr"}
+      ]},
+      {"phase": "Finish", "minutes": 30, "actions": [
+        {"verb": "Cook", "body": "the rice: simmer {amt:rice_long_grain} of white rice, covered, in 2 times its volume of salted water for 18 minutes, then let it rest off the heat for 5 minutes.", "duration": "18 min"},
+        {"verb": "Move", "body": "the chicken to a board. Stir {amt:cornstarch} of cornstarch into 3 tablespoons of cold water, whisk it into the sauce and cook uncovered on HIGH for 15–20 minutes until it turns into a glossy glaze.", "duration": "15-20 min"},
+        {"verb": "Steam", "body": "{amt:broccoli} of broccoli florets in a covered pan with ½ inch of water for 4–5 minutes until bright green and just tender.", "duration": "5 min"},
+        {"verb": "Slice", "body": "or shred the chicken, return it to the thickened sauce and stir to coat. Thinly slice {amt:scallion|scallion|scallions}."},
+        {"verb": "Serve", "body": "the teriyaki chicken over the rice with the broccoli, topped with the scallions and {amt:sesame_seed} of sesame seeds."}
+      ]}
+    ]
+  },
+  {
+    "key": "sc-creamy-tomato-tortellini-soup",
+    "title": "Slow Cooker Creamy Tomato Tortellini Soup",
+    "cuisine": "Italian",
+    "anchor": "tortellini",
+    "serves": 6,
+    "minutes": 395,
+    "difficulty": "Easy",
+    "equipment": "slow_cooker",
+    "format": "slow",
+    "cleanup": 1,
+    "ingredients": [
+      ["onion_yellow", 1, "count"],
+      ["garlic_head", 4, "clove"],
+      ["tomato_canned_crushed", 1, "count"],
+      ["tomato_canned_diced", 1, "count"],
+      ["broth_vegetable", 4, "cup"],
+      ["italian_seasoning", 2, "tsp"],
+      ["salt_kosher", 1, "tsp"],
+      ["pepper_black", 0.5, "tsp"],
+      ["cream_cheese", 8, "oz"],
+      ["tortellini", 18, "oz"],
+      ["spinach_fresh", 3, "cup"],
+      ["parmesan", 0.5, "cup"],
+      ["basil_fresh", 0.25, "cup"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Dice", "body": "{amt:onion_yellow|onion|onions} and mince {amt:garlic_head} of garlic."},
+        {"verb": "Combine", "body": "the onion and garlic in a 6-quart slow cooker with {amt:tomato_canned_crushed} of crushed tomatoes, {amt:tomato_canned_diced} of diced tomatoes, {amt:broth_vegetable} of vegetable broth, {amt:italian_seasoning} of Italian seasoning, {amt:salt_kosher} of salt and {amt:pepper_black} of pepper."}
+      ]},
+      {"phase": "Slow cook", "minutes": 360, "actions": [
+        {"verb": "Cook", "body": "covered on LOW 6 hours or HIGH 3 hours, until the onion is completely soft. Keep the lid on.", "duration": "6 hr"}
+      ]},
+      {"phase": "Finish", "minutes": 25, "actions": [
+        {"verb": "Cube", "body": "{amt:cream_cheese} of softened cream cheese, add it to the soup and whisk until it melts in and the soup turns creamy pink."},
+        {"verb": "Stir in", "body": "{amt:tortellini} of refrigerated cheese tortellini, switch to HIGH and cook covered for 15–20 minutes, until the pasta is tender and floating.", "duration": "15-20 min"},
+        {"verb": "Fold in", "body": "{amt:spinach_fresh} of baby spinach and let it wilt for 2 minutes."},
+        {"verb": "Serve", "body": "topped with {amt:parmesan} of grated Parmesan and {amt:basil_fresh} of sliced basil."}
+      ]}
+    ]
+  },
+  {
+    "key": "sc-sesame-chicken-rice",
+    "title": "Slow Cooker Sesame Chicken with Rice",
+    "cuisine": "Chinese",
+    "anchor": "chicken_breast",
+    "serves": 4,
+    "minutes": 280,
+    "difficulty": "Easy",
+    "equipment": "slow_cooker",
+    "format": "slow",
+    "cleanup": 2,
+    "ingredients": [
+      ["chicken_breast", 2, "lb"],
+      ["salt_kosher", 0.5, "tsp"],
+      ["pepper_black", 0.25, "tsp"],
+      ["honey", 0.5, "cup"],
+      ["soy_sauce", 0.5, "cup"],
+      ["ketchup", 0.25, "cup"],
+      ["onion_yellow", 0.5, "count"],
+      ["garlic_head", 3, "clove"],
+      ["oil_neutral", 1, "tbsp"],
+      ["sesame_oil", 1, "tbsp"],
+      ["chili_flake", 0.25, "tsp"],
+      ["cornstarch", 2, "tbsp"],
+      ["rice_long_grain", 1.5, "cup"],
+      ["sesame_seed", 2, "tbsp"],
+      ["scallion", 3, "count"]
+    ],
+    "steps": [
+      {"phase": "Prep", "minutes": 10, "actions": [
+        {"verb": "Cut", "body": "{amt:chicken_breast} of chicken breasts into 1-inch pieces, season with {amt:salt_kosher} of salt and {amt:pepper_black} of pepper and put them in a 6-quart slow cooker."},
+        {"verb": "Whisk", "body": "{amt:honey} of honey, {amt:soy_sauce} of soy sauce, {amt:ketchup} of ketchup, {amt:oil_neutral} of oil, {amt:sesame_oil} of sesame oil and {amt:chili_flake} of red pepper flakes with {amt:onion_yellow|onion|onions}, finely diced, and {amt:garlic_head} of minced garlic. Pour over the chicken and stir."}
+      ]},
+      {"phase": "Slow cook", "minutes": 240, "actions": [
+        {"verb": "Cook", "body": "covered on LOW 3–4 hours or HIGH 2 hours, just until the chicken reads 165°F — breast meat dries out if it goes much longer. Don't lift the lid.", "duration": "3-4 hr"}
+      ]},
+      {"phase": "Finish", "minutes": 30, "actions": [
+        {"verb": "Cook", "body": "the rice: simmer {amt:rice_long_grain} of white rice, covered, in 2 times its volume of salted water for 18 minutes, then let it rest off the heat for 5 minutes.", "duration": "18 min"},
+        {"verb": "Thicken", "body": "the sauce: stir {amt:cornstarch} of cornstarch into 3 tablespoons of cold water, stir it into the cooker and cook uncovered on HIGH for 15 minutes, stirring once, until the sauce is thick and sticky.", "duration": "15 min"},
+        {"verb": "Toast", "body": "{amt:sesame_seed} of sesame seeds in a dry skillet over medium heat until golden, about 3 minutes, and thinly slice {amt:scallion|scallion|scallions}.", "duration": "3 min"},
+        {"verb": "Serve", "body": "the chicken over the rice, sprinkled with the sesame seeds and scallions."}
+      ]}
+    ]
+  }
+]

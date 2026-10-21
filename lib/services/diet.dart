@@ -3,65 +3,80 @@ import '../models/recipe.dart';
 
 /// Dietary preferences. These are a convenience for planning, NOT an allergen
 /// control — users must always check ingredients themselves.
-enum Diet { vegetarian, noBeef, noPork, noPoultry, noSeafood, dairyFree }
+enum Diet {
+  vegetarian,
+  vegan,
+  pescatarian,
+  noBeef,
+  noPork,
+  noPoultry,
+  noLamb,
+  noFish,
+  noShellfish,
+  dairyFree,
+  glutenFree,
+  eggFree,
+  nutFree,
+}
+
+const _meat = {'beef', 'pork', 'poultry', 'lamb'};
 
 extension DietInfo on Diet {
-  String get label {
-    switch (this) {
-      case Diet.vegetarian:
-        return 'Vegetarian';
-      case Diet.noBeef:
-        return 'No beef';
-      case Diet.noPork:
-        return 'No pork';
-      case Diet.noPoultry:
-        return 'No poultry';
-      case Diet.noSeafood:
-        return 'No seafood';
-      case Diet.dairyFree:
-        return 'Dairy-free';
+  String get label => const {
+        Diet.vegetarian: 'Vegetarian',
+        Diet.vegan: 'Vegan',
+        Diet.pescatarian: 'Pescatarian',
+        Diet.noBeef: 'No beef',
+        Diet.noPork: 'No pork',
+        Diet.noPoultry: 'No poultry',
+        Diet.noLamb: 'No lamb',
+        Diet.noFish: 'No fish',
+        Diet.noShellfish: 'No shellfish',
+        Diet.dairyFree: 'Dairy-free',
+        Diet.glutenFree: 'Gluten-free',
+        Diet.eggFree: 'Egg-free',
+        Diet.nutFree: 'Nut-free',
+      }[this]!;
+
+  /// Ingredient flags (from the database) this diet rules out.
+  Set<String> get excludedFlags => switch (this) {
+        Diet.vegetarian => {..._meat, 'fish', 'shellfish'},
+        Diet.vegan => {..._meat, 'fish', 'shellfish', 'dairy', 'egg', 'honey'},
+        Diet.pescatarian => _meat,
+        Diet.noBeef => {'beef'},
+        Diet.noPork => {'pork'},
+        Diet.noPoultry => {'poultry'},
+        Diet.noLamb => {'lamb'},
+        Diet.noFish => {'fish'},
+        Diet.noShellfish => {'shellfish'},
+        Diet.dairyFree => {'dairy'},
+        Diet.glutenFree => {'gluten'},
+        Diet.eggFree => {'egg'},
+        Diet.nutFree => {'nuts'},
+      };
+
+  /// Diets with allergy implications get a "check labels" reminder in the UI.
+  bool get allergenLike =>
+      this == Diet.glutenFree || this == Diet.nutFree || this == Diet.eggFree ||
+      this == Diet.noShellfish || this == Diet.dairyFree;
+}
+
+/// Reads saved diet names, mapping retired ones (e.g. "noSeafood").
+Set<Diet> dietsFromNames(Iterable<Object?> names) {
+  final out = <Diet>{};
+  for (final n in names) {
+    if (n == 'noSeafood') {
+      out.addAll({Diet.noFish, Diet.noShellfish});
+      continue;
+    }
+    for (final d in Diet.values) {
+      if (d.name == n) out.add(d);
     }
   }
+  return out;
 }
 
-const _beef = {'ground_beef', 'beef_chuck', 'beef_steak_sirloin', 'broth_beef', 'au_jus_mix'};
-const _pork = {
-  'ground_pork', 'pork_chop', 'pork_chop_bone_in', 'pork_shoulder', 'bacon',
-  'sausage_italian', 'sausage_chorizo', 'prosciutto', 'pancetta', 'pepperoni',
-};
-const _poultry = {
-  'chicken_thigh_boneless', 'chicken_thigh_bone_in', 'chicken_breast', 'chicken_whole',
-  'chicken_drumstick', 'ground_turkey', 'broth_chicken', 'cream_of_chicken_canned',
-};
-const _seafood = {'salmon_fillet', 'shrimp_frozen', 'tilapia_fillet', 'tuna_canned', 'fish_sauce'};
-const _otherMeat = {'lamb_ground', 'worcestershire'}; // worcestershire contains anchovy
-const _dairy = {
-  'ricotta', 'goat_cheese', 'butter_unsalted', 'milk_whole', 'cream_heavy', 'sour_cream',
-  'yogurt_greek', 'cheddar', 'parmesan', 'mozzarella_low_moisture', 'cream_cheese', 'feta',
-  'alfredo_sauce', 'cream_of_chicken_canned', 'cream_of_mushroom_canned', 'pesto', 'tortellini',
-  'ranch_seasoning', 'gnocchi',
-};
-
-bool _violates(String id, Diet d) {
-  switch (d) {
-    case Diet.vegetarian:
-      return _beef.contains(id) ||
-          _pork.contains(id) ||
-          _poultry.contains(id) ||
-          _seafood.contains(id) ||
-          _otherMeat.contains(id);
-    case Diet.noBeef:
-      return _beef.contains(id);
-    case Diet.noPork:
-      return _pork.contains(id);
-    case Diet.noPoultry:
-      return _poultry.contains(id);
-    case Diet.noSeafood:
-      return _seafood.contains(id);
-    case Diet.dairyFree:
-      return _dairy.contains(id);
-  }
-}
+Set<String> _flagsOf(String ingredientId) => kIngredients[ingredientId]?.flags ?? const {};
 
 /// True if [recipe] fits all selected diets and uses none of the excluded
 /// ("won't eat") ingredients.
@@ -70,11 +85,10 @@ bool recipeAllowed(
   required Set<Diet> diets,
   required Set<String> excluded,
 }) {
+  final banned = {for (final d in diets) ...d.excludedFlags};
   for (final ri in recipe.ingredients) {
     if (excluded.contains(ri.ingredientId)) return false;
-    for (final d in diets) {
-      if (_violates(ri.ingredientId, d)) return false;
-    }
+    if (banned.isNotEmpty && _flagsOf(ri.ingredientId).any(banned.contains)) return false;
   }
   return true;
 }
@@ -84,3 +98,45 @@ bool isVegetarian(Recipe r) => recipeAllowed(r, diets: {Diet.vegetarian}, exclud
 /// Ingredients that can be listed under "won't eat" (everything in the database).
 List<String> get excludableIngredientIds =>
     (kIngredients.keys.toList()..sort((a, b) => kIngredients[a]!.name.compareTo(kIngredients[b]!.name)));
+
+/// A common dislike shown as a picture tile: one tap excludes every listed
+/// ingredient that exists in the database.
+class Dislike {
+  final String label;
+  final List<String> ingredientIds;
+  const Dislike(this.label, this.ingredientIds);
+
+  List<String> get presentIds => ingredientIds.where(kIngredients.containsKey).toList();
+
+  /// Ingredient whose icon represents the tile.
+  String get iconIngredient => presentIds.isEmpty ? ingredientIds.first : presentIds.first;
+
+  bool isSelected(Set<String> excluded) =>
+      presentIds.isNotEmpty && presentIds.every(excluded.contains);
+}
+
+const kCommonDislikes = <Dislike>[
+  Dislike('Mushrooms', ['mushroom_cremini']),
+  Dislike('Olives', ['olive_kalamata']),
+  Dislike('Cilantro', ['cilantro']),
+  Dislike('Tofu & tempeh', ['tofu_firm', 'tempeh']),
+  Dislike('Beans', ['bean_black_canned', 'bean_pinto_canned', 'bean_cannellini_canned',
+      'bean_dried']),
+  Dislike('Chickpeas', ['bean_chickpea_canned']),
+  Dislike('Lentils', ['lentil_dried']),
+  Dislike('Eggplant', ['eggplant']),
+  Dislike('Coconut', ['coconut_milk']),
+  Dislike('Cauliflower', ['cauliflower']),
+  Dislike('Brussels sprouts', ['brussels_sprout']),
+  Dislike('Kale', ['kale']),
+  Dislike('Spinach', ['spinach_fresh']),
+  Dislike('Cabbage', ['cabbage_green']),
+  Dislike('Zucchini', ['zucchini']),
+  Dislike('Bell peppers', ['bell_pepper', 'pepper_roasted_jar']),
+  Dislike('Sweet potato', ['sweet_potato']),
+  Dislike('Asparagus', ['asparagus']),
+  Dislike('Avocado', ['avocado']),
+  Dislike('Feta & goat cheese', ['feta', 'goat_cheese']),
+  Dislike('Capers & pickles', ['caper', 'pickle_dill', 'pepperoncini']),
+  Dislike('Kimchi', ['kimchi']),
+];

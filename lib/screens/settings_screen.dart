@@ -4,13 +4,13 @@ import 'package:provider/provider.dart';
 import '../data/regions.dart';
 import '../models/settings.dart';
 import '../services/price_book.dart';
-import '../services/plan_generator.dart';
 import '../services/store_locator.dart';
 import '../state/app_state.dart';
 import 'browse_screen.dart';
-import '../widgets/diet_editor.dart';
+import 'credits_screen.dart';
 import '../widgets/location_store_picker.dart';
 import '../widgets/money_text.dart';
+import '../widgets/preference_editors.dart';
 
 const _weekdayNames = {
   DateTime.monday: 'Mon',
@@ -173,6 +173,12 @@ class SettingsScreen extends StatelessWidget {
                       const SizedBox(height: 16),
                       Text('Won’t eat', style: theme.textTheme.titleSmall),
                       const SizedBox(height: 8),
+                      DislikeGrid(
+                        excluded: s.excludedIngredients,
+                        onChanged: (e) => state.updateSettings(
+                            s.copyWith(excludedIngredients: e)),
+                      ),
+                      const SizedBox(height: 12),
                       WontEatEditor(
                         excluded: s.excludedIngredients,
                         onChanged: (e) => state.updateSettings(
@@ -198,22 +204,33 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              _section(context, 'Kitchen gear'),
+              _section(context, 'Kitchen & cooking'),
               Card(
-                child: Column(
-                  children: [
-                    for (final e in kOptionalEquipment.entries)
-                      SwitchListTile(
-                        title: Text(e.value),
-                        subtitle: Text('Include ${e.value.toLowerCase()} recipes'),
-                        value: s.equipment.contains(e.key),
-                        onChanged: (on) {
-                          final eq = Set<String>.from(s.equipment);
-                          on ? eq.add(e.key) : eq.remove(e.key);
-                          state.updateSettings(s.copyWith(equipment: eq));
-                        },
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      GearPicker(
+                        owned: s.equipment,
+                        gearNights: s.gearNights,
+                        onOwnedChanged: (g) =>
+                            state.updateSettings(s.copyWith(equipment: g)),
+                        onGearNightsChanged: (n) =>
+                            state.updateSettings(s.copyWith(gearNights: n)),
                       ),
-                  ],
+                      const SizedBox(height: 12),
+                      CookingPrefs(
+                        maxMinutes: s.maxMinutes,
+                        easyOnly: s.easyOnly,
+                        mildOnly: s.mildOnly,
+                        onMaxMinutesChanged: (m) => state.updateSettings(
+                            m == null ? s.copyWith(clearMaxMinutes: true) : s.copyWith(maxMinutes: m)),
+                        onEasyOnlyChanged: (v) => state.updateSettings(s.copyWith(easyOnly: v)),
+                        onMildOnlyChanged: (v) => state.updateSettings(s.copyWith(mildOnly: v)),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               _section(context, 'Recipe library'),
@@ -240,7 +257,27 @@ class SettingsScreen extends StatelessWidget {
                       subtitle: const Text('Make every recipe “new” again'),
                       onTap: () => _confirmResetHistory(context, state),
                     ),
+                    if (state.disliked.isNotEmpty)
+                      ListTile(
+                        leading: const Icon(Icons.thumb_down_outlined),
+                        title: Text('${state.disliked.length} recipe'
+                            '${state.disliked.length == 1 ? '' : 's'} you thumbed down'),
+                        subtitle: const Text('Never suggested. Tap to review or bring back.'),
+                        trailing: const Icon(Icons.chevron_right),
+                        onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => const BrowseScreen(dislikedOnly: true))),
+                      ),
                   ],
+                ),
+              ),
+              _section(context, 'About'),
+              Card(
+                child: ListTile(
+                  leading: const Icon(Icons.photo_library_outlined),
+                  title: const Text('Photo & data credits'),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () => Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (_) => const CreditsScreen())),
                 ),
               ),
               _section(context, 'Appearance'),
